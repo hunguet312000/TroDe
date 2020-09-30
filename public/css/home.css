@@ -1,0 +1,230 @@
+/* Add a gray background color and some padding to the footer */
+
+footer {
+    background-color: darkgray;
+    padding: 25px;
+}
+
+.carousel-inner img {
+    width: 100%;
+    /* Set width to 100% */
+    margin: auto;
+    min-height: 200px;
+}
+
+body {
+    background-color: #f1f1f2;
+}
+
+
+/*Navbar css */
+
+.navbar-custom .navbar-search .form-control {
+    width: 65%;
+    margin-top: 8px;
+}
+
+
+/*carousel slide css */
+
+.carousel.slide {
+    background-color: #5061cb;
+    padding-top: 40px;
+    padding-left: 175px;
+    padding-right: 175px;
+}
+
+
+/*content css */
+
+.blink {
+    animation: blinker 0.6s linear infinite;
+    color: #1c87c9;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+.blink-one {
+    animation: blinker-one 1s linear infinite;
+}
+
+@keyframes blinker-one {
+    0% {
+        opacity: 0;
+    }
+}
+
+.blink-two {
+    animation: blinker-two 1.4s linear infinite;
+}
+
+@keyframes blinker-two {
+    100% {
+        opacity: 0;
+    }
+}
+
+.more .btn.btn-default {
+    word-wrap: normal;
+    color: #1c87c9;
+}
+
+#n2 {
+    display: none;
+}
+
+#n3 {
+    display: none;
+}
+
+#ulnav {
+    display: none;
+}
+
+#n3:hover #ulnav {
+    display: inline-block;
+}
+
+@media (max-width: 992px) {
+    #n1 {
+        display: none;
+    }
+    #n2 {
+        display: inline-block;
+    }
+}
+
+@media (max-width: 769px) {
+    #n1 {
+        display: none;
+    }
+    #n2 {
+        display: none;
+    }
+    #n3 {
+        display: block;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar-custom .navbar-search {
+        margin-left: 20%;
+        max-width: 500px;
+        width: 100%;
+    }
+    .navbar-custom .navbar-search .form-control {
+        width: 40%;
+        margin-top: 8px;
+    }
+    .navbar-custom .navbar-toggle {
+        z-index: 1060;
+    }
+}
+
+@media (max-width: 767px) {
+    .carousel.slide {
+        height: 100%;
+        width: 100%;
+        padding-top: 40px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .carousel-caption {
+        display: none;
+    }
+}
+
+
+/* content */
+
+.product {
+    position: relative;
+}
+
+.product .product-image .a {
+    display: block;
+}
+
+.product .product-image img {
+    width: 100%;
+    height: auto;
+}
+
+.product .product-content {
+    padding: 12px 12px 12px;
+    overflow: hidden;
+    position: relative
+}
+
+.product .title {
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: capitalize;
+    margin: 0 0 3px;
+    transition: all .3s ease 0s;
+}
+
+.product .title a {
+    color: rgba(0, 0, 0, .5)
+}
+
+.product .title a:hover {
+    color: #c0392b
+}
+
+.product .price {
+    color: #000;
+    font-size: 17px;
+    margin: 0;
+    display: block;
+    transition: all .5s ease 0s
+}
+
+.product:hover .price {
+    opacity: 0
+}
+
+.product .view {
+    display: block;
+    color: #c0392b;
+    font-weight: 600;
+    font-size: 14px;
+    opacity: 0;
+    position: absolute;
+    left: 10px;
+    bottom: -20px;
+    transition: all .5s ease 0s
+}
+
+.product:hover .view {
+    opacity: 1;
+    bottom: 12px
+}
+
+@media only screen and (max-width:990px) {
+    .product {
+        margin-bottom: 30px
+    }
+}
+
+.xemthem {
+    padding-top: 10px;
+    width: 40%;
+    margin-left: 25%;
+    transition: all .2s ease .0s;
+}
+
+.xemthem .bt:hover {
+    color: #c0392b
+}
+
+#home {
+    background-color: snow;
+}
