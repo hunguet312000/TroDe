@@ -1,0 +1,124 @@
+<%- include("partials/header"); -%>
+    <div class="container" id="ct" style="padding-top: 130px; padding-bottom: 10px;">
+        <div class="row">
+            <div class="col-sm-12" id="cl12" style="background-color: white; ">
+                <h1>Thông tin cơ bản</h1>
+                <div>
+                    <form class="was-validated">
+                        <label for="tensp" style="color:#666">*Tên nhà trọ</label>
+                        <input type="text" id="tensp" class="form-control is-invalid" placeholder="Tên nhà trọ" required>
+                        <div class="invalid-feedback">
+                            Không được để trống.
+                        </div>
+                    </form>
+                    <br>
+                    <form id="fm">
+                        <label for="tensp" style="color:#666">*Địa chỉ nhà trọ</label>
+                        <input type="text" id="tensp" class="form-control" placeholder="Địa chỉ nhà trọ" required data-bv-notempty-message="Không được để trống" />
+                    </form>
+                    <br>
+                    <form id="fm">
+                        <label for="tensp" style="color:#666">*Giá cho thuê</label>
+                        <input type="text" id="tensp" class="form-control" placeholder="Giá cho thuê" required data-bv-notempty-message="Không được để trống" />
+                    </form>
+                    <br>
+                    <label for="tensp" style="color:#666">*Trạng thái phòng</label>
+                    <form id="fm">
+                        <input type="radio" id="con" name="gender" value="con">
+                        <label for="con">Còn phòng</label><br>
+                        <input type="radio" id="het" name="gender" value="het">
+                        <label for="het">Hết phòng</label><br>
+                    </form>
+                    <br>
+                    <form id="fm">
+                        <label for="mota" style="color:#666">*Mô tả nhà trọ</label>
+                        <textarea class="form-control" id="mota" rows="10" required data-bv-notempty-message="Không được để trống"></textarea>
+                    </form>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="ct2" style="margin-bottom: 30px ;">
+        <div class="row">
+            <div class="col-sm-12" id="cl12" style="background-color: white; ">
+                <h1>Quản lý hình ảnh</h1>
+                <br>
+                <div class="container">
+                    <div class="row" style="margin-right: 20px;">
+                        <div class="col-sm-4 imgUp">
+                            <div class="imagePreview">
+                            </div>
+                            <label class="btn btn-primary">
+                            Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                  </label>
+
+                        </div>
+                        <div class="col-sm-4 imgUp">
+                            <div class="imagePreview"></div>
+                            <label class="btn btn-primary">
+                            Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                  </label>
+                        </div>
+                        <div class="col-sm-4 imgUp">
+                            <div class="imagePreview"></div>
+                            <label class="btn btn-primary">
+                            Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                  </label>
+                        </div>
+                        <div class="col-sm-4 imgUp">
+                            <div class="imagePreview"></div>
+                            <label class="btn btn-primary">
+                            Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                  </label>
+                        </div>
+                        <div class="col-sm-4 imgUp">
+                            <div class="imagePreview"></div>
+                            <label class="btn btn-primary">
+                            Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                  </label>
+                        </div>
+                        <div class="col-sm-4 imgUp">
+                            <div class="imagePreview"></div>
+                            <label class="btn btn-primary">
+                            Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                  </label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+            <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="on" style="margin-left: 90%;">
+                Lưu và hiển thị
+              </button>
+        </div>
+        <br>
+
+        <script>
+            $(function() {
+                $(document).on("change", ".uploadFile", function() {
+                    var uploadFile = $(this);
+                    var files = !!this.files ? this.files : [];
+                    if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+
+                    if (/^image/.test(files[0].type)) { // only image file
+                        var reader = new FileReader(); // instance of the FileReader
+                        reader.readAsDataURL(files[0]); // read the local file
+
+                        reader.onloadend = function() { // set image data as background of div
+                            //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
+                            uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(" + this.result + ")");
+                        }
+                    }
+
+                });
+            });
+        </script>
+
+
+
+        <%- include("partials/footer"); -%>
