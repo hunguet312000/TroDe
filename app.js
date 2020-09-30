@@ -31,6 +31,6 @@ app.get("/post", function(req, res) {
     res.render("post")
 });
 
-app.get("/c", function(req, res) {
+app.get("/content", function(req, res) {
     res.render("content")
 });
