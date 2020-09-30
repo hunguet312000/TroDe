@@ -20,6 +20,10 @@ app.get("/signup", function(req, res) {
     res.render("signup")
 });
 
+app.get("/profile", function(req, res) {
+    res.render("profile")
+});
+
 app.get("/c", function(req, res) {
     res.render("content")
 });
