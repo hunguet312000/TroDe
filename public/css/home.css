@@ -1,27 +1,12 @@
 /* Add a gray background color and some padding to the footer */
 
-footer {
-    background-color: darkgray;
-    padding: 25px;
+div {
+    display: block;
 }
 
-.carousel-inner img {
-    width: 100%;
-    /* Set width to 100% */
-    margin: auto;
-    min-height: 200px;
-}
-
-body {
-    background-color: #f1f1f2;
-}
-
-
-/*Navbar css */
-
-.navbar-custom .navbar-search .form-control {
-    width: 65%;
-    margin-top: 8px;
+.carousel-inner>.item>img,
+.carousel-inner>.item>a>img {
+    height: 100%;
 }
 
 
@@ -29,106 +14,15 @@ body {
 
 .carousel.slide {
     background-color: #5061cb;
-    padding-top: 40px;
-    padding-left: 175px;
-    padding-right: 175px;
+    padding-top: 5.43%;
+    padding-left: 11.5%;
+    padding-right: 11.5%;
 }
 
 
 /*content css */
 
-.blink {
-    animation: blinker 0.6s linear infinite;
-    color: #1c87c9;
-    font-size: 30px;
-    font-weight: bold;
-    font-family: sans-serif;
-}
-
-@keyframes blinker {
-    50% {
-        opacity: 0;
-    }
-}
-
-.blink-one {
-    animation: blinker-one 1s linear infinite;
-}
-
-@keyframes blinker-one {
-    0% {
-        opacity: 0;
-    }
-}
-
-.blink-two {
-    animation: blinker-two 1.4s linear infinite;
-}
-
-@keyframes blinker-two {
-    100% {
-        opacity: 0;
-    }
-}
-
-.more .btn.btn-default {
-    word-wrap: normal;
-    color: #1c87c9;
-}
-
-#n2 {
-    display: none;
-}
-
-#n3 {
-    display: none;
-}
-
-#ulnav {
-    display: none;
-}
-
-#n3:hover #ulnav {
-    display: inline-block;
-}
-
-@media (max-width: 992px) {
-    #n1 {
-        display: none;
-    }
-    #n2 {
-        display: inline-block;
-    }
-}
-
-@media (max-width: 769px) {
-    #n1 {
-        display: none;
-    }
-    #n2 {
-        display: none;
-    }
-    #n3 {
-        display: block;
-    }
-}
-
-@media (max-width: 767px) {
-    .navbar-custom .navbar-search {
-        margin-left: 20%;
-        max-width: 500px;
-        width: 100%;
-    }
-    .navbar-custom .navbar-search .form-control {
-        width: 40%;
-        margin-top: 8px;
-    }
-    .navbar-custom .navbar-toggle {
-        z-index: 1060;
-    }
-}
-
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .carousel.slide {
         height: 100%;
         width: 100%;
@@ -169,6 +63,7 @@ body {
     text-transform: capitalize;
     margin: 0 0 3px;
     transition: all .3s ease 0s;
+    font-family: Montserrat;
 }
 
 .product .title a {
@@ -184,6 +79,7 @@ body {
     font-size: 17px;
     margin: 0;
     display: block;
+    font-family: Montserrat;
     transition: all .5s ease 0s
 }
 
@@ -200,6 +96,7 @@ body {
     position: absolute;
     left: 10px;
     bottom: -20px;
+    font-family: Montserrat;
     transition: all .5s ease 0s
 }
 
@@ -223,8 +120,4 @@ body {
 
 .xemthem .bt:hover {
     color: #c0392b
-}
-
-#home {
-    background-color: snow;
 }
