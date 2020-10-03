@@ -50,3 +50,7 @@ body {
     cursor: pointer;
     font-size: 15px;
 }
+
+.row {
+    font-family: Montserrat;
+}
