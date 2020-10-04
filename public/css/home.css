@@ -13,10 +13,8 @@ div {
 /*carousel slide css */
 
 .carousel.slide {
-    background-color: #5061cb;
     padding-top: 5.43%;
-    padding-left: 11.5%;
-    padding-right: 11.5%;
+    margin-left: 2%;
 }
 
 
@@ -25,10 +23,7 @@ div {
 @media (max-width: 768px) {
     .carousel.slide {
         height: 100%;
-        width: 100%;
-        padding-top: 40px;
-        padding-left: 0px;
-        padding-right: 0px;
+        margin-left: 0%;
     }
     .carousel-caption {
         display: none;
@@ -120,4 +115,12 @@ div {
 
 .xemthem .bt:hover {
     color: #c0392b
+}
+
+.cls {
+    display: none;
+}
+
+#mycls:hover .cls {
+    display: block;
 }

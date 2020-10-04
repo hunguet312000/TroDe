@@ -7,26 +7,25 @@ const mysql = require('mysql');
 const path = require('path');
 const cookieSession = require('cookie-session');
 
-dotenv.config({path: './.env'});
+dotenv.config({ path: './.env' });
 
 app.listen(3000);
 
 const db = mysql.createConnection({
     host: process.env.DATABASE_HOST,
     user: process.env.DATABASE_USER,
-    password : process.env.DATABASE_PASSWORD,
-    database : process.env.DATABASE
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE
 })
 
-db.connect((error) =>{
-    if(error) {console.log(error)}
-    else {console.log("connected!")}
+db.connect((error) => {
+    if (error) { console.log(error) } else { console.log("connected!") }
 })
 app.set('view engine', 'ejs');
 app.set("views", "./views");
 app.use(express.static(__dirname + '/public'));
 
-app.use(express.urlencoded({extend:false}));
+app.use(express.urlencoded({ extend: false }));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -34,4 +33,3 @@ app.use(cookieParser());
 //routers
 app.use('/', require('./routers/pages'));
 app.use('/', require('./routers/authentication'));
-
