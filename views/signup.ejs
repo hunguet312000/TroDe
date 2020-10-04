@@ -38,7 +38,7 @@
                 <b><span class="blink" style="font-size: x-large">Đăng Ký</span></b>
     </nav>
     <div id="logreg-forms">
-        <form class="form-signin">
+        <form class="form-signin" action ="/signup" method = post>
             <form action="#" class="form-signup">
                 <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Đăng Ký</h1>
                 <div class="social-login">
@@ -48,10 +48,14 @@
 
                 <p style="text-align:center">Hoặc</p>
 
-                <input type="text" id="user-name" class="form-control" placeholder="Họ và tên" required="" autofocus="">
-                <input type="email" id="user-email" class="form-control" placeholder="Địa chỉ email" required autofocus="">
-                <input type="password" id="user-pass" class="form-control" placeholder="Mật khẩu" required autofocus="">
-                <input type="password" id="user-repeatpass" class="form-control" placeholder="Nhập lại mật khẩu" required autofocus="">
+                <input name = "username" type="text" id="user-name" class="form-control" placeholder="username" required="" autofocus="">
+                <input name = "email" type="email" id="user-email" class="form-control" placeholder="email" required autofocus="">
+                <input name = "password" type="password" id="user-pass" class="form-control" placeholder="password" required autofocus="">
+                <input name = "confirmPass" type="password" id="user-repeatpass" class="form-control" placeholder="password confirmation" required autofocus="">
+
+                <%if(message) {%>
+                    <h4 style = "text-align: center; font-size: 15px;" class = "alert alert-danger mt4"><%=message%></h4>
+                <% }%>
 
                 <div class="input-group">
                     <button class="btn btn-md btn-block submit" type="submit"><i class="fas fa-user-plus"></i> Đăng ký</button>
