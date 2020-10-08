@@ -1,5 +1,5 @@
 #home {
-    background-color: white;
+    background-color: snow;
 }
 
 footer {
@@ -94,14 +94,17 @@ body {
     background-color: white;
 }
 
+#post {
+    margin-right: -50%;
+}
+
 #logo {
     font-size: xxx-large;
     font-family: 'Caveat';
-    color: black;
 }
 
-#logo:hover {
-    color: hotpink;
+#postlogo {
+    font-size: xxx-large;
 }
 
 @media (max-width: 992px) {
@@ -154,25 +157,4 @@ body {
     #postlogo {
         font-size: xx-large;
     }
-}
-
-#a1 {
-    height: 0px;
-    text-decoration: none;
-    font-family: Montserrat;
-    color: black;
-}
-
-#a1:hover {
-    color: hotpink;
-}
-
-.glyphicon.glyphicon-user {
-    border-radius: 50%;
-    overflow: hidden;
-    border: 0.5px solid black;
-}
-
-#a1:hover .glyphicon.glyphicon-user {
-    border: 0.5px solid hotpink;
 }

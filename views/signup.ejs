@@ -53,6 +53,14 @@
                 <input name = "password" type="password" id="user-pass" class="form-control" placeholder="password" required autofocus="">
                 <input name = "confirmPass" type="password" id="user-repeatpass" class="form-control" placeholder="password confirmation" required autofocus="">
 
+                <% if(typeof alert != 'undefined') { %>
+                    <% alert.forEach(function(error) { %>
+                        <div style = "font-size : 16px; text-align: center;" class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <%= error.msg %>
+                        </div>
+                    <% }) %>
+                <% } %>
+
                 <%if(message) {%>
                     <h4 style = "text-align: center; font-size: 15px;" class = "alert alert-danger mt4"><%=message%></h4>
                 <% }%>

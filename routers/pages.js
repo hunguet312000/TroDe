@@ -4,14 +4,14 @@ const cloudinary = require('../cloud/cloudinary');
 const upload = require('../cloud/multer')
 const fs = require('fs');
 const { Router } = require('express');
-
+const db = require('../cloud/database').db;
 
 router.get("/login", function(req, res) {
-    res.render("login", { message: "" })
+    res.render("login", {message : ""})
 });
 
 router.get("/signup", function(req, res) {
-    res.render("signup", { message: '' })
+    res.render("signup", {message : ''})
 });
 
 router.get("/content", function(req, res) {
@@ -22,7 +22,17 @@ router.get("/content", function(req, res) {
 router.get('/profile', function(req, res) {
     res.render('profile');
 })
-
+router.post('/profile', function(req, res) {
+    email = req.body.email;
+    console.log(req.body);
+    var sql = "UPDATE nguoi_dung SET dia_chi = 'Canyon 123' WHERE email = '" + email + "'";
+    db.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log(result.affectedRows + " record(s) updated");
+    });
+    
+    res.send('lala'); 
+})
 router.get('/post', function(req, res) {
     res.render('post')
 })
@@ -33,8 +43,8 @@ router.post('/post', upload.array('photo'), async(req, res) => {
     console.log(req.body);
     console.log(req.files);
     files = req.files;
-    for (const file of files) {
-        const { path } = file
+    for(const file of files) {
+        const {path} = file
         const newPath = await uploader(path)
         urls.push(newPath);
         console.log(newPath);
@@ -42,8 +52,8 @@ router.post('/post', upload.array('photo'), async(req, res) => {
     }
 
     res.send({
-        message: 'image uploaded!',
-        data: urls
+        message : 'image uploaded!',
+        data  :urls
     })
 })
 
@@ -53,10 +63,6 @@ router.get("", function(req, res) {
 
 router.get("/home", function(req, res) {
     res.render("home");
-});
-
-router.get("/home-user", function(req, res) {
-    res.render("home-user");
 });
 
 

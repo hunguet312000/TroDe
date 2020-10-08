@@ -13,8 +13,10 @@ div {
 /*carousel slide css */
 
 .carousel.slide {
+    background-color: #5061cb;
     padding-top: 5.43%;
-    margin-left: 2%;
+    padding-left: 11.5%;
+    padding-right: 11.5%;
 }
 
 
@@ -23,7 +25,10 @@ div {
 @media (max-width: 768px) {
     .carousel.slide {
         height: 100%;
-        margin-left: 0%;
+        width: 100%;
+        padding-top: 40px;
+        padding-left: 0px;
+        padding-right: 0px;
     }
     .carousel-caption {
         display: none;
@@ -35,7 +40,6 @@ div {
 
 .product {
     position: relative;
-    margin-bottom: 15px
 }
 
 .product .product-image .a {
@@ -60,7 +64,6 @@ div {
     margin: 0 0 3px;
     transition: all .3s ease 0s;
     font-family: Montserrat;
-    text-decoration: none;
 }
 
 .product .title a {
@@ -68,8 +71,7 @@ div {
 }
 
 .product .title a:hover {
-    color: rgb(223, 32, 175);
-    text-decoration: none;
+    color: #c0392b
 }
 
 .product .price {
@@ -78,6 +80,7 @@ div {
     margin: 0;
     display: block;
     font-family: Montserrat;
+    transition: all .5s ease 0s
 }
 
 .product:hover .price {
@@ -92,17 +95,14 @@ div {
     opacity: 0;
     position: absolute;
     left: 10px;
-    margin-top: -20px;
+    bottom: -20px;
     font-family: Montserrat;
-    text-decoration: none;
+    transition: all .5s ease 0s
 }
 
 .product:hover .view {
     opacity: 1;
-}
-
-.product:hover {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    bottom: 12px
 }
 
 @media only screen and (max-width:990px) {
@@ -119,24 +119,5 @@ div {
 }
 
 .xemthem .bt:hover {
-    color: white;
-    background-color: #189eff;
-}
-
-.cls {
-    display: none;
-}
-
-#mycls:hover .cls {
-    display: block;
-}
-
-.bt {
-    height: fit-content;
-    width: 50%;
-    font-family: Montserrat;
-    background-color: transparent;
-    border-radius: 5px;
-    color: #007ff0;
-    border: 1px solid #189eff;
+    color: #c0392b
 }
