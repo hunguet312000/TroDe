@@ -1,5 +1,5 @@
 #home {
-    background-color: white;
+    background-color: #ffffff;
 }
 
 footer {
@@ -94,6 +94,10 @@ body {
     background-color: white;
 }
 
+#post {
+    margin-right: -50%;
+}
+
 #logo {
     font-size: xxx-large;
     font-family: 'Caveat';
@@ -101,6 +105,15 @@ body {
 }
 
 #logo:hover {
+    color: hotpink;
+}
+
+#postlogo {
+    font-size: xxx-large;
+    color: black;
+}
+
+#postlogo:hover {
     color: hotpink;
 }
 
@@ -156,14 +169,39 @@ body {
     }
 }
 
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown>.dropdown-toggle:active {
+    /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+}
+
 #a1 {
-    height: 0px;
-    text-decoration: none;
+    margin-left: 20px;
     font-family: Montserrat;
-    color: black;
+    text-decoration: none;
+    color: #000;
 }
 
 #a1:hover {
+    color: hotpink;
+}
+
+#dropdownMenuButton {
+    color: #000;
+}
+
+#dropdownMenuButton:hover {
+    color: hotpink;
+}
+
+#noti {
+    color: #000;
+}
+
+#noti:hover {
     color: hotpink;
 }
 
@@ -173,6 +211,6 @@ body {
     border: 0.5px solid black;
 }
 
-#a1:hover .glyphicon.glyphicon-user {
+#dropdownMenuButton:hover .glyphicon.glyphicon-user {
     border: 0.5px solid hotpink;
 }

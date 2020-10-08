@@ -30,7 +30,7 @@ exports.login = async(req, res) => {
                     httpOnly: true
                 }
                 res.cookie('jwt', token, cookieOptions);
-                res.status(200).redirect('/home');
+                res.status(200).redirect('/home-user');
             }
         })
     } catch (error) { console.log(error) }
