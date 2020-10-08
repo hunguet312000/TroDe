@@ -48,15 +48,15 @@ router.post('/post', upload.array('photo'), async(req, res) => {
 })
 
 router.get("", function(req, res) {
-    res.render("home");
+    res.render("home-guest");
 });
 
 router.get("/home", function(req, res) {
-    res.render("home");
+    res.render("home-guest");
 });
 
 router.get("/home-user", function(req, res) {
-    res.render("homeuser");
+    res.render("home-user");
 });
 
 
