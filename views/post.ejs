@@ -1,11 +1,14 @@
+<% if(userId !== 0 ){%>
+  <% console.log(userId);%>
+<% } %>
 <%- include("partials/header"); -%>
     <div class="container" id="ct" style="padding-top: 130px; padding-bottom: 10px;">
         <div class="row">
+          <form action = "/post/<%= userId %>" method = "post" enctype = "multipart/form-data">
             <div class="col-sm-12" id="cl12" style="background-color: white; ">
                 <h1>Thông tin cơ bản</h1>
                 <br>
                 <br>
-                <form action = "/post" method = "post" enctype = "multipart/form-data">
                     <div>
                         <div class="was-validated">
                             <div class="row">
@@ -58,14 +61,11 @@
                         </div>
                         <br>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="float: right; margin-top: 1%;margin-bottom:1%;">Lưu thông tin cơ bản</button>
-                </form>
             </div>
             <br>
             <div class="col-sm-12" id="cl12" style="background-color: white; ">
                 <h1>Quản lý hình ảnh</h1>
                 <br>
-                <form action = "/post" method = "post" enctype = "multipart/form-data">
                     <div class="container">
                         <div class="row" style="margin-right: 20px;">
                             <div class="col-sm-4 imgUp">
@@ -109,9 +109,9 @@
 
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="float: right; margin-top: 1%;margin-bottom:1%;">Lưu ảnh</button>
-                </form>
+                    <button type="submit" class="btn btn-primary" style="float: right; margin-top: 1%;margin-bottom:1%;">Lưu thông tin</button>
             </div>
+          </form>
         </div>
     </div>
 

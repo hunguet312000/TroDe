@@ -1,4 +1,8 @@
+<% if(userId !== 0 ){%>
+  <% console.log("haha");%>
+<% } %>
 <%- include("partials/header"); -%>
+
     <div class="container" id="mycls">
         <div class="row">
             <div class="col-sm-12">
@@ -71,6 +75,13 @@
         <p>
             <div class="container" id="home">
                 <h3 class="blink" style="font-family: Montserrat;font-weight: bold;">Bài đăng nổi bật </h3>
+                <div >
+                    <span class="nav-item " id='post'>
+                        <a href="<%= userId %>/post">
+                            <span class="glyphicon glyphicon-edit" id = "postlogo"></span>
+                          </a>
+                    </span>
+                </div>
                 <div class="row">
                     <div class="col-md-3 col-sm-6">
                         <div class="product">
@@ -350,6 +361,7 @@
                     </a>
 
                 </div>
+
             </div>
         </p>
 

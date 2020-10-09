@@ -16,7 +16,7 @@ const fileFilter = (req, file, cb) => {
     else {
         cb({message: 'Unsupported File Format'}, false);
     }
-}                   
+}
 
 const upload = multer({
     storage : storage,

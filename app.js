@@ -9,7 +9,17 @@ const cookieSession = require('cookie-session');
 
 dotenv.config({ path: './.env' });
 
-app.listen(3000);
+app.set('view engine', 'ejs');
+app.set("views", "./views");
+app.use(express.static(__dirname + '/public'));
+
+app.use(express.urlencoded({ extend: false }));
+app.use(express.json());
+app.use(cookieParser());
+
+//routers
+app.use('/', require('./routers/pages'));
+app.use('/', require('./routers/authentication'));
 
 const db = mysql.createConnection({
     host: process.env.DATABASE_HOST,
@@ -19,17 +29,9 @@ const db = mysql.createConnection({
 })
 
 db.connect((error) => {
-    if (error) { console.log(error) } else { console.log("connected!") }
+    if (error) { console.log(error) } else { console.log("Connected to MySql!") }
 })
-app.set('view engine', 'ejs');
-app.set("views", "./views");
-app.use(express.static(__dirname + '/public'));
 
-app.use(express.urlencoded({ extend: false }));
-app.use(express.json());
-app.use(cookieParser());
-
-
-//routers
-app.use('/', require('./routers/pages'));
-app.use('/', require('./routers/authentication'));
+app.listen(3000, function(req, res){
+  console.log("Sever is running on port 3000");
+});
