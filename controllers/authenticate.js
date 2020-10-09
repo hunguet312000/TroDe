@@ -34,7 +34,7 @@ exports.login = async(req, res) => {
                 }
                 console.log(id);
                 res.cookie('jwt', token, cookieOptions);
-                res.status(200).redirect('/loginedHome/' + id);
+                res.status(200).redirect('/home-user');
             }
         })
     } catch (error) { console.log(error) }

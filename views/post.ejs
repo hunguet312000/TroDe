@@ -1,7 +1,5 @@
-<% if(userId !== 0 ){%>
-  <% console.log(userId);%>
-<% } %>
-<%- include("partials/header"); -%>
+
+<%- include("partials/navbar-home-user"); -%>
     <div class="container" id="ct" style="padding-top: 130px; padding-bottom: 10px;">
         <div class="row">
           <form action = "/post/<%= userId %>" method = "post" enctype = "multipart/form-data">
@@ -9,12 +7,13 @@
                 <h1>Thông tin cơ bản</h1>
                 <br>
                 <br>
+                <form action="/post" method="post" enctype="multipart/form-data">
                     <div>
                         <div class="was-validated">
                             <div class="row">
                                 <div class="col-sm-2" style="margin-left: 5%;text-align: end;padding-top: 0.5%;"><label for="tensp" style="color:#666">*Tên nhà trọ</label></div>
                                 <div class="col-sm-9">
-                                    <input name = "ownerName" type="text" id="tensp" class="form-control is-invalid" placeholder="Tên nhà trọ" style="border-radius: 0;" required>
+                                    <input name="ownerName" type="text" id="tensp" class="form-control is-invalid" placeholder="Tên nhà trọ" style="border-radius: 0;" required>
                                 </div>
                             </div>
                         </div>
@@ -23,7 +22,7 @@
                             <div class="row">
                                 <div class="col-sm-2" style="margin-left: 5%;text-align: end;padding-top: 0.5%;"><label for="tensp" style="color:#666">*Địa chỉ nhà trọ</label></div>
                                 <div class="col-sm-9">
-                                    <input name = "ownerAddress" type="text" id="tensp" class="form-control" placeholder="Địa chỉ nhà trọ" style="border-radius: 0;" required data-bv-notempty-message="Không được để trống" />
+                                    <input name="ownerAddress" type="text" id="tensp" class="form-control" placeholder="Địa chỉ nhà trọ" style="border-radius: 0;" required data-bv-notempty-message="Không được để trống" />
                                 </div>
                             </div>
                         </div>
@@ -32,7 +31,7 @@
                             <div class="row">
                                 <div class="col-sm-2" style="margin-left: 5%;text-align: end;padding-top: 0.5%;"><label for="tensp" style="color:#666">*Giá cho thuê</label></div>
                                 <div class="col-sm-9">
-                                    <input name = "price" type="text" id="tensp" class="form-control" placeholder="Giá cho thuê" required data-bv-notempty-message="Không được để trống" style="border-radius: 0;" />
+                                    <input name="price" type="text" id="tensp" class="form-control" placeholder="Giá cho thuê" required data-bv-notempty-message="Không được để trống" style="border-radius: 0;" />
                                 </div>
                             </div>
                         </div>
@@ -66,6 +65,7 @@
             <div class="col-sm-12" id="cl12" style="background-color: white; ">
                 <h1>Quản lý hình ảnh</h1>
                 <br>
+                <form action="/post" method="post" enctype="multipart/form-data">
                     <div class="container">
                         <div class="row" style="margin-right: 20px;">
                             <div class="col-sm-4 imgUp">
