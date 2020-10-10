@@ -14,7 +14,7 @@ exports.login = async(req, res) => {
         db.query('SELECT * FROM user WHERE email = "' + input_login + '" OR name = "' + input_login + '"', async(error, results) => {
             console.log(!(results.length > 0) || !(await bcrypt.compare(password, results[0].password)));
             if (!(results.length > 0) || !(await bcrypt.compare(password, results[0].password))) {
-                res.status(401).render('login', {
+                res.status(401).render('user-login', {
                     message: 'email or password is incorrect'
                 })
             } else {
@@ -41,11 +41,11 @@ exports.signup = function(req, res) {
     db.query('SELECT email FROM user WHERE email = ? OR name = ?', [email, username], async(error, results) => {
         if (error) { conslole.log(error); }
         if (results.length > 0) {
-            return res.render('signup', {
+            return res.render('user-signup', {
                 message: 'email or user name is already in use'
             })
         } else if (password !== confirmPass) {
-            return res.render('signup', {
+            return res.render('user-signup', {
                 message: 'password do not match'
             })
         }
@@ -54,7 +54,7 @@ exports.signup = function(req, res) {
         db.query('INSERT INTO user SET ?', { name: username, email: email, password: hashedPassword }, (error, results) => {
             if (error) { console.log(error); } else {
                 console.log(results);
-                return res.render('signup', {
+                return res.render('user-signup', {
                     message: 'user registered'
                 });
             }

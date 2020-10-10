@@ -7,11 +7,27 @@ const { Router } = require('express');
 
 
 router.get("/login", function(req, res) {
-    res.render("login", { message: "" })
+    res.render("user-login", { message: "" })
 });
 
 router.get("/signup", function(req, res) {
-    res.render("signup", { message: '' })
+    res.render("user-signup", { message: '' })
+});
+
+router.get("/forget-password", function(req, res) {
+    res.render("user-forget-password", { message: '' })
+});
+
+router.get("/verification", function(req, res) {
+    res.render("user-verification", { message: '' })
+});
+
+router.get("/verification-email", function(req, res) {
+    res.render("user-verification-email", { message: '' })
+});
+
+router.get("/reset-password", function(req, res) {
+    res.render("user-reset-password", { message: '' })
 });
 
 router.get("/content", function(req, res) {
@@ -20,7 +36,19 @@ router.get("/content", function(req, res) {
 
 
 router.get('/profile', function(req, res) {
-    res.render('profile');
+    res.render('user-profile');
+})
+
+router.get('/profile-info', function(req, res) {
+    res.render('user-profile-info');
+})
+
+router.get('/profile-edit', function(req, res) {
+    res.render('user-profile-edit');
+})
+
+router.get('/profile-change-password', function(req, res) {
+    res.render('user-profile-change-password');
 })
 
 router.get('/post', function(req, res) {
@@ -56,7 +84,7 @@ router.get("/home", function(req, res) {
 });
 
 router.get("/home-user", function(req, res) {
-    res.render("home-user");
+    res.render("user-home");
 });
 
 

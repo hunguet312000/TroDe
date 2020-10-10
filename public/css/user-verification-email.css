@@ -1,0 +1,50 @@
+#btn-guima {
+    width: 100%;
+    background-color: #d4f3eb;
+    color: #11c296;
+    border: 1px solid #d4f3eb;
+    height: 40px;
+}
+
+#btn-guima:hover {
+    background-color: #17ca9d;
+    color: white;
+    border: 1px solid #17ca9d;
+}
+
+body {
+    background-color: #eff0f5;
+    font-family: Montserrat;
+}
+
+#logo {
+    font-size: xxx-large;
+    font-family: 'Caveat';
+    color: black;
+}
+
+#logo:hover {
+    color: hotpink;
+}
+
+.content-verfication {
+    background-color: white;
+    height: 340px;
+}
+
+#continue {
+    width: 100%;
+    background-color: #d4f3eb;
+    color: #11c296;
+    border: 1px solid #d4f3eb;
+}
+
+#continue:hover {
+    background-color: #17ca9d;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#continue:focus {
+    outline: 0;
+}

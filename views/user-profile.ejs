@@ -1,0 +1,76 @@
+<%- include("partials/navbar-user-profile"); -%>
+    <div class="container" id="profile-content">
+        <div class="row">
+            <div class="col-md-2">
+                <span style="font-size: 12px;">Xin chào bạn,</span>
+                <br><br>
+                <a href="profile" style="text-decoration: none;">
+                    <i class="fas fa-user-circle" style="color: hotpink;font-size: 19px;">&nbsp;</i><span style="color: #1A9CB7;font-size: 16px;"><b>Quản lý tài khoản</b></span>
+                </a>
+                <ul style="list-style: none;margin-left: -5px;">
+                    <li>
+                        <a href="profile-info" style="text-decoration: none;">
+                            <span id="ul-li">Thông tin cá nhân</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="profile-change-password" style="text-decoration: none;">
+                            <span id="ul-li">Đổi mật khẩu</span>
+                        </a>
+                    </li>
+                </ul>
+                <a href="#" style="text-decoration: none;">
+                    <i class="fas fa-bell" style="color: rgb(255, 30, 0);font-size: 19px;">&nbsp;</i><span id="catelogy"><b>Thông báo</b></span>
+                </a>
+                <br><br>
+                <a href="#" style="text-decoration: none;">
+                    <i class="fas fa-clipboard" style="color: rgb(0, 195, 255);font-size: 19px;">&nbsp;</i><span id="catelogy"><b>Bài đã đăng</b></span>
+                </a>
+            </div>
+            <div class="col-md-10">
+                <span style="font-size: 17px;"><b>Quản lý thông tin</b></span>
+                <br><br>
+                <div class="row">
+                    <div class="col-md-6" style="background-color: white;height: 214px;">
+                        <div class="row">
+                            <div class="col-md-11">
+                                <br>
+                                <div style="padding: 16px;">
+                                    <span style="font-size: 16px;">Thông tin cá nhân</span>
+                                    <span style="color: #dadada;">|</span>
+                                    <a href="profile-info" style="text-decoration: none;">
+                                        <span style="font-size: 12px;color: #1A9CB7;">Chỉnh sửa</span>
+                                    </a>
+                                    <br>
+                                    <br>
+                                    <div class="info-iten" style="font-size: 14px;margin-bottom: 8px;">Tên user</div>
+                                    <div class="info-iten" style="font-size: 14px;margin-bottom: 8px;">Gmail user</div>
+                                    <div class="info-iten" style="font-size: 14px;">Số điện thoại user</div>
+                                </div>
+                            </div>
+                            <div class="col-md-1" id="division">
+                                <div style="background-color: #eff0f5;height: 214px;"></div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="col-md-6" style="background-color: white;height: 214px;">
+                        <br>
+                        <div style="padding: 16px;">
+                            <span style="font-size: 16px;">Thay đổi mật khẩu</span>
+                            <span style="color: #dadada;">|</span>
+                            <a href="#" style="text-decoration: none;">
+                                <span style="font-size: 12px;color: #1A9CB7;">Chỉnh sửa</span>
+                            </a>
+                            <br>
+                            <br>
+                            <div class="info-iten" style="font-size: 14px;margin-bottom: 8px;">Chỉnh sửa mật khẩu của bạn</div>
+                        </div>
+                        <br>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include("partials/footer"); -%>

@@ -1,0 +1,74 @@
+body {
+    background-color: #eff0f5;
+    font-family: Montserrat;
+}
+
+#profile-content {
+    margin-top: 120px;
+    height: 84vh;
+}
+
+#ul-li {
+    color: #757575;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+#ul-li:hover {
+    color: hotpink;
+}
+
+#catelogy {
+    color: #424242;
+    font-size: 16px;
+}
+
+#catelogy:hover {
+    color: hotpink;
+}
+
+#title-item-profile {
+    font-size: 13px;
+    color: #424242;
+}
+
+.proflie-item-info {
+    font-size: 15px;
+    color: #212121;
+    margin-top: 10px;
+}
+
+#button-edit {
+    width: 100%;
+    background-color: #d4f3eb;
+    color: #11c296;
+    border: 1px solid #d4f3eb;
+}
+
+#button-edit:hover {
+    background-color: #17ca9d;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#button-edit:focus {
+    outline: 0;
+}
+
+#button-submit {
+    width: 100%;
+    background-color: #d4f3eb;
+    color: #11c296;
+    border: 1px solid #d4f3eb;
+    height: 48px;
+}
+
+#button-submit:hover {
+    background-color: #17ca9d;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#button-submit:focus {
+    outline: 0;
+}

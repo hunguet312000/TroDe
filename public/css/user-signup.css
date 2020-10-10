@@ -1,0 +1,135 @@
+body {
+    background-color: #eff0f5;
+    font-family: Montserrat;
+}
+
+#a-text-dangnhap {
+    text-decoration: none;
+    color: rgb(0, 195, 255);
+}
+
+#a-text-dangnhap:hover {
+    color: hotpink;
+}
+
+.content-signup {
+    background-color: white;
+    height: 423x;
+}
+
+#button-submit {
+    float: right;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    width: 50%;
+    color: #007ff0;
+    background-color: transparent;
+}
+
+#button-submit:hover {
+    color: white;
+    background-color: #189eff;
+    border: 1px solid #189eff;
+}
+
+#button-facebook {
+    background-color: #3b5998;
+    height: 40px;
+    width: 163%;
+    border-radius: 3px;
+    margin-bottom: 12px;
+    border: 1px solid #3b5998;
+}
+
+#button-gmail {
+    background-color: #d34836;
+    height: 40px;
+    width: 163%;
+    border-radius: 3px;
+    margin-bottom: 12px;
+    border: 1px solid #d34836;
+}
+
+#button-facebook:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#button-gmail:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#text-qmk {
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+#text-qmk:hover {
+    color: hotpink;
+}
+
+#logo {
+    font-size: xxx-large;
+    font-family: 'Caveat';
+    color: black;
+}
+
+#logo:hover {
+    color: hotpink;
+}
+
+#button-submit {
+    float: left;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    width: 100%;
+    color: #007ff0;
+    background-color: transparent;
+}
+
+#button-submit:hover {
+    color: white;
+    background-color: #189eff;
+    border: 1px solid #189eff;
+}
+
+#button-submit:focus {
+    outline: 0;
+}
+
+#button-facebook {
+    background-color: #3b5998;
+    height: 40px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 12px;
+    border: 1px solid #3b5998;
+}
+
+#button-gmail {
+    background-color: #d34836;
+    height: 40px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 12px;
+    border: 1px solid #d34836;
+}
+
+#button-facebook:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#button-facebook:focus {
+    outline: 0;
+}
+
+#button-gmail:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#button-gmail:focus {
+    outline: 0;
+}
+
+#text-dk {
+    font-size: 11px;
+}
