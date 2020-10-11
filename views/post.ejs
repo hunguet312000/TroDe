@@ -1,13 +1,11 @@
-
 <%- include("partials/navbar-home-user"); -%>
     <div class="container" id="ct" style="padding-top: 130px; padding-bottom: 10px;">
         <div class="row">
-          <form action = "/post/<%= userId %>" method = "post" enctype = "multipart/form-data">
+          <form action = "/post" method = "post" enctype = "multipart/form-data">
             <div class="col-sm-12" id="cl12" style="background-color: white; ">
                 <h1>Thông tin cơ bản</h1>
                 <br>
                 <br>
-                <form action="/post" method="post" enctype="multipart/form-data">
                     <div>
                         <div class="was-validated">
                             <div class="row">
@@ -65,7 +63,6 @@
             <div class="col-sm-12" id="cl12" style="background-color: white; ">
                 <h1>Quản lý hình ảnh</h1>
                 <br>
-                <form action="/post" method="post" enctype="multipart/form-data">
                     <div class="container">
                         <div class="row" style="margin-right: 20px;">
                             <div class="col-sm-4 imgUp">

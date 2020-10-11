@@ -53,7 +53,7 @@
                 <input name = "password" type="password" id="user-pass" class="form-control" placeholder="password" required autofocus="">
                 <input name = "confirmPass" type="password" id="user-repeatpass" class="form-control" placeholder="password confirmation" required autofocus="">
 
-                <%if(message) {%>
+                <%if(message.length > 0) {%>
                     <h4 style = "text-align: center; font-size: 15px;" class = "alert alert-danger mt4"><%=message%></h4>
                 <% }%>
 

@@ -42,19 +42,19 @@
         <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Đăng Nhập</h1>
         <form class="form-signin"action = "/login" method = "post">
             <div class="social-login">
-                <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Đăng nhập với Facebook</span> </button>
-                <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Đăng nhập với Google+</span> </button>
+                <button class="btn facebook-btn social-btn" type="button"><a ><i class="fab fa-facebook-f"></i> Đăng nhập với Facebook</a> </button>
+                <button class="btn google-btn social-btn" type="button"><a href="/auth/google"><i class="fab fa-google-plus-g"></i> Đăng nhập với Google+</a> </button>
             </div>
             <p style="text-align:center"> Hoặc </p>
             <div class="input-group">
-                <input name = "input_login" type="input_login" class="form-control" placeholder="email or username" required="" autofocus="">
+                <input name = "username" type="input_login" class="form-control" placeholder="email or username" required="" autofocus="">
             </div>
 
             <div class="input-group">
                 <input name = "password" type="password" id="inputPassword" class="form-control" placeholder="password" required="">
             </div>
 
-            <%if(message) {%>
+            <%if(message.length > 0) {%>
                 <h4   style = "text-align: center; font-size : 15px;" class = "alert alert-danger mt4" ><%=message%></h4>
             <% }%>
 
