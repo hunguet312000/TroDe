@@ -1,0 +1,34 @@
+body {
+    background-color: #eff0f5;
+    font-family: Montserrat;
+}
+
+#profile-content {
+    margin-top: 120px;
+    height: 84vh;
+}
+
+#ul-li {
+    color: #757575;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+#ul-li:hover {
+    color: hotpink;
+}
+
+#catelogy {
+    color: #424242;
+    font-size: 16px;
+}
+
+#catelogy:hover {
+    color: hotpink;
+}
+
+@media (max-width:992px) {
+    #division {
+        display: none;
+    }
+}

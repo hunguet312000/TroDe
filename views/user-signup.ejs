@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Đăng Kí</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <link href="/css/user-signup.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-fixed-top navbar-custom" role="navigation" style="background-color: #ffffff;">
+        <div class="container">
+            <div class="navbar-header">
+                <b><a class="navbar-brand " href="home" id="logo">TroDe</a></b>
+                <b><span class="blink" style="font-size: x-large;">Đăng Kí</span></b>
+    </nav>
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h3 style="font-size: 22px;">Tạo tài khoản TroDe
+                    <span style="font-size: 15px;margin-left: 15%;">Bạn đã là thành viên? <a id = "a-text-dangnhap" href="login">Đăng nhập</a> tại đây</span>
+                </h3>
+                <br>
+            </div>
+            <div class="col-md-8 offset-md-2">
+                <div class="content-signup" style="padding: 25px 50px 50px 25px;">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-7">
+
+                                <label for="email" style="font-size: 14px;color: #424242;">*Email</label>
+                                <input name="email" type="text" id="email" class="form-control" placeholder="Vui lòng nhập Email của bạn" style="border-radius: 0;color: #424242;font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
+                                <br>
+                                <label for="password" style="font-size: 14px;">*Mật khẩu</label>
+                                <input name="password" type="password" id="password" class="form-control" placeholder="Vui lòng nhập mật khẩu của bạn" style="border-radius: 0;color: #424242; font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
+                                <br>
+                                <label for="phone" style="font-size: 14px;">*Số điện thoại</label>
+                                <input name="phone" type="text" id="phone" class="form-control" placeholder="Vui lòng nhập số điện thoại của bạn" style="border-radius: 0;color: #424242; font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống" maxlength="11"
+                                    pattern="([0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9])">
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <span style="font-size: 14px;color: #424242;text-align: center;">*Ngày sinh</span>
+                                        <input id="datepicker" style="border-radius: 0;color: #424242; font-size: small;height: 40px;text-align: center;" placeholder="Chọn ngày sinh của bạn">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <span style="font-size: 14px;color: #424242;">*Giới tính</span>
+                                        <select class="custom-select" id="inputGroupSelect01" style="border-radius: 0;color: #424242; font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
+                                            <option selected>Nam</option>
+                                            <option value="1">Nữ</option>
+                                          </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="user-name">*Username</label>
+                                <input type="text" id="user-name" class="form-control" placeholder="Vui lòng nhập username của bạn" style="border-radius: 0;color: #424242;font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <span id="text-dk">Bằng cách ấn vào nút “ĐĂNG KÝ”, tôi đồng ý với Điều Khoản Sử Dụng và Chính Sách Bảo Mật của TroDe</span>
+                                        <button type="submit" class="btn btn-primary" id="button-submit">ĐĂNG KÍ</button><br>
+                                        <span style="font-size: 13px;">Hoặc Đăng kí với</span>
+                                        <a href="#" id="link-fb"><button type="button" class="btn btn-primary" id="button-facebook"><i class="fa fa-facebook">&nbsp;&nbsp;</i><b>FACEBOOK</b></button></a>
+                                        <a href="#" id="link-gmail"><button type="button" class="btn btn-primary" id="button-gmail"><i class="fa fa-google-plus	">&nbsp;&nbsp;</i><b>GOOGLE</b></button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                </form>
+                <br><br>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('#datepicker').datepicker();
+        $("#phone").keyup(function() {
+            $("#phone").val(this.value.match(/[0-9]*/));
+        });
+    </script>
+
+
+    <%- include("partials/footer"); -%>

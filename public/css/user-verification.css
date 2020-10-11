@@ -1,0 +1,45 @@
+body {
+    background-color: #eff0f5;
+    font-family: Montserrat;
+}
+
+#logo {
+    font-size: xxx-large;
+    font-family: 'Caveat';
+    color: black;
+}
+
+#logo:hover {
+    color: hotpink;
+}
+
+.content-verfication {
+    background-color: white;
+    height: 340px;
+}
+
+#icon {
+    font-size: 100px;
+    margin-top: 50px;
+}
+
+#icon:hover {
+    color: hotpink;
+}
+
+#button-verification {
+    width: 100%;
+    background-color: #d4f3eb;
+    color: #11c296;
+    border: 1px solid #d4f3eb;
+}
+
+#button-verification:hover {
+    background-color: #17ca9d;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#button-verification:focus {
+    outline: 0;
+}

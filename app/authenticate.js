@@ -45,11 +45,11 @@ exports.signup = async(req, res) => {
     db.query('SELECT email FROM nguoi_dung WHERE email = ? OR ten_nguoi_dung = ?', [email, username], async(error, results) => {
         if (error) { conslole.log(error); }
         if (results.length > 0) {
-            return res.render('signup', {
+            return res.render('user-signup', {
                 message: 'email or user name is already in use'
             })
         } else if (password !== confirmPass) {
-            return res.render('signup', {
+            return res.render('user-signup', {
                 message: 'password do not match'
             })
         }
