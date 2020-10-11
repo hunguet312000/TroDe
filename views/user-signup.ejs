@@ -33,10 +33,9 @@
             </div>
             <div class="col-md-8 offset-md-2">
                 <div class="content-signup" style="padding: 25px 50px 50px 25px;">
-                    <form>
+                    <form action ="/signup" method = post>
                         <div class="row">
                             <div class="col-md-7">
-
                                 <label for="email" style="font-size: 14px;color: #424242;">*Email</label>
                                 <input name="email" type="text" id="email" class="form-control" placeholder="Vui lòng nhập Email của bạn" style="border-radius: 0;color: #424242;font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
                                 <br>
@@ -44,7 +43,7 @@
                                 <input name="password" type="password" id="password" class="form-control" placeholder="Vui lòng nhập mật khẩu của bạn" style="border-radius: 0;color: #424242; font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
                                 <br>
                                 <label for="phone" style="font-size: 14px;">*Số điện thoại</label>
-                                <input name="phone" type="text" id="phone" class="form-control" placeholder="Vui lòng nhập số điện thoại của bạn" style="border-radius: 0;color: #424242; font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống" maxlength="11"
+                                <input name="phone" type="number" id="phone" class="form-control" placeholder="Vui lòng nhập số điện thoại của bạn" style="border-radius: 0;color: #424242; font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống" maxlength="11"
                                     pattern="([0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9])">
                                 <br>
                                 <div class="row">
@@ -57,13 +56,13 @@
                                         <select class="custom-select" id="inputGroupSelect01" style="border-radius: 0;color: #424242; font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
                                             <option selected>Nam</option>
                                             <option value="1">Nữ</option>
-                                          </select>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <label for="user-name">*Username</label>
-                                <input type="text" id="user-name" class="form-control" placeholder="Vui lòng nhập username của bạn" style="border-radius: 0;color: #424242;font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
+                                <input name="username" type="text" id="user-name" class="form-control" placeholder="Vui lòng nhập username của bạn" style="border-radius: 0;color: #424242;font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <span id="text-dk">Bằng cách ấn vào nút “ĐĂNG KÝ”, tôi đồng ý với Điều Khoản Sử Dụng và Chính Sách Bảo Mật của TroDe</span>
@@ -75,8 +74,8 @@
                                 </div>
                             </div>
                         </div>
-                </div>
-                </form>
+                      </form>
+                  </div>
                 <br><br>
             </div>
         </div>

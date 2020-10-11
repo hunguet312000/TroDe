@@ -9,21 +9,33 @@ require('dotenv').config();
 
 module.exports = (app, passport) => {
   app.get("/", function(req, res) {
-    res.render("home");
+    if (req.isAuthenticated()) {
+      res.render("user-home");
+    } else {
+      res.render("home");
+    }
   });
 
   app.get("/home", function(req, res) {
     res.render("home");
   });
 
+  app.get("/user-home", function(req, res) {
+    if (req.isAuthenticated()) {
+      res.render("user-home");
+    } else {
+      res.redirect("login");
+    }
+  });
+
   app.get("/login", function(req, res) {
-    res.render("login", {
+    res.render("user-login", {
       message: req.flash("loginMessage")
     });
   });
 
   app.post("/login", passport.authenticate("local-login", {
-    successRedirect: '/home-user', // redirect to the secure profile section
+    successRedirect: '/user-home', // redirect to the secure profile section
     failureRedirect: '/login', // redirect back to the signup page if there is an error
     failureFlash: true // allow flash messages
   }), function(req, res) {
@@ -41,43 +53,61 @@ module.exports = (app, passport) => {
     }),
     function(req, res) {
       // Successful authentication, redirect home.
-      res.redirect('/home-user');
+      res.redirect('/user-home');
     });
 
   app.get("/signup", function(req, res) {
-    res.render("signup", {
+    res.render("user-signup", {
       message: req.flash("signupMessage")
     })
   });
 
   app.post("/signup", passport.authenticate("local-signup", {
-    successRedirect: '/home-user', // redirect to the secure profile section
+    successRedirect: '/user-home', // redirect to the secure profile section
     failureRedirect: '/signup', // redirect back to the signup page if there is an error
     failureFlash: true // allow flash messages
   }),
   function(req, res) {
-
   });
 
+  app.get("/content", function(req, res) {
+      res.render("content")
+  });
+
+  app.get('/profile', function(req, res) {
+      res.render('user-profile');
+  })
+
+  app.get('/profile-info', function(req, res) {
+      res.render('user-profile-info');
+  })
+
+  app.get('/profile-edit', function(req, res) {
+      res.render('user-profile-edit');
+  })
+
+  app.get('/profile-change-password', function(req, res) {
+      res.render('user-profile-change-password');
+  })
   app.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/");
   });
 
-  app.get("/content", function(req, res) {
-    res.render("content")
+  app.get("/reset-password", function(req, res) {
+      res.render("user-reset-password", { message: '' })
   });
 
-  app.get('/profile', function(req, res) {
-    res.render('profile');
-  })
+  app.get("/forget-password", function(req, res) {
+      res.render("user-forget-password", { message: '' })
+  });
 
-  app.get("/home-user", function(req, res) {
-    if (req.isAuthenticated()) {
-      res.render("home-user");
-    } else {
-      res.redirect("login");
-    }
+  app.get("/verification", function(req, res) {
+      res.render("user-verification", { message: '' })
+  });
+
+  app.get("/verification-email", function(req, res) {
+      res.render("user-verification-email", { message: '' })
   });
 
   app.get("/post", function(req, res) {
@@ -99,6 +129,6 @@ module.exports = (app, passport) => {
       console.log(newPath);
       fs.unlinkSync(path);
     }
-    res.render("home-user");
+    res.render("user-home");
   });
 }
