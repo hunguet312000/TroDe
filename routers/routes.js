@@ -111,7 +111,7 @@ module.exports = (app, passport) => {
   });
 
   app.get("/post", function(req, res) {
-    res.render("post");
+    res.render("user-post");
   });
 
   app.post('/post', upload.array('photo'), async (req, res) => {
