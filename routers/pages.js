@@ -52,7 +52,7 @@ router.get('/profile-change-password', function(req, res) {
 })
 
 router.get('/post', function(req, res) {
-    res.render('post')
+    res.render('user-post')
 })
 
 router.post('/post', upload.array('photo'), async(req, res) => {
