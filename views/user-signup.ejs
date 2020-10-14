@@ -49,13 +49,14 @@
                                 <div class="row">
                                     <div class="col-md-8">
                                         <span style="font-size: 14px;color: #424242;text-align: center;">*Ngày sinh</span>
-                                        <input id="datepicker" style="border-radius: 0;color: #424242; font-size: small;height: 40px;text-align: center;" placeholder="Chọn ngày sinh của bạn">
+                                        <input name="DOB" id="datepicker" style="border-radius: 0;color: #424242; font-size: small;height: 40px;text-align: center;" placeholder="Chọn ngày sinh của bạn" required data-bv-notempty-message="Không được để trống">
                                     </div>
                                     <div class="col-md-4">
                                         <span style="font-size: 14px;color: #424242;">*Giới tính</span>
-                                        <select class="custom-select" id="inputGroupSelect01" style="border-radius: 0;color: #424242; font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
-                                            <option selected>Nam</option>
-                                            <option value="1">Nữ</option>
+                                        <select name="sex" class="custom-select" id="inputGroupSelect01" style="border-radius: 0;color: #424242; font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
+                                            <option ></option>
+                                            <option >Nam</option>
+                                            <option >Nữ</option>
                                         </select>
                                     </div>
                                 </div>
@@ -72,7 +73,7 @@
                                         <button type="submit" class="btn btn-primary" id="button-submit">ĐĂNG KÍ</button><br>
                                         <span style="font-size: 13px;">Hoặc Đăng kí với</span>
                                         <a href="#" id="link-fb"><button type="button" class="btn btn-primary" id="button-facebook"><i class="fa fa-facebook">&nbsp;&nbsp;</i><b>FACEBOOK</b></button></a>
-                                        <a href="#" id="link-gmail"><button type="button" class="btn btn-primary" id="button-gmail"><i class="fa fa-google-plus	">&nbsp;&nbsp;</i><b>GOOGLE</b></button></a>
+                                        <a href="/auth/google" id="link-gmail"><button type="button" class="btn btn-primary" id="button-gmail"><i class="fa fa-google-plus	">&nbsp;&nbsp;</i><b>GOOGLE</b></button></a>
                                     </div>
                                 </div>
                             </div>

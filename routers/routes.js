@@ -48,7 +48,7 @@ module.exports = (app, passport) => {
 
   app.get("/auth/google",passport.authenticate("google", {scope: ["profile", "email"]}));
 
-  app.get("/auth/google/home-user",passport.authenticate("google", {
+  app.get("/auth/google/user-home",passport.authenticate("google", {
       failureRedirect: "/login"
     }),
     function(req, res) {
