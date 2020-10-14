@@ -65,6 +65,9 @@
                                 <input name="username" type="text" id="user-name" class="form-control" placeholder="Vui lòng nhập username của bạn" style="border-radius: 0;color: #424242;font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
                                 <div class="row">
                                     <div class="col-md-12">
+                                      <%if(message.length > 0) {%>
+                                          <h4 style = "text-align: center; font-size: 15px;" class = "alert alert-danger mt4"><%=message%></h4>
+                                      <% }%>
                                         <span id="text-dk">Bằng cách ấn vào nút “ĐĂNG KÝ”, tôi đồng ý với Điều Khoản Sử Dụng và Chính Sách Bảo Mật của TroDe</span>
                                         <button type="submit" class="btn btn-primary" id="button-submit">ĐĂNG KÍ</button><br>
                                         <span style="font-size: 13px;">Hoặc Đăng kí với</span>
