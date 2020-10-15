@@ -161,3 +161,19 @@ body {
         margin-left: 270px;
     }
 }
+
+.product-hidden .product {
+    display: none;
+}
+
+#tx-hidden1 {
+    display: none;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#tx-hidden2 {
+    display: none;
+    text-align: center;
+    margin-bottom: 20px;
+}
