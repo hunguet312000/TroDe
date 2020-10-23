@@ -10,14 +10,11 @@ require('dotenv').config();
 module.exports = (app, passport) => {
   app.get("/", function(req, res) {
     if (req.isAuthenticated()) {
-      res.render("user-home");
+      const username = req.session.passport.user.ten_nguoi_dung;
+      res.render("user-home",{username: username});
     } else {
       res.render("home");
     }
-  });
-
-  app.get("/home", function(req, res) {
-    res.render("home");
   });
 
   app.get("/user-home", function(req, res) {
@@ -34,13 +31,16 @@ module.exports = (app, passport) => {
     });
   });
 
-  app.post("/login", passport.authenticate("local-login", {
-    successRedirect: '/user-home', // redirect to the secure profile section
-    failureRedirect: '/login', // redirect back to the signup page if there is an error
-    failureFlash: true // allow flash messages
-  }), function(req, res) {
+  app.post("/login", passport.authenticate("local-login"
+    // , {
+    // successRedirect: '/user-home', // redirect to the secure profile section
+    // failureRedirect: '/login', // redirect back to the signup page if there is an error
+    // failureFlash: true // allow flash messages
+    // }
+  ), function(req, res) {
+    res.redirect("/")
     if (req.body.remember) {
-      req.session.cookie.maxAge = 24 * 60 * 60 * 1000; // Cookie expires after 30 days
+      req.session.cookie.maxAge = 24 * 60 * 60 * 1000; // Cookie expires after 1 days
     } else {
       req.session.cookie.expires = false; // Cookie expires at end of session
     }
@@ -75,15 +75,18 @@ module.exports = (app, passport) => {
   });
 
   app.get('/profile', function(req, res) {
-      res.render('user-profile');
+      const username = req.session.passport.user.ten_nguoi_dung;
+      res.render("user-profile",{username: username});
   })
 
   app.get('/profile-info', function(req, res) {
-      res.render('user-profile-info');
+      const username = req.session.passport.user.ten_nguoi_dung;
+      res.render('user-profile-info',{username: username});
   })
 
   app.get('/profile-edit', function(req, res) {
-      res.render('user-profile-edit');
+      const username = req.session.passport.user.ten_nguoi_dung;
+      res.render('user-profile-edit',{username: username});
   })
 
   app.get('/profile-change-password', function(req, res) {
