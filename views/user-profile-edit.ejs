@@ -1,4 +1,4 @@
-<%- include("partials/navbar-user-profile-info"); -%>
+<%- include("partials/navbar-user-profile-info",{username: user.ten_nguoi_dung}); -%>
     <div class="container" id="profile-content">
         <div class="row">
             <div class="col-md-2">
@@ -35,38 +35,45 @@
                 <span style="font-size: 17px;"><b>Sửa thông tin cá nhân</b></span>
                 <br><br>
                 <div class="content" style="background-color: white; height: 400px;">
-                    <form>
+                      <form action="/profile-edit" method="post">
                         <div class="row" style="padding:40px;">
                             <div class="col-md-4">
-                                <span id="title-item-profile"><i>Username</i></span>
+                                <span id="title-item-profile"><i>Tên đăng nhập</i></span>
                                 <br>
                                 <br>
-                                <input type="text" id="user-name" class="form-control" placeholder="Vui lòng nhập họ tên của bạn" style="border-radius: 0;color: #424242;font-size: small;height: 40px;">
+                                <input name="username" type="text" id="user-name" class="form-control" placeholder="Vui lòng nhập họ tên của bạn" value="<%=user.ten_nguoi_dung %>" style="border-radius: 0;color: #424242;font-size: small;height: 40px;">
                                 <br>
                             </div>
                             <div class="col-md-4">
                                 <span id="title-item-profile"><i>Địa chỉ email</i></span>
                                 <br>
                                 <br>
-                                <input type="text" id="btn-forget" class="form-control" style="border-radius: 0;color: #424242; font-size: small;height: 40px;" data-meta="Field" value="username@gmail.com" readonly="" tabindex="-1">
+                                <input name="email" type="text" id="btn-forget" class="form-control" style="border-radius: 0;color: #424242; font-size: small;height: 40px;" data-meta="Field" value="<%=user.email %>" tabindex="-1">
                                 <br>
                             </div>
                             <div class="col-md-4">
                                 <span id="title-item-profile"><i>Số điện thoại</i></span>
                                 <br>
                                 <br>
-                                <input type="text" id="btn-phone" class="form-control" placeholder="Vui lòng nhập số điện thoại của bạn" style="border-radius: 0;color: #424242; font-size: small;height: 40px;" maxlength="11" pattern="([0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9])">
+                                <input name="phone" type="number" id="btn-phone" class="form-control" placeholder="Vui lòng nhập số điện thoại của bạn" value="<%=user.sdt %>" style="border-radius: 0;color: #424242; font-size: small;height: 40px;" maxlength="11" pattern="([0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9])">
                                 <br>
                             </div>
                             <div class="col-md-4">
                                 <span id="title-item-profile"><i>Ngày sinh</i></span>
                                 <br>
-                                <input id="datepicker" style="border-radius: 0;color: #424242; font-size: small;height: 40px;text-align: center;" placeholder="Chọn ngày sinh của bạn">
+                                <input name="DOB" id="datepicker" style="border-radius: 0;color: #424242; font-size: small;height: 40px;text-align: center;" placeholder="Chọn ngày sinh của bạn" value="<%=user.ngay_sinh %>" readonly="">
                             </div>
                             <div class="col-md-4">
                                 <span id="title-item-profile"><i>Giới tính</i></span>
                                 <br>
-                                <div class="proflie-item-info"><b>Nam</b></div>
+                                <select name="sex" class="custom-select" id="inputGroupSelect01" style="border-radius: 0;color: #424242; font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
+                                    <option > <%=user.gioi_tinh %> </option>
+                                    <% if(user.gioi_tinh == "Nam"){ %>
+                                      <option >Nữ</option>
+                                    <% }else{ %>
+                                        <option >Nam</option>
+                                    <% } %>
+                                </select>
                             </div>
                         </div>
                         <br>
@@ -75,8 +82,8 @@
                                 <button type="submit" class="btn btn-primary" id="button-submit"><span id = "text-btn"><b>LƯU THAY ĐỔI</b></span></button>
                             </div>
                         </div>
+                      </form>
                 </div>
-                </form>
             </div>
 
         </div>

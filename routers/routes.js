@@ -4,6 +4,8 @@ const jwt = require('jsonwebtoken');
 const authenticationController = require('../app/authenticate');
 const cloudinary = require('../config/cloudinary');
 const upload = require('../config/multer');
+const {updateInfo, changePassword} = require("../app/updateUserProfile");
+const bcrypt = require('bcrypt');
 
 require('dotenv').config();
 
@@ -32,18 +34,18 @@ module.exports = (app, passport) => {
   });
 
   app.post("/login", passport.authenticate("local-login"
-    // , {
-    // successRedirect: '/user-home', // redirect to the secure profile section
-    // failureRedirect: '/login', // redirect back to the signup page if there is an error
-    // failureFlash: true // allow flash messages
-    // }
-  ), function(req, res) {
-    res.redirect("/")
-    if (req.body.remember) {
-      req.session.cookie.maxAge = 24 * 60 * 60 * 1000; // Cookie expires after 1 days
-    } else {
-      req.session.cookie.expires = false; // Cookie expires at end of session
+    , {
+    successRedirect: '/', // redirect to the secure profile section
+    failureRedirect: '/login', // redirect back to the signup page if there is an error
+    failureFlash: true // allow flash messages
     }
+  ), function(req, res) {
+    // res.redirect("/")
+    // if (req.body.remember) {
+    //   req.session.cookie.maxAge = 24 * 60 * 60 * 1000; // Cookie expires after 1 days
+    // } else {
+    //   req.session.cookie.expires = false; // Cookie expires at end of session
+    // }
   });
 
   app.get("/auth/google",passport.authenticate("google", {scope: ["profile", "email"]}));
@@ -75,23 +77,51 @@ module.exports = (app, passport) => {
   });
 
   app.get('/profile', function(req, res) {
-      const username = req.session.passport.user.ten_nguoi_dung;
-      res.render("user-profile",{username: username});
+      const user = req.session.passport.user;
+      res.render("user-profile",{user: user});
   })
 
   app.get('/profile-info', function(req, res) {
-      const username = req.session.passport.user.ten_nguoi_dung;
-      res.render('user-profile-info',{username: username});
+      const user = req.session.passport.user;
+      res.render('user-profile-info',{user: user});
   })
 
   app.get('/profile-edit', function(req, res) {
-      const username = req.session.passport.user.ten_nguoi_dung;
-      res.render('user-profile-edit',{username: username});
+      const user = req.session.passport.user;
+      res.render('user-profile-edit',{user: user});
+  })
+
+  app.post("/profile-edit", function(req, res){
+      const newInfo = req.body;
+      const oldInfo = req.session.passport.user;
+      updateInfo(newInfo, oldInfo);
+      req.logout();
+      res.redirect("/login")
   })
 
   app.get('/profile-change-password', function(req, res) {
-      res.render('user-profile-change-password');
+      const user = req.session.passport.user;
+      res.render('user-profile-change-password', {user: user});
   })
+
+  app.post("/profile-change-password", function(req, res){
+      const newInfo = req.body;
+      const oldInfo = req.session.passport.user;
+
+      const id_nguoi_dung = oldInfo.id_nguoi_dung;
+      const oldPass = oldInfo.mat_khau;
+      const typedOldPass = newInfo.oldPass;
+      const newPass = newInfo.newPass;
+      const renewPass = newInfo.reNewPass;
+      if(newPass!= renewPass || !bcrypt.compareSync(typedOldPass, oldPass)){
+        console.log("Sai mat khau");
+      }else{
+        changePassword(newInfo, oldInfo);
+        req.logout();
+        res.redirect("/login")
+      }
+  })
+
   app.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/");

@@ -1,4 +1,4 @@
-<%- include("partials/navbar-user-profile-info"); -%>
+<%- include("partials/navbar-user-profile-info", {username: user.ten_nguoi_dung}); -%>
     <div class="container" id="profile-content">
         <div class="row">
             <div class="col-md-2">
@@ -37,29 +37,29 @@
                 <div class="content" style="background-color: white; height: 340px;">
                     <div class="row" style="padding:40px;">
                         <div class="col-md-4">
-                            <span id="title-item-profile"><i>Họ tên</i></span>
+                            <span id="title-item-profile"><i>Tên đăng nhập</i></span>
                             <br>
-                            <div class="proflie-item-info"><b>Tên username</b></div>
+                            <div class="proflie-item-info"><b> <%=user.ten_nguoi_dung%> </b></div>
                         </div>
                         <div class="col-md-4">
                             <span id="title-item-profile"><i>Địa chỉ email</i></span>
                             <br>
-                            <div class="proflie-item-info"><b>username@gmail.com</b></div>
+                            <div class="proflie-item-info"><b> <%=user.email%> </b></div>
                         </div>
                         <div class="col-md-4">
                             <span id="title-item-profile"><i>Số điện thoại</i></span>
                             <br>
-                            <div class="proflie-item-info"><b>Vui lòng nhập số điện thoại của bạn</b></div>
+                            <div class="proflie-item-info"><b> <%=user.sdt%> </b></div>
                         </div>
                         <div class="col-md-4">
                             <span id="title-item-profile"><i>Ngày sinh</i></span>
                             <br>
-                            <div class="proflie-item-info"><b>Vui lòng nhập ngày sinh của bạn</b></div>
+                            <div class="proflie-item-info"><b> <%=user.ngay_sinh%> </b></div>
                         </div>
                         <div class="col-md-4">
                             <span id="title-item-profile"><i>Giới tính</i></span>
                             <br>
-                            <div class="proflie-item-info"><b>Nam</b></div>
+                            <div class="proflie-item-info"><b> <%=user.gioi_tinh%> </b></div>
                         </div>
                     </div>
                     <br>

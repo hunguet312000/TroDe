@@ -1,4 +1,4 @@
-<%- include("partials/navbar-user-profile"); -%>
+<%- include("partials/navbar-user-profile",{user: user}); -%>
     <div class="container" id="profile-content">
         <div class="row">
             <div class="col-md-2">
@@ -42,14 +42,14 @@
                                 <div style="padding: 16px;">
                                     <span style="font-size: 16px;">Thông tin cá nhân</span>
                                     <span style="color: #dadada;">|</span>
-                                    <a href="profile-info" style="text-decoration: none;">
+                                    <a href="profile-edit" style="text-decoration: none;">
                                         <span style="font-size: 12px;color: #1A9CB7;">Chỉnh sửa</span>
                                     </a>
                                     <br>
                                     <br>
-                                    <div class="info-iten" style="font-size: 14px;margin-bottom: 8px;">Tên user</div>
-                                    <div class="info-iten" style="font-size: 14px;margin-bottom: 8px;">Gmail user</div>
-                                    <div class="info-iten" style="font-size: 14px;">Số điện thoại user</div>
+                                    <div class="info-iten" style="font-size: 14px;margin-bottom: 8px;">Tên đăng nhập: <strong><%=user.ten_nguoi_dung %></strong> </div>
+                                    <div class="info-iten" style="font-size: 14px;margin-bottom: 8px;">Email: <strong><%=user.email %></strong> </div>
+                                    <div class="info-iten" style="font-size: 14px;">SĐT: <strong><%=user.sdt %></strong> </div>
                                 </div>
                             </div>
                             <div class="col-md-1" id="division">

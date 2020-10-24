@@ -109,6 +109,11 @@ module.exports = function(passport) {
                     return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
 
                 // all is well, return successful user
+                if (req.body.remember) {
+                  req.session.cookie.maxAge = 24 * 60 * 60 * 1000; // Cookie expires after 1 days
+                } else {
+                  req.session.cookie.expires = false; // Cookie expires at end of session
+                }
                 return done(null, rows[0]);
             });
             dbConnection.end();
