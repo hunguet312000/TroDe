@@ -2,7 +2,7 @@
     <div class="container" id="profile-content">
         <div class="row">
             <div class="col-md-2">
-                <span style="font-size: 12px;">Xin chào bạn,</span>
+                <span style="font-size: 12px;">Xin chào <%=user.ten_nguoi_dung %>,</span>
                 <br><br>
                 <a href="profile" style="text-decoration: none;">
                     <i class="fas fa-user-circle" style="color: hotpink;font-size: 19px;">&nbsp;</i><span style="color: #1A9CB7;font-size: 16px;"><b>Quản lý tài khoản</b></span>
@@ -16,6 +16,11 @@
                     <li>
                         <a href="profile-change-password" style="text-decoration: none;">
                             <span id="ul-li">Đổi mật khẩu</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="profile-address" style="text-decoration: none;">
+                            <span id="ul-li">Địa chỉ</span>
                         </a>
                     </li>
                 </ul>
@@ -40,7 +45,7 @@
                             <div class="col-md-11">
                                 <br>
                                 <div style="padding: 16px;">
-                                    <span style="font-size: 16px;">Thông tin cá nhân</span>
+                                    <span style="font-size: 16px;"><b>Thông tin cá nhân</b></span>
                                     <span style="color: #dadada;">|</span>
                                     <a href="profile-edit" style="text-decoration: none;">
                                         <span style="font-size: 12px;color: #1A9CB7;">Chỉnh sửa</span>
@@ -61,7 +66,7 @@
                     <div class="col-md-6" style="background-color: white;height: 214px;">
                         <br>
                         <div style="padding: 16px;">
-                            <span style="font-size: 16px;">Thay đổi mật khẩu</span>
+                            <span style="font-size: 16px;"><b>Thay đổi mật khẩu</b></span>
                             <span style="color: #dadada;">|</span>
                             <a href="profile-change-password" style="text-decoration: none;">
                                 <span style="font-size: 12px;color: #1A9CB7;">Chỉnh sửa</span>
@@ -70,11 +75,23 @@
                             <br>
                             <div class="info-iten" style="font-size: 14px;margin-bottom: 8px;">Chỉnh sửa mật khẩu của bạn</div>
                         </div>
-                        <br>
+                        <div style="padding: 16px; margin-top: -23px;">
+                            <span style="font-size: 16px;"><b>Địa chỉ</b></span>
+                            <span style="color: #dadada;">|</span>
+                            <a href="profile-address" style="text-decoration: none;">
+                                <span style="font-size: 12px;color: #1A9CB7;">Chỉnh sửa</span>
+                            </a>
+                            <br>
+                            <br>
+                            <div class="info-iten" style="font-size: 14px;margin-bottom: 8px;"></div>
+                        </div>
                     </div>
 
+                    <br>
                 </div>
+
             </div>
         </div>
+    </div>
     </div>
     <%- include("partials/footer"); -%>

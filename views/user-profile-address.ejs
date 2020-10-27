@@ -15,12 +15,12 @@
                     </li>
                     <li>
                         <a href="profile-change-password" style="text-decoration: none;">
-                            <span id="ul-li" style="color: #1A9CB7;">Đổi mật khẩu</span>
+                            <span id="ul-li">Đổi mật khẩu</span>
                         </a>
                     </li>
                     <li>
                         <a href="profile-address" style="text-decoration: none;">
-                            <span id="ul-li">Địa chỉ</span>
+                            <span id="ul-li" style="color: #1A9CB7;">Địa chỉ</span>
                         </a>
                     </li>
                 </ul>
@@ -37,44 +37,64 @@
                 </a>
             </div>
             <div class="col-md-10">
-                <span style="font-size: 17px;"><b>Thay đổi mật khẩu</b></span>
+                <span style="font-size: 17px;"><b>Địa chỉ</b></span>
                 <br><br>
-                <div class="content" style="background-color: white; height: 420px;">
-                    <form action="/profile-change-password" method="post">
-                        <div class="row" style="padding:40px;">
-                            <div class="col-md-7">
-                                <span id="title-item-profile"><i>*Mật khẩu hiện tại</i></span>
+                <div class="content" style="background-color: white; height: 340px;">
+                    <div class="row" style="padding:40px;">
+                        <div class="col-md-12">
+                            <div class="col-md-4">
+                                <span id="title-item-profile"><i>Họ và tên</i></span>
                                 <br>
-                                <br>
-                                <input name="oldPass" type="password" id="user-name" class="form-control" placeholder="Vui lòng nhập mật khẩu hiện tại của bạn" style="border-radius: 0;color: #424242;font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
-                                <br>
-                            </div>
-                            <div class="col-md-7">
-                                <span id="title-item-profile"><i>*Mật khẩu mới</i></span>
-                                <br>
-                                <br>
-                                <input name="newPass" type="password" id="user-name" class="form-control" placeholder="Vui lòng nhập mật khẩu mới của bạn" style="border-radius: 0;color: #424242;font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
+                                <div class="proflie-item-info"><b>  </b></div>
                                 <br>
                             </div>
-                            <div class="col-md-7">
-                                <span id="title-item-profile"><i>*Nhập lại mật khẩu của bạn</i></span>
+                            <div class="col-md-4">
+                                <span id="title-item-profile"><i>Số điện thoại</i></span>
                                 <br>
-                                <br>
-                                <input name="reNewPass" type="password" id="user-name" class="form-control" placeholder="Vui lòng nhập lại mật khẩu của bạn" style="border-radius: 0;color: #424242;font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
+                                <div class="proflie-item-info"><b> <%=user.sdt%> </b></div>
                                 <br>
                             </div>
-
-                            <div class="row" style="padding:40px;">
-                                <div class="col-md-5">
-                                    <button type="submit" class="btn btn-primary" id="button-submit"><span id = "text-btn"><b>LƯU THAY ĐỔI</b></span></button>
-                                </div>
+                            <div class="col-md-4">
+                                <span id="title-item-profile"><i>Tỉnh/Thành phố</i></span>
+                                <br>
+                                <div class="proflie-item-info"><b>Hà Nội </b></div>
+                                <br>
                             </div>
                         </div>
-                    </form>
+
+                        <div class="col-md-12">
+                            <div class="col-md-4">
+                                <span id="title-item-profile"><i>Quận/Huyện</i></span>
+                                <br>
+                                <div class="proflie-item-info"><b> </b></div>
+                                <br>
+                            </div>
+                            <div class="col-md-4">
+                                <span id="title-item-profile"><i>Phường/Xã</i></span>
+                                <br>
+                                <div class="proflie-item-info"><b>  </b></div>
+                                <br>
+                            </div>
+                            <div class="col-md-4">
+                                <span id="title-item-profile"><i>Địa chỉ</i></span>
+                                <br>
+                                <div class="proflie-item-info"><b>  </b></div>
+                                <br>
+                            </div>
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="row" style="padding:40px;">
+                        <div class="col-md-4">
+                            <a href="address-edit" style="text-decoration: none;">
+                                <button type="button" class="btn btn-primary" id="button-edit"><span id = "text-btn"><b>CHỈNH SỬA ĐỊA CHỈ</b></span></button>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
             </div>
         </div>
     </div>
-
     <%- include("partials/footer"); -%>
