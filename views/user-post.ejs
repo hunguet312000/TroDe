@@ -51,7 +51,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="price"><i>*Giá phòng</i></label>
-                                <input type="number" name="price" id="price" class="form-control" placeholder="Vui lòng nhập giá phòng" style="border-radius: 0;color: #424242;font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
+                                <input name="price" id="price" class="form-control numberformat" placeholder="Vui lòng nhập giá phòng" style="border-radius: 0;color: #424242;font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
                                 <br>
                             </div>
                             <div class="col-md-12" style="margin-top: 0px; margin-bottom: 20px;">
@@ -154,6 +154,18 @@
     </div>
     <br><br><br><br><br><br><br><br><br><br><br><br>
     <script>
+        $('input.numberformat').keyup(function(event) {
+
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) return;
+
+            // format number
+            $(this).val(function(index, value) {
+                return value
+                    .replace(/\D/g, "")
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            });
+        });
         $(".imgAdd").click(function() {
             $(this).closest(".row").find('.imgAdd').before('<div class="col-sm-3 imgUp"><div class="imagePreview"></div><label class="btn btn-primary" id="btn-upload">Upload<input type="file" name = "image" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fa fa-times del"></i></div>');
         });
