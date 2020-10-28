@@ -5,6 +5,7 @@ const authenticationController = require('../app/authenticate');
 const cloudinary = require('../config/cloudinary');
 const upload = require('../config/multer');
 const {updateInfo, changePassword} = require("../app/updateUserProfile");
+const postManage = require('../app/savePosts');
 const bcrypt = require('bcrypt');
 
 require('dotenv').config();
@@ -12,8 +13,7 @@ require('dotenv').config();
 module.exports = (app, passport) => {
   app.get("/", function(req, res) {
     if (req.isAuthenticated()) {
-      const username = req.session.passport.user.ten_nguoi_dung;
-      res.render("user-home",{username: username});
+      res.render("user-home",{username: req.user.ten_nguoi_dung});
     } else {
       res.render("home");
     }
@@ -33,8 +33,7 @@ module.exports = (app, passport) => {
     });
   });
 
-  app.post("/login", passport.authenticate("local-login"
-    , {
+  app.post("/login", passport.authenticate("local-login", {
     successRedirect: '/', // redirect to the secure profile section
     failureRedirect: '/login', // redirect back to the signup page if there is an error
     failureFlash: true // allow flash messages
@@ -55,22 +54,26 @@ module.exports = (app, passport) => {
     }),
     function(req, res) {
       // Successful authentication, redirect home.
-      res.redirect('/user-home');
+      res.redirect('/');
     });
 
   app.get("/signup", function(req, res) {
-    res.render("user-signup", {
-      message: req.flash("signupMessage")
-    })
+    if (req.isAuthenticated()) {
+      res.render("/");
+    } else {
+      res.render("user-signup", {
+        message: req.flash("signupMessage")
+      })
+    }
   });
 
   app.post("/signup", passport.authenticate("local-signup", {
-    successRedirect: '/user-home', // redirect to the secure profile section
+    successRedirect: '/', // redirect to the secure profile section
     failureRedirect: '/signup', // redirect back to the signup page if there is an error
     failureFlash: true // allow flash messages
   }),
-  function(req, res) {
-  });
+  function(req, res) {}
+  );
 
   app.get("/content", function(req, res) {
       res.render("content")
@@ -114,7 +117,7 @@ module.exports = (app, passport) => {
       const newPass = newInfo.newPass;
       const renewPass = newInfo.reNewPass;
       if(newPass!= renewPass || !bcrypt.compareSync(typedOldPass, oldPass)){
-        console.log("Sai mat khau");
+        res.redirect("/profile-change-password")
       }else{
         changePassword(newInfo, oldInfo);
         req.logout();
@@ -144,24 +147,30 @@ module.exports = (app, passport) => {
   });
 
   app.get("/post", function(req, res) {
-    res.render("user-post");
+    if (req.isAuthenticated()) {
+      const user = req.session.passport.user;
+      res.render("user-post", {user: user});
+    } else {
+      res.redirect("login");
+    }
   });
 
-  app.post('/post', upload.array('photo'), async (req, res) => {
-    const uploader = async (path) => await cloudinary.uploads(path, 'Image');
-    const urls = []
-    console.log(req.body);
-    console.log(req.files);
-    files = req.files;
-    for (const file of files) {
-      const {
-        path
-      } = file
-      const newPath = await uploader(path)
-      urls.push(newPath);
-      console.log(newPath);
-      fs.unlinkSync(path);
-    }
-    res.render("user-home");
-  });
+  app.post('/post', upload.array('image'), postManage.savePosts);
+  // app.post('/post', upload.array('photo'), async (req, res) => {
+  //   const uploader = async (path) => await cloudinary.uploads(path, 'Image');
+  //   const urls = []
+  //   console.log(req.body);
+  //   console.log(req.files);
+  //   files = req.files;
+  //   for (const file of files) {
+  //     const {
+  //       path
+  //     } = file
+  //     const newPath = await uploader(path)
+  //     urls.push(newPath);
+  //     console.log(newPath);
+  //     fs.unlinkSync(path);
+  //   }
+  //   res.render("user-home");
+  // });
 }

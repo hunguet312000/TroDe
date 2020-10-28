@@ -1,43 +1,42 @@
+const cloudinary = require('../config/cloudinary');
+const upload = require('../config/multer');
 const mysql = require('mysql');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const db = mysql.createConnection({
-    host: process.env.DATABASE_HOST,
-    user: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE
-})
-
+const dbconfig = require('../config/database');
+require('dotenv').config();
 
 exports.savePosts = async(req, res) => {
-    try {
-
-        const { input_login, password } = req.body;
-        console.log(req.body);
-        console.log("Test " + input_login + " " + password);
-        db.query('SELECT * FROM nguoi_dung WHERE email = "' + input_login + '" OR ten_nguoi_dung = "' + input_login + '"', async(error, results) => {
-            console.log(!(results.length > 0) || !(await bcrypt.compare(password, results[0].mat_khau)));
-            if (!(results.length > 0) || !(await bcrypt.compare(password, results[0].mat_khau))) {
-                res.status(401).render('login', {
-                    message: 'email or password is incorrect'
-                })
-            } else {
-                const id = results[0].id;
-                const token = jwt.sign({ id: id }, process.env.JWT_SECRET, {
-                    expiresIn: process.env.JWT_EXPIRES_IN
-                });
-                console.log("the token is: " + token);
-                const cookieOptions = {
-                    expires: new Date(
-                        Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60
-                    ),
-                    httpOnly: true
-                }
-                res.cookie('jwt', token, cookieOptions);
-                console.log("Dang nhap thanh cong");
-                res.status(200).redirect('/home');
-
-            }
-        })
-    } catch (error) { console.log(error) }
+    const uploader = async (path) => await cloudinary.uploads(path, 'Image');
+    let insert_hinh_anh_values = []
+    let files = req.files;
+    for (const file of files) {
+      const {
+        path
+      } = file
+      const newPath = await uploader(path)
+      insert_hinh_anh_values.push(Object.values(newPath));
+      //fs.unlinkSync(path);
+    }
+    dbConnection = mysql.createConnection(dbconfig);
+    dbConnection.connect(function(err) {
+      if (err) throw err;
+      console.log("Connected!");
+      console.log(req.user);
+      var querySearch = "SELECT * from nguoi_dung WHERE ten_nguoi_dung = ?";
+      dbConnection.query(querySearch, [req.user.ten_nguoi_dung], function (err, rows) {
+        console.log(rows[0].id_nguoi_dung);
+        var insertQuery = "INSERT INTO phong_tro(gia_phong, tinh_trang, dia_chi, mo_ta, id_chu_so_huu) values (?, ?, ?, ?, ?)";
+        dbConnection.query(insertQuery, [req.body.price, 1, req.body.addressCity + req.body.district + req.body.sub_district + req.body.privateAddress, req.body.postTitle + req.body.acreageRoom, rows[0].id_nguoi_dung], function (err, result) {
+          if (err) throw err;
+          console.log(result.insertId);
+          for(let i of insert_hinh_anh_values) {
+            i = i.push(result.insertId);
+          }
+          dbConnection.query("INSERT INTO hinh_anh (path_anh, id_anh, id_phong_tro) values ?", [insert_hinh_anh_values], function (err, rows) {
+            if(err) throw err;
+            console.log("insert success!")
+          })
+        });
+      })
+    });
+    res.render("/");
 }

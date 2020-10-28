@@ -26,8 +26,6 @@ exports.updateInfo = (newInfo, oldInfo) => {
 }
 
 exports.changePassword = (newInfo, oldInfo) => {
-  console.log(newInfo);
-  console.log(oldInfo);
   const id_nguoi_dung = oldInfo.id_nguoi_dung;
   const oldPass = oldInfo.mat_khau;
   const typedOldPass = newInfo.oldPass;
@@ -44,8 +42,6 @@ exports.changePassword = (newInfo, oldInfo) => {
         dbConnection.query(insertQuery,[ newHashPass, id_nguoi_dung],function(err, rows) {
           if(err){
             console.log(err);
-          }else{
-            console.log("Update password successful");
           }
         });
         dbConnection.end()

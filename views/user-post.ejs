@@ -1,4 +1,4 @@
-<%- include("partials/navbar-user-post"); -%>
+<%- include("partials/navbar-user-post", {username: user.ten_nguoi_dung}); -%>
     <div class="container" id="profile-content">
         <div class="row">
             <div class="col-md-2">
@@ -35,28 +35,28 @@
                 <span style="font-size: 17px;"><b>Tạo bài viết mới</b></span>
                 <br><br>
                 <div class="content" style="background-color: white; height: fit-content;">
-                    <form>
+                    <form action="/post" method="post" enctype= "multipart/form-data">
                         <div class="row" style="padding:40px;">
                             <div style="font-size: large;"><b>Thông tin chung</b></div>
                             <br>
                             <div class="col-md-6">
                                 <label for="title"><i>*Tiêu đề bài viết</i></label>
-                                <input type="text" id="title" class="form-control" placeholder="Vui lòng nhập tiêu đề bài viết của bạn" style="border-radius: 0;color: #424242;font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
+                                <input name="postTitle" type="text" id="title" class="form-control" placeholder="Vui lòng nhập tiêu đề bài viết của bạn" style="border-radius: 0;color: #424242;font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
                                 <br>
                             </div>
                             <div class="col-md-6">
                                 <label for="price"><i>*Giá phòng</i></label>
-                                <input type="number" id="price" class="form-control" placeholder="Vui lòng nhập giá phòng" style="border-radius: 0;color: #424242;font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
+                                <input name="price" type="number" id="price" class="form-control" placeholder="Vui lòng nhập giá phòng" style="border-radius: 0;color: #424242;font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
                                 <br>
                             </div>
                             <div class="col-md-6">
                                 <label for="dientich"><i>*Diện tích phòng</i></label>
-                                <input type="number" id="dientich" class="form-control" placeholder="Vui lòng nhập diện tích phòng" style="border-radius: 0;color: #424242;font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
+                                <input name="acreageRoom" type="number" id="dientich" class="form-control" placeholder="Vui lòng nhập diện tích phòng" style="border-radius: 0;color: #424242;font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
                             </div>
                             <div class="col-md-6">
                                 <span id="title"><i><b>*Loại phòng dành cho</b></i></span>
                                 <br>
-                                <div class="row" style="margin-top: 13px;">
+                                <div class="row" style="margin-top: 13px;" >
                                     <div class="col-md-3">
                                         <input type="radio" id="con" name="status" value="con">
                                         <label for="con">1 người</label><br>
@@ -82,13 +82,13 @@
                             <br>
                             <div class="col-md-6">
                                 <label for="city">*Tỉnh/ Thành phố</label>
-                                <input type="text" id="city" class="form-control" style="border-radius: 0;color: #424242; font-size: small;height: 40px;text-align: center;" data-meta="Field" value="Hà Nội" readonly="" tabindex="-1">
+                                <input name = "addressCity" type="text" id="city" class="form-control" style="border-radius: 0;color: #424242; font-size: small;height: 40px;text-align: center;" data-meta="Field" value="Hà Nội" readonly="" tabindex="-1" required data-bv-notempty-message="Không được để trống">
                                 <br>
                             </div>
                             <div class="col-md-6">
                                 <label for="huyen">*Quận/ Huyện </label>
                                 <br>
-                                <select class="custom-select" id="huyen" name="quan" placeholder="Vui lòng chọn quận/huyện" style="border-radius: 0;color: #424242; font-size: small;height: 40px;width: 100%;" required data-bv-notempty-message="Không được để trống">
+                                <select class="custom-select" id="huyen" name="district" placeholder="Vui lòng chọn quận/huyện" style="border-radius: 0;color: #424242; font-size: small;height: 40px;width: 100%;" required data-bv-notempty-message="Không được để trống">
                                     <option value="1">Quận Ba Đình</option>
                                     <option value="2">Quận Bắc Từ Liêm</option>
                                     <option value="3">Quận Cầu Giấy</option>
@@ -107,7 +107,7 @@
                             <div class="col-md-6">
                                 <label for="xa">*Phường/ Xã </label>
                                 <br>
-                                <select class="custom-select" id="xa" name="xa" style="border-radius: 0;color: #424242; font-size: small;height: 40px;width: 100%;" required data-bv-notempty-message="Không được để trống">
+                                <select class="custom-select" id="xa" name="sub_district" style="border-radius: 0;color: #424242; font-size: small;height: 40px;width: 100%;" required data-bv-notempty-message="Không được để trống">
                                     <option value="1">Phường Cống Vị</option>
                                     <option value="1">Phường Điện Biên</option>
                                     <option value="1">Phường Đội Cấn</option>
@@ -287,12 +287,12 @@
                                     <option value="12">Phường Thanh Xuân Nam</option>
                                     <option value="12">Phường Thanh Xuân Trung</option>
                                     <option value="12">Phường Thượng Đình</option>
-                                  </select>
+                                </select>
                             </div>
 
                             <div class="col-md-6">
                                 <label for="address">*Địa chỉ</label>
-                                <input type="text" id="address" class="form-control" placeholder="Vui lòng nhập địa số nhà, tòa nhà, phố, ..." style="border-radius: 0;color: #424242; font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
+                                <input name = "privateAddress" type="text" id="address" class="form-control" placeholder="Vui lòng nhập địa số nhà, tòa nhà, phố, ..." style="border-radius: 0;color: #424242; font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
                                 <br>
                             </div>
                         </div>
@@ -306,7 +306,7 @@
                                     <div class="col-md-3 imgUp">
                                         <div class="imagePreview"></div>
                                         <label class="btn btn-primary" id="btn-upload">
-                                         Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                         Upload<input name = "image" type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
                                               </label>
                                     </div>
                                     <!-- col-2 -->

@@ -14,7 +14,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 //     }
 // });
 
-module.exports = function(passport) {
+module.exports = async function(passport) {
 
     // =========================================================================
     // passport session setup ==================================================
@@ -40,7 +40,6 @@ module.exports = function(passport) {
 
             // by default, local strategy uses username and password, we will override with email
             usernameField : 'username',
-            emailField: 'email',
             passwordField : 'password',
             passReqToCallback : true // allows us to pass back the entire request to the callback
         },
@@ -48,34 +47,44 @@ module.exports = function(passport) {
             const email = req.body.email;
             const sex = req.body.sex;
             const dob = req.body.DOB;
+            const phone = req.body.phone;
             // find a user whose email is the same as the forms email
             // we are checking to see if the user trying to login already exists
             dbConnection = mysql.createConnection(dbconfig);
             dbConnection.connect();
+            var queryString = "SELECT * FROM nguoi_dung WHERE ten_nguoi_dung = ?";
+            if(username.includes("@")){
+              console.log(username);
+              queryString = "SELECT * FROM nguoi_dung WHERE email = ?";
+            }
             dbConnection.query("SELECT * FROM nguoi_dung WHERE ten_nguoi_dung = ?",[username], function(err, rows) {
                 if (err)
                     return done(err);
-                if (rows.length) {
+                if (rows.length){
                     return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
-                } else {
+                }else{
                     // if there is no user with that username
                     // create the user
-                    var newUserMysql = {
-                        username: username,
-                        email: email,
-                        password: bcrypt.hashSync(password, 10),  // use the generateHash function in our user model
-                        sex: sex,
-                        dob: dob
-                    };
+                const newUserMysql = {
+                    ten_nguoi_dung: username,
+                    email: email,
+                    sdt: phone,
+                    mat_khau: bcrypt.hashSync(password, 10),  // use the generateHash function in our user model
+                    gioi_tinh: sex,
+                    ngay_sinh: dob,
 
-                    var insertQuery = "INSERT INTO nguoi_dung ( ten_nguoi_dung, email, mat_khau, gioi_tinh, ngay_sinh ) values (?,?,?,?,?)";
-                    dbConnection = mysql.createConnection(dbconfig);
-                    dbConnection.connect();
-                    dbConnection.query(insertQuery,[newUserMysql.username, newUserMysql.email, newUserMysql.password, newUserMysql.sex, newUserMysql.dob],function(err, rows) {
-                      return done(null, newUserMysql);
-                    });
-                    dbConnection.end();
-                }
+                };
+                var insertQuery = "INSERT INTO nguoi_dung ( ten_nguoi_dung, email, sdt, mat_khau, gioi_tinh, ngay_sinh ) values ('" + newUserMysql.ten_nguoi_dung + "','" + newUserMysql.email + "','" + newUserMysql.sdt + "','"  + newUserMysql.mat_khau + "','" + newUserMysql.gioi_tinh + "'," + "STR_TO_DATE('" + newUserMysql.ngay_sinh + "', '%m/%d/%Y'))";
+                dbConnection = mysql.createConnection(dbconfig);
+                dbConnection.connect();
+                dbConnection.query(insertQuery,function(err, rows) {
+                  if(err){
+                    return done(err);
+                  }
+                  return done(null, newUserMysql);
+                });
+                dbConnection.end();
+              }
             });
             dbConnection.end();
         })
@@ -91,13 +100,16 @@ module.exports = function(passport) {
             // by default, local strategy uses username and password, we will override with email
             usernameField : 'username',
             passwordField : 'password',
-            idField: 'id',
             passReqToCallback : true // allows us to pass back the entire request to the callback
         },
         function(req, username, password, done) { // callback with email and password from our form
             dbConnection = mysql.createConnection(dbconfig);
             dbConnection.connect();
-            dbConnection.query("SELECT * FROM nguoi_dung WHERE ten_nguoi_dung = ?",[username], function(err, rows){
+            var queryString = "SELECT * FROM nguoi_dung WHERE ten_nguoi_dung = ?";
+            if(username.includes("@")){
+              queryString = "SELECT * FROM nguoi_dung WHERE email = ?";
+            }
+            dbConnection.query(queryString, [username], function(err, rows){
                 if (err)
                     return done(err);
                 if (!rows.length) {
@@ -159,7 +171,6 @@ module.exports = function(passport) {
                 [newUserMysql.ten_nguoi_dung, newUserMysql.email, newUserMysql.mat_khau, newUserMysql.ho_va_ten],
                 function(err, rows) {
                     return cb(err, rows[0])
-                    console.log("Added GG acc to DB");
               });
               dbConnection.end();
               // return done(null, false, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
