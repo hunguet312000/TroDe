@@ -2,7 +2,7 @@
     <div class="container" id="profile-content">
         <div class="row">
             <div class="col-md-2">
-                <span style="font-size: 12px;">Xin chào bạn,</span>
+                <span style="font-size: 12px;">Xin chào <%=username%>,</span>
                 <br><br>
                 <a href="profile" style="text-decoration: none;">
                     <i class="fas fa-user-circle" style="color: hotpink;font-size: 19px;">&nbsp;</i><span id="catelogy"><b>Quản lý tài khoản</b></span>
@@ -16,6 +16,11 @@
                     <li>
                         <a href="profile-change-password" style="text-decoration: none;">
                             <span id="ul-li">Đổi mật khẩu</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="profile-address" style="text-decoration: none;">
+                            <span id="ul-li">Địa chỉ</span>
                         </a>
                     </li>
                 </ul>
@@ -35,7 +40,7 @@
                 <span style="font-size: 17px;"><b>Tạo bài viết mới</b></span>
                 <br><br>
                 <div class="content" style="background-color: white; height: fit-content;">
-                    <form action="/post" method="post" enctype= "multipart/form-data">
+                    <form action="/post" method="post" enctype="multipart/form-data">
                         <div class="row" style="padding:40px;">
                             <div style="font-size: large;"><b>Thông tin chung</b></div>
                             <br>
@@ -48,6 +53,10 @@
                                 <label for="price"><i>*Giá phòng</i></label>
                                 <input name="price" type="number" id="price" class="form-control" placeholder="Vui lòng nhập giá phòng" style="border-radius: 0;color: #424242;font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
                                 <br>
+                            </div>
+                            <div class="col-md-12" style="margin-top: 0px; margin-bottom: 20px;">
+                                <label for="mota"><i>*Mô tả</i></label>
+                                <textarea class="form-control" id="mota" rows="8" required data-bv-notempty-message="Không được để trống" style="border-radius: 0;color: #424242;font-size: small;" placeholder="Viết mô tả cho bài viết của bạn"></textarea>
                             </div>
                             <div class="col-md-6">
                                 <label for="dientich"><i>*Diện tích phòng</i></label>
@@ -89,18 +98,7 @@
                                 <label for="huyen">*Quận/ Huyện </label>
                                 <br>
                                 <select class="custom-select" id="huyen" name="district" placeholder="Vui lòng chọn quận/huyện" style="border-radius: 0;color: #424242; font-size: small;height: 40px;width: 100%;" required data-bv-notempty-message="Không được để trống">
-                                    <option value="1">Quận Ba Đình</option>
-                                    <option value="2">Quận Bắc Từ Liêm</option>
-                                    <option value="3">Quận Cầu Giấy</option>
-                                    <option value="4">Quận Đống Đa</option>
-                                    <option value="5">Quận Hà Đông</option>
-                                    <option value="6">Quận Hai Bà Trưng</option>
-                                    <option value="7">Quận Hoàng Mai</option>
-                                    <option value="8">Quận Hoàn Kiếm</option>
-                                    <option value="9">Quận Long Biên</option>
-                                    <option value="10">Quận Nam Từ Liêm</option>
-                                    <option value="11">Quận Tây Hồ</option>
-                                    <option value="12">Quận Thanh Xuân</option>
+                                    <option value="" selected= "selected">Lựa chọn Quận/Huyện</option>
                                   </select>
                                 <br><br>
                             </div>
@@ -108,186 +106,8 @@
                                 <label for="xa">*Phường/ Xã </label>
                                 <br>
                                 <select class="custom-select" id="xa" name="sub_district" style="border-radius: 0;color: #424242; font-size: small;height: 40px;width: 100%;" required data-bv-notempty-message="Không được để trống">
-                                    <option value="1">Phường Cống Vị</option>
-                                    <option value="1">Phường Điện Biên</option>
-                                    <option value="1">Phường Đội Cấn</option>
-                                    <option value="1">Phường Giảng Võ</option>
-                                    <option value="1">Phường Kim Mã</option>
-                                    <option value="1">Phường Liễu Giai</option>
-                                    <option value="1">Phường Ngọc Hà</option>
-                                    <option value="1">Phường Ngọc Khánh</option>
-                                    <option value="1">Phường Nguyễn Trung Trực</option>
-                                    <option value="1">Phường Phúc Xá</option>
-                                    <option value="1">Phường Quán Thánh</option>
-                                    <option value="1">Phường Thành Công</option>
-                                    <option value="1">Phường Trúc Bạch</option>
-                                    <option value="1">Phường Vĩnh Phúc</option>
-
-                                    <option value="2">Phường Cổ Nhuế 1</option>
-                                    <option value="2">Phường Cổ Nhuế 2</option>
-                                    <option value="2">Phường Đông Ngạc</option>
-                                    <option value="2">Phường Đức Thắng</option>
-                                    <option value="2">Phường Liên Mạc</option>
-                                    <option value="2">Phường Minh Khai</option>
-                                    <option value="2">Phường Phúc Diễn</option>
-                                    <option value="2">Phường Phú Diễn</option>
-                                    <option value="2">Phường Tây Tựu</option>
-                                    <option value="2">Phường Thụy Phương</option>
-                                    <option value="2">Phường Thượng Cát</option>
-                                    <option value="2">Phường Xuân Đỉnh</option>
-                                    <option value="2">Phường Xuân Tảo</option>
-
-                                    <option value="3">Phường Dịch Vọng</option>
-                                    <option value="3">Phường Dịch Vọng Hậu</option>
-                                    <option value="3">Phường Mai Dịch</option>
-                                    <option value="3">Phường Nghĩa Đô</option>
-                                    <option value="3">Phường Nghĩa Tân</option>
-                                    <option value="3">Phường Quan Hoa</option>
-                                    <option value="3">PPhường Trung Hòa</option>
-                                    <option value="3">Phường Yên Hòa</option>
-
-                                    <option value="4">Phường Cát Linh</option>
-                                    <option value="4">Phường Hàng Bột</option>
-                                    <option value="4">Phường Khâm Thiên</option>
-                                    <option value="4">Phường Khương Thượng</option>
-                                    <option value="4">Phường Kim Liên</option>
-                                    <option value="4">Phường Láng Hạ</option>
-                                    <option value="4">Phường Láng Thượng</option>
-                                    <option value="4">Phường Nam Đồng</option>
-                                    <option value="4">Phường Ngã Tư Sở</option>
-                                    <option value="4">Phường Ô Chợ Dừa</option>
-                                    <option value="4">Phường Phương Liên</option>
-                                    <option value="4">Phường Phương Mai</option>
-                                    <option value="4">Phường Quang Trung</option>
-                                    <option value="4">Phường Quốc Tử Giám</option>
-                                    <option value="4">Phường Thịnh Quang</option>
-                                    <option value="4">Phường Thổ Quan</option>
-                                    <option value="4">Phường Trung Liệt</option>
-                                    <option value="4">Phường Trung Phụng</option>
-                                    <option value="4">Phường Trung Tự</option>
-                                    <option value="4">Phường Văn Chương</option>
-                                    <option value="4">Phường Văn Miếu</option>
-
-                                    <option value="5">Phường Biên Giang</option>
-                                    <option value="5">Phường Dương Nội</option>
-                                    <option value="5">Phường Đồng Mai</option>
-                                    <option value="5">Phường Hà Cầu</option>
-                                    <option value="5">Phường Kiến Hưng</option>
-                                    <option value="5">Phường La Khê</option>
-                                    <option value="5">Phường Mộ Lao</option>
-                                    <option value="5">Phường Nguyễn Trãi</option>
-                                    <option value="5">Phường Phúc La</option>
-                                    <option value="5">Phường Phú La</option>
-                                    <option value="5">Phường Phú Lãm</option>
-                                    <option value="5">Phường Phú Lương</option>
-                                    <option value="5">Phường Quang Trung</option>
-                                    <option value="5">Phường Vạn Phúc</option>
-                                    <option value="5">Phường Văn Quán</option>
-                                    <option value="5">Phường Yên Nghĩa</option>
-                                    <option value="5">Phường Yết Kiêu</option>
-
-                                    <option value="6">Phường Bạch Đằng</option>
-                                    <option value="6">Phường Bách Khoa</option>
-                                    <option value="6">Phường Bạch Mai</option>
-                                    <option value="6">Phường Bùi Thị Xuân</option>
-                                    <option value="6">Phường Cầu Dền</option>
-                                    <option value="6">Phường Đống Mác</option>
-                                    <option value="6">Phường Đồng Nhân</option>
-                                    <option value="6">Phường Đồng Tâm</option>
-                                    <option value="6">Phường Lê Đại Hành</option>
-                                    <option value="6">Phường Minh Khai</option>
-                                    <option value="6">Phường Ngô Thì Nhậm</option>
-                                    <option value="6">Phường Nguyễn Du</option>
-                                    <option value="6">Phường Phạm Đình Hổ</option>
-                                    <option value="6">Phường Phố Huế</option>
-                                    <option value="6">Phường Quỳnh Lôi</option>
-                                    <option value="6">Phường Quỳnh Mai</option>
-                                    <option value="6">Phường Thanh Lương</option>
-                                    <option value="6">Phường Thanh Nhàn</option>
-                                    <option value="6">Phường Trương Định</option>
-                                    <option value="6">Phường Vĩnh Tuy</option>
-
-                                    <option value="7">Phường Đại Kim</option>
-                                    <option value="7">Phường Định Công</option>
-                                    <option value="7">Phường Giáp Bát</option>
-                                    <option value="7">Phường Hoàng Liệt</option>
-                                    <option value="7">Phường Hoàng Văn Thụ</option>
-                                    <option value="7">Phường Lĩnh Nam</option>
-                                    <option value="7">Phường Mai Động</option>
-                                    <option value="7">Phường Tân Mai</option>
-                                    <option value="7">Phường Thanh Trì</option>
-                                    <option value="7">Phường Thịnh Liệt</option>
-                                    <option value="7">Phường Trần Phú</option>
-                                    <option value="7">Phường Tương Mai</option>
-                                    <option value="7">Phường Vĩnh Hưng</option>
-                                    <option value="7">Phường Yên Sở</option>
-
-                                    <option value="8">Phường Chương Dương</option>
-                                    <option value="8">Phường Cửa Đông</option>
-                                    <option value="8">Phường Cửa Nam</option>
-                                    <option value="8">Phường Đồng Xuân</option>
-                                    <option value="8">Phường Hàng Bạc</option>
-                                    <option value="8">Phường Hàng Bài</option>
-                                    <oPhường value="8">Phường Hàng Bồ</option>
-                                    <option value="8">Phường Hàng Bông</option>
-                                    <option value="8">Phường Hàng Buồm</option>
-                                    <option value="8">Phường Hàng Đào</option>
-                                    <option value="8">Phường Hàng Gai</option>
-                                    <option value="8">Phường Hàng Mã</option>
-                                    <option value="8">Phường Hàng Trống</option>
-                                    <option value="8">Phường Lý Thái Tổ</option>
-                                    <option value="8">Phường Phan Chu Trinh</option>
-                                    <option value="8">Phường Phúc Tân</option>
-                                    <option value="8">Phường Tràng Tiền</option>
-                                    <option value="8">Phường Trần Hưng Đạo</option
-                                        >
-                                    <option value="9">Phường Bồ Đề</option>
-                                    <option value="9">Phường Cự Khối</option>
-                                    <option value="9">Phường Đức Giang</option>
-                                    <option value="9">Phường Giang Biên</option>
-                                    <option value="9">Phường Gia Thụy</option>
-                                    <option value="9">Phường Long Biên</option>
-                                    <option value="9">Phường Ngọc Lâm</option>
-                                    <option value="9">Phường Ngọc Thụy</option>
-                                    <option value="9">Phường Phúc Đồng</option>
-                                    <option value="9">Phường Phúc Lợi</option>
-                                    <option value="9">Phường Sài Đồng</option>
-                                    <option value="9">Phường Thạch Bàn</option>
-                                    <option value="9">Phường Thượng Thanh</option>
-                                    <option value="9">Phường Việt Hưng</option>
-
-                                    <option value="10">Phường Cầu Diễn</option>
-                                    <option value="10">Phường Đại Mỗ</option>
-                                    <option value="10">Phường Mễ Trì</option>
-                                    <option value="10">Phường Mỹ Đình 1</option>
-                                    <option value="10">Phường Mỹ Đình 2</option>
-                                    <option value="10">Phường Phú Đô</option>
-                                    <option value="10">Phường Phương Canh</option>
-                                    <option value="10">Phường Tây Mỗ</option>
-                                    <option value="10">Phường Trung Văn</option>
-                                    <option value="10">Phường Xuân Phương</option>
-
-                                    <option value="11">Phường Bưởi</option>
-                                    <option value="11">Phường Nhật Tân</option>
-                                    <option value="11">Phường Phú Thượng</option>
-                                    <option value="11">Phường Quảng An</option>
-                                    <option value="11">Phường Thụy Khuê</option>
-                                    <option value="11">Phường Tứ Liên</option>
-                                    <option value="11">Phường Xuân La</option>
-                                    <option value="11">Phường Yên Phụ</option>
-
-                                    <option value="12">Phường Hạ Đình</option>
-                                    <option value="12">Phường Khương Đình</option>
-                                    <option value="12">Phường Khương Mai</option>
-                                    <option value="12">Phường Khương Trung</option>
-                                    <option value="12">Phường Kim Giang</option>
-                                    <option value="12">Phường Nhân Chính</option>
-                                    <option value="12">Phường Phương Liệt</option>
-                                    <option value="12">Phường Thanh Xuân Bắc</option>
-                                    <option value="12">Phường Thanh Xuân Nam</option>
-                                    <option value="12">Phường Thanh Xuân Trung</option>
-                                    <option value="12">Phường Thượng Đình</option>
-                                </select>
+                                    <option value="" selected= "selected">Lựa chọn Phường/Xã</option>
+                                  </select>
                             </div>
 
                             <div class="col-md-6">
@@ -334,8 +154,20 @@
     </div>
     <br><br><br><br><br><br><br><br><br><br><br><br>
     <script>
+        $('input.numberformat').keyup(function(event) {
+
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) return;
+
+            // format number
+            $(this).val(function(index, value) {
+                return value
+                    .replace(/\D/g, "")
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            });
+        });
         $(".imgAdd").click(function() {
-            $(this).closest(".row").find('.imgAdd').before('<div class="col-sm-3 imgUp"><div class="imagePreview"></div><label class="btn btn-primary" id="btn-upload">Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fa fa-times del"></i></div>');
+            $(this).closest(".row").find('.imgAdd').before('<div class="col-sm-3 imgUp"><div class="imagePreview"></div><label class="btn btn-primary" id="btn-upload">Upload<input type="file" name = "image" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fa fa-times del"></i></div>');
         });
         $(document).on("click", "i.del", function() {
             $(this).parent().remove();
@@ -354,12 +186,78 @@
                     }
                 }
             });
-            var $select1 = $('#huyen'),
-                $select2 = $('#xa'),
-                $options = $select2.find('option');
-            $select1.on('change', function() {
-                $select2.html($options.filter('[value="' + this.value + '"]'));
-            }).trigger('change');
+            var info = {
+                "Quận Ba Đình": ["Phường Cống Vị", "Phường Điện Biên", "Phường Đội Cấn", "Phường Giảng Võ",
+                    "Phường Kim Mã", "Phường Liễu Giai", "Phường Ngọc Hà", "Phường Ngọc Khánh", "Phường Nguyễn Trung Trực",
+                    "Phường Phúc Xá", "Phường Quán Thánh", "Phường Thành Công", "Phường Trúc Bạch", "Phường Vĩnh Phúc"
+                ],
+                "Quận Bắc Từ Liêm": ["Phường Cổ Nhuế 1", "Phường Cổ Nhuế 2", "Phường Đông Ngạc", "Phường Đức Thắng",
+                    "Phường Liên Mạc", "Phường Minh Khai", "Phường Phúc Diễn", "Phường Phú Diễn", "Phường Tây Tựu",
+                    "Phường Thụy Phương", "Phường Thượng Cát", "Phường Xuân Đỉnh", "Phường Xuân Tảo"
+                ],
+                "Quận Cầu Giấy": ["Phường Dịch Vọng", "Phường Dịch Vọng Hậu", "Phường Mai Dịch", "Phường Nghĩa Đô",
+                    "Phường Nghĩa Tân", "Phường Quan Hoa", "Phường Trung Hòa", "Phường Yên Hòa"
+                ],
+                "Quận Đống Đa": ["Phường Cát Linh", "Phường Hàng Bột", "Phường Khâm Thiên", "Phường Khương Thượng",
+                    "Phường Ô Chợ Dừa", "Phường Phương Liên", "Phường Phương Mai", "Phường Quang Trung", "Phường Quốc Tử Giám",
+                    "Phường Thịnh Quang", "Phường Thổ Quan", "Phường Trung Liệt", "Phường Trung Phụng", "Phường Trung Tự",
+                    "Phường Văn Chương", "Phường Văn Miếu"
+                ],
+                "Quận Hà Đông": ["Phường Biên Giang", "Phường Dương Nội", "Phường Đồng Mai", "Phường Hà Cầu",
+                    "Phường Kiến Hưng", "Phường La Khê", "Phường Mộ Lao", "Phường Nguyễn Trãi", "Phường Phúc La",
+                    "Phường Phú La", "Phường Phú Lãm", "Phường Phú Lương", "Phường Quang Trung", "Phường Vạn Phúc",
+                    "Phường Văn Quán", "Phường Yên Nghĩa", "Phường Yết Kiêu"
+                ],
+                "Quận Hai Bà Trưng": ["Phường Bạch Đằng", "Phường Bách Khoa", "Phường Bạch Mai", "Phường Bùi Thị Xuân",
+                    "Phường Cầu Dền", "Phường Đống Mác", "Phường Đồng Nhân", "Phường Đồng Tâm", "Phường Lê Đại Hành",
+                    "Phường Minh Khai", "Phường Ngô Thì Nhậm", "Phường Nguyễn Du", "Phường Phạm Đình Hổ", "Phường Phố Huế",
+                    "Phường Quỳnh Lôi", "Phường Quỳnh Mai", "Phường Thanh Lương", "Phường Thanh Nhàn", "Phường Trương Định", "Phường Vĩnh Tuy"
+                ],
+                "Quận Hoàng Mai": ["Phường Đại Kim", "Phường Định Công", "Phường Giáp Bát", "Phường Hoàng Liệt",
+                    "Phường Hoàng Văn Thụ", "Phường Lĩnh Nam", "Phường Mai Động", "Phường Tân Mai", "Phường Thanh Trì",
+                    "Phường Thịnh Liệt", "Phường Trần Phú", "Phường Tương Mai", "Phường Vĩnh Hưng", "Phường Yên Sở"
+                ],
+                "Quận Hoàng Mai": ["Phường Đại Kim", "Phường Định Công", "Phường Giáp Bát", "Phường Hoàng Liệt",
+                    "Phường Hoàng Văn Thụ", "Phường Lĩnh Nam", "Phường Mai Động", "Phường Tân Mai", "Phường Thanh Trì",
+                    "Phường Thịnh Liệt", "Phường Trần Phú", "Phường Tương Mai", "Phường Vĩnh Hưng", "Phường Yên Sở"
+                ],
+                "Quận Hoàn Kiếm": ["Phường Chương Dương", "Phường Cửa Đông", "Phường Cửa Nam", "Phường Đồng Xuân",
+                    "Phường Hàng Bạc", "Phường Hàng Bài", "Phường Hàng Bồ", "Phường Hàng Bông", "Phường Hàng Buồm",
+                    "Phường Hàng Đào", "Phường Hàng Gai", "Phường Hàng Mã", "Phường Hàng Trống", "Phường Lý Thái Tổ",
+                    "Phường Phan Chu Trinh", "Phường Phúc Tân", "Phường Tràng Tiền", "Phường Trần Hưng Đạo"
+                ],
+                "Quận Long Biên": ["Phường Bồ Đề", "Phường Cự Khối", "Phường Đức Giang", "Phường Giang Biên",
+                    "Phường Gia Thụy", "Phường Long Biên", "Phường Ngọc Lâm", "Phường Ngọc Thụy", "Phường Phúc Đồng",
+                    "Phường Phúc Lợi", "Phường Sài Đồng", "Phường Thạch Bàn", "Phường Thượng Thanh", "Phường Việt Hưng"
+                ],
+                "Quận Nam Từ Liêm": ["Phường Cầu Diễn", "Phường Đại Mỗ", "Phường Mễ Trì", "Phường Mỹ Đình 1",
+                    "Phường Mỹ Đình 2", "Phường Phú Đô", "Phường Phương Canh", "Phường Tây Mỗ", "Phường Trung Văn",
+                    "Phường Xuân Phương"
+                ],
+                "Quận Tây Hồ": ["Phường Bưởi", "Phường Nhật Tân", "Phường Phú Thượng", "Phường Quảng An",
+                    "Phường Thụy Khuê", "Phường Tứ Liên", "Phường Xuân La", "Phường Yên Phụ"
+                ],
+                "Quận Thanh Xuân": ["Phường Hạ Đình", "Phường Khương Đình", "Phường Khương Mai", "Phường Khương Trung",
+                    "Phường Kim Giang", "Phường Nhân Chính", "Phường Phương Liệt", "Phường Thanh Xuân Bắc", "Phường Thanh Xuân Nam",
+                    "Phường Thanh Xuân Trung", "Phường Thượng Đình"
+                ]
+            }
+            window.onload = function() {
+                var huyen = document.getElementById("huyen");
+                var xa = document.getElementById("xa");
+                for (var qh in info) {
+                    huyen.options[huyen.options.length] = new Option(qh, qh);
+                }
+                huyen.onchange = function() {
+                    xa.length = 1;
+                    if (this.selectedIndex < 1)
+                        return;
+                    var px = info[this.value];
+                    for (var i = 0; i < px.length; i++) {
+                        xa.options[xa.options.length] = new Option(px[i], px[i]);
+                    }
+                }
+            }
         });
     </script>
     <%- include("partials/footer"); -%>

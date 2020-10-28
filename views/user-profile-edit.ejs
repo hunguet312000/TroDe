@@ -2,7 +2,7 @@
     <div class="container" id="profile-content">
         <div class="row">
             <div class="col-md-2">
-                <span style="font-size: 12px;">Xin chào bạn,</span>
+                <span style="font-size: 12px;">Xin chào <%=user.ten_nguoi_dung %>,</span>
                 <br><br>
                 <a href="profile" style="text-decoration: none;">
                     <i class="fas fa-user-circle" style="color: hotpink;font-size: 19px;">&nbsp;</i><span id="catelogy"><b>Quản lý tài khoản</b></span>
@@ -16,6 +16,11 @@
                     <li>
                         <a href="profile-change-password" style="text-decoration: none;">
                             <span id="ul-li">Đổi mật khẩu</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="profile-address" style="text-decoration: none;">
+                            <span id="ul-li">Địa chỉ</span>
                         </a>
                     </li>
                 </ul>
@@ -35,7 +40,7 @@
                 <span style="font-size: 17px;"><b>Sửa thông tin cá nhân</b></span>
                 <br><br>
                 <div class="content" style="background-color: white; height: 400px;">
-                      <form action="/profile-edit" method="post">
+                    <form action="/profile-edit" method="post">
                         <div class="row" style="padding:40px;">
                             <div class="col-md-4">
                                 <span id="title-item-profile"><i>Tên đăng nhập</i></span>
@@ -55,7 +60,7 @@
                                 <span id="title-item-profile"><i>Số điện thoại</i></span>
                                 <br>
                                 <br>
-                                <input name="phone" type="number" id="btn-phone" class="form-control" placeholder="Vui lòng nhập số điện thoại của bạn" value="<%=user.sdt %>" style="border-radius: 0;color: #424242; font-size: small;height: 40px;" maxlength="11" pattern="([0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9])">
+                                <input name="phone" type="text" id="btn-phone" class="form-control" placeholder="Vui lòng nhập số điện thoại của bạn" value="<%=user.sdt %>" style="border-radius: 0;color: #424242; font-size: small;height: 40px;" maxlength="11" pattern="([0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9])">
                                 <br>
                             </div>
                             <div class="col-md-4">
@@ -82,7 +87,7 @@
                                 <button type="submit" class="btn btn-primary" id="button-submit"><span id = "text-btn"><b>LƯU THAY ĐỔI</b></span></button>
                             </div>
                         </div>
-                      </form>
+                    </form>
                 </div>
             </div>
 
