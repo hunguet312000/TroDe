@@ -33,11 +33,14 @@
             </div>
             <div class="col-md-8 offset-md-2">
                 <div class="content-signup" style="padding: 25px 50px 50px 25px;">
-                    <form action ="/signup" method = post>
+                    <form action="/signup" method=p ost>
                         <div class="row">
-                            <div class="col-md-7">
+                            <div class="col-md-6">
                                 <label for="email" style="font-size: 14px;color: #424242;">*Email</label>
                                 <input name="email" type="text" id="email" class="form-control" placeholder="Vui lòng nhập Email của bạn" style="border-radius: 0;color: #424242;font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
+                                <br>
+                                <label for="user-name">*Username</label>
+                                <input name="username" type="text" id="user-name" class="form-control" placeholder="Vui lòng nhập username của bạn" style="border-radius: 0;color: #424242;font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
                                 <br>
                                 <label for="password" style="font-size: 14px;">*Mật khẩu</label>
                                 <input name="password" type="password" id="password" class="form-control" placeholder="Vui lòng nhập mật khẩu của bạn" style="border-radius: 0;color: #424242; font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
@@ -45,7 +48,8 @@
                                 <label for="phone" style="font-size: 14px;">*Số điện thoại</label>
                                 <input name="phone" type="number" id="phone" class="form-control" placeholder="Vui lòng nhập số điện thoại của bạn" style="border-radius: 0;color: #424242; font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống" maxlength="11"
                                     pattern="([0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9])">
-                                <br>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="row">
                                     <div class="col-md-8">
                                         <span style="font-size: 14px;color: #424242;text-align: center;">*Ngày sinh</span>
@@ -60,26 +64,27 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-5">
-                                <label for="user-name">*Username</label>
-                                <input name="username" type="text" id="user-name" class="form-control" placeholder="Vui lòng nhập username của bạn" style="border-radius: 0;color: #424242;font-size: small;height: 40px;" required data-bv-notempty-message="Không được để trống">
                                 <div class="row">
                                     <div class="col-md-12">
-                                      <%if(message.length > 0) {%>
-                                          <h4 style = "text-align: center; font-size: 15px;" class = "alert alert-danger mt4"><%=message%></h4>
-                                      <% }%>
-                                        <span id="text-dk">Bằng cách ấn vào nút “ĐĂNG KÝ”, tôi đồng ý với Điều Khoản Sử Dụng và Chính Sách Bảo Mật của TroDe</span>
-                                        <button type="submit" class="btn btn-primary" id="button-submit">ĐĂNG KÍ</button><br>
-                                        <span style="font-size: 13px;">Hoặc Đăng kí với</span>
-                                        <a href="#" id="link-fb"><button type="button" class="btn btn-primary" id="button-facebook"><i class="fa fa-facebook">&nbsp;&nbsp;</i><b>FACEBOOK</b></button></a>
-                                        <a href="/auth/google" id="link-gmail"><button type="button" class="btn btn-primary" id="button-gmail"><i class="fa fa-google-plus	">&nbsp;&nbsp;</i><b>GOOGLE</b></button></a>
+                                        <%if(message.length > 0) {%>
+                                            <h4 style="text-align: center; font-size: 15px;" class="alert alert-danger mt4">
+                                                <%=message%>
+                                            </h4>
+                                            <% }%>
+                                                <br>
+                                                <span id="text-dk">Bằng cách ấn vào nút “ĐĂNG KÝ”, tôi đồng ý với Điều Khoản Sử Dụng và Chính Sách Bảo Mật của TroDe</span>
+                                                <br>
+                                                <br>
+                                                <button type="submit" class="btn btn-primary" id="button-submit">ĐĂNG KÍ</button><br><br>
+                                                <span style="font-size: 13px;">Hoặc Đăng kí với</span>
+                                                <a href="/auth/google" id="link-gmail"><button type="button" class="btn btn-primary" id="button-gmail"><i class="fa fa-google-plus	">&nbsp;&nbsp;</i><b>GOOGLE</b></button></a>
+                                                <a href="#" id="link-fb"><button type="button" class="btn btn-primary" id="button-facebook"><i class="fa fa-facebook">&nbsp;&nbsp;</i><b>FACEBOOK</b></button></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                      </form>
-                  </div>
+                    </form>
+                </div>
                 <br><br>
             </div>
         </div>

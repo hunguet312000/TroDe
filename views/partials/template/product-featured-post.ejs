@@ -1,33 +1,38 @@
-        <%
-            if(userData.length!=0){
-                userData.forEach(function(data){
-        %>
-                <div class="col-md-3 col-sm-6">
-                    <div class="product">
-                        <div class="product-image">
-                            <a href="#">
-                                <div class="slides" style = "display:flex;">
-                                    <img style = "object-fit: cover;" class="pic" src=<%=data.path_anh%>>
-                                </div>
-                            </a>
-                            <a href="#" class="fa fa-search product-full-view"></a>
-                        </div>
-                        <div class="product-content">
-                            <h3 class="title"><a href="#"><%=data.dia_chi%></a></h3>
-                            <div class="price"><%=data.gia_phong%>/1 tháng</div>
-                            <a class="view" href="">Xem thêm</a>
-                        </div>
+<%
+if(userData.length!=0){
+    userData.forEach(function(data){
+%>
+    <div class="col-md-6 col-lg-3 col-sm-6 col-xs-6">
+        <div class="product">
+            <div class="product-image">
+                <a href="#">
+                    <div class="slides" style="display:flex;">
+                        <img style="object-fit: cover;" class="pic" src=<%=data.path_anh%>>
                     </div>
-                </div>
-        <%})} %>
-
-    <a class="xemthem" id="xt1">
-        <button id="bt" type="button">
-            Xem thêm
-        </button>
-    </a>
-    <div id="tx-hidden1">
-        <span>Bạn đã kết thúc</span>
-        <br>
-        <span>Tìm kiếm thêm để tiếp tục khám phá</span>
+                </a>
+                <a href="#" class="fa fa-search product-full-view"></a>
+            </div>
+            <div class="product-content">
+                <h3 class="title">
+                    <a href="#">
+                        <b><%=data.dia_chi%></b>
+                    </a>
+                </h3>
+                <div class="price" style="color: #242424;">
+                    <b><%=data.gia_phong%> ₫/ 1 tháng</b></div>
+                <a class="view" href="">Xem thêm</a>
+            </div>
+        </div>
     </div>
+    <%})} %>
+
+        <a class="xemthem" id="xt1">
+            <button id="bt" type="button">
+Xem thêm
+</button>
+        </a>
+        <div id="tx-hidden1">
+            <span>Bạn đã kết thúc</span>
+            <br>
+            <span>Tìm kiếm thêm để tiếp tục khám phá</span>
+        </div>
