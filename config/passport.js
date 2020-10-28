@@ -61,18 +61,20 @@ module.exports = function(passport) {
                     // if there is no user with that username
                     // create the user
                     var newUserMysql = {
-                        username: username,
+                        ten_nguoi_dung: username,
                         email: email,
-                        password: bcrypt.hashSync(password, 10),  // use the generateHash function in our user model
-                        sex: sex,
-                        dob: dob
+                        mat_khau: bcrypt.hashSync(password, 10),  // use the generateHash function in our user model
+                        gioi_tinh: sex,
+                        ngay_sinh: dob
                     };
 
-                    var insertQuery = "INSERT INTO nguoi_dung ( ten_nguoi_dung, email, mat_khau, gioi_tinh, ngay_sinh ) values (?,?,?,?,?)";
+                    var insertQuery = "INSERT INTO nguoi_dung ( ten_nguoi_dung, email, mat_khau, gioi_tinh, ngay_sinh ) ";
+                    var values = "values ('" + newUserMysql.ten_nguoi_dung + "','" + newUserMysql.email + "','"  + newUserMysql.mat_khau + "','" + newUserMysql.gioi_tinh + "'," + "STR_TO_DATE('" + newUserMysql.ngay_sinh + "', '%m/%d/%Y'))";
                     dbConnection = mysql.createConnection(dbconfig);
                     dbConnection.connect();
-                    dbConnection.query(insertQuery,[newUserMysql.username, newUserMysql.email, newUserMysql.password, newUserMysql.sex, newUserMysql.dob],function(err, rows) {
-                      return done(null, newUserMysql);
+                    dbConnection.query(insertQuery + values,function(err, rows) {
+                        console.log(rows)
+                        return done(null, newUserMysql);
                     });
                     dbConnection.end();
                 }

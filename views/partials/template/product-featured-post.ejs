@@ -1,120 +1,30 @@
-        <div class="col-md-3 col-sm-6">
-            <div class="product">
-                <div class="product-image">
-                    <a href="#">
-                        <img class="pic" src="https://placehold.it/150x80?text=IMAGE">
-                    </a>
-                    <a href="#" class="fa fa-search product-full-view"></a>
+        <%
+            if(userData.length!=0){
+                userData.forEach(function(data){
+        %>
+                <div class="col-md-3 col-sm-6">
+                    <div class="product">
+                        <div class="product-image">
+                            <a href="#">
+                                <div class="slides" style = "display:flex;">
+                                    <img style = "object-fit: cover;" class="pic" src=<%=data.path_anh%>>
+                                </div>
+                            </a>
+                            <a href="#" class="fa fa-search product-full-view"></a>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="title"><a href="#"><%=data.dia_chi%></a></h3>
+                            <div class="price"><%=data.gia_phong%>/1 tháng</div>
+                            <a class="view" href="">Xem thêm</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="product-content">
-                    <h3 class="title"><a href="#">Xuân Thủy, Cầu Giấy</a></h3>
-                    <div class="price">4.000.000/1 tháng</div>
-                    <a class="view" href="">Xem thêm</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6">
-            <div class="product">
-                <div class="product-image">
-                    <a href="#">
-                        <img class="pic" src="https://placehold.it/150x80?text=IMAGE">
-                    </a>
-                    <a href="#" class="fa fa-search product-full-view"></a>
-                </div>
-                <div class="product-content">
-                    <h3 class="title"><a href="#">Xuân Thủy, Cầu Giấy</a></h3>
-                    <div class="price">2.000.000/1 tháng</div>
-                    <a class="view" href="">Xem thêm</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6">
-            <div class="product">
-                <div class="product-image">
-                    <a href="#">
-                        <img class="pic" src="https://placehold.it/150x80?text=IMAGE">
-                    </a>
-                    <a href="#" class="fa fa-search product-full-view"></a>
-                </div>
-                <div class="product-content">
-                    <h3 class="title"><a href="#">Xuân Thủy, Cầu Giấy</a></h3>
-                    <div class="price">5.000.000/1 tháng</div>
-                    <a class="view" href="">Xem thêm</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6">
-            <div class="product">
-                <div class="product-image">
-                    <a href="#">
-                        <img class="pic" src="https://placehold.it/150x80?text=IMAGE">
-                    </a>
-                    <a href="#" class="fa fa-search product-full-view"></a>
-                </div>
-                <div class="product-content">
-                    <h3 class="title"><a href="#">Xuân Thủy, Cầu Giấy</a></h3>
-                    <div class="price">5.000.000/1 tháng</div>
-                    <a class="view" href="">Xem thêm</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6">
-            <div class="product">
-                <div class="product-image">
-                    <a href="#">
-                        <img class="pic" src="https://placehold.it/150x80?text=IMAGE">
-                    </a>
-                    <a href="#" class="fa fa-search product-full-view"></a>
-                </div>
-                <div class="product-content">
-                    <h3 class="title"><a href="#">Xuân Thủy, Cầu Giấy</a></h3>
-                    <div class="price">5.000.000/1 tháng</div>
-                    <a class="view" href="">Xem thêm</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6">
-            <div class="product">
-                <div class="product-image">
-                    <a href="#">
-                        <img class="pic" src="https://placehold.it/150x80?text=IMAGE">
-                    </a>
-                    <a href="#" class="fa fa-search product-full-view"></a>
-                </div>
-                <div class="product-content">
-                    <h3 class="title"><a href="#">Xuân Thủy, Cầu Giấy</a></h3>
-                    <div class="price">5.000.000/1 tháng</div>
-                    <a class="view" href="">Xem thêm</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6">
-            <div class="product">
-                <div class="product-image">
-                    <a href="#">
-                        <img class="pic" src="https://placehold.it/150x80?text=IMAGE">
-                    </a>
-                    <a href="#" class="fa fa-search product-full-view"></a>
-                </div>
-                <div class="product-content">
-                    <h3 class="title"><a href="#">Xuân Thủy, Cầu Giấy</a></h3>
-                    <div class="price">5.000.000/1 tháng</div>
-                    <a class="view" href="">Xem thêm</a>
-                </div>
-            </div>
-        </div>
-
+        <%})} %>
 
     <a class="xemthem" id="xt1">
         <button id="bt" type="button">
-       Xem thêm
-   </button>
+            Xem thêm
+        </button>
     </a>
     <div id="tx-hidden1">
         <span>Bạn đã kết thúc</span>

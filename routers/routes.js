@@ -1,30 +1,17 @@
-const express = require('express');
 const fs = require('fs');
-const jwt = require('jsonwebtoken');
 const authenticationController = require('../app/authenticate');
 const cloudinary = require('../config/cloudinary');
 const upload = require('../config/multer');
 const { updateInfo, changePassword } = require("../app/updateUserProfile");
 const bcrypt = require('bcrypt');
-
+const postManage = require('../app/savePosts');
 require('dotenv').config();
 
 module.exports = (app, passport) => {
-    app.get("/", function(req, res) {
-        if (req.isAuthenticated()) {
-            const username = req.session.passport.user.ten_nguoi_dung;
-            res.render("user-home", { username: username });
-        } else {
-            res.render("home");
-        }
-    });
+    app.get("/", postManage.displayPostHome);
 
     app.get("/user-home", function(req, res) {
-        if (req.isAuthenticated()) {
-            res.render("user-home");
-        } else {
-            res.redirect("login");
-        }
+        res.redirect('/');
     });
 
     app.get("/login", function(req, res) {
@@ -63,7 +50,7 @@ module.exports = (app, passport) => {
     });
 
     app.post("/signup", passport.authenticate("local-signup", {
-            successRedirect: '/user-home', // redirect to the secure profile section
+            successRedirect: '/', // redirect to the secure profile section
             failureRedirect: '/signup', // redirect back to the signup page if there is an error
             failureFlash: true // allow flash messages
         }),
@@ -74,31 +61,46 @@ module.exports = (app, passport) => {
     });
 
     app.get('/profile', function(req, res) {
-        const user = req.session.passport.user;
-        res.render("user-profile", { user: user });
+        if(req.isAuthenticated()){
+            const user = req.session.passport.user;
+            res.render("user-profile", { user: user });
+        }
+        else{res.redirect('/login')}
     })
 
     app.get('/profile-info', function(req, res) {
-        const user = req.session.passport.user;
-        res.render('user-profile-info', { user: user });
+        if(req.isAuthenticated()){
+            const user = req.session.passport.user;
+            res.render('user-profile-info', { user: user });
+        }
+        else {res.redirect('/login')}
     })
 
     app.get('/profile-edit', function(req, res) {
-        const user = req.session.passport.user;
-        res.render('user-profile-edit', { user: user });
+        if(req.isAuthenticated()){
+            const user = req.session.passport.user;
+            res.render('user-profile-edit', { user: user });
+        }
+        else {res.redirect('/login')}
     })
 
     app.post("/profile-edit", function(req, res) {
-        const newInfo = req.body;
-        const oldInfo = req.session.passport.user;
-        updateInfo(newInfo, oldInfo);
-        req.logout();
-        res.redirect("/login")
+        if(req.isAuthenticated()){
+            const newInfo = req.body;
+            const oldInfo = req.session.passport.user;
+            updateInfo(newInfo, oldInfo);
+            req.logout();
+            res.redirect("/login")
+        }
+        else {res.redirect('/login')}
     })
 
     app.get('/profile-change-password', function(req, res) {
-        const user = req.session.passport.user;
-        res.render('user-profile-change-password', { user: user });
+        if(req.isAuthenticated()){
+            const user = req.session.passport.user;
+            console.log(user)
+            res.render('user-profile-change-password', { user: user });
+        }else {res.redirect('/login')}
     })
 
     app.post("/profile-change-password", function(req, res) {
@@ -152,24 +154,13 @@ module.exports = (app, passport) => {
     });
 
     app.get("/post", function(req, res) {
-        res.render("user-post");
+        if(req.isAuthenticated()) {
+             res.render("user-post", {username: req.user.ten_nguoi_dung});
+        }
+        else {
+            res.redirect('/login');
+        }
     });
 
-    app.post('/post', upload.array('photo'), async(req, res) => {
-        const uploader = async(path) => await cloudinary.uploads(path, 'Image');
-        const urls = []
-        console.log(req.body);
-        console.log(req.files);
-        files = req.files;
-        for (const file of files) {
-            const {
-                path
-            } = file
-            const newPath = await uploader(path)
-            urls.push(newPath);
-            console.log(newPath);
-            fs.unlinkSync(path);
-        }
-        res.render("user-home");
-    });
+    app.post('/post', upload.array('image'), postManage.savePosts);
 }
