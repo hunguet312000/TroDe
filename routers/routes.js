@@ -13,7 +13,6 @@ module.exports = (app, passport) => {
     app.get("/user-home", function(req, res) {
         res.redirect('/');
     });
-
     app.get("/login", function(req, res) {
         res.render("user-login", {
             message: req.flash("loginMessage")

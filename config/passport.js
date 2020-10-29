@@ -67,7 +67,7 @@ module.exports = function(passport) {
                         gioi_tinh: sex,
                         ngay_sinh: dob
                     };
-
+                    console.log(newUserMysql)
                     var insertQuery = "INSERT INTO nguoi_dung ( ten_nguoi_dung, email, mat_khau, gioi_tinh, ngay_sinh ) ";
                     var values = "values ('" + newUserMysql.ten_nguoi_dung + "','" + newUserMysql.email + "','"  + newUserMysql.mat_khau + "','" + newUserMysql.gioi_tinh + "'," + "STR_TO_DATE('" + newUserMysql.ngay_sinh + "', '%m/%d/%Y'))";
                     dbConnection = mysql.createConnection(dbconfig);

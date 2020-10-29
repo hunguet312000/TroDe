@@ -15,17 +15,25 @@ if(userData.length!=0){
             <div class="product-content">
                 <h3 class="title">
                     <a href="#">
+                        <b><%=data.ten_nguoi_dung%></b>
+                        <br>
                         <b><%=data.dia_chi%></b>
                     </a>
                 </h3>
                 <div class="price" style="color: #242424;">
-                    <b><%=data.gia_phong%> ₫/ 1 tháng</b></div>
+                    <b><%= data.gia_phong.toLocaleString('vi-VN', 
+                        {
+                            style: 'currency',
+                            currency: 'VND'
+                        })%>/ 1 tháng</b>
+                    </div>
                 <a class="view" href="">Xem thêm</a>
             </div>
         </div>
     </div>
     <%})} %>
-        <a class="xemthem" id="xt2">
+
+        <a class="xemthem" id="xt1">
             <button id="bt" type="button">
        Xem thêm
    </button>
