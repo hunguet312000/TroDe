@@ -41,6 +41,17 @@ module.exports = (app, passport) => {
             res.redirect('/');
         });
 
+    app.get('/auth/facebook',
+    passport.authenticate('facebook', {scope: ["email"]})
+    );
+
+    app.get('/auth/facebook/user-home',
+      passport.authenticate('facebook', { failureRedirect: '/login' }),
+      function(req, res) {
+        // Successful authentication, redirect home.
+        res.redirect('/');
+      });
+
     app.get("/signup", function(req, res) {
         res.render("user-signup", {
             message: req.flash("signupMessage")

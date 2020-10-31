@@ -3,6 +3,7 @@ const mysql = require('mysql');
 const bcrypt = require('bcrypt');
 const dbconfig = require('./database');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const FacebookStrategy = require("passport-facebook");
 
 //const dbConnection = mysql.createConnection(dbconfig);
 // dbConnection.connect((error) => {
@@ -190,5 +191,56 @@ module.exports = async function(passport) {
     // =========================================================================
     // LOGIN WITH FACEBOOK=============================================================
     // =========================================================================
+    passport.use(new FacebookStrategy({
+      clientID: process.env.FACEBOOK_APP_ID,
+      clientSecret: process.env.FACEBOOK_APP_SECRET,
+      callbackURL: "http://localhost:3000/auth/facebook/user-home",
+      profileFields: ['id', 'displayName', 'email']
+    },
+      function(accessToken, refreshToken, profile, cb) {
+        const facebook_id = profile.id;
+        const ho_va_ten = profile.displayName;
+        const email = profile.emails[0].value;
+        // User.findOrCreate({
+        //   googleId: profile.id
+        // }, function(err, user) {
+        //   return cb(err, user);
+        // });
+        dbConnection = mysql.createConnection(dbconfig);
+        dbConnection.connect();
+        dbConnection.query("SELECT * FROM nguoi_dung WHERE ten_nguoi_dung = ?",[facebook_id], function(err, rows){
+            if (err)
+                return cb(err);
+            if (rows.length) {
+                return cb(err, rows[0]);
+            }else{
+              const newUserMysql = {
+                  ten_nguoi_dung: facebook_id,
+                  ho_va_ten: ho_va_ten,
+                  mat_khau:" ",
+                  email: email
+              };
+              const insertQuery = "INSERT INTO nguoi_dung ( ten_nguoi_dung, email, mat_khau, ho_va_ten ) values (?,?,?,?)";
+              dbConnection = mysql.createConnection(dbconfig);
+              dbConnection.connect();
+              dbConnection.query(insertQuery,
+                [newUserMysql.ten_nguoi_dung, newUserMysql.email, newUserMysql.mat_khau, newUserMysql.ho_va_ten],
+                function(err, rows) {
+                    return cb(err, rows[0])
+              });
+              dbConnection.end();
+              // return done(null, false, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
+            }
+
+            // // if the user is found but the password is wrong
+            // if (!bcrypt.compareSync(password, rows[0].mat_khau))
+            //     return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
+
+            // all is well, return successful user
+            //return done(null, rows[0]);
+        });
+        dbConnection.end();
+      }
+    ));
 
 };
