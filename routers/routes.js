@@ -1,5 +1,4 @@
 const fs = require('fs');
-const authenticationController = require('../app/authenticate');
 const cloudinary = require('../config/cloudinary');
 const upload = require('../config/multer');
 const { updateInfo, changePassword } = require("../app/updateUserProfile");
