@@ -85,8 +85,8 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row" style="padding:10px 40px;">
+                        <div style="border:5px solid #eff0f5; background-color:#eff0f5"></div>
+                        <div class="row" style="padding:40px;">
                             <div style="font-size: large;"><b>Địa chỉ</b></div>
                             <br>
                             <div class="col-md-6">
@@ -116,8 +116,9 @@
                                 <br>
                             </div>
                         </div>
-
-                        <div class="row" style="padding:10px 40px;">
+                        <br>
+                        <div style="border:5px solid #eff0f5; background-color:#eff0f5"></div>
+                        <div class="row" style="padding:40px;">
                             <div style="font-size: large;"><b>Tải hình ảnh</b></div>
                             <br>
                             <br>
@@ -130,13 +131,13 @@
                                               </label>
                                     </div>
                                     <!-- col-2 -->
-                                    <i class="fa fa-plus imgAdd"></i>
+                                    <i class="fa fa-plus-circle imgAdd" aria-hidden="true"></i>
                                 </div>
                                 <!-- row -->
                             </div>
                         </div>
 
-                        <div class="row" style="padding:40px;">
+                        <div class="row" style="padding:30px; margin-top: -20px;">
                             <div class="col-md-6">
                                 <a href="post" style="text-decoration: none;">
                                     <button type="button" class="btn btn-primary" id="button-submit"><span id = "text-btn"><b>HỦY BỎ</b></span></button>
@@ -154,20 +155,20 @@
     </div>
     <br><br><br><br><br><br><br><br><br><br><br><br>
     <script>
-        $('input.numberformat').keyup(function(event) {
+        /*$('input.numberformat').keyup(function(event) {
 
-            // skip for arrow keys
-            if (event.which >= 37 && event.which <= 40) return;
+                                                                                                                                                                                                                                                                                                                    // skip for arrow keys
+                                                                                                                                                                                                                                                                                                                    if (event.which >= 37 && event.which <= 40) return;
 
-            // format number
-            $(this).val(function(index, value) {
-                return value
-                    .replace(/\D/g, "")
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-            });
-        });
+                                                                                                                                                                                                                                                                                                                    // format number
+                                                                                                                                                                                                                                                                                                                    $(this).val(function(index, value) {
+                                                                                                                                                                                                                                                                                                                        return value
+                                                                                                                                                                                                                                                                                                                            .replace(/\D/g, "")
+                                                                                                                                                                                                                                                                                                                            .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                                                                                                                                                                                                                                                                                                                    });
+                                                                                                                                                                                                                                                                                                                });*/
         $(".imgAdd").click(function() {
-            $(this).closest(".row").find('.imgAdd').before('<div class="col-sm-3 imgUp"><div class="imagePreview"></div><label class="btn btn-primary" id="btn-upload">Upload<input type="file" name = "image" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fa fa-times del"></i></div>');
+            $(this).closest(".row").find('.imgAdd').before('<div class="col-sm-3 imgUp"><div class="imagePreview"></div><label class="btn btn-primary" id="btn-upload">Upload<input type="file" name = "image" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fas fa-trash-alt del"></i></div>');
         });
         $(document).on("click", "i.del", function() {
             $(this).parent().remove();
