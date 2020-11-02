@@ -67,7 +67,8 @@ module.exports = function(passport) {
                     dbConnection = mysql.createConnection(dbconfig);
                     dbConnection.connect();
                     dbConnection.query(insertQuery,[newUserMysql.username, newUserMysql.email, newUserMysql.password],function(err, rows) {
-                      return done(null, newUserMysql);
+                      console.log(rows)
+                        return done(null, newUserMysql);
                     });
                     dbConnection.end();
                 }

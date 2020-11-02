@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const authenticationController = require('../app/authenticate');
 const cloudinary = require('../config/cloudinary');
 const upload = require('../config/multer');
+const forget_password = require("../app/forget_password")
 
 require('dotenv').config();
 
@@ -94,13 +95,15 @@ module.exports = (app, passport) => {
     res.redirect("/");
   });
 
-  app.get("/reset-password", function(req, res) {
-      res.render("user-reset-password", { message: '' })
-  });
+  app.get("/reset-password/:token", forget_password.check_token)
 
-  app.get("/forget-password", function(req, res) {
-      res.render("user-forget-password", { message: '' })
-  });
+  app.post("/reset-password/:token", forget_password.reset_password)
+
+  app.post("/forget-password", forget_password.forget_password)
+
+  app.get("/forget-password", function(req, res){
+    res.render("user-forget-password", { message: '' })
+});
 
   app.get("/verification", function(req, res) {
       res.render("user-verification", { message: '' })

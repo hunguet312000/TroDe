@@ -1,7 +1,6 @@
 {
   "name": "web-ejs",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,11 +24,22 @@
     "jsonwebtoken": "^8.5.1",
     "multer": "^1.4.2",
     "mysql": "^2.18.1",
+    "nodemailer": "^6.4.14",
     "nodemon": "^2.0.4",
     "passport": "^0.4.1",
     "passport-google-oauth2": "^0.2.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0",
     "passport-oauth2": "^1.5.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hunguet312000/TroDe.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hunguet312000/TroDe/issues"
+  },
+  "homepage": "https://github.com/hunguet312000/TroDe#readme",
+  "description": ""
 }
