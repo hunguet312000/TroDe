@@ -4,6 +4,7 @@ const upload = require('../config/multer');
 const { updateInfo, changePassword } = require("../app/updateUserProfile");
 const bcrypt = require('bcrypt');
 const postManage = require('../app/savePosts');
+const forgetPassword = require("../app/forgetPassword")
 require('dotenv').config();
 
 module.exports = (app, passport) => {
@@ -66,7 +67,7 @@ module.exports = (app, passport) => {
         function(req, res) {});
 
     app.get("/content", function(req, res) {
-        res.render("content")
+        res.render("content123")
     });
 
     app.get('/profile', function(req, res) {
@@ -130,7 +131,6 @@ module.exports = (app, passport) => {
         }
     })
 
-
     app.get('/profile-address', function(req, res) {
         const user = req.session.passport.user;
         res.render('user-profile-address', { user: user });
@@ -146,13 +146,15 @@ module.exports = (app, passport) => {
         res.redirect("/");
     });
 
-    app.get("/reset-password", function(req, res) {
-        res.render("user-reset-password", { message: '' })
+    app.get("/reset-password/:token", forgetPassword.checkToken)
+
+    app.post("/reset-password/:token", forgetPassword.resetPassword)
+
+    app.get("/forget-password", function(req, res){
+      res.render("user-forget-password", { message: '' })
     });
 
-    app.get("/forget-password", function(req, res) {
-        res.render("user-forget-password", { message: '' })
-    });
+    app.post("/forget-password", forgetPassword.forgetPassword)
 
     app.get("/verification", function(req, res) {
         res.render("user-verification", { message: '' })
