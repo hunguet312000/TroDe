@@ -40,25 +40,25 @@
                 <span style="font-size: 17px;"><b>Sửa thông tin địa chỉ</b></span>
                 <br><br>
                 <form>
-                    <div class="content" style="background-color: white; height: 340px;">
+                    <div class="content" style="background-color: white; height: 340px;border-radius: 8px;box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, .05);">
                         <div class="row" style="padding:40px;">
                             <div class="col-md-12">
                                 <div class="col-md-4">
                                     <span id="title-item-profile"><i>Họ và tên</i></span>
                                     <br>
-                                    <input type="text" id="address" class="form-control" placeholder="Nhập họ và tên của bạn" style="border-radius: 0;color: #424242; font-size: small;height: 35px;" required data-bv-notempty-message="Không được để trống">
+                                    <input type="text" id="address" class="form-control btn-edit" placeholder="Nhập họ và tên của bạn" style="border-radius: 0;color: #424242; font-size: small;height: 35px;" required data-bv-notempty-message="Không được để trống">
                                     <br>
                                 </div>
                                 <div class="col-md-4">
                                     <span id="title-item-profile"><i>Số điện thoại</i></span>
                                     <br>
-                                    <input type="text" id="city" class="form-control" style="border-radius: 0;color: #424242; font-size: small;height: 35px;text-align: center;" data-meta="Field" value="<%=user.sdt%>" readonly="" tabindex="-1">
+                                    <input type="text" id="city" class="form-control btn-edit" style="border-radius: 0;color: #424242; font-size: small;height: 35px;text-align: center;" data-meta="Field" value="<%=user.sdt%>" readonly="" tabindex="-1">
                                     <br>
                                 </div>
                                 <div class="col-md-4">
                                     <span id="title-item-profile"><i>Tỉnh/Thành phố</i></span>
                                     <br>
-                                    <input type="text" id="city" class="form-control" style="border-radius: 0;color: #424242; font-size: small;height: 35px;text-align: center;" data-meta="Field" value="Hà Nội" readonly="" tabindex="-1">
+                                    <input type="text" id="city" class="form-control btn-edit" style="border-radius: 0;color: #424242; font-size: small;height: 35px;text-align: center;" data-meta="Field" value="Hà Nội" readonly="" tabindex="-1">
                                     <br>
                                 </div>
                             </div>
@@ -67,7 +67,7 @@
                                 <div class="col-md-4">
                                     <span id="title-item-profile"><i>Quận/Huyện</i></span>
                                     <br>
-                                    <select class="custom-select" id="huyen" name="quan" placeholder="Vui lòng chọn quận/huyện" style="border-radius: 0;color: #424242; font-size: small;height: 35px;width: 100%;" required data-bv-notempty-message="Không được để trống">
+                                    <select class="custom-select btn-edit" id="huyen" name="quan" placeholder="Vui lòng chọn quận/huyện" style="border-radius: 0;color: #424242; font-size: small;height: 35px;width: 100%;" required data-bv-notempty-message="Không được để trống">
                                         <option value="" selected= "selected">Lựa chọn Quận/Huyện</option>
                                       </select>
                                     <br>
@@ -75,7 +75,7 @@
                                 <div class="col-md-4">
                                     <span id="title-item-profile"><i>Phường/Xã</i></span>
                                     <br>
-                                    <select class="custom-select" id="xa" name="xa" style="border-radius: 0;color: #424242; font-size: small;height: 35px;width: 100%;" required data-bv-notempty-message="Không được để trống">
+                                    <select class="custom-select btn-edit" id="xa" name="xa" style="border-radius: 0;color: #424242; font-size: small;height: 35px;width: 100%;" required data-bv-notempty-message="Không được để trống">
                                         <option value="" selected= "selected">Lựa chọn Phường/Xã</option>
                                       </select>
                                     <br>
@@ -84,7 +84,7 @@
                                 <div class="col-md-4">
                                     <span id="title-item-profile"><i>Địa chỉ</i></span>
                                     <br>
-                                    <input type="text" id="address" class="form-control" placeholder="Vui lòng nhập địa số nhà, tòa nhà, ..." style="border-radius: 0;color: #424242; font-size: small;height: 35px;" required data-bv-notempty-message="Không được để trống">
+                                    <input type="text" id="address" class="form-control btn-edit" placeholder="Vui lòng nhập địa số nhà, tòa nhà, ..." style="border-radius: 0;color: #424242; font-size: small;height: 35px;" required data-bv-notempty-message="Không được để trống">
                                     <br>
                                 </div>
                             </div>

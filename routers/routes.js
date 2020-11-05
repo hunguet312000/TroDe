@@ -42,15 +42,15 @@ module.exports = (app, passport) => {
         });
 
     app.get('/auth/facebook',
-    passport.authenticate('facebook', {scope: ["email"]})
+        passport.authenticate('facebook', { scope: ["email"] })
     );
 
     app.get('/auth/facebook/user-home',
-      passport.authenticate('facebook', { failureRedirect: '/login' }),
-      function(req, res) {
-        // Successful authentication, redirect home.
-        res.redirect('/');
-      });
+        passport.authenticate('facebook', { failureRedirect: '/login' }),
+        function(req, res) {
+            // Successful authentication, redirect home.
+            res.redirect('/');
+        });
 
     app.get("/signup", function(req, res) {
         res.render("user-signup", {
@@ -69,47 +69,60 @@ module.exports = (app, passport) => {
         res.render("content")
     });
 
+
+    app.get('/content-user', function(req, res) {
+        if (req.isAuthenticated()) {
+            const user = req.session.passport.user;
+            res.render("content-user", { user: user });
+        } else { res.redirect('/login') }
+    })
+
+    app.get('/room-user', function(req, res) {
+        if (req.isAuthenticated()) {
+            const user = req.session.passport.user;
+            res.render("user-room", { user: user });
+        } else { res.redirect('/login') }
+    })
+
+
+
     app.get('/profile', function(req, res) {
-        if(req.isAuthenticated()){
+        if (req.isAuthenticated()) {
             const user = req.session.passport.user;
             res.render("user-profile", { user: user });
-        }
-        else{res.redirect('/login')}
+        } else { res.redirect('/login') }
     })
 
     app.get('/profile-info', function(req, res) {
-        if(req.isAuthenticated()){
+        if (req.isAuthenticated()) {
             const user = req.session.passport.user;
             res.render('user-profile-info', { user: user });
-        }
-        else {res.redirect('/login')}
+        } else { res.redirect('/login') }
     })
 
     app.get('/profile-edit', function(req, res) {
-        if(req.isAuthenticated()){
+        if (req.isAuthenticated()) {
             const user = req.session.passport.user;
             res.render('user-profile-edit', { user: user });
-        }
-        else {res.redirect('/login')}
+        } else { res.redirect('/login') }
     })
 
     app.post("/profile-edit", function(req, res) {
-        if(req.isAuthenticated()){
+        if (req.isAuthenticated()) {
             const newInfo = req.body;
             const oldInfo = req.session.passport.user;
             updateInfo(newInfo, oldInfo);
             req.logout();
             res.redirect("/login")
-        }
-        else {res.redirect('/login')}
+        } else { res.redirect('/login') }
     })
 
     app.get('/profile-change-password', function(req, res) {
-        if(req.isAuthenticated()){
+        if (req.isAuthenticated()) {
             const user = req.session.passport.user;
             console.log(user)
             res.render('user-profile-change-password', { user: user });
-        }else {res.redirect('/login')}
+        } else { res.redirect('/login') }
     })
 
     app.post("/profile-change-password", function(req, res) {
@@ -162,11 +175,12 @@ module.exports = (app, passport) => {
         res.render("user-verification-email", { message: '' })
     });
 
+
+
     app.get("/post", function(req, res) {
-        if(req.isAuthenticated()) {
-             res.render("user-post", {username: req.user.ten_nguoi_dung});
-        }
-        else {
+        if (req.isAuthenticated()) {
+            res.render("user-post", { username: req.user.ten_nguoi_dung });
+        } else {
             res.redirect('/login');
         }
     });

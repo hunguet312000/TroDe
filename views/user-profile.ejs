@@ -1,7 +1,7 @@
 <%- include("partials/navbar-user-profile",{user: user}); -%>
     <div class="container" id="profile-content">
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-sm-2">
                 <span style="font-size: 12px;">Xin chào <%=user.ten_nguoi_dung %>,</span>
                 <br><br>
                 <a href="profile" style="text-decoration: none;">
@@ -36,13 +36,13 @@
                     <i class="far fa-edit" style="color: rgb(255, 0, 98);font-size: 19px;">&nbsp;</i><span id="catelogy"><b>Tạo bài viết mới</b></span>
                 </a>
             </div>
-            <div class="col-md-10">
+            <div class="col-sm-10">
                 <span style="font-size: 17px;"><b>Quản lý thông tin</b></span>
                 <br><br>
                 <div class="row">
-                    <div class="col-md-6" style="background-color: white;height: 214px;">
+                    <div class="col-sm-6 wrap-content">
                         <div class="row">
-                            <div class="col-md-11">
+                            <div class="col-sm-12">
                                 <br>
                                 <div style="padding: 16px;">
                                     <span style="font-size: 16px;"><b>Thông tin cá nhân</b></span>
@@ -57,13 +57,10 @@
                                     <div class="info-iten" style="font-size: 14px;">SĐT: <strong><%=user.sdt %></strong> </div>
                                 </div>
                             </div>
-                            <div class="col-md-1" id="division">
-                                <div style="background-color: #eff0f5;height: 214px;"></div>
-                            </div>
                         </div>
                         <br>
                     </div>
-                    <div class="col-md-6" style="background-color: white;height: 214px;">
+                    <div class="col-sm-6 wrap-content">
                         <br>
                         <div style="padding: 16px;">
                             <span style="font-size: 16px;"><b>Thay đổi mật khẩu</b></span>

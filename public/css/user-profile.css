@@ -1,10 +1,10 @@
 body {
-    background-color: #eff0f5;
+    background: #f8f8f8;
     font-family: Montserrat;
 }
 
 #profile-content {
-    margin-top: 120px;
+    margin-top: 90px;
     height: 84vh;
 }
 
@@ -27,8 +27,17 @@ body {
     color: hotpink;
 }
 
-@media (max-width:992px) {
-    #division {
-        display: none;
+@media (max-width:769px) {
+    .wrap-content {
+        height: fit-content;
     }
+}
+
+.wrap-content {
+    background-color: #fff;
+    height: 214px;
+    border-radius: 8px;
+    box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, .05);
+    width: 49%;
+    margin-right: 1%;
 }

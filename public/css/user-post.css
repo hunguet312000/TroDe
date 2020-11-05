@@ -1,10 +1,10 @@
 body {
-    background-color: #eff0f5;
+    background: #f8f8f8;
     font-family: Montserrat;
 }
 
 #profile-content {
-    margin-top: 120px;
+    margin-top: 90px;
     margin-bottom: -12%;
 }
 
@@ -46,6 +46,7 @@ body {
     background-color: #d4f3eb;
     color: #11c296;
     border: 1px solid #d4f3eb;
+    box-shadow: 0px -3px 6px 2px rgba(0, 0, 0, 0.2);
 }
 
 #btn-upload:hover {
@@ -105,4 +106,69 @@ body {
 
 #button-submit:focus {
     outline: 0;
+}
+
+label {
+    color: #424242;
+    font-weight: 900;
+}
+
+select,
+input {
+    color: #424242;
+    font-size: small;
+    font-weight: 700;
+    height: 35px;
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .08);
+    background-color: rgba(61, 26, 26, 0.07)!important;
+    border: 1 px solid #E8ECEE!important;
+    padding-left: 15px;
+}
+
+option {
+    font-size: 13.5px;
+    cursor: pointer;
+}
+
+select,
+input:focus {
+    outline: none;
+    background-color: #fff!important;
+}
+
+select:invalid {
+    color: gray;
+}
+
+.uploadimg,
+.address,
+.space,
+.utilities,
+.policy {
+    float: right;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+@media (max-width:990px) {
+    .uploadimg {
+        float: left;
+    }
+}
+
+@media (max-width:769px) {
+    .uploadimg,
+    .address,
+    .space,
+    .utilities,
+    .policy {
+        float: left;
+        width: 100%;
+    }
 }
