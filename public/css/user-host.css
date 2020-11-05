@@ -5,7 +5,7 @@ body {
 
 #profile-content {
     margin-top: 90px;
-    margin-bottom: -12%;
+    margin-bottom: 50px;
 }
 
 #ul-li {
@@ -15,7 +15,7 @@ body {
 }
 
 #ul-li:hover {
-    color: hotpink;
+    color: #11c296;
 }
 
 #catelogy {
@@ -24,7 +24,7 @@ body {
 }
 
 #catelogy:hover {
-    color: hotpink;
+    color: #11c296;
 }
 
 .imagePreview {

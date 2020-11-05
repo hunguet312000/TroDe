@@ -65,8 +65,8 @@ module.exports = (app, passport) => {
         }),
         function(req, res) {});
 
-    app.get("/content", function(req, res) {
-        res.render("content")
+    app.get("/rooms", function(req, res) {
+        res.render("guest-product-grid")
     });
 
 
@@ -76,6 +76,10 @@ module.exports = (app, passport) => {
             res.render("content-user", { user: user });
         } else { res.redirect('/login') }
     })
+
+    app.get("/room", function(req, res) {
+        res.render("guest-room")
+    });
 
     app.get('/room-user', function(req, res) {
         if (req.isAuthenticated()) {
@@ -177,9 +181,9 @@ module.exports = (app, passport) => {
 
 
 
-    app.get("/post", function(req, res) {
+    app.get("/host", function(req, res) {
         if (req.isAuthenticated()) {
-            res.render("user-post", { username: req.user.ten_nguoi_dung });
+            res.render("user-host", { username: req.user.ten_nguoi_dung });
         } else {
             res.redirect('/login');
         }
