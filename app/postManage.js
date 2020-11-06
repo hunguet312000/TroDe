@@ -3,6 +3,7 @@ const mysql = require('mysql');
 const dbconfig = require('../config/database');
 require('dotenv').config();
 exports.savePosts = async(req, res) => {
+    console.log(req.body);
     const uploader = async(path) => await cloudinary.uploads(path, 'Image');
     let insert_hinh_anh_values = []
     let files = req.files;
@@ -70,12 +71,9 @@ exports.displayPostHome = async(req, res) => {
             console.log(dataDisplay);
             if (req.isAuthenticated()) {
                 res.render("user-home", { username: req.user.ten_nguoi_dung, userData: dataDisplay });
-
             } else { res.render('guest-home', { userData: dataDisplay }) }
         })
-
     })
-
 }
 
 // dbConnection.connect(function (err) {

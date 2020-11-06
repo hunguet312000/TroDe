@@ -33,11 +33,11 @@
                         <i class="fas fa-clipboard" style="color: rgb(0, 195, 255);font-size: 19px;">&nbsp;</i><span id="catelogy"><b>Bài đã đăng</b></span>
                     </a>
                     <br><br>
-                    <a href="post" style="text-decoration: none;">
+                    <a href="host" style="text-decoration: none;">
                         <i class="far fa-edit" style="color: rgb(255, 0, 98);font-size: 19px;">&nbsp;</i><span id="catelogy" style="color: #1A9CB7;"><b>Tạo bài viết mới</b></span>
                     </a>
                 </div>
-                <form action="/post" method="post" enctype="multipart/form-data">
+                <form action="/host" method="post" enctype="multipart/form-data">
                     <div class="col-sm-10">
                         <span style="font-size: 17px;"><b>Tạo bài viết mới</b></span>
                         <br><br>
@@ -48,7 +48,7 @@
                                 <br>
                                 <div class="col-sm-6">
                                     <label for="phan-loai">*Phân loại nơi cho thuê</label>
-                                    <select class="custom-select" id="phan-loai" name="phan-loai" required data-bv-notempty-message="Không được để trống">
+                                    <select class="custom-select" id="phan-loai" name="phan_loai" required data-bv-notempty-message="Không được để trống">
                                     <option value="" disabled selected hidden>Chọn loại cho thuê</option>
                                     <option value="Chung cư">Chung cư</option>
                                     <option value="Phòng trọ">Phòng trọ</option>
@@ -56,12 +56,12 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="title">*Tên nhà trọ, chung cư</label>
-                                    <input name="postTitle" type="text" id="title" class="form-control" placeholder="Vui lòng nhập tiêu đề bài viết của bạn" required data-bv-notempty-message="Không được để trống">
+                                    <input name="ten_phong" type="text" id="title" class="form-control" placeholder="Vui lòng nhập tiêu đề bài viết của bạn" required data-bv-notempty-message="Không được để trống">
                                     <br>
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="phan-loai">*Hình thức cho thuê</label>
-                                    <select class="custom-select" id="phan-loai" name="phan-loai" required data-bv-notempty-message="Không được để trống">
+                                    <select class="custom-select" id="phan-loai" name="hinh_thuc_thue" required data-bv-notempty-message="Không được để trống">
                                     <option value="" disabled selected hidden>Loại phòng dành cho</option>
                                     <option value="Cá nhân">Cá nhân</option>
                                     <option value="Tập thể">Tập thể</option>
@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="phan-loai">Khác (dành riêng cho phòng trọ)</label>
-                                    <select class="custom-select" id="phan-loai" name="phan-loai">
+                                    <select class="custom-select" id="phan-loai" name="phan_loai_khac">
                                     <option value="" disabled selected hidden>Chọn lựa chọn của bạn</option>
                                     <option value="Ở chung với chủ nhà">Ở chung với chủ nhà</option>
                                     <option value="Ở riêng với chủ nhà">Ở riêng với chủ nhà</option>
@@ -88,13 +88,13 @@
                                 <br>
                                 <div class="col-sm-6">
                                     <label for="city">*Tỉnh/ Thành phố</label>
-                                    <input name="addressCity" type="text" id="city" class="form-control" data-meta="Field" value="Hà Nội" readonly="" tabindex="-1" required data-bv-notempty-message="Không được để trống">
+                                    <input name="thanh_pho" type="text" id="city" class="form-control" data-meta="Field" value="Hà Nội" readonly="" tabindex="-1" required data-bv-notempty-message="Không được để trống">
                                     <br>
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="huyen">*Quận/ Huyện </label>
                                     <br>
-                                    <select class="custom-select" id="huyen" name="district" placeholder="Vui lòng chọn quận/huyện" required data-bv-notempty-message="Không được để trống">
+                                    <select name="quan_huyen" class="custom-select" id="huyen" placeholder="Vui lòng chọn quận/huyện" required data-bv-notempty-message="Không được để trống">
                                     <option value="" selected= "selected">Lựa chọn Quận/Huyện</option>
                                   </select>
                                     <br><br>
@@ -102,14 +102,14 @@
                                 <div class="col-sm-6">
                                     <label for="xa">*Phường/ Xã </label>
                                     <br>
-                                    <select class="custom-select" id="xa" name="sub_district" required data-bv-notempty-message="Không được để trống">
+                                    <select name="phuong_xa" class="custom-select" id="xa" required data-bv-notempty-message="Không được để trống">
                                     <option value="" selected= "selected">Lựa chọn Phường/Xã</option>
                                   </select>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <label for="address">*Địa chỉ</label>
-                                    <input name="privateAddress" type="text" id="address" class="form-control" placeholder="Vui lòng nhập địa chỉ số nhà, tòa nhà, phố, ..." required data-bv-notempty-message="Không được để trống">
+                                    <input name="dia_chi" type="text" id="address" class="form-control" placeholder="Vui lòng nhập địa chỉ số nhà, tòa nhà, phố, ..." required data-bv-notempty-message="Không được để trống">
                                     <br>
                                 </div>
                             </div>
@@ -127,22 +127,22 @@
                                 <br>
                                 <div class="col-sm-6">
                                     <label for="title">*Phòng trọ, chung cư của bạn có diện tích là? M2</label>
-                                    <input name="postTitle" type="number" id="title" class="form-control" placeholder="Vui lòng nhập diện tích căn phòng cho thuê của bạn" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
+                                    <input name="dien_tich" type="number" id="title" class="form-control" placeholder="Vui lòng nhập diện tích căn phòng cho thuê của bạn" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
                                     <br>
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="title">*Phòng ngủ</label>
-                                    <input name="postTitle" type="number" id="title" class="form-control" placeholder="Vui lòng nhập số phòng ngủ" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
+                                    <input name="phong_ngu" type="number" id="title" class="form-control" placeholder="Vui lòng nhập số phòng ngủ" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
                                     <br>
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="title">*Phòng tắm</label>
-                                    <input name="postTitle" type="number" id="title" class="form-control" placeholder="Vui lòng nhập số phòng tắm" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
+                                    <input name="phong_tam" type="number" id="title" class="form-control" placeholder="Vui lòng nhập số phòng tắm" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
                                     <br>
                                 </div>
                                 <div class="col-sm-3">
                                     <label for="phan-loai">*Phòng khách</label>
-                                    <select class="custom-select" id="phan-loai" name="phan-loai" required data-bv-notempty-message="Không được để trống">
+                                    <select  name="phong_khach" class="custom-select" id="phan-loai" required data-bv-notempty-message="Không được để trống">
                                     <option value="" disabled selected hidden>Chọn lựa chọn của bạn</option>
                                     <option value="Không có phòng khách">Không có phòng khách</option>
                                     <option value="Có phòng khách">Có phòng khách</option>
@@ -150,7 +150,7 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <label for="phan-loai">*Phòng bếp</label>
-                                    <select class="custom-select" id="phan-loai" name="phan-loai" required data-bv-notempty-message="Không được để trống">
+                                    <select name="phong_bep" class="custom-select" id="phan-loai" required data-bv-notempty-message="Không được để trống">
                                     <option value="" disabled selected hidden>Chọn lựa chọn của bạn</option>
                                     <option value="Không có phòng bếp">Không có phòng bếp</option>
                                     <option value="Có phòng bếp">Có phòng bếp</option>
@@ -171,84 +171,84 @@
                                 <br>
                                 <div class="col-sm-3">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Wifi" value="Wifi" style="width:15px;height:15px;margin-right: 3px;">
+                                        <input name="wifi" class="form-check-input" type="checkbox" id="Wifi" value="Wifi" style="width:15px;height:15px;margin-right: 3px;">
                                         <label class="form-check-label" for="Wifi" style="vertical-align: middle;">Wifi</label>
                                     </div>
                                     <br>
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Internet" value="Internet" style="width:15px;height:15px;margin-right: 3px;">
+                                        <input name="internet" class="form-check-input" type="checkbox" id="Internet" value="Internet" style="width:15px;height:15px;margin-right: 3px;">
                                         <label class="form-check-label" for="Wifi" style="vertical-align: middle;">Internet</label>
                                     </div>
                                     <br>
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Điều hòa" value="Điều hòa" style="width:15px;height:15px;margin-right: 3px;">
+                                        <input name="dieu_hoa" class="form-check-input" type="checkbox" id="Điều hòa" value="Điều hòa" style="width:15px;height:15px;margin-right: 3px;">
                                         <label class="form-check-label" for="Wifi" style="vertical-align: middle;">Điều hòa</label>
                                     </div>
                                     <br>
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="TV" value="TV" style="width:15px;height:15px;margin-right: 3px;">
+                                        <input name="tv" class="form-check-input" type="checkbox" id="TV" value="TV" style="width:15px;height:15px;margin-right: 3px;">
                                         <label class="form-check-label" for="TV" style="vertical-align: middle;">TV</label>
                                     </div>
                                     <br>
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Quạt" value="Quạt" style="width:15px;height:15px;margin-right: 3px;">
+                                        <input name="quat" class="form-check-input" type="checkbox" id="Quạt" value="Quạt" style="width:15px;height:15px;margin-right: 3px;">
                                         <label class="form-check-label" for="Quạt" style="vertical-align: middle;">Quạt</label>
                                     </div>
                                     <br>
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Bình nóng lạnh" value="Bình nóng lạnh" style="width:15px;height:15px;margin-right: 3px;">
+                                        <input name="nong_lanh" class="form-check-input" type="checkbox" id="Bình nóng lạnh" value="Bình nóng lạnh" style="width:15px;height:15px;margin-right: 3px;">
                                         <label class="form-check-label" for="Quạt" style="vertical-align: middle;">Bình nóng lạnh</label>
                                     </div>
                                     <br>
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Máy giặt" value="Máy giặt" style="width:15px;height:15px;margin-right: 3px;">
+                                        <input name="may_giat" class="form-check-input" type="checkbox" id="Máy giặt" value="Máy giặt" style="width:15px;height:15px;margin-right: 3px;">
                                         <label class="form-check-label" for="Máy giặt" style="vertical-align: middle;">Máy giặt</label>
                                     </div>
                                     <br>
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Tủ lạnh" value="Tủ lạnh" style="width:15px;height:15px;margin-right: 3px;">
+                                        <input name="tu_lanh" class="form-check-input" type="checkbox" id="Tủ lạnh" value="Tủ lạnh" style="width:15px;height:15px;margin-right: 3px;">
                                         <label class="form-check-label" for="Tủ lạnh" style="vertical-align: middle;">Tủ lạnh</label>
                                     </div>
                                     <br>
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Giá phơi quần áo" value="Giá phơi quần áo" style="width:15px;height:15px;margin-right: 3px;">
+                                        <input name="gia_phoi_quan_ao" class="form-check-input" type="checkbox" id="Giá phơi quần áo" value="Giá phơi quần áo" style="width:15px;height:15px;margin-right: 3px;">
                                         <label class="form-check-label" for="Giá phơi quần áo" style="vertical-align: middle;">Giá phơi quần áo</label>
                                     </div>
                                     <br>
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Cửa sổ" value="Cửa sổ" style="width:15px;height:15px;margin-right: 3px;">
+                                        <input name="cua_so" class="form-check-input" type="checkbox" id="Cửa sổ" value="Cửa sổ" style="width:15px;height:15px;margin-right: 3px;">
                                         <label class="form-check-label" for="Cửa sổ" style="vertical-align: middle;">Cửa sổ</label>
                                     </div>
                                     <br>
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Ban công" value="Ban công" style="width:15px;height:15px;margin-right: 3px;">
+                                        <input name="ban_cong" class="form-check-input" type="checkbox" id="Ban công" value="Ban công" style="width:15px;height:15px;margin-right: 3px;">
                                         <label class="form-check-label" for="Ban công" style="vertical-align: middle;">Ban công</label>
                                     </div>
                                     <br>
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Tủ quần áo" value="Tủ quần áo" style="width:15px;height:15px;margin-right: 3px;">
+                                        <input name="tu_quan_ao" class="form-check-input" type="checkbox" id="Tủ quần áo" value="Tủ quần áo" style="width:15px;height:15px;margin-right: 3px;">
                                         <label class="form-check-label" for="Tủ quần áo" style="vertical-align: middle;">Tủ quần áo</label>
                                     </div>
                                     <br>
@@ -258,14 +258,14 @@
                                 <br>
                                 <div class="col-sm-6">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Còi báo cháy" value="Còi báo cháy" style="width:15px;height:15px;margin-right: 3px;">
+                                        <input name="cao_bao_chay" class="form-check-input" type="checkbox" id="Còi báo cháy" value="Còi báo cháy" style="width:15px;height:15px;margin-right: 3px;">
                                         <label class="form-check-label" for="Còi báo cháy" style="vertical-align: middle;">Còi báo cháy</label>
                                     </div>
                                     <br>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Bình chữa cháy" value="Bình chữa cháy" style="width:15px;height:15px;margin-right: 3px;">
+                                        <input name="binh_chua_chay" class="form-check-input" type="checkbox" id="Bình chữa cháy" value="Bình chữa cháy" style="width:15px;height:15px;margin-right: 3px;">
                                         <label class="form-check-label" for="Bình chữa cháy" style="vertical-align: middle;">Bình chữa cháy</label>
                                     </div>
                                     <br>
@@ -274,28 +274,28 @@
                                 <br>
                                 <div class="col-sm-3">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Thang máy" value="Thang máy" style="width:15px;height:15px;margin-right: 3px;">
+                                        <input name="thang_may" class="form-check-input" type="checkbox" id="Thang máy" value="Thang máy" style="width:15px;height:15px;margin-right: 3px;">
                                         <label class="form-check-label" for="Thang máy" style="vertical-align: middle;">Thang máy</label>
                                     </div>
                                     <br>
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Thang bộ" value="Thang bộ" style="width:15px;height:15px;margin-right: 3px;">
+                                        <input name="thang_bo" class="form-check-input" type="checkbox" id="Thang bộ" value="Thang bộ" style="width:15px;height:15px;margin-right: 3px;">
                                         <label class="form-check-label" for="Thang bộ" style="vertical-align: middle;">Thang bộ</label>
                                     </div>
                                     <br>
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Khu vực đổ rác" value="Khu vực đổ rác" style="width:15px;height:15px;margin-right: 3px;">
+                                        <input name="cho_do_rac" class="form-check-input" type="checkbox" id="Khu vực đổ rác" value="Khu vực đổ rác" style="width:15px;height:15px;margin-right: 3px;">
                                         <label class="form-check-label" for="Khu vực đổ rác" style="vertical-align: middle;">Khu vực đổ rác</label>
                                     </div>
                                     <br>
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Khu vực để xe" value="Khu vực để xe" style="width:15px;height:15px;margin-right: 3px;">
+                                        <input name="cho_de_xe" class="form-check-input" type="checkbox" id="Khu vực để xe" value="Khu vực để xe" style="width:15px;height:15px;margin-right: 3px;">
                                         <label class="form-check-label" for="Khu vực để xe" style="vertical-align: middle;">Khu vực để xe</label>
                                     </div>
                                     <br>
@@ -315,21 +315,21 @@
                                 <br>
                                 <div class="col-sm-12">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Hạn chế làm ồn sau 11 giờ" value="Hạn chế làm ồn sau 11 giờ" style="width:15px;height:15px;margin-right: 3px;">
+                                        <input name="khong_lam_on" class="form-check-input" type="checkbox" id="Hạn chế làm ồn sau 11 giờ" value="Hạn chế làm ồn sau 11 giờ" style="width:15px;height:15px;margin-right: 3px;">
                                         <label class="form-check-label" for="Hạn chế làm ồn sau 11 giờ" style="vertical-align: middle;">Hạn chế làm ồn sau 11 giờ</label>
                                     </div>
                                     <br>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Không hút thuốc ở khu vực chung" value="Không hút thuốc ở khu vực chung" style="width:15px;height:15px;margin-right: 3px;">
+                                        <input name="khong_hut_thuoc" class="form-check-input" type="checkbox" id="Không hút thuốc ở khu vực chung" value="Không hút thuốc ở khu vực chung" style="width:15px;height:15px;margin-right: 3px;">
                                         <label class="form-check-label" for="Không hút thuốc ở khu vực chung" style="vertical-align: middle;">Không hút thuốc ở khu vực chung</label>
                                     </div>
                                     <br>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Không nuôi thú cưng trong phòng" value="Không nuôi thú cưng trong phòng" style="width:15px;height:15px;margin-right: 3px;">
+                                        <input name="khong_thu_cung" class="form-check-input" type="checkbox" id="Không nuôi thú cưng trong phòng" value="Không nuôi thú cưng trong phòng" style="width:15px;height:15px;margin-right: 3px;">
                                         <label class="form-check-label" for="Không nuôi thú cưng trong phòng" style="vertical-align: middle;">Không nuôi thú cưng trong phòng</label>
                                     </div>
                                     <br>
@@ -337,13 +337,10 @@
                                 <br>
                                 <div style="font-size: large;border-bottom: 2px solid #f2f2f2;"><b>Thêm quy định mới</b></div>
                                 <br>
-                                <div><label for="huong-dan"><i><b>Hướng dẫn cách gõ</b></i></label>
-                                    <textarea class="form-control" rows="4" id="huong-dan" class="form-control" data-meta="Field" readonly="" tabindex="-1"><p>text</p> để xác định một đoạn văn ( tức là viết các đoạn văn ngắt đoạn với nhau). &#13;&#10;<b>text</b> hoặc <strong>text</strong> để in đậm chữ.&#13;&#10;<i>text</i> để viết chữ nghiêng.&#13;&#10;<u>text</u> để viết chữ gạch chân.</textarea>
-                                    <br>
-                                </div>
+
                                 <div class="col-md-12" style="margin-top: 0px; margin-bottom: 20px;">
                                     <label for="mota">*Nội dung</label>
-                                    <textarea class="form-control" id="mota" rows="6" required data-bv-notempty-message="Không được để trống" style="border-radius: 4px;box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .08);" placeholder="Thêm quy định ..."></textarea>
+                                    <textarea name="quy_dinh_khac" class="form-control" id="mota" rows="6" required data-bv-notempty-message="Không được để trống" style="border-radius: 4px;box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .08);" placeholder="Thêm quy định ..."></textarea>
                                 </div>
                             </div>
                         </div>
@@ -358,13 +355,10 @@
                             <div class="row" style="padding:40px;">
                                 <div style="font-size: large;border-bottom: 2px solid #f2f2f2;"><b>*Thông tin nhà trọ</b></div>
                                 <br>
-                                <div><label for="huong-dan"><i><b>Hướng dẫn cách gõ</b></i></label>
-                                    <textarea class="form-control" rows="4" id="huong-dan" class="form-control" data-meta="Field" readonly="" tabindex="-1"><p>text</p> để xác định một đoạn văn ( tức là viết các đoạn văn ngắt đoạn với nhau). &#13;&#10;<b>text</b> hoặc <strong>text</strong> để in đậm chữ.&#13;&#10;<i>text</i> để viết chữ nghiêng.&#13;&#10;<u>text</u> để viết chữ gạch chân.</textarea>
-                                    <br>
-                                </div>
+                              
                                 <div class="col-md-12" style="margin-top: 0px; margin-bottom: 20px;">
                                     <label for="mota">*Nội dung</label>
-                                    <textarea class="form-control" id="mota" rows="6" required data-bv-notempty-message="Không được để trống" style="border-radius: 4px;box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .08);" placeholder="Nhập thông tin ..."></textarea>
+                                    <textarea name="thong_tin_khac" class="form-control" id="mota" rows="6" required data-bv-notempty-message="Không được để trống" style="border-radius: 4px;box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .08);" placeholder="Nhập thông tin ..."></textarea>
                                 </div>
                             </div>
                         </div>
@@ -381,22 +375,22 @@
                                 <br>
                                 <div class="col-sm-6">
                                     <label for="title">*Người lớn</label>
-                                    <input name="postTitle" type="number" id="title" class="form-control" placeholder="Nhập thông tin" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
+                                    <input name="nguoi_lon" type="number" id="title" class="form-control" placeholder="Nhập thông tin" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
                                     <br>
                                 </div>
                                 <div class="col-sm-3">
                                     <label for="title">*Trẻ em (2 - 12 TUỔI)</label>
-                                    <input name="postTitle" type="number" id="title" class="form-control" placeholder="Nhập thông tin" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
+                                    <input name="tre_em" type="number" id="title" class="form-control" placeholder="Nhập thông tin" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
                                     <br>
                                 </div>
                                 <div class="col-sm-3">
                                     <label for="title">*Trẻ em (dưới 2 tuổi)</label>
-                                    <input name="postTitle" type="number" id="title" class="form-control" placeholder="Nhập thông tin" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
+                                    <input name="tre_nho" type="number" id="title" class="form-control" placeholder="Nhập thông tin" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
                                     <br>
                                 </div>
                                 <div class="col-sm-12">
                                     <label for="title">*Tổng số người</label>
-                                    <input name="postTitle" type="number" id="title" class="form-control" placeholder="Nhập thông tin" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
+                                    <input name="tong_so_nguoi" type="number" id="title" class="form-control" placeholder="Nhập thông tin" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
                                     <br>
                                 </div>
                             </div>
@@ -414,7 +408,7 @@
                                 <br>
                                 <div class="col-sm-12">
                                     <label for="title" style="margin-bottom: 10px;">*Số tiền (VNĐ)</label>
-                                    <input name="postTitle" type="number" id="title" class="form-control" placeholder="Nhập thông tin" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
+                                    <input name="so_tien" type="number" id="title" class="form-control" placeholder="Nhập thông tin" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
                                     <br>
                                 </div>
                             </div>
