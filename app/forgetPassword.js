@@ -89,7 +89,6 @@ exports.resetPassword = function(req, res){
                 console.log('success');
             }
         })
-
         res.redirect('/login');
     }
     else{

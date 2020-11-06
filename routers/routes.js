@@ -3,8 +3,8 @@ const cloudinary = require('../config/cloudinary');
 const upload = require('../config/multer');
 const { updateInfo, changePassword } = require("../app/updateUserProfile");
 const bcrypt = require('bcrypt');
-const postManage = require('../app/savePosts');
-const forgetPassword = require("../app/forgetPassword")
+const postManage = require('../app/postManage');
+const forgetPassword = require("../app/forgetPassword");
 require('dotenv').config();
 
 module.exports = (app, passport) => {
@@ -13,6 +13,7 @@ module.exports = (app, passport) => {
     app.get("/user-home", function(req, res) {
         res.redirect('/');
     });
+
     app.get("/login", function(req, res) {
         res.render("user-login", {
             message: req.flash("loginMessage")
@@ -43,15 +44,15 @@ module.exports = (app, passport) => {
         });
 
     app.get('/auth/facebook',
-    passport.authenticate('facebook', {scope: ["email"]})
+        passport.authenticate('facebook', { scope: ["email"] })
     );
 
     app.get('/auth/facebook/user-home',
-      passport.authenticate('facebook', { failureRedirect: '/login' }),
-      function(req, res) {
-        // Successful authentication, redirect home.
-        res.redirect('/');
-      });
+        passport.authenticate('facebook', { failureRedirect: '/login' }),
+        function(req, res) {
+            // Successful authentication, redirect home.
+            res.redirect('/');
+        });
 
     app.get("/signup", function(req, res) {
         res.render("user-signup", {
@@ -66,51 +67,72 @@ module.exports = (app, passport) => {
         }),
         function(req, res) {});
 
-    app.get("/content", function(req, res) {
-        res.render("content123")
+    app.get("/rooms", function(req, res) {
+      if (req.isAuthenticated()) {
+          const user = req.session.passport.user;
+          res.render("user-product-grid", { user: user});
+      } else { res.render("guest-product-grid"); }
+    });
+
+    app.get("/room", function(req, res) {
+      if (req.isAuthenticated()) {
+          const user = req.session.passport.user;
+          res.render("user-room", { user: user});
+      } else {   res.render("guest-room"); }
+
+    });
+
+    app.get('/content-user', function(req, res) {
+        if (req.isAuthenticated()) {
+            const user = req.session.passport.user;
+            res.render("content-user", { user: user });
+        } else { res.redirect('/login') }
+    })
+
+    app.get('/room-user', function(req, res) {
+        if (req.isAuthenticated()) {
+            const user = req.session.passport.user;
+            res.render("user-room", { user: user });
+        } else { res.redirect('/login') }
     });
 
     app.get('/profile', function(req, res) {
-        if(req.isAuthenticated()){
+        if (req.isAuthenticated()) {
             const user = req.session.passport.user;
             res.render("user-profile", { user: user });
-        }
-        else{res.redirect('/login')}
+        } else { res.redirect('/login') }
     })
 
     app.get('/profile-info', function(req, res) {
-        if(req.isAuthenticated()){
+        if (req.isAuthenticated()) {
             const user = req.session.passport.user;
             res.render('user-profile-info', { user: user });
-        }
-        else {res.redirect('/login')}
+        } else { res.redirect('/login') }
     })
 
     app.get('/profile-edit', function(req, res) {
-        if(req.isAuthenticated()){
+        if (req.isAuthenticated()) {
             const user = req.session.passport.user;
             res.render('user-profile-edit', { user: user });
-        }
-        else {res.redirect('/login')}
+        } else { res.redirect('/login') }
     })
 
     app.post("/profile-edit", function(req, res) {
-        if(req.isAuthenticated()){
+        if (req.isAuthenticated()) {
             const newInfo = req.body;
             const oldInfo = req.session.passport.user;
             updateInfo(newInfo, oldInfo);
             req.logout();
             res.redirect("/login")
-        }
-        else {res.redirect('/login')}
+        } else { res.redirect('/login') }
     })
 
     app.get('/profile-change-password', function(req, res) {
-        if(req.isAuthenticated()){
+        if (req.isAuthenticated()) {
             const user = req.session.passport.user;
             console.log(user)
             res.render('user-profile-change-password', { user: user });
-        }else {res.redirect('/login')}
+        } else { res.redirect('/login') }
     })
 
     app.post("/profile-change-password", function(req, res) {
@@ -164,14 +186,13 @@ module.exports = (app, passport) => {
         res.render("user-verification-email", { message: '' })
     });
 
-    app.get("/post", function(req, res) {
-        if(req.isAuthenticated()) {
-             res.render("user-post", {username: req.user.ten_nguoi_dung});
-        }
-        else {
+    app.get("/host", function(req, res) {
+        if (req.isAuthenticated()) {
+            res.render("user-host", { username: req.user.ten_nguoi_dung });
+        } else {
             res.redirect('/login');
         }
     });
 
-    app.post('/post', upload.array('image'), postManage.savePosts);
+    app.post('/host', upload.array('image'), postManage.savePosts);
 }
