@@ -151,6 +151,7 @@ body {
         font-size: xx-large;
     }
 }
+<<<<<<< Updated upstream
 
 #a1 {
     height: 0px;
@@ -172,3 +173,5 @@ body {
 #a1:hover .glyphicon.glyphicon-user {
     border: 0.5px solid hotpink;
 }
+=======
+>>>>>>> Stashed changes
