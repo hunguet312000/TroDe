@@ -68,7 +68,7 @@ exports.displayPostHome = async(req, res) => {
             for (let i of Object.values(obj).reverse()) {
                 dataDisplay.push(i[0]);
             }
-            console.log(dataDisplay);
+            //console.log(dataDisplay);
             if (req.isAuthenticated()) {
                 res.render("user-home", { username: req.user.ten_nguoi_dung, userData: dataDisplay });
             } else { res.render('guest-home', { userData: dataDisplay }) }
