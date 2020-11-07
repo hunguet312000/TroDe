@@ -1,5 +1,5 @@
 body {
-    background-color: #eff0f5;
+    background-color: #f8f8f8;
     font-family: Montserrat;
 }
 
@@ -9,56 +9,119 @@ body {
 }
 
 #a-text-dangki:hover {
-    color: hotpink;
+    color: #17ca9d;
 }
 
 .content-login {
-    background-color: white;
+    background-color: #fff;
     height: 275.6px;
 }
 
+.user-name {
+    border-radius: 7px;
+    color: #424242;
+    height: 40px;
+    border: 1px solid #e6e6e6;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.user-name:focus {
+    border-color: #17ca9d;
+    box-shadow: 0 0 5px 0 #17ca9d;
+    outline: 0 none;
+}
+
+.password {
+    border-radius: 7px;
+    color: #424242;
+    height: 40px;
+    border: 1px solid #e6e6e6;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.password:focus {
+    border-color: #17ca9d;
+    box-shadow: 0 0 5px 0 #17ca9d;
+    outline: 0 none;
+}
+
 #button-submit {
+    border-radius: 7px;
     margin-top: 1%;
     margin-bottom: 1%;
     width: 100%;
-    color: #007ff0;
-    background-color: transparent;
+    color: #fff;
+    background: rgb(23, 202, 157);
+    border-color: transparent;
+    font-weight: 900;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
 }
 
 #button-submit:hover {
-    color: white;
-    background-color: #189eff;
-    border: 1px solid #189eff;
+    border-color: #17ca9d;
+    box-shadow: 0 0 5px 0 #17ca9d;
+    outline: 0 none;
 }
 
 #button-facebook {
-    background-color: #3b5998;
+    background-color: #fff;
     height: 40px;
     width: 100%;
     border-radius: 3px;
     margin-bottom: 12px;
-    border: 1px solid #3b5998;
+    color: #222;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 500;
+    border-radius: 7px;
+    border: 1px solid #e6e6e6;
 }
 
 #button-gmail {
-    background-color: #d34836;
+    background-color: #fff;
     height: 40px;
     width: 100%;
     border-radius: 3px;
     margin-bottom: 12px;
-    border: 1px solid #d34836;
+    color: #222;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 500;
+    border-radius: 7px;
+    border: 1px solid #e6e6e6;
 }
 
 #button-facebook:hover {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-weight: 900;
+    box-shadow: 0 0 5px 0 rgb(133, 123, 123);
 }
 
 #button-facebook:focus {
     outline: 0;
 }
 
+.fa-google {
+    background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
 #button-gmail:hover {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-weight: 900;
+    box-shadow: 0 0 5px 0 rgb(133, 123, 123);
 }
 
 #button-gmail:focus {
@@ -73,7 +136,7 @@ body {
 }
 
 #text-qmk:hover {
-    color: hotpink;
+    color: #17ca9d;
 }
 
 @media (max-width:769px) {
@@ -90,5 +153,5 @@ body {
 }
 
 #logo:hover {
-    color: hotpink;
+    color: #17ca9d;
 }

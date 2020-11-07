@@ -1,0 +1,84 @@
+<div class="container" id="profile-content">
+    <div class="row">
+        <div class="col-md-2">
+            <span style="font-size: 12px;">Xin chào <%=user.ten_nguoi_dung %>,</span>
+            <br><br>
+            <a href="profile" style="text-decoration: none;">
+                <i class="fas fa-user-circle" style="color: hotpink;font-size: 19px;">&nbsp;</i><span id="catelogy"><b>Quản lý tài khoản</b></span>
+            </a>
+            <ul style="list-style: none;margin-left: -5px;">
+                <li>
+                    <a href="profile-info" style="text-decoration: none;">
+                        <span id="ul-li" style="color: #1A9CB7;">Thông tin cá nhân</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="profile-change-password" style="text-decoration: none;">
+                        <span id="ul-li">Đổi mật khẩu</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="profile-address" style="text-decoration: none;">
+                        <span id="ul-li">Địa chỉ</span>
+                    </a>
+                </li>
+            </ul>
+            <a href="#" style="text-decoration: none;">
+                <i class="fas fa-bell" style="color: rgb(255, 30, 0);font-size: 19px;">&nbsp;</i><span id="catelogy"><b>Thông báo</b></span>
+            </a>
+            <br><br>
+            <a href="#" style="text-decoration: none;">
+                <i class="fas fa-clipboard" style="color: rgb(0, 195, 255);font-size: 19px;">&nbsp;</i><span id="catelogy"><b>Bài đã đăng</b></span>
+            </a>
+            <br><br>
+            <a href="post" style="text-decoration: none;">
+                <i class="far fa-edit" style="color: rgb(255, 0, 98);font-size: 19px;">&nbsp;</i><span id="catelogy"><b>Tạo bài viết mới</b></span>
+            </a>
+        </div>
+        <div class="col-md-10">
+            <span style="font-size: 17px;"><b>Thông tin cá nhân</b></span>
+            <br><br>
+            <div class="content" style="background-color: white; height: fit-content; border-radius: 8px;box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, .05);">
+                <div class="row" style="padding:40px;">
+                    <div class="col-md-4">
+                        <span id="title-item-profile"><i>Tên đăng nhập</i></span>
+                        <br>
+                        <div class="proflie-item-info"><b> <%=user.ten_nguoi_dung%> </b></div>
+                        <br>
+                    </div>
+                    <div class="col-md-4">
+                        <span id="title-item-profile"><i>Địa chỉ email</i></span>
+                        <br>
+                        <div class="proflie-item-info"><b> <%=user.email%> </b></div>
+                        <br>
+                    </div>
+                    <div class="col-md-4">
+                        <span id="title-item-profile"><i>Số điện thoại</i></span>
+                        <br>
+                        <div class="proflie-item-info"><b> <%=user.sdt%> </b></div>
+                        <br>
+                    </div>
+                    <div class="col-md-4">
+                        <span id="title-item-profile"><i>Ngày sinh</i></span>
+                        <br>
+                        <div class="proflie-item-info"><b> <%=user.ngay_sinh%> </b></div>
+                    </div>
+                    <div class="col-md-4">
+                        <span id="title-item-profile"><i>Giới tính</i></span>
+                        <br>
+                        <div class="proflie-item-info"><b> <%=user.gioi_tinh%> </b></div>
+                    </div>
+                </div>
+                <br>
+                <div class="row" style="padding:40px;">
+                    <div class="col-md-4">
+                        <a href="profile-edit" style="text-decoration: none;">
+                            <button type="button" class="btn btn-primary" id="button-edit"><span id = "text-btn"><b>SỬA THÔNG TIN</b></span></button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
