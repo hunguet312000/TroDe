@@ -87,7 +87,7 @@ module.exports = (app, passport) => {
             const user = req.session.passport.user;
             res.render("content-user", { user: user });
         } else { res.redirect('/login') }
-    })
+    });
 
     app.get('/room-user', function(req, res) {
         if (req.isAuthenticated()) {
@@ -99,23 +99,16 @@ module.exports = (app, passport) => {
     app.get('/profile', function(req, res) {
         if (req.isAuthenticated()) {
             const user = req.session.passport.user;
-            res.render("user-profile", { user: user });
+            res.render("user-profile-info", { user: user });
         } else { res.redirect('/login') }
-    })
-
-    app.get('/profile-info', function(req, res) {
-        if (req.isAuthenticated()) {
-            const user = req.session.passport.user;
-            res.render('user-profile-info', { user: user });
-        } else { res.redirect('/login') }
-    })
+    });
 
     app.get('/profile-edit', function(req, res) {
         if (req.isAuthenticated()) {
             const user = req.session.passport.user;
             res.render('user-profile-edit', { user: user });
         } else { res.redirect('/login') }
-    })
+    });
 
     app.post("/profile-edit", function(req, res) {
         if (req.isAuthenticated()) {
@@ -125,7 +118,21 @@ module.exports = (app, passport) => {
             req.logout();
             res.redirect("/login")
         } else { res.redirect('/login') }
-    })
+    });
+
+    app.get('/profile-info', function(req, res) {
+        if (req.isAuthenticated()) {
+            const user = req.session.passport.user;
+            res.render('user-profile-info', { user: user });
+        } else { res.redirect('/login') }
+    });
+
+    app.get('/list-host', function(req, res) {
+        if (req.isAuthenticated()) {
+            const user = req.session.passport.user;
+            res.render('user-list-host', { user: user });
+        } else { res.redirect('/login') }
+    });
 
     app.get('/profile-change-password', function(req, res) {
         if (req.isAuthenticated()) {
@@ -133,7 +140,7 @@ module.exports = (app, passport) => {
             console.log(user)
             res.render('user-profile-change-password', { user: user });
         } else { res.redirect('/login') }
-    })
+    });
 
     app.post("/profile-change-password", function(req, res) {
         const newInfo = req.body;
@@ -151,26 +158,26 @@ module.exports = (app, passport) => {
             req.logout();
             res.redirect("/login")
         }
-    })
+    });
 
     app.get('/profile-address', function(req, res) {
         const user = req.session.passport.user;
         res.render('user-profile-address', { user: user });
-    })
+    });
 
     app.get('/address-edit', function(req, res) {
         const user = req.session.passport.user;
         res.render('user-profile-address-edit', { user: user });
-    })
+    });
 
     app.get("/logout", function(req, res) {
         req.logout();
         res.redirect("/");
     });
 
-    app.get("/reset-password/:token", forgetPassword.checkToken)
+    app.get("/reset-password/:token", forgetPassword.checkToken);
 
-    app.post("/reset-password/:token", forgetPassword.resetPassword)
+    app.post("/reset-password/:token", forgetPassword.resetPassword);
 
     app.get("/forget-password", function(req, res){
       res.render("user-forget-password", { message: '' })
@@ -195,4 +202,12 @@ module.exports = (app, passport) => {
     });
 
     app.post('/host', upload.array('image'), postManage.savePosts);
+
+    app.get("/host-edit", function(req, res) {
+       if (req.isAuthenticated()) {
+           res.render("user-host-edit", { username: req.user.ten_nguoi_dung });
+       } else {
+           res.redirect('/login');
+       }
+   });
 }
