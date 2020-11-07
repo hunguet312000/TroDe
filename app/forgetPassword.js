@@ -45,7 +45,7 @@ exports.forgetPassword = function(req, res){
                   console.log('Email sent: ' + info.response);
                 }
               });
-            res.send("mail sent!")
+            res.render("user-verification");
         }
     });
 
@@ -53,7 +53,7 @@ exports.forgetPassword = function(req, res){
 
 exports.checkToken = function(req,res){
    var reset_link = req.params.token;
-   console.log(reset_link);
+   console.log("checkToken");
    if( reset_link ){
        jwt.verify(reset_link, process.env.RESET_PASSWORD_KEY, function(err, decoded_data){
            if( err ){
@@ -77,8 +77,8 @@ exports.checkToken = function(req,res){
 
 exports.resetPassword = function(req, res){
     var reset_link = req.params.token;
-    console.log(reset_link);
-    if ( req.body.password == req.body.cf_password ){
+    if ( req.body.password == req.body.passwordcf ){
+        console.log(req.body);
         const hashPass = bcrypt.hashSync(req.body.password, 10);
         dbConnection = mysql.createConnection(dbconfig);
         dbConnection.connect();
