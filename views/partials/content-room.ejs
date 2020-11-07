@@ -6,7 +6,12 @@
     </div>
     <div class="container wrap-content">
         <div class="row" style="margin-bottom: 50px;">
-            <button class="btn-like"><i class="far fa-heart"></i><span class = "reaction" style="font-size: 16px;">Thêm vào yêu thích</span></button>
+            <div>
+                <button class="btn-like" style="float: left;"><i class="far fa-flag" style="margin-right: 5px;"></i><span class = "reaction" style="font-size: 16px;">Báo cáo</span></button>
+                <span class="sao" style="color: #252525;font-weight: 500;float: right;margin-left: 10px;"><i class="fas fa-star" style="color: #ffb025;font-size: 15px;">&nbsp;&nbsp;</i><span style="font-weight: 900;font-size: 15px;">5&nbsp</span><span>(Số
+                    lượt đánh giá)</span></span>
+                <button class="btn-like"><i class="far fa-heart"></i><span class = "reaction" style="font-size: 16px;">Thêm vào yêu thích</span></button>
+            </div>
             <br>
             <div class="col-sm-9" style="margin-top: 20px;">
                 <div class="title" style="margin-bottom: 10px;">
@@ -78,13 +83,54 @@
                 <div class="binh-luan" style="margin-bottom: 10px;">
                     <h3><b>Bình luận</b></h3>
                     <br>
+                    <div class="binh-luan-cua-ban" style="border: 2px solid #f2f2f2;margin-bottom: 15px;border-radius: 8px;height: fit-content;">
+                        <form style="padding: 10px;">
+                            <div>
+                                <label for="danh-gia" style="border-bottom: 2px solid #f2f2f2;margin-bottom: 20px; margin-right: 10px;">*Đánh giá của bạn</label>
+                                <select class="custom-select btn-ip" id="danh-gia" name="phan_loai" required data-bv-notempty-message="Không được để trống" style="width:120px;">
+                                    <option value="" disabled selected hidden>Đánh giá</option>
+                                    <option value="1">1 sao</option>
+                                    <option value="2">2 sao</option>
+                                    <option value="3">3 sao</option>
+                                    <option value="4">4 sao</option>
+                                    <option value="5">5 sao</option>
+                                    </select>
+                            </div>
+                            <div>
+                                <label for="mota-thongtin" style="border-bottom: 2px solid #f2f2f2;">*Bình luận của bạn</label>
+                                <br>
+                                <span>
+                                    <button type="button" class="btn btn-primary btn-function" id="btn-xuongdong" style="background-color: rgb(23, 202, 157);">Xuống dòng</button>
+                                    <button type="button" class="btn btn-primary btn-function" id="btn-B" style="background-color: rgb(23, 202, 157);"><b>B</b></button>
+                                    <button type="button" class="btn btn-primary btn-function" id="btn-I" style="background-color: rgb(23, 202, 157);"><i>I</i></button>
+                                    <button type="button" class="btn btn-primary btn-function" id="btn-U" style="background-color: rgb(23, 202, 157);"><u>U</u></button>
+                                    <button type="button" class="btn btn-primary btn-function" id="btn-remove" style="background-color: rgb(23, 202, 157);">Xóa tất cả</button>
+                                    <button type="button" class="btn btn-primary btn-function" id="btn-display" style="background-color: rgb(23, 202, 157);">Hiển thị nội dung</button>
+                                </span>
+                                <br>
+                                <textarea name="thong_tin_khac" class="form-control btn-ip" id="mota-thongtin" rows="4" required data-bv-notempty-message="Không được để trống" placeholder="Nhập thông tin ..."></textarea>
+                                <div class="hien-thi" style="width:100%;height: fit-content;border-radius: 6px;margin-top: 12px;margin-bottom: 15px;background-color: rgba(61, 26, 26, 0.07);padding: 8px;"></div>
+                            </div>
+                            <br>
+                            <div style="float: right;">
+                                <button type="submit" class="btn btn-primary btn-function" id="button-submit">Gửi bình luận</button>
+                            </div>
+                            <br>
+                        </form>
+                    </div>
                     <div class="binh-luan" style="border-bottom: 2px solid #f2f2f2;margin-bottom: 10px;">
-                        <div class="user-name" style="margin-bottom: 5px;font-weight: 900;">Bui Thanh </div>
+                        <div class="user-name" style="margin-bottom: 5px;font-weight: 900;">Bui Thanh
+                            <span class="sao" style="color: #252525;font-weight: 500;float: right;margin-left: 10px;"><i class="fas fa-star" style="color: #ffb025;font-size: 15px;">&nbsp;&nbsp;</i><span style="font-weight: 900;font-size: 15px;">5&nbsp</span><span>(Số
+                                lượt đánh giá)</span></span>
+                        </div>
                         <div class="time" style="margin-bottom: 10px;">khoảng 2 tháng trước</div>
                         <div class="comment">Very nice and friendly. She let me check-in early.</div>
                     </div>
                     <div class="binh-luan" style="border-bottom: 2px solid #f2f2f2;margin-bottom: 10px;">
-                        <div class="user-name" style="margin-bottom: 5px;font-weight: 900;">Bui Thanh </div>
+                        <div class="user-name" style="margin-bottom: 5px;font-weight: 900;">Bui Thanh
+                            <span class="sao" style="color: #252525;font-weight: 500;float: right;margin-left: 10px;"><i class="fas fa-star" style="color: #ffb025;font-size: 15px;">&nbsp;&nbsp;</i><span style="font-weight: 900;font-size: 15px;">5&nbsp</span><span>(Số
+                                lượt đánh giá)</span></span>
+                        </div>
                         <div class="time" style="margin-bottom: 10px;">khoảng 2 tháng trước</div>
                         <div class="comment">Very nice and friendly. She let me check-in early.</div>
                     </div>
@@ -144,6 +190,26 @@
             $(this).addClass('is-hover');
         }).mouseleave(function() {
             $(this).removeClass('is-hover');
+        })
+        $('#btn-xuongdong').on('click', function() {
+            $('#mota-thongtin').val($('#mota-thongtin').val() + '<br>');
+        })
+        $('#btn-B').on('click', function() {
+            $('#mota-thongtin').val($('#mota-thongtin').val() + '<b></b>');
+        })
+        $('#btn-I').on('click', function() {
+            $('#mota-thongtin').val($('#mota-thongtin').val() + '<i></i>');
+        })
+        $('#btn-U').on('click', function() {
+            $('#mota-thongtin').val($('#mota-thongtin').val() + '<u></u>');
+        })
+        $('#btn-remove').on('click', function() {
+            $('#mota-thongtin').val('');
+            $('.hien-thi').html('');
+        })
+
+        $('#btn-display').on('click', function() {
+            $('.hien-thi').html($('#mota-thongtin').val());
         })
     });
 </script>

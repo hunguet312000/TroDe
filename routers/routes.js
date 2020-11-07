@@ -68,17 +68,17 @@ module.exports = (app, passport) => {
         function(req, res) {});
 
     app.get("/rooms", function(req, res) {
-      if (req.isAuthenticated()) {
-          const user = req.session.passport.user;
-          res.render("user-product-grid", { user: user});
-      } else { res.render("guest-product-grid"); }
+        if (req.isAuthenticated()) {
+            const user = req.session.passport.user;
+            res.render("user-product-grid", { user: user });
+        } else { res.render("guest-product-grid"); }
     });
 
     app.get("/room", function(req, res) {
-      if (req.isAuthenticated()) {
-          const user = req.session.passport.user;
-          res.render("user-room", { user: user});
-      } else {   res.render("guest-room"); }
+        if (req.isAuthenticated()) {
+            const user = req.session.passport.user;
+            res.render("user-room", { user: user });
+        } else { res.render("guest-room"); }
 
     });
 
@@ -107,6 +107,13 @@ module.exports = (app, passport) => {
         if (req.isAuthenticated()) {
             const user = req.session.passport.user;
             res.render('user-profile-info', { user: user });
+        } else { res.redirect('/login') }
+    })
+
+    app.get('/list-host', function(req, res) {
+        if (req.isAuthenticated()) {
+            const user = req.session.passport.user;
+            res.render('user-list-host', { user: user });
         } else { res.redirect('/login') }
     })
 
@@ -172,8 +179,8 @@ module.exports = (app, passport) => {
 
     app.post("/reset-password/:token", forgetPassword.resetPassword)
 
-    app.get("/forget-password", function(req, res){
-      res.render("user-forget-password", { message: '' })
+    app.get("/forget-password", function(req, res) {
+        res.render("user-forget-password", { message: '' })
     });
 
     app.post("/forget-password", forgetPassword.forgetPassword)
@@ -189,6 +196,14 @@ module.exports = (app, passport) => {
     app.get("/host", function(req, res) {
         if (req.isAuthenticated()) {
             res.render("user-host", { username: req.user.ten_nguoi_dung });
+        } else {
+            res.redirect('/login');
+        }
+    });
+
+    app.get("/host-edit", function(req, res) {
+        if (req.isAuthenticated()) {
+            res.render("user-host-edit", { username: req.user.ten_nguoi_dung });
         } else {
             res.redirect('/login');
         }

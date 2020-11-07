@@ -15,7 +15,7 @@ body {
 }
 
 #ul-li:hover {
-    color: hotpink;
+    color: #17ca9d;
 }
 
 #catelogy {
@@ -24,7 +24,7 @@ body {
 }
 
 #catelogy:hover {
-    color: hotpink;
+    color: #17ca9d;
 }
 
 #title-item-profile {
@@ -39,16 +39,24 @@ body {
 }
 
 #button-edit {
+    border-radius: 7px;
+    margin-top: 1%;
+    margin-bottom: 1%;
     width: 100%;
-    background-color: #d4f3eb;
-    color: #11c296;
-    border: 1px solid #d4f3eb;
+    color: #fff;
+    background: rgb(23, 202, 157);
+    border-color: transparent;
+    font-weight: 900;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
 }
 
 #button-edit:hover {
-    background-color: #17ca9d;
-    color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-color: #17ca9d;
+    box-shadow: 0 0 5px 0 #17ca9d;
+    outline: 0 none;
 }
 
 #button-edit:focus {
@@ -56,17 +64,24 @@ body {
 }
 
 #button-submit {
+    border-radius: 7px;
+    margin-top: 1%;
+    margin-bottom: 1%;
     width: 100%;
-    background-color: #d4f3eb;
-    color: #11c296;
-    border: 1px solid #d4f3eb;
-    height: 48px;
+    color: #fff;
+    background: rgb(23, 202, 157);
+    border-color: transparent;
+    font-weight: 900;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
 }
 
 #button-submit:hover {
-    background-color: #17ca9d;
-    color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-color: #17ca9d;
+    box-shadow: 0 0 5px 0 #17ca9d;
+    outline: 0 none;
 }
 
 #button-submit:focus {
@@ -79,10 +94,71 @@ body {
     font-weight: 500;
     height: 40px;
     border-radius: 5px!important;
-    box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, .15)!important;
     background-color: rgba(61, 26, 26, 0.07)!important;
 }
 
 .btn-edit:focus {
     background-color: #fff!important;
+    border-color: #17ca9d;
+    box-shadow: 0 0 5px 0 #17ca9d;
+    outline: 0 none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.gj-icon {
+    vertical-align: middle;
+    margin-top: 7px;
+    margin-right: 10px;
+}
+
+#datepicker {
+    border: transparent;
+    border-bottom: 1px solid #e6e6e6;
+    color: #424242;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    padding-right: 25px;
+}
+
+#datepicker:focus {
+    border-bottom: #17ca9d;
+    box-shadow: 0 0 5px 0 #17ca9d;
+    outline: 0 none;
+    border-radius: 7px;
+}
+
+#gallery-img {
+    width: 100%;
+    height: 100px;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.title {
+    font-weight: 900;
+    color: #252525;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    font-weight: 900;
+    width: 100%;
+    height: 50px;
+}
+
+.title:hover {
+    color: #17ca9d;
 }
