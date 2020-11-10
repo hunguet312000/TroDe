@@ -1,6 +1,7 @@
 const cloudinary = require('../config/cloudinary');
 const mysql = require('mysql');
 const dbconfig = require('../config/database');
+const async = require('async')
 require('dotenv').config();
 
 exports.savePosts = async(req, res) => {
@@ -47,8 +48,8 @@ exports.savePosts = async(req, res) => {
                 nguoi_lon: req.body.nguoi_lon,
                 tre_em: req.body.tre_em,
                 tre_nho: req.body.tre_nho,
-                tong_so_nguoi:req.body.tong_so_nguoi,
-                gia_phong: req.body.gia_phong,
+                tong_so_nguoi:parseInt(req.body.tong_so_nguoi),
+                gia_phong: parseInt(req.body.gia_phong),
                 thoi_gian_dang: new Date(),
             }
 
@@ -105,15 +106,19 @@ exports.savePosts = async(req, res) => {
     });
 }
 
-exports.displayPostHome = async(req, res) => {
+exports.displayListPost = async(req, res) => {
     dbConnection = mysql.createConnection(dbconfig);
     dbConnection.connect(function(err) {
         if (err) throw err;
-        let queryValue = 'SELECT phong_tro.gia_phong, phong_tro.thoi_gian_dang, nguoi_dung.ten_nguoi_dung, phong_tro.dia_chi_cu_the, hinh_anh.path_anh, phong_tro.id_phong_tro from phong_tro' +
+        let phan_loai;
+        if(req.params.type == "phong_tro") {phan_loai = "Phòng trọ"}
+        else if(req.params.type == "chung_cu") {phan_loai = "Chung cư"}
+        let queryValue = 'SELECT * from phong_tro' +
             ' inner join nguoi_dung on phong_tro.id_chu_so_huu = nguoi_dung.id_nguoi_dung' +
             ' inner join hinh_anh on phong_tro.id_phong_tro = hinh_anh.id_phong_tro' +
+            ' WHERE phong_tro.phan_loai = ?'
             ' order by phong_tro.id_phong_tro desc';
-        dbConnection.query(queryValue, function(err, rows) {
+        dbConnection.query(queryValue, [phan_loai], function(err, rows) {
             if (err) throw err;
             let obj = rows.reduce((res, curr) => {
                 if (res[curr.id_phong_tro])
@@ -127,35 +132,82 @@ exports.displayPostHome = async(req, res) => {
             for (let i of Object.values(obj).reverse()) {
                 dataDisplay.push(i[0]);
             }
-            //console.log(dataDisplay);
+
             if (req.isAuthenticated()) {
-                res.render("user-home", { username: req.user.ten_nguoi_dung, userData: dataDisplay });
-            } else { res.render('guest-home', { userData: dataDisplay }) }
+                res.render("user-product-grid", { user: req.user, userData : dataDisplay});
+            } else { res.render("guest-product-grid", {userData:dataDisplay}); }
         })
     })
 }
 
-// dbConnection.connect(function (err) {
-//   if(err) throw err;
-//   let queryValue = 'SELECT phong_tro.gia_phong, phong_tro.dia_chi, hinh_anh.path_anh, phong_tro.id_phong_tro from phong_tro' +
-//                       ' inner join nguoi_dung on phong_tro.id_chu_so_huu = nguoi_dung.id_nguoi_dung' +
-//                       ' inner join hinh_anh on phong_tro.id_phong_tro = hinh_anh.id_phong_tro' +
-//                       ' where ten_nguoi_dung = ?' +
-//                       ' order by phong_tro.id_phong_tro ';
-//   dbConnection.query(queryValue, [req.user.ten_nguoi_dung], function (err, rows) {
-//     if(err) throw err;
-//     let obj = rows.reduce((res, curr) =>
-//     {
-//         if (res[curr.id_phong_tro])
-//             res[curr.id_phong_tro].push(curr);
-//         else
-//             Object.assign(res, {[curr.id_phong_tro]: [curr]});
-//
-//         return res;
-//     }, {});
-//     for(let i of Object.values(obj)){
-//       dataDisplay.push(i[0]);
-//     }
-//     res.render("user-home", {username : req.user.ten_nguoi_dung, userData:dataDisplay});
-//   })
-// });
+exports.displayUserListPost = async(req, res) => {
+    if (req.isAuthenticated()) {
+        dbConnection = mysql.createConnection(dbconfig);
+        dbConnection.connect(function(err) {
+            if (err) throw err;
+            let queryValue = 'SELECT phong_tro.gia_phong, phong_tro.tong_so_nguoi, phong_tro.gia_phong, phong_tro.thanh_pho, phong_tro.quan_huyen, phong_tro.phuong_xa, nguoi_dung.ten_nguoi_dung, phong_tro.dien_tich, phong_tro.hinh_thuc_thue nguoi_dung,phong_tro.phan_loai, phong_tro.thoi_gian_dang, nguoi_dung.ten_nguoi_dung, phong_tro.dia_chi_cu_the, hinh_anh.path_anh, phong_tro.id_phong_tro from phong_tro' +
+                ' inner join nguoi_dung on phong_tro.id_chu_so_huu = nguoi_dung.id_nguoi_dung' +
+                ' inner join hinh_anh on phong_tro.id_phong_tro = hinh_anh.id_phong_tro' +
+                ' WHERE nguoi_dung.ten_nguoi_dung = ?'
+                dbConnection.query(queryValue,[req.user.ten_nguoi_dung], function(err, rows) {
+                if (err) throw err;
+                let obj = rows.reduce((res, curr) => {
+                    if (res[curr.id_phong_tro])
+                        res[curr.id_phong_tro].push(curr);
+                    else
+                        Object.assign(res, {
+                            [curr.id_phong_tro]: [curr] });
+                    return res;
+                }, {});
+                let dataDisplay = []
+                for (let i of Object.values(obj).reverse()) {
+                    dataDisplay.push(i[0]);
+                }
+                res.render('user-list-host', { user: req.user, userData:dataDisplay });
+            })
+        })
+    } else { res.redirect('/login') }
+}
+
+exports.displayPostProfile = async(req, res) => {
+    var connection = mysql.createConnection(dbconfig);
+    let query1 = 'SELECT * from phong_tro' +
+            ' inner join nguoi_dung on phong_tro.id_chu_so_huu = nguoi_dung.id_nguoi_dung' +
+            ' WHERE phong_tro.id_phong_tro = ?'
+    var query2 = "SELECT hinh_anh.path_anh from hinh_anh " +
+            " INNER JOIN phong_tro ON phong_tro.id_phong_tro = hinh_anh.id_phong_tro " +
+            " WHERE phong_tro.id_phong_tro = ?"
+    var query3 = "SELECT * from tien_ich_tien_nghi Where id_phong_tro = ?"
+    var return_data = {};
+
+    async.parallel([
+       function(parallel_done) {
+           connection.query(query1, [req.params.id], function(err, results) {
+               if (err) return parallel_done(err);
+               return_data.phong_tro = results;
+               parallel_done();
+           });
+       },
+       function(parallel_done) {
+           connection.query(query2, [req.params.id], function(err, results) {
+               if (err) return parallel_done(err);
+               return_data.path_anh = results;
+               parallel_done();
+           });
+       },
+       function(parallel_done) {
+           connection.query(query3, [req.params.id], function(err, results) {
+               if (err) return parallel_done(err);
+               return_data.tien_ich_tien_nghi = results;
+               parallel_done();
+           });
+       }
+    ], function(err) {
+         if (err) console.log(err);
+         connection.end();
+         if (req.isAuthenticated()) {
+            res.render("user-room", { user: req.user, userData : return_data});
+        } else {   res.render("guest-room", {userData : return_data}); };
+    });
+    
+}
