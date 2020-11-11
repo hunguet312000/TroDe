@@ -33,8 +33,31 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 // app.use(express.json());
 // app.use(cookieParser());
 
-//routes
-require('./routers/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+//Mysql routes
+require("./routers/authentication.js")(app,passport);
+require("./routers/routes.js")(app, passport); // load our routes and pass in our app and fully configured passport
+
+// const {sequelizeInit, Nguoi_dung} = require("./config/sequelize.js");
+//
+// (async function(){
+//
+//   const miho = await Nguoi_dung.create({
+//     ten_nguoi_dung: "miho",
+//     email: "minhhoan1109@gmail.com",
+//     mat_khau: "123",
+//   });
+//   console.log(JSON.stringify(miho));
+// })();
+// const {sequelizeInit, User } = require("./config/sequelize");
+//
+// (async function() {
+//   try {
+//     const users = await User.findAll();
+//     console.log(JSON.stringify(users,null, 2));
+//   } catch (error) {
+//     console.error(error);
+//   }
+// })();
 
 // const dbConnection = mysql.createConnection(dgconfig);
 //
