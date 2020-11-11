@@ -10,26 +10,19 @@ require('dotenv').config();
 
 
 module.exports = (app, passport) => {
-    app.get("/", postManage.displayPostHome);
+    app.get("/", function(req, res) {
+        if (req.isAuthenticated()) {
+            res.render("user-home", { username: req.user.ten_nguoi_dung});
+        } else { res.render('guest-home')}
+    });
 
     app.get("/user-home", function(req, res) {
         res.redirect('/');
     });
 
-    app.get("/rooms", function(req, res) {
-      if (req.isAuthenticated()) {
-          const user = req.session.passport.user;
-          res.render("user-product-grid", { user: user});
-      } else { res.render("guest-product-grid"); }
-    });
+    app.get("/rooms/:type", postManage.displayListPost);
 
-    app.get("/room", function(req, res) {
-      if (req.isAuthenticated()) {
-          const user = req.session.passport.user;
-          res.render("user-room", { user: user});
-      } else {   res.render("guest-room"); }
-
-    });
+    app.get("/room/:id", postManage.displayPostProfile);
 
     app.get('/content-user', function(req, res) {
         if (req.isAuthenticated()) {
