@@ -7,8 +7,6 @@ const postManage = require('../app/postManage');
 const forgetPassword = require("../app/forgetPassword");
 require('dotenv').config();
 
-
-
 module.exports = (app, passport) => {
     app.get("/", function(req, res) {
         if (req.isAuthenticated()) {

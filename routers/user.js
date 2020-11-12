@@ -39,12 +39,7 @@ module.exports = (app, passport) => {
       } else { res.redirect('/login') }
   });
 
-  app.get('/list-host', function(req, res) {
-      if (req.isAuthenticated()) {
-          const user = req.session.passport.user;
-          res.render('user-list-host', { user: user });
-      } else { res.redirect('/login') }
-  });
+  app.get('/list-host', postManage.displayUserListPost);
 
   app.get('/profile-address', function(req, res) {
       const user = req.session.passport.user;
