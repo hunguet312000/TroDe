@@ -2,7 +2,7 @@ const { Sequelize } = require('sequelize');
 const { DataTypes } = require("sequelize");
 
 //Sequelize
-const sequelize = new Sequelize("sequelize", process.env.DATABASE_USER, process.env.DATABASE_PASSWORD, {
+const sequelize = new Sequelize("trode", process.env.DATABASE_USER, process.env.DATABASE_PASSWORD, {
   host: process.env.DATABASE_HOST,
   dialect: 'mysql'
 });
@@ -168,6 +168,10 @@ const Phong_tro = sequelize.define('phong_tro', {
   quy_dinh_khac: {
     type: DataTypes.STRING,
     allowNull: true
+  },
+  path_anh_noi_bat : {
+    type : DataTypes.STRING,
+    allowNull : true
   }
 }, {
   freezeTableName: true
@@ -429,3 +433,4 @@ module.exports = {
   Bao_cao,
   Quan_tri_vien
 }
+//sequelizeInit();
