@@ -2,6 +2,7 @@ const cloudinary = require('../config/cloudinary');
 const mysql = require('mysql');
 const dbconfig = require('../config/database');
 const async = require('async')
+const {sequelizeInit, Nguoi_dung, Phong_tro, Binh_luan} = require("../config/sequelize");
 require('dotenv').config();
 
 exports.savePosts = async(req, res) => {
@@ -179,6 +180,31 @@ exports.displayPostProfile = async(req, res) => {
             " WHERE phong_tro.id_phong_tro = ?"
     var query3 = "SELECT * from tien_ich_tien_nghi Where id_phong_tro = ?"
     var return_data = {};
+    return_data.binh_luan =[];
+
+    try{
+      const binh_luan = await Binh_luan.findAll({
+        include: Nguoi_dung
+      });
+        const present_date = new Date();
+        for(let b of binh_luan){
+          //console.log(JSON.stringify(present_date + " " +b.dataValues.createdAt, null, 2));
+          const timeDiff =  Math.round((present_date.getTime() - b.dataValues.createdAt.getTime())/(1000 * 3600));
+          return_data.binh_luan.push({
+            id_nguoi_binh_luan: b.dataValues.nguoi_dung.dataValues.id_nguoi_dung,
+            ten_nguoi_binh_luan: b.dataValues.nguoi_dung.dataValues.ten_nguoi_dung,
+            id_phong_tro:  b.dataValues.id_phong_tro,
+            id_binh_luan: b.dataValues.id_binh_luan,
+            noi_dung: b.dataValues.noi_dung,
+            rating: b.dataValues.rating,
+            hinh_anh: b.dataValues.hinh_anh,
+            thoi_gian_dang: timeDiff,
+            lan_cuoi_chinh_sua: b.dataValues.updatedAt
+          });
+        }
+    }catch(err){
+      console.log(err);
+    }
 
     async.parallel([
        function(parallel_done) {
@@ -198,6 +224,7 @@ exports.displayPostProfile = async(req, res) => {
        function(parallel_done) {
            connection.query(query3, [req.params.id], function(err, results) {
                if (err) return parallel_done(err);
+               console.log(results);
                return_data.tien_ich_tien_nghi = results;
                parallel_done();
            });
@@ -209,5 +236,20 @@ exports.displayPostProfile = async(req, res) => {
             res.render("user-room", { user: req.user, userData : return_data});
         } else {   res.render("guest-room", {userData : return_data}); };
     });
-    
+
+}
+
+exports.saveComment = async(req, res) => {
+  const binh_luan_moi = {
+    rating: req.body.rating,
+    noi_dung: req.body.nd_binh_luan,
+    id_phong_tro: req.body.id_phong_tro,
+    id_nguoi_binh_luan: req.session.passport.user.id_nguoi_dung,
+  }
+  try{
+    const binh_luan = await Binh_luan.create(binh_luan_moi);
+    res.redirect("/room/" + req.body.id_phong_tro);
+  }catch(err){
+    console.log(err);
+  }
 }

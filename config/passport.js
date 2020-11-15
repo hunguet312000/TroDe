@@ -64,8 +64,9 @@ module.exports = async function(passport) {
                 sdt: phone
               } // if it doesn't exist, we create it with this additional data
               });
-              if(!nguoi_dung[0].isNewRecord){
-                return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
+              //console.log(nguoi_dung[1]);
+              if(!nguoi_dung[1]){
+                return done(null, false, req.flash('signupMessage', 'Account already exists.'));
               }
                 return done(null, nguoi_dung[0].dataValues);
             }catch(err){

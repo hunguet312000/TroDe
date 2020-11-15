@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
 const { DataTypes } = require("sequelize");
-
+const schema = require("./dbSchema");
 //Sequelize
 const sequelize = new Sequelize("sequelize", process.env.DATABASE_USER, process.env.DATABASE_PASSWORD, {
   host: process.env.DATABASE_HOST,
@@ -17,365 +17,41 @@ async function sequelizeInit() {
   }
 };
 
-const Nguoi_dung = sequelize.define('nguoi_dung', {
-  // Model attributes are defined here
-  id_nguoi_dung: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true,
-  },
-  ten_nguoi_dung: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
-  },
-  email: {
-    type: DataTypes.STRING,
-    validate: {
-      isEmail: {
-        msg: "Please enter a true email"
-      }
-    },
-    unique: true,
-    allowNull: false
-  },
-  sdt: {
-    type: DataTypes.INTEGER,
-    allowNull: true
-  },
-  mat_khau: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  dia_chi: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  ho_va_ten: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  gioi_tinh: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  ngay_sinh: {
-    type: DataTypes.DATE,
-    allowNull: true
-  }
-}, {
+const Nguoi_dung = sequelize.define('nguoi_dung', schema.nguoi_dung, {
   freezeTableName: true
   // Other model options go here
 });
 
-const Phong_tro = sequelize.define('phong_tro', {
-  // Model attributes are defined here
-  id_phong_tro: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  thanh_pho: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  quan_huyen: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  phuong_xa: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  dia_chi_cu_the: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  dien_tich: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-  phong_ngu: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-  phong_tam: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-  phong_khach: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  phong_bep: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  thong_tin_khac: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  nguoi_lon: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-  tre_em: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-  tre_nho: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-  tong_so_nguoi: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-  gia_phong: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-  phan_loai: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  ten_phong: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  hinh_thuc_thue: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  phan_loai_khac: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  khong_lam_on: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  khong_hut_thuoc: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  khong_thu_cung: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  quy_dinh_khac: {
-    type: DataTypes.STRING,
-    allowNull: true
-  }
-}, {
+const Phong_tro = sequelize.define('phong_tro', schema.phong_tro, {
   freezeTableName: true
   // Other model options go here
 });
 
-const Tien_ich = sequelize.define('tien_ich_tien_nghi', {
-  id_phong_tro: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-  },
-  wifi: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  internet: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  dieu_hoa: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  tv: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  quat: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  nong_lanh: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  may_giat: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  tu_lanh: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  gia_phoi_quan_ao: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  cua_so: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  ban_cong: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  tu_quan_ao: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  coi_bao_chay: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  binh_chua_chay: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  thang_may: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  thang_bo: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  cho_do_rac: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  cho_de_xe: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-},{
+const Tien_ich = sequelize.define('tien_ich_tien_nghi', schema.tien_ich,{
   freezeTableName: true
 });
 
-const Hinh_anh = sequelize.define('hinh_anh', {
-  // Model attributes are defined here
-  id_anh: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    primaryKey: true,
-  },
-  path_anh: {
-    type: DataTypes.STRING(1000),
-    allowNull: false
-  }
-}, {
+const Hinh_anh = sequelize.define('hinh_anh', schema.hinh_anh, {
   freezeTableName: true
   // Other model options go here
 });
 
-const Binh_luan = sequelize.define('binh_luan', {
-  // Model attributes are defined here
-  id_binh_luan: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  id_phong_tro: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-  id_nguoi_dung: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-  noi_dung: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  hinh_anh: {
-    type: DataTypes.STRING(1000)
-  }
-}, {
+const Binh_luan = sequelize.define('binh_luan', schema.binh_luan, {
   freezeTableName: true
   // Other model options go here
 });
 
-const Bao_cao = sequelize.define('bao_cao', {
-  // Model attributes are defined here
-  id_bao_cao: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  id_nguoi_bao_cao: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-  id_nguoi_bi_bao_cao: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-  noi_dung: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  hinh_anh: {
-    type: DataTypes.STRING(1000)
-  }
-}, {
+const Bao_cao = sequelize.define('bao_cao', schema.bao_cao, {
   freezeTableName: true
   // Other model options go here
 });
 
-const Quan_tri_vien = sequelize.define('quan_tri_vien', {
-  // Model attributes are defined here
-  id_quan_tri_vien: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  ten_quan_tri: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  mat_khau: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  sdt: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-  email: {
-    type: DataTypes.STRING,
-    validate: {
-      isEmail: {
-        msg: "Please enter a true email"
-      }
-    }
-  },
-  ngay_sinh: {
-    type: DataTypes.DATE,
-    allowNull: true
-  }
-}, {
+const Quan_tri_vien = sequelize.define('quan_tri_vien', schema.quan_tri_vien, {
   freezeTableName: true
   // Other model options go here
 });
-// (async function() {
-//   try {
-//     const users = await User.findAll({
-//       where: {
-//         lastName: "9"
-//       }
-//     });
-//     console.log(JSON.stringify(users,null, 2));
-//   } catch (error) {
-//     console.error(error);
-//   }
-// })();
+
+// Phong tro va Nguoi dung
 Phong_tro.belongsTo(Nguoi_dung,{
   foreignKey: {
     name: "id_chu_so_huu",
@@ -389,6 +65,7 @@ Nguoi_dung.hasMany(Phong_tro,{
   }
 });
 
+// Phong tro va Tien ich
 Tien_ich.belongsTo(Phong_tro,{
   foreignKey: {
     name: "id_phong_tro",
@@ -404,6 +81,7 @@ Phong_tro.hasOne(Tien_ich,{
   }
 });
 
+// Phong tro va Hinh anh
 Hinh_anh.belongsTo(Phong_tro,{
   foreignKey: {
     name: "id_phong_tro",
@@ -416,6 +94,52 @@ Phong_tro.hasMany(Hinh_anh,{
     name: "id_phong_tro",
     allowNull: false,
     primaryKey: true
+  }
+});
+
+// Phong tro va Binh luan
+Binh_luan.belongsTo(Phong_tro,{
+  foreignKey: {
+    name: "id_phong_tro",
+    allowNull: false,
+    primaryKey: true
+  }
+});
+Phong_tro.hasMany(Binh_luan,{
+  foreignKey: {
+    name: "id_phong_tro",
+    allowNull: false,
+    primaryKey: true
+  }
+});
+
+// Binh luan  va Nguoi dung
+Binh_luan.belongsTo(Nguoi_dung,{
+  foreignKey: {
+    name: "id_nguoi_binh_luan",
+    allowNull: false,
+    primaryKey: true
+  }
+});
+Nguoi_dung.hasMany(Binh_luan,{
+  foreignKey: {
+    name: "id_nguoi_binh_luan",
+    allowNull: false,
+    primaryKey: true
+  }
+});
+
+// Danh sach yeu thich
+Nguoi_dung.belongsToMany(Phong_tro, {
+  through: 'Danh_sach_yeu_thich',
+  foreignKey: {
+    name: "id_nguoi_dung"
+  }
+});
+Phong_tro.belongsToMany(Nguoi_dung, {
+  through: 'Danh_sach_yeu_thich',
+  foreignKey: {
+    name: "id_phong_tro"
   }
 });
 

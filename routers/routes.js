@@ -55,4 +55,6 @@ module.exports = (app, passport) => {
            res.redirect('/login');
        }
    });
+
+   app.post("/comment", postManage.saveComment);
 }

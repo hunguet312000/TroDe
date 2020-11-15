@@ -8,6 +8,7 @@ const forgetPassword = require("../app/forgetPassword");
 require('dotenv').config();
 
 module.exports = (app, passport) => {
+
   app.get("/login", function(req, res) {
       res.render("user-login", {
           message: req.flash("loginMessage")
@@ -19,6 +20,7 @@ module.exports = (app, passport) => {
       failureRedirect: '/login', // redirect back to the signup page if there is an error
       failureFlash: true // allow flash messages
   }), function(req, res) {
+
       // res.redirect("/")
       // if (req.body.remember) {
       //   req.session.cookie.maxAge = 24 * 60 * 60 * 1000; // Cookie expires after 1 days
