@@ -19,7 +19,7 @@ module.exports = (app, passport) => {
     });
 
     app.get("/rooms/:type", postManage.displayListPost);
-
+    app.get("/rooms/:type/:option", postManage.displayPostByNumOfPeopleOrPrice);
     app.get("/room/:id", postManage.displayPostProfile);
 
     app.get('/content-user', function(req, res) {

@@ -1,9 +1,9 @@
 <div class="content">
     <div class="gallery">
         <%
-        userData.path_anh.forEach(function(path_anh){
+        userData.hinh_anh.forEach(function(path_anh){
         %>
-            <img id="gallery-img" class="gallery-img" src=<%=path_anh.path_anh%>>
+            <img id="gallery-img" class="gallery-img" src=<%=path_anh.dataValues.path_anh%>>
         <%}) %>
 
     </div>
@@ -18,36 +18,36 @@
             <br>
             <div class="col-sm-9" style="margin-top: 20px;">
                 <div class="title" style="margin-bottom: 10px;">
-                    <h2><b><%=userData.phong_tro[0].phan_loai%> - <%=userData.phong_tro[0].ten_phong%></b></h2>
+                    <h2><b><%=userData.phong_tro[0].dataValues.phan_loai%> - <%=userData.phong_tro[0].dataValues.ten_phong%></b></h2>
                 </div>
                 <div class="author">
-                    <span>Đăng bởi: <a href = "#" style="text-decoration: none;"><span class= "author-name" style="color: #222222;font-weight: 900;"><%=userData.phong_tro[0].ten_nguoi_dung%></span></a>
+                    <span>Đăng bởi: <a href = "#" style="text-decoration: none;"><span class= "author-name" style="color: #222222;font-weight: 900;"><%=userData.phong_tro[0].dataValues.ten_nguoi_dung%></span></a>
                     </span>
                 </div>
                 <br>
                 <div class="address-space">
                     <div class="address" style="margin-bottom: 10px;">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span style="font-weight: bold;"><%=userData.phong_tro[0].thanh_pho%> - <%=userData.phong_tro[0].quan_huyen%> - <%=userData.phong_tro[0].phuong_xa%></span>
+                        <span style="font-weight: bold;"><%=userData.phong_tro[0].dataValues.thanh_pho%> - <%=userData.phong_tro[0].dataValues.quan_huyen%> - <%=userData.phong_tro[0].dataValues.phuong_xa%></span>
                     </div>
                     <div class="space">
                         <i class="fas fa-building"></i>
-                        <span class="category" style="font-weight: bold;"><%=userData.phong_tro[0].phan_loai%></span>
+                        <span class="category" style="font-weight: bold;"><%=userData.phong_tro[0].dataValues.phan_loai%></span>
                         <span><b>·</b></span>
-                        <span class="category space"><%=userData.phong_tro[0].dien_tich%></span>
+                        <span class="category space"><%=userData.phong_tro[0].dataValues.dien_tich%></span>
                         <span>m2</span>
                     </div>
                 </div>
                 <br>
                 <div class="type">
                     <div class="loai-phong" style="margin-bottom: 10px;">
-                        <span style="font-weight: bold;"><%=userData.phong_tro[0].hinh_thuc_thue%></span>
+                        <span style="font-weight: bold;"><%=userData.phong_tro[0].dataValues.hinh_thuc_thue%></span>
                         <span><b>·</b></span>
-                        <span style="font-weight: bold;"><%=userData.phong_tro[0].phong_ngu%></span>
+                        <span style="font-weight: bold;"><%=userData.phong_tro[0].dataValues.phong_ngu%></span>
                         <span><b>·</b></span>
-                        <span style="font-weight: bold;"><%=userData.phong_tro[0].phong_tam%></span>
+                        <span style="font-weight: bold;"><%=userData.phong_tro[0].dataValues.phong_tam%></span>
                         <span><b>·</b></span>
-                        <span style="font-weight: bold;">Dành cho <span><%=userData.phong_tro[0].tong_so_nguoi%></span></span>
+                        <span style="font-weight: bold;">Dành cho <span><%=userData.phong_tro[0].dataValues.tong_so_nguoi%></span></span>
                     </div>
                 </div>
                 <br>
@@ -68,7 +68,7 @@
                         <h3><b>Tiện ích, tiện nghi</b></h3>
                         <div class="row">
                             <%
-                            for (let [key, value] of Object.entries(userData.tien_ich_tien_nghi[0])) {
+                            for (let [key, value] of Object.entries(userData.tien_ich[0].dataValues)) {
                                 if(key != "id_phong_tro") {
                             %>
                               <%if(value != null){%>
@@ -150,7 +150,7 @@
             <div class="col-sm-3">
                 <div class="dat-lich-room">
                     <div class="price">
-                        <span><h2 style="font-weight: 900;"><%=userData.phong_tro[0].gia_phong%>₫</h2><span>/tháng</span></span>
+                        <span><h2 style="font-weight: 900;"><%=userData.phong_tro[0].dataValues.gia_phong%>₫</h2><span>/tháng</span></span>
                     </div>
                     <br>
                     <div>

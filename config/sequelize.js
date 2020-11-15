@@ -2,19 +2,19 @@ const { Sequelize } = require('sequelize');
 const { DataTypes } = require("sequelize");
 const schema = require("./dbSchema");
 //Sequelize
-const sequelize = new Sequelize("sequelize", process.env.DATABASE_USER, process.env.DATABASE_PASSWORD, {
-  host: process.env.DATABASE_HOST,
-  dialect: 'mysql'
+const sequelize = new Sequelize("trode", process.env.DATABASE_USER, process.env.DATABASE_PASSWORD, {
+    host: process.env.DATABASE_HOST,
+    dialect: 'mysql'
 });
 
 async function sequelizeInit() {
-  try {
-    await sequelize.authenticate();
-    await sequelize.sync({force: true});
-    console.log('Connection has been established successfully.');
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
+    try {
+        await sequelize.authenticate();
+        await sequelize.sync({ force: true });
+        console.log('Connection has been established successfully.');
+    } catch (error) {
+        console.error('Unable to connect to the database:', error);
+    }
 };
 
 const Nguoi_dung = sequelize.define('nguoi_dung', schema.nguoi_dung, {
@@ -58,11 +58,11 @@ Phong_tro.belongsTo(Nguoi_dung,{
     allowNull: false
   }
 });
-Nguoi_dung.hasMany(Phong_tro,{
-  foreignKey: {
-    name: "id_chu_so_huu",
-    allowNull: false
-  }
+Nguoi_dung.hasMany(Phong_tro, {
+    foreignKey: {
+        name: "id_chu_so_huu",
+        allowNull: false
+    }
 });
 
 // Phong tro va Tien ich
@@ -73,12 +73,12 @@ Tien_ich.belongsTo(Phong_tro,{
     primaryKey: true
   }
 });
-Phong_tro.hasOne(Tien_ich,{
-  foreignKey: {
-    name: "id_phong_tro",
-    allowNull: false,
-    primaryKey: true
-  }
+Phong_tro.hasOne(Tien_ich, {
+    foreignKey: {
+        name: "id_phong_tro",
+        allowNull: false,
+        primaryKey: true
+    }
 });
 
 // Phong tro va Hinh anh
@@ -89,12 +89,12 @@ Hinh_anh.belongsTo(Phong_tro,{
     primaryKey: true
   }
 });
-Phong_tro.hasMany(Hinh_anh,{
-  foreignKey: {
-    name: "id_phong_tro",
-    allowNull: false,
-    primaryKey: true
-  }
+Phong_tro.hasMany(Hinh_anh, {
+    foreignKey: {
+        name: "id_phong_tro",
+        allowNull: false,
+        primaryKey: true
+    }
 });
 
 // Phong tro va Binh luan
@@ -144,12 +144,13 @@ Phong_tro.belongsToMany(Nguoi_dung, {
 });
 
 module.exports = {
-  sequelizeInit,
-  Nguoi_dung,
-  Phong_tro,
-  Tien_ich,
-  Hinh_anh,
-  Binh_luan,
-  Bao_cao,
-  Quan_tri_vien
-}
+        sequelizeInit,
+        Nguoi_dung,
+        Phong_tro,
+        Tien_ich,
+        Hinh_anh,
+        Binh_luan,
+        Bao_cao,
+        Quan_tri_vien
+    }
+    //sequelizeInit();

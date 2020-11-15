@@ -214,7 +214,11 @@ input::-webkit-inner-spin-button {
 }
 
 @media (max-width:990px) {
-    .uploadimg {
+    .uploadimg,
+    .address,
+    .space,
+    .utilities,
+    .policy {
         float: left;
     }
 }
