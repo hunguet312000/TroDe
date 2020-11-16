@@ -149,6 +149,10 @@ const phong_tro = {
   quy_dinh_khac: {
     type: DataTypes.STRING,
     allowNull: true
+  },
+  path_anh_noi_bat: {
+      type: DataTypes.STRING,
+      allowNull: true
   }
 }
 

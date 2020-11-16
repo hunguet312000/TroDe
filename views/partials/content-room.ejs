@@ -21,7 +21,7 @@
                     <h2><b><%=userData.phong_tro[0].dataValues.phan_loai%> - <%=userData.phong_tro[0].dataValues.ten_phong%></b></h2>
                 </div>
                 <div class="author">
-                    <span>Đăng bởi: <a href = "#" style="text-decoration: none;"><span class= "author-name" style="color: #222222;font-weight: 900;"><%=userData.phong_tro[0].dataValues.ten_nguoi_dung%></span></a>
+                    <span>Đăng bởi: <a href = "#" style="text-decoration: none;"><span class= "author-name" style="color: #222222;font-weight: 900;"><%=userData.phong_tro[0].dataValues.ten_nguoi_dung||userData.phong_tro[0].dataValues.id_nguoi_dung%></span></a>
                     </span>
                 </div>
                 <br>
@@ -69,7 +69,7 @@
                         <div class="row">
                             <%
                             for (let [key, value] of Object.entries(userData.tien_ich[0].dataValues)) {
-                                if(key != "id_phong_tro") {
+                                if(key != "id_phong_tro" && key != "createdAt" && key != "updatedAt") {
                             %>
                               <%if(value != null){%>
                                 <div class="col-sm-4" style="margin-bottom: 5px;font-weight: 900;"><%= value%></div>
