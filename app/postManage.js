@@ -239,7 +239,10 @@ exports.displayPostProfile = async(req, res) => {
             },
         });
         const binh_luan = await Binh_luan.findAll({
-            include: Nguoi_dung
+            include: Nguoi_dung,
+            where:{
+              id_phong_tro: req.params.id
+            }
         });
         let userData = {};
         userData.binh_luan = [];
