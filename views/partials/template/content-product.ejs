@@ -4,24 +4,24 @@ userData.forEach(function(data){
 %>
     <div class="col-md-3 col-sm-6">
     <div class="product-card">
-        <a href="/room/<%=data.id_phong_tro%>" style="text-decoration: none;">
+        <a href="/room/<%=data.dataValues.id_phong_tro%>" style="text-decoration: none;">
             <div class="product-img">
-                <img class="img-link" src=<%=data.path_anh%>>
+                <img class="img-link" src=<%=data.dataValues.path_anh_noi_bat%>>
             </div>
             <div class="product-info">
                 <div class="info-title">
-                    <%=data.phan_loai%> - <%=data.ten_phong%>
+                    <%=data.dataValues.phan_loai%> - <%=data.dataValues.ten_phong%>
                 </div>
                 <div class="info-category">
-                    <span class="phongtro-chungcu"><%=data.phan_loai%></span>
+                    <span class="phongtro-chungcu"><%=data.dataValues.phan_loai%></span>
                     <span>·</span>
-                    <span class="so-nguoi"><%=data.tong_so_nguoi%> nguoi</span>
+                    <span class="so-nguoi"><%=data.dataValues.tong_so_nguoi%> nguoi</span>
                 </div>
                 <div class="price">
-                    <%=data.gia_phong%> đ/1 tháng
+                    <%=data.dataValues.gia_phong%> đ/1 tháng
                 </div>
                 <div class="address">
-                    <%=data.thanh_pho%> - <%=data.quan_huyen%> - <%=data.phuong_xa%>
+                    <%=data.dataValues.thanh_pho%> - <%=data.dataValues.quan_huyen%> - <%=data.dataValues.phuong_xa%>
                 </div>
             </div>
         </a>

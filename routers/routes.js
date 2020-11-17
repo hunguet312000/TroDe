@@ -19,7 +19,7 @@ module.exports = (app, passport) => {
     });
 
     app.get("/rooms/:type", postManage.displayListPost);
-
+    app.get("/rooms/:type/:option", postManage.displayPostByNumOfPeopleOrPrice);
     app.get("/room/:id", postManage.displayPostProfile);
 
     app.get('/content-user', function(req, res) {
@@ -55,4 +55,7 @@ module.exports = (app, passport) => {
            res.redirect('/login');
        }
    });
+
+   app.post("/comment", postManage.saveComment);
+   app.post("/saveFavPost", postManage.saveFavPost);
 }
