@@ -325,6 +325,7 @@ const quan_tri_vien = {
   },
   email: {
     type: DataTypes.STRING,
+    unique: true,
     validate: {
       isEmail: {
         msg: "Please enter a true email"
@@ -338,16 +339,15 @@ const quan_tri_vien = {
 }
 
 const danh_sach_yeu_thich = {
-  // Model attributes are defined here
+  id_phong_tro: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    primaryKey: true
+  },
   id_nguoi_dung: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  id_phong_tro: {
-    type: DataTypes.STRING,
-    allowNull: false,
+    primaryKey: true
   }
 }
 

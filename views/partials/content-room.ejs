@@ -13,7 +13,12 @@
                 <button class="btn-like" style="float: left;"><i class="far fa-flag" style="margin-right: 5px;"></i><span class = "reaction" style="font-size: 16px;">Báo cáo</span></button>
                 <span class="sao" style="color: #252525;font-weight: 500;float: right;margin-left: 10px;"><i class="fas fa-star" style="color: #ffb025;font-size: 15px;">&nbsp;&nbsp;</i><span style="font-weight: 900;font-size: 15px;">5&nbsp</span><span>(Số
                     lượt đánh giá)</span></span>
-                <button class="btn-like"><i class="far fa-heart"></i><span class = "reaction" style="font-size: 16px;">Thêm vào yêu thích</span></button>
+                <form name = "fav-post" action="/saveFavPost" method="post">
+                    <input type="hidden" name="addFav_id_phong_tro" value= "<%= userData.phong_tro[0].dataValues.id_phong_tro %>">
+                    <% if(user) %>
+                      <input type="hidden" name="addFav_id_nguoi_dung" value= "<%= user.id_nguoi_dung %>">
+                    <button type="submit" id = "fav-button" class="btn-like"><i class="far fa-heart"></i><span class = "reaction" style="font-size: 16px;">Thêm vào yêu thích</span></button>
+                </form>
             </div>
             <br>
             <div class="col-sm-9" style="margin-top: 20px;">
@@ -132,13 +137,16 @@
                               <span class="sao" style="color: #252525;font-weight: 500;float: right;margin-left: 10px;"><i class="fas fa-star" style="color: #ffb025;font-size: 15px;">&nbsp;&nbsp;</i><span style="font-weight: 900;font-size: 15px;"><%=b.rating %>&nbsp</span><span>(Điểm đánh giá)</span></span>
                           </div>
                           <% if( b.thoi_gian_dang >= 24){ %>
-                            <div class="time" style="margin-bottom: 10px;"> <%= b.thoi_gian_dang/24%> Ngày trước</div>
+                              <% if( b.thoi_gian_dang/24 > 31){ %>
+                                  <div class="time" style="margin-bottom: 10px;"> <%= b.thoi_gian_dang/31%> Tháng trước</div>
+                              <% }%>
+                              <div class="time" style="margin-bottom: 10px;"> <%= b.thoi_gian_dang/24%> Ngày trước</div>
                           <% }else if ( b.thoi_gian_dang < 1) { %>
-                            <% if ( b.thoi_gian_dang*3600 <= 0) {%>
-                              <div class="time" style="margin-bottom: 10px;"> Vừa xong</div>
-                            <% }else{ %>
-                              <div class="time" style="margin-bottom: 10px;"> <%= b.thoi_gian_dang*3600%> Phút trước</div>
-                            <% }%>
+                              <% if ( b.thoi_gian_dang*3600 <= 0) {%>
+                                <div class="time" style="margin-bottom: 10px;"> Vừa xong</div>
+                              <% }else{ %>
+                                <div class="time" style="margin-bottom: 10px;"> <%= b.thoi_gian_dang*60%> Phút trước</div>
+                              <% }%>
                           <% }else { %>
                             <div class="time" style="margin-bottom: 10px;"> <%= b.thoi_gian_dang%> Giờ trước</div>
                           <% }%>

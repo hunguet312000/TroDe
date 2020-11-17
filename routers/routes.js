@@ -57,4 +57,5 @@ module.exports = (app, passport) => {
    });
 
    app.post("/comment", postManage.saveComment);
+   app.post("/saveFavPost", postManage.saveFavPost);
 }

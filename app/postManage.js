@@ -3,7 +3,7 @@ const mysql = require('mysql');
 const dbconfig = require('../config/database');
 const async = require('async')
 require('dotenv').config();
-const {sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan} = require("../config/sequelize");
+const {sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan, Danh_sach_yeu_thich} = require("../config/sequelize");
 const Op = require('Sequelize').Op
 exports.savePosts = async(req, res) => {
     if(req.isAuthenticated()){
@@ -249,7 +249,7 @@ exports.displayPostProfile = async(req, res) => {
         const present_date = new Date();
         for(let b of binh_luan){
           //console.log(JSON.stringify(present_date + " " +b.dataValues.createdAt, null, 2));
-          const timeDiff =  Math.round((present_date.getTime() - b.dataValues.createdAt.getTime())/(1000 * 3600));
+          const timeDiff = Math.round((present_date.getTime() - b.dataValues.createdAt.getTime())/(1000 * 3600)*10)/10;
           userData.binh_luan.push({
             id_nguoi_binh_luan: b.dataValues.nguoi_dung.dataValues.id_nguoi_dung,
             ten_nguoi_binh_luan: b.dataValues.nguoi_dung.dataValues.ten_nguoi_dung,
@@ -267,7 +267,7 @@ exports.displayPostProfile = async(req, res) => {
         userData.hinh_anh = hinh_anh;
         if (req.isAuthenticated()) {
              res.render("user-room", { user: req.user, userData : userData});
-        } else {   res.render("guest-room", {userData : userData}); };
+        } else {   res.render("guest-room", {user: "", userData : userData}); };
     }catch(err) {
         console.log(err);
     }
@@ -285,5 +285,20 @@ exports.saveComment = async(req, res) => {
     res.redirect("/room/" + req.body.id_phong_tro);
   }catch(err){
     console.log(err);
+  }
+}
+
+exports.saveFavPost = async(req, res) => {
+  const id_phong_tro = req.body.addFav_id_phong_tro;
+  const id_nguoi_dung = req.body.addFav_id_nguoi_dung;
+  try{
+    const addFav = await Danh_sach_yeu_thich.create({
+      id_phong_tro: id_phong_tro,
+      id_nguoi_dung: id_nguoi_dung
+    })
+    res.redirect("/room/" + id_phong_tro);
+  }catch(err){
+    console.log("loi me r");
+    res.redirect("/room/" + id_phong_tro);
   }
 }

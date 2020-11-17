@@ -51,6 +51,10 @@ const Quan_tri_vien = sequelize.define('quan_tri_vien', schema.quan_tri_vien, {
   // Other model options go here
 });
 
+const Danh_sach_yeu_thich = sequelize.define('danh_sach_yeu_thich', schema.danh_sach_yeu_thich, {
+  freezeTableName: true
+});
+
 // Phong tro va Nguoi dung
 Phong_tro.belongsTo(Nguoi_dung,{
   foreignKey: {
@@ -129,7 +133,7 @@ Nguoi_dung.hasMany(Binh_luan,{
   }
 });
 
-// Danh sach yeu thich
+//Danh sach yeu thich
 Nguoi_dung.belongsToMany(Phong_tro, {
   through: 'Danh_sach_yeu_thich',
   foreignKey: {
@@ -142,6 +146,36 @@ Phong_tro.belongsToMany(Nguoi_dung, {
     name: "id_phong_tro"
   }
 });
+//
+// Danh_sach_yeu_thich.belongsTo(Nguoi_dung,{
+//   foreignKey: {
+//     name: "id_nguoi_dung",
+//     allowNull: false,
+//     primaryKey: true
+//   }
+// });
+// Nguoi_dung.hasMany(Danh_sach_yeu_thich,{
+//   foreignKey: {
+//     name: "id_nguoi_dung",
+//     allowNull: false,
+//     primaryKey: true
+//   }
+// });
+//
+// Danh_sach_yeu_thich.belongsTo(Phong_tro,{
+//   foreignKey: {
+//     name: "id_phong_tro",
+//     allowNull: false,
+//     primaryKey: true
+//   }
+// });
+// Phong_tro.hasMany(Danh_sach_yeu_thich,{
+//   foreignKey: {
+//     name: "id_phong_tro",
+//     allowNull: false,
+//     primaryKey: true
+//   }
+// });
 
 module.exports = {
         sequelizeInit,
@@ -151,7 +185,8 @@ module.exports = {
         Hinh_anh,
         Binh_luan,
         Bao_cao,
-        Quan_tri_vien
+        Quan_tri_vien,
+        Danh_sach_yeu_thich
     }
 
-  //sequelizeInit();
+//sequelizeInit();
