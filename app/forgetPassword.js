@@ -113,7 +113,7 @@ exports.checkToken = async (req,res) => {
                 })
            }
            let token = await Nguoi_dung.findAll({
-               where:{ 
+               where:{
                    token: reset_link
                }
            })
@@ -143,8 +143,8 @@ exports.resetPassword = async(req, res) => {
         console.log(req.body);
         const hashPass = bcrypt.hashSync(req.body.password, 10);
         try{
-            await Nguoi_dung.update({
-                password: hashPass
+            const newPass = await Nguoi_dung.update({
+                mat_khau: hashPass
             },{
                 where:{
                     token: reset_link
