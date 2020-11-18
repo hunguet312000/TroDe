@@ -178,15 +178,14 @@ Phong_tro.belongsToMany(Nguoi_dung, {
 // });
 
 module.exports = {
-    sequelizeInit,
-    Nguoi_dung,
-    Phong_tro,
-    Tien_ich,
-    Hinh_anh,
-    Binh_luan,
-    Bao_cao,
-    Quan_tri_vien,
-    Danh_sach_yeu_thich
-}
-
-//sequelizeInit();
+        sequelizeInit,
+        Nguoi_dung,
+        Phong_tro,
+        Tien_ich,
+        Hinh_anh,
+        Binh_luan,
+        Bao_cao,
+        Quan_tri_vien,
+        Danh_sach_yeu_thich
+    }
+    //sequelizeInit();
