@@ -3,28 +3,20 @@ body {
     font-family: Montserrat;
 }
 
-#profile-content {
-    margin-top: 130px;
-    margin-bottom: 50px;
+.content-report {
+    background-color: #fff;
+    height: fit-content;
+    margin-bottom: 40px;
 }
 
-#ul-li {
-    color: #757575;
-    font-size: 14px;
-    text-decoration: none;
+#logo {
+    font-size: xxx-large;
+    font-family: 'Caveat';
+    color: black;
 }
 
-#ul-li:hover {
-    color: #11c296;
-}
-
-#catelogy {
-    color: #424242;
-    font-size: 16px;
-}
-
-#catelogy:hover {
-    color: #11c296;
+#logo:hover {
+    color: #17ca9d;
 }
 
 .imagePreview {
@@ -44,26 +36,27 @@ body {
 
 #btn-upload {
     display: block;
-    margin-top: -7px;
+    margin-top: -15px;
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
     width: 100%;
     color: #fff;
     background: rgb(23, 202, 157);
     border-color: transparent;
-    font-weight: 900;
+    font-weight: 500;
     padding: 10px;
     box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05)!important;
 }
 
 #btn-upload:hover {
     border-color: #17ca9d;
-    box-shadow: 0 0 5px 0 #17ca9d !important;
     outline: 0 none;
+    font-weight: 900;
 }
 
 #btn-upload:focus {
     outline: none;
+    font-weight: 900;
 }
 
 .imgUp {
@@ -72,7 +65,7 @@ body {
 
 .del {
     position: absolute;
-    bottom: 185px;
+    bottom: 203px;
     right: 24px;
     text-align: center;
     cursor: pointer;
@@ -90,6 +83,7 @@ body {
     font-size: 32px;
     cursor: pointer;
     color: #d4f3eb;
+    height: fit-content;
 }
 
 .imgAdd:hover {
@@ -141,6 +135,7 @@ label {
     -moz-border-radius: 7px;
     -ms-border-radius: 7px;
     -o-border-radius: 7px;
+    margin-bottom: 10px;
 }
 
 option {
@@ -153,18 +148,6 @@ option {
     box-shadow: 0 0 5px 0 #17ca9d;
     outline: 0 none;
     background-color: #fff!important;
-}
-
-select:invalid {
-    color: gray;
-}
-
-.uploadimg,
-.address,
-.space,
-.utilities,
-.policy {
-    float: right;
 }
 
 input::-webkit-outer-spin-button,
@@ -201,142 +184,8 @@ input::-webkit-inner-spin-button {
 #btn-U,
 #btn-remove,
 #btn-display,
-#btn-xuongdong-noiquy,
-#btn-B-noiquy,
-#btn-I-noiquy,
-#btn-U-noiquy,
-#btn-remove-noiquy,
-#btn-display-noiquy,
 :focus {
     font-weight: 500;
     border-color: transparent;
     outline: none;
-}
-
-#nav-bar {
-    height: 110px;
-}
-
-.side-wrap {
-    text-align: center;
-    margin-top: 25px;
-    margin-bottom: 5px;
-}
-
-#a-side1,
-#a-side2,
-#a-side3,
-#a-side4 {
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 900;
-    color: #252525;
-    cursor: pointer;
-}
-
-#side1,
-#side2,
-#side3,
-#side4 {
-    cursor: pointer;
-}
-
-.nav-content {
-    display: none;
-}
-
-#side-wrap1,
-#side-wrap2,
-#side-wrap3 {
-    display: none;
-    margin-top: 10px;
-}
-
-.a-subside {
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 900;
-    color: #252525;
-    cursor: pointer;
-}
-
-#logo1 {
-    padding: 20px;
-    font-size: xxx-large;
-    font-family: 'Caveat';
-    color: black;
-    font-weight: 900;
-}
-
-#logo1:hover {
-    color: #17ca9d;
-}
-
-@media (max-width:990px) {
-    .uploadimg,
-    .address,
-    .space,
-    .utilities,
-    .policy {
-        float: left;
-    }
-    .side-wrap {
-        display: none;
-    }
-    .nav-content {
-        display: block;
-    }
-    #nav-bar {
-        height: 70px;
-    }
-    #profile-content {
-        margin-top: 90px;
-    }
-    #logo1 {
-        display: none;
-    }
-}
-
-@media (max-width:769px) {
-    .uploadimg,
-    .address,
-    .space,
-    .utilities,
-    .policy {
-        float: left;
-        width: 100%;
-    }
-    .side-wrap {
-        display: none;
-    }
-    #nav-bar {
-        height: 70px;
-    }
-    #profile-content {
-        margin-top: 90px;
-    }
-    .nav-content {
-        display: block;
-    }
-    #logo1 {
-        display: none;
-    }
-}
-
-@media (max-width:1200px) {
-    .side-wrap {
-        display: none;
-    }
-    #nav-bar {
-        height: 70px;
-    }
-    #profile-content {
-        margin-top: 90px;
-    }
-    .nav-content {
-        display: block;
-    }
-    #logo1 {
-        display: none;
-    }
 }

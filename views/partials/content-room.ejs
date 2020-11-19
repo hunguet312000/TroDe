@@ -4,20 +4,22 @@
         userData.hinh_anh.forEach(function(path_anh){
         %>
             <img id="gallery-img" class="gallery-img" src=<%=path_anh.dataValues.path_anh%>>
-        <%}) %>
+            <%}) %>
 
     </div>
     <div class="container wrap-content">
         <div class="row" style="margin-bottom: 50px;">
             <div>
-                <button class="btn-like" style="float: left;"><i class="far fa-flag" style="margin-right: 5px;"></i><span class = "reaction" style="font-size: 16px;">Báo cáo</span></button>
+                <a href="report" style="text-decoration: none; color: #252525;">
+                    <button class="btn-like" style="float: left;"><i class="far fa-flag" style="margin-right: 5px;"></i><span class = "reaction" style="font-size: 16px;">Báo cáo</span></button>
+                </a>
                 <span class="sao" style="color: #252525;font-weight: 500;float: right;margin-left: 10px;"><i class="fas fa-star" style="color: #ffb025;font-size: 15px;">&nbsp;&nbsp;</i><span style="font-weight: 900;font-size: 15px;">5&nbsp</span><span>(Số
                     lượt đánh giá)</span></span>
-                <form name = "fav-post" action="/saveFavPost" method="post">
-                    <input type="hidden" name="addFav_id_phong_tro" value= "<%= userData.phong_tro[0].dataValues.id_phong_tro %>">
+                <form name="fav-post" action="/saveFavPost" method="post">
+                    <input type="hidden" name="addFav_id_phong_tro" value="<%= userData.phong_tro[0].dataValues.id_phong_tro %>">
                     <% if(user) %>
-                      <input type="hidden" name="addFav_id_nguoi_dung" value= "<%= user.id_nguoi_dung %>">
-                    <button type="submit" id = "fav-button" class="btn-like"><i class="far fa-heart"></i><span class = "reaction" style="font-size: 16px;">Thêm vào yêu thích</span></button>
+                        <input type="hidden" name="addFav_id_nguoi_dung" value="<%= user.id_nguoi_dung %>">
+                        <button type="submit" id="fav-button" class="btn-like"><i class="far fa-heart"></i><span class = "reaction" style="font-size: 16px;">Thêm vào yêu thích</span></button>
                 </form>
             </div>
             <br>
@@ -76,10 +78,12 @@
                             for (let [key, value] of Object.entries(userData.tien_ich[0].dataValues)) {
                                 if(key != "id_phong_tro" && key != "createdAt" && key != "updatedAt") {
                             %>
-                              <%if(value != null){%>
-                                <div class="col-sm-4" style="margin-bottom: 5px;font-weight: 900;"><%= value%></div>
-                              <%}%>
-                            <%}} %>
+                                <%if(value != null){%>
+                                    <div class="col-sm-4" style="margin-bottom: 5px;font-weight: 900;">
+                                        <%= value%>
+                                    </div>
+                                    <%}%>
+                                        <%}} %>
                         </div>
                     </div>
                 </div>
@@ -132,27 +136,34 @@
                         </form>
                     </div>
                     <% for(let b of userData.binh_luan) {%>
-                      <div class="binh-luan" style="border-bottom: 2px solid #f2f2f2;margin-bottom: 10px;">
-                          <div class="user-name" style="margin-bottom: 5px;font-weight: 900;"> <%= b.ten_nguoi_binh_luan %>
-                              <span class="sao" style="color: #252525;font-weight: 500;float: right;margin-left: 10px;"><i class="fas fa-star" style="color: #ffb025;font-size: 15px;">&nbsp;&nbsp;</i><span style="font-weight: 900;font-size: 15px;"><%=b.rating %>&nbsp</span><span>(Điểm đánh giá)</span></span>
-                          </div>
-                          <% if( b.thoi_gian_dang >= 24){ %>
-                              <% if( b.thoi_gian_dang/24 > 31){ %>
-                                  <div class="time" style="margin-bottom: 10px;"> <%= b.thoi_gian_dang/31%> Tháng trước</div>
-                              <% }%>
-                              <div class="time" style="margin-bottom: 10px;"> <%= b.thoi_gian_dang/24%> Ngày trước</div>
-                          <% }else if ( b.thoi_gian_dang < 1) { %>
-                              <% if ( b.thoi_gian_dang*3600 <= 0) {%>
-                                <div class="time" style="margin-bottom: 10px;"> Vừa xong</div>
-                              <% }else{ %>
-                                <div class="time" style="margin-bottom: 10px;"> <%= b.thoi_gian_dang*60%> Phút trước</div>
-                              <% }%>
-                          <% }else { %>
-                            <div class="time" style="margin-bottom: 10px;"> <%= b.thoi_gian_dang%> Giờ trước</div>
-                          <% }%>
-                          <div class="comment"> <%= b.noi_dung %> </div>
-                      </div>
-                    <% } %>
+                        <div class="binh-luan" style="border-bottom: 2px solid #f2f2f2;margin-bottom: 10px;">
+                            <div class="user-name" style="margin-bottom: 5px;font-weight: 900;">
+                                <%= b.ten_nguoi_binh_luan %>
+                                    <span class="sao" style="color: #252525;font-weight: 500;float: right;margin-left: 10px;"><i class="fas fa-star" style="color: #ffb025;font-size: 15px;">&nbsp;&nbsp;</i><span style="font-weight: 900;font-size: 15px;"><%=b.rating %>&nbsp</span><span>(Điểm đánh giá)</span></span>
+                            </div>
+                            <% if( b.thoi_gian_dang >= 24){ %>
+                                <% if( b.thoi_gian_dang/24 > 31){ %>
+                                    <div class="time" style="margin-bottom: 10px;">
+                                        <%= b.thoi_gian_dang/31%> Tháng trước</div>
+                                    <% }%>
+                                        <div class="time" style="margin-bottom: 10px;">
+                                            <%= b.thoi_gian_dang/24%> Ngày trước</div>
+                                        <% }else if ( b.thoi_gian_dang < 1) { %>
+                                            <% if ( b.thoi_gian_dang*3600 <= 0) {%>
+                                                <div class="time" style="margin-bottom: 10px;"> Vừa xong</div>
+                                                <% }else{ %>
+                                                    <div class="time" style="margin-bottom: 10px;">
+                                                        <%= b.thoi_gian_dang*60%> Phút trước</div>
+                                                    <% }%>
+                                                        <% }else { %>
+                                                            <div class="time" style="margin-bottom: 10px;">
+                                                                <%= b.thoi_gian_dang%> Giờ trước</div>
+                                                            <% }%>
+                                                                <div class="comment">
+                                                                    <%= b.noi_dung %>
+                                                                </div>
+                        </div>
+                        <% } %>
                 </div>
             </div>
             <div class="col-sm-3">

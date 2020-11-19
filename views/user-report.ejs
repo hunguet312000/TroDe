@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Báo Cáo</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link href="/css/user-report.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-fixed-top navbar-custom" role="navigation" style="background-color: #ffffff;">
+        <div class="container">
+            <div class="navbar-header">
+                <b><a class="navbar-brand " href="/" id="logo">TroDe</a></b>
+                <b><span class="blink" style="font-size: x-large;">Báo Cáo</span></b>
+    </nav>
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10 offset-sm-1" style="margin-bottom: 20px;">
+                <h3 style="font-size: 22px;font-weight: 900;float: left;">Nhắc nhở !
+                </h3>
+                <br>
+                <span style="font-size: 15px;font-weight: 700;float: left;font-style: italic;">Mọi báo cáo của bạn sẽ ảnh hưởng trực tiếp đến bài đăng bị báo cáo vì thế hãy cân nhắc trước khi báo cáo.</span>
+                <br>
+            </div>
+            <div class="col-sm-10 offset-sm-1">
+                <div class="content-report" style="padding: 25px 50px 50px 25px;box-shadow: 0 9px 46px 8px rgba(0,0,0,.02), 0 24px 38px 3px rgba(0,0,0,.04), 0 11px 15px -7px rgba(0,0,0,.05);border-radius: .625rem;">
+                    <form>
+                        <div class="row">
+                            <div class="col-sm-12" style="border-bottom: 2px solid #f2f2f2;">
+                                <h5 style="font-weight: 700;padding: 10px; margin-bottom: 1px;font-size: 18px;">Tiêu đề báo cáo</h5>
+                                <input name="tieu-de" type="text" id="title" class="form-control btn-ip" placeholder="Vui lòng nhập tiêu đề báo cáo của bạn" required data-bv-notempty-message="Không được để trống">
+                            </div>
+
+                            <div class="col-sm-12" style="border-bottom: 2px solid #f2f2f2;">
+                                <h5 style="font-weight: 700;padding: 10px; margin-bottom: 1px;font-size: 18px;">Lý do báo cáo</h5>
+                                <div class="row">
+                                    <div class="col-sm-12" style="padding-left: 35px;">
+                                        <div class="form-check form-check-inline">
+                                            <input name="ly-do-1" class="form-check-input" type="checkbox" id="ly-do-1" value="Bài đăng không đúng sự thật" style="width:15px;height:15px;margin-right: 3px;margin-bottom: 5px">
+                                            <label class="form-check-label" for="ly-do-1" style="vertical-align: middle;margin-bottom: 5px;font-weight: 900;">Bài đăng không đúng sự thật</label>
+                                        </div>
+                                        <br>
+                                    </div>
+                                    <div class="col-sm-12" style="padding-left: 35px;">
+                                        <div class="form-check form-check-inline">
+                                            <input name="ly-do-2" class="form-check-input" type="checkbox" id="ly-do-2" value="Người cho thuê làm việc thiếu chuyên nghiệp" style="width:15px;height:15px;margin-right: 3px;margin-bottom: 5px">
+                                            <label class="form-check-label" for="ly-do-2" style="vertical-align: middle;margin-bottom: 5px;font-weight: 900;">Người cho thuê làm việc thiếu chuyên nghiệp</label>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="col-sm-12" style="border-bottom: 2px solid #f2f2f2;">
+                                <h5 style="font-weight: 700;padding: 10px; margin-bottom: 1px;font-size: 18px;">Lý do thêm</h5>
+                                <div style="padding-left: 20px;margin-bottom: 10px;">
+                                    <label for="mota">*Nội dung</label>
+                                    <br>
+                                    <span>
+                                        <button type="button" class="btn btn-primary btn-function" id="btn-xuongdong" style="background-color: rgb(23, 202, 157);">Xuống dòng</button>
+                                        <button type="button" class="btn btn-primary btn-function" id="btn-B" style="background-color: rgb(23, 202, 157);"><b>B</b></button>
+                                        <button type="button" class="btn btn-primary btn-function" id="btn-I" style="background-color: rgb(23, 202, 157);"><i>I</i></button>
+                                        <button type="button" class="btn btn-primary btn-function" id="btn-U" style="background-color: rgb(23, 202, 157);"><u>U</u></button>
+                                        <button type="button" class="btn btn-primary btn-function" id="btn-remove" style="background-color: rgb(23, 202, 157);">Xóa tất cả</button>
+                                        <button type="button" class="btn btn-primary btn-function" id="btn-display" style="background-color: rgb(23, 202, 157);">Hiển thị nội dung</button>
+                                    </span>
+                                    <br>
+                                    <textarea name="thong_tin_khac" class="form-control" id="mota-thongtin" rows="6" placeholder="Nhập thông tin ..." required data-bv-notempty-message="Không được để trống"></textarea>
+                                    <div class="hien-thi" style="width:100%;height: fit-content;border-radius: 6px;margin-top: 12px;background-color: rgba(61, 26, 26, 0.07);padding: 8px;"></div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="col-sm-12 uploadimg" style="border-bottom: 2px solid #f2f2f2;margin-bottom: 10px;">
+                                <h5 style="font-weight: 700;padding: 10px; margin-bottom: 1px;font-size: 18px;">Thêm hình ảnh báo cáo (tùy chọn)</h5>
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-sm-3 imgUp">
+                                            <div class="imagePreview"></div>
+                                            <label class="btn btn-primary" id="btn-upload">
+                                         Tải ảnh lên<input name = "image" type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                              </label>
+                                        </div>
+                                        <!-- col-2 -->
+                                        <i class="fa fa-plus-circle imgAdd" aria-hidden="true"></i>
+                                    </div>
+                                    <!-- row -->
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12" style="margin-bottom: 10px;">
+                                <span style="font-size: 14px;font-weight: 600;">Bằng cách ấn vào nút gửi báo cáo đồng nghĩa với việc bạn sẽ chịu trách nhiệm cho báo cáo của mình.</span>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <a href="/host" style="text-decoration: none;">
+                                    <button type="button" class="btn btn-primary" id="button-submit"><span id = "text-btn"><b>HỦY BỎ</b></span></button>
+                                </a>
+                            </div>
+                            <div class="col-sm-6">
+                                <button type="submit" class="btn btn-primary" id="button-submit"><span id = "text-btn"><b>GỬI BÁO CÁO</b></span></button>
+                            </div>
+                        </div>
+                </div>
+                </form>
+            </div>
+            <br><br>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/host.js"></script>
+    <%- include("partials/footer"); -%>
