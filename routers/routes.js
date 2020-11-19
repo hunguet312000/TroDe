@@ -40,7 +40,11 @@ module.exports = (app, passport) => {
 
     app.get("/host", function(req, res) {
         if (req.isAuthenticated()) {
-            res.render("user-host", { username: req.user.ten_nguoi_dung });
+            res.render("user-host", {
+              username: req.user.ten_nguoi_dung,
+              phong_tro: "",
+              action: "new-post"
+            });
         } else {
             res.redirect('/login');
         }
@@ -48,12 +52,17 @@ module.exports = (app, passport) => {
 
     app.post('/host', upload.array('image'), postManage.savePosts);
 
-    app.get("/host-edit", function(req, res) {
-       if (req.isAuthenticated()) {
-           res.render("user-host-edit", { username: req.user.ten_nguoi_dung });
-       } else {
-           res.redirect('/login');
-       }
+    app.get("/host-edit/:id", async function(req, res) {
+      let phong_tro = await postManage.getPostInfo(req.params.id);
+      if (req.isAuthenticated()) {
+          res.render("user-host-edit", {
+            username: req.user.ten_nguoi_dung,
+            phong_tro: phong_tro[0].dataValues,
+            action: "post-edit"
+          });
+      } else {
+          res.redirect('/login');
+      }
    });
 
    app.post("/comment", postManage.saveComment);

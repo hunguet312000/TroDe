@@ -302,3 +302,16 @@ exports.saveFavPost = async(req, res) => {
     res.redirect("/room/" + id_phong_tro);
   }
 }
+
+exports.getPostInfo = async(id) => {
+  try{
+    const phong_tro = await Phong_tro.findAll({
+      where: {
+        id_phong_tro: id
+      }
+    });
+    return phong_tro;
+  }catch(err){
+    console.log(err);
+  }
+}

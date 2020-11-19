@@ -1,7 +1,6 @@
-<%
-if(userData.length!=0){
-userData.forEach(function(data){
-%>
+<% if(userData.length!=0){ %>
+<% userData.forEach(function(data){ %>
+
 <div class="list-content" style="height: 120px;background-color: #fff;vertical-align: middle;border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);margin-bottom: 20px;">
     <div class="row">
         <div class="col-sm-2">
@@ -28,7 +27,7 @@ userData.forEach(function(data){
         <div class="col-sm-2">
             <div style="padding: 40px 10px 10px 10px;line-height: 1.5;">
                 <span>
-                    <a href = "/host-edit" style="text-decoration: none;color: #252525;font-weight: 900;border-bottom: 3px solid #f2f2f2;">
+                    <a href = "/host-edit/<%=data.dataValues.id_phong_tro%>" style="text-decoration: none;color: #252525;font-weight: 900;border-bottom: 3px solid #f2f2f2;">
                         <i class="far fa-edit" style="font-weight: 900;"></i>&nbsp;Chỉnh sửa
                     </a>
                     <br>

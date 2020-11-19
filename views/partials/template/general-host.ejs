@@ -1,5 +1,13 @@
+<%
+  console.log(phong_tro.id_phong_tro + " " + action);
+%>
+
 <form action="/host" method="post" enctype="multipart/form-data">
-    <div class="col-sm-10"><span style="font-size: 18px;"><b>Tạo bài viết mới</b><br><br></div>
+    <% if (phong_tro) { %>
+      <div class="col-sm-10"><span style="font-size: 18px;"><b>Chỉnh sửa thông tin phòng trọ</b><br><br></div>
+    <% }else{ %>
+      <div class="col-sm-10"><span style="font-size: 18px;"><b>Tạo bài viết mới</b><br><br></div>
+    <% }%>
     <div class="col-sm-10">
         <div class="content" style="background-color: #fff; height: fit-content;border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);">
 
@@ -9,20 +17,32 @@
                 <div class="col-sm-6">
                     <label for="phan-loai">*Phân loại nơi cho thuê</label>
                     <select class="custom-select btn-ip" id="phan-loai" name="phan_loai" required data-bv-notempty-message="Không được để trống">
-                    <option value="" disabled selected hidden>Chọn loại cho thuê</option>
+                    <% if (phong_tro) { %>
+                      <option value="<%= phong_tro.phan_loai %>" disabled selected hidden> <%= phong_tro.phan_loai %></option>
+                    <% }else{ %>
+                      <option value="" disabled selected hidden>Chọn loại phòng</option>
+                    <% }%>
                     <option value="Chung cư">Chung cư</option>
                     <option value="Phòng trọ">Phòng trọ</option>
                 </select>
                 </div>
                 <div class="col-sm-6">
                     <label for="title">*Tên nhà trọ, chung cư</label>
-                    <input name="ten_phong" type="text" id="title" class="form-control btn-ip" placeholder="Vui lòng nhập tiêu đề bài viết của bạn" required data-bv-notempty-message="Không được để trống">
+                    <% if (phong_tro) { %>
+                      <input name="ten_phong" type="text" id="title" class="form-control btn-ip" value=" <%= phong_tro.ten_phong%>">
+                    <% }else{ %>
+                      <input name="ten_phong" type="text" id="title" class="form-control btn-ip" placeholder="Vui lòng nhập tiêu đề bài viết của bạn" required data-bv-notempty-message="Không được để trống">
+                    <% }%>
                     <br>
                 </div>
                 <div class="col-sm-6">
                     <label for="phan-loai">*Hình thức cho thuê</label>
                     <select class="custom-select btn-ip" id="phan-loai" name="hinh_thuc_thue" required data-bv-notempty-message="Không được để trống">
-                    <option value="" disabled selected hidden>Loại phòng dành cho</option>
+                    <% if (phong_tro) { %>
+                      <option value="<%= phong_tro.hinh_thuc_thue %>" disabled selected hidden> <%= phong_tro.hinh_thuc_thue %></option>
+                    <% }else{ %>
+                      <option value="" disabled selected hidden>Loại phòng dành cho</option>
+                    <% }%>
                     <option value="Cá nhân">Cá nhân</option>
                     <option value="Tập thể">Tập thể</option>
                 </select>
@@ -30,7 +50,11 @@
                 <div class="col-sm-6">
                     <label for="phan-loai">Khác (dành riêng cho phòng trọ)</label>
                     <select class="custom-select btn-ip" id="phan-loai" name="phan_loai_khac">
-                    <option value="" disabled selected hidden>Chọn lựa chọn của bạn</option>
+                    <% if (phong_tro) { %>
+                      <option value="<%= phong_tro.phan_loai_khac %>" disabled selected hidden> <%= phong_tro.phan_loai_khac %></option>
+                    <% }else{ %>
+                      <option value="" disabled selected hidden>Chọn lựa chọn của bạn</option>
+                    <% }%>
                     <option value="Ở chung với chủ nhà">Ở chung với chủ nhà</option>
                     <option value="Ở riêng với chủ nhà">Ở riêng với chủ nhà</option>
                 </select>
