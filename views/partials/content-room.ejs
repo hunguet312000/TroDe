@@ -59,15 +59,8 @@
                 </div>
                 <br>
                 <div class="thong-tin" style="margin-bottom: 10px; word-wrap: break-word;font-size: 16px;">
-                    <p><strong>Fanpage: Aimee House Xin chào! Chào bạn đã đến với AimeeHomestay dành riêng cho:</strong></p>
-                    <p>+ Các cặp đôi đi du lịch ưa thích không gian "cá tính, hiện đại, lãng mạng, ấm cúng"</p>
-                    <p>+ Những người đi công tác xa muốn được ở trong không gian "tiện nghi, rộng rãi, thân thuộc như ở nhà" AimeeHomestay của chúng tôi bao gồm:</p>
-                    <p>- 5 phòng có giường đôi mềm mại thoải mái tạo cảm giác thư giãn sau những ồn ào của Phố thị</p>
-                    <p>- Điều hoà 2 chiều - Phòng tắm rộng rãi, sạch sẽ, hiện đại, tiện nghi gồm:2 khăn tắm, sữa tắm, dầu gội, bàn chải, kem đánh răng, máy sấy </p>
-                    <p>- Cafe, lipton, nước uống miễn phí cùng với ấm siêu tốc</p>
-                    <p>- Phòng bếp đầy đủ tiện nghi: tủ lạnh, bếp hồng ngoại, lò nướng, lò vi sóng, bát đũa,... </p>
-                    <p> - Wifi miễn phí - Có chỗ để xe máy</p>
-                    <p>- Toạ lạc tại Phan Bội Châu đối diễn quán ăn nổi tiếng Quán Ngon và cách 5 phút đi bộ tới Tống Duy Tân.</p>
+                    <h3><strong>Thông tin khác</strong></h3>
+                    <p><%= userData.phong_tro[0].dataValues.thong_tin_khac %></p>
                 </div>
                 <br>
                 <div class="tien-ich">
@@ -96,6 +89,12 @@
                         <p style="font-weight: 700;margin-bottom: 10px;">Không nuôi thú cưng trong phòng</p>
                     </div>
                 </div>
+
+                <div class="thong-tin" style="margin-bottom: 10px; word-wrap: break-word;font-size: 16px;">
+                    <h3><strong>Một số quy định khác</strong></h3>
+                    <p><%= userData.phong_tro[0].dataValues.quy_dinh_khac %></p>
+                </div>
+                <br>
                 <div class="binh-luan" style="margin-bottom: 10px;">
                     <h3><b>Bình luận</b></h3>
                     <br>

@@ -306,11 +306,27 @@ exports.saveFavPost = async(req, res) => {
 exports.getPostInfo = async(id) => {
   try{
     const phong_tro = await Phong_tro.findAll({
+      include: {
+        model: Tien_ich
+      },
       where: {
         id_phong_tro: id
       }
     });
     return phong_tro;
+  }catch(err){
+    console.log(err);
+  }
+}
+
+exports.deletePost = async(req, res) => {
+  try{
+    const phong_tro = await Phong_tro.destroy({
+      where: {
+        id_phong_tro: req.params.id
+      }
+    });
+    res.redirect("/list-host");
   }catch(err){
     console.log(err);
   }

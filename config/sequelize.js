@@ -60,13 +60,17 @@ Phong_tro.belongsTo(Nguoi_dung, {
     foreignKey: {
         name: "id_chu_so_huu",
         allowNull: false
-    }
+    },
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 });
 Nguoi_dung.hasMany(Phong_tro, {
     foreignKey: {
         name: "id_chu_so_huu",
         allowNull: false
-    }
+    },
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 });
 
 // Phong tro va Tien ich
@@ -75,14 +79,18 @@ Tien_ich.belongsTo(Phong_tro, {
         name: "id_phong_tro",
         allowNull: false,
         primaryKey: true
-    }
+    },
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 });
 Phong_tro.hasOne(Tien_ich, {
     foreignKey: {
         name: "id_phong_tro",
         allowNull: false,
         primaryKey: true
-    }
+    },
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 });
 
 // Phong tro va Hinh anh
@@ -91,14 +99,18 @@ Hinh_anh.belongsTo(Phong_tro, {
         name: "id_phong_tro",
         allowNull: false,
         primaryKey: true
-    }
+    },
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 });
 Phong_tro.hasMany(Hinh_anh, {
     foreignKey: {
         name: "id_phong_tro",
         allowNull: false,
         primaryKey: true
-    }
+    },
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 });
 
 // Phong tro va Binh luan
@@ -107,14 +119,18 @@ Binh_luan.belongsTo(Phong_tro, {
         name: "id_phong_tro",
         allowNull: false,
         primaryKey: true
-    }
+    },
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 });
 Phong_tro.hasMany(Binh_luan, {
     foreignKey: {
         name: "id_phong_tro",
         allowNull: false,
         primaryKey: true
-    }
+    },
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 });
 
 // Binh luan  va Nguoi dung
@@ -123,14 +139,18 @@ Binh_luan.belongsTo(Nguoi_dung, {
         name: "id_nguoi_binh_luan",
         allowNull: false,
         primaryKey: true
-    }
+    },
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 });
 Nguoi_dung.hasMany(Binh_luan, {
     foreignKey: {
         name: "id_nguoi_binh_luan",
         allowNull: false,
         primaryKey: true
-    }
+    },
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 });
 
 //Danh sach yeu thich
@@ -138,13 +158,17 @@ Nguoi_dung.belongsToMany(Phong_tro, {
     through: 'Danh_sach_yeu_thich',
     foreignKey: {
         name: "id_nguoi_dung"
-    }
+    },
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 });
 Phong_tro.belongsToMany(Nguoi_dung, {
     through: 'Danh_sach_yeu_thich',
     foreignKey: {
         name: "id_phong_tro"
-    }
+    },
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 });
 //
 // Danh_sach_yeu_thich.belongsTo(Nguoi_dung,{
@@ -188,4 +212,4 @@ module.exports = {
         Quan_tri_vien,
         Danh_sach_yeu_thich
     }
-    //sequelizeInit();
+//squelizeInit();
