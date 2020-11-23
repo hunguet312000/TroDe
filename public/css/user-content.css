@@ -71,3 +71,15 @@ body {
 .product-card:hover .info-title {
     color: #17ca9d;
 }
+
+.phongtro-chungcu {
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    color: #888;
+    display: -webkit-box;
+    max-height: 1.5rem;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 700;
+}

@@ -3,10 +3,10 @@ const mysql = require('mysql');
 const dbconfig = require('../config/database');
 const async = require('async')
 require('dotenv').config();
-const {sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan, Danh_sach_yeu_thich} = require("../config/sequelize");
+const { sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan, Danh_sach_yeu_thich } = require("../config/sequelize");
 const Op = require('Sequelize').Op
 exports.savePosts = async(req, res) => {
-    if(req.isAuthenticated()){
+    if (req.isAuthenticated()) {
         const uploader = async(path) => await cloudinary.uploads(path, 'Image');
         let insert_hinh_anh_values = []
         let files = req.files;
@@ -35,27 +35,27 @@ exports.savePosts = async(req, res) => {
             phong_khach: req.body.phong_khach,
             phong_bep: req.body.phong_bep,
             khong_lam_on: req.body.khong_lam_on,
-            khong_hut_thuoc:req.body.khong_hut_thuoc,
+            khong_hut_thuoc: req.body.khong_hut_thuoc,
             khong_thu_cung: req.body.khong_thu_cung,
-            quy_dinh_khac:req.body.quy_dinh_khac,
+            quy_dinh_khac: req.body.quy_dinh_khac,
             thong_tin_khac: req.body.thong_tin_khac,
             nguoi_lon: req.body.nguoi_lon,
             tre_em: req.body.tre_em,
             tre_nho: req.body.tre_nho,
-            tong_so_nguoi:parseInt(req.body.tong_so_nguoi),
-            gia_phong: parseInt(req.body.gia_phong),
+            tong_so_nguoi: parseInt(req.body.tong_so_nguoi),
+            gia_phong: parseInt(req.body.gia_phong.replace(/,/g, '')),
             thoi_gian_dang: new Date(),
-            path_anh_noi_bat : insert_hinh_anh_values[0].path_anh
+            path_anh_noi_bat: insert_hinh_anh_values[0].path_anh
         }
 
-        var tiennghi ={
+        var tiennghi = {
             wifi: req.body.wifi,
             internet: req.body.internet,
             dieu_hoa: req.body.dieu_hoa,
             tv: req.body.tv,
             quat: req.body.quat,
             nong_lanh: req.body.nong_lanh,
-            may_giat:req.body.may_giat,
+            may_giat: req.body.may_giat,
             tu_lanh: req.body.tu_lanh,
             gia_phoi_quan_ao: req.body.gia_phoi_quan_ao,
             cua_so: req.body.cua_so,
@@ -63,13 +63,13 @@ exports.savePosts = async(req, res) => {
             tu_quan_ao: req.body.tu_quan_ao,
             coi_bao_chay: req.body.coi_bao_chay,
             binh_chua_chay: req.body.binh_chua_chay,
-            thang_may:req.body.thang_may,
+            thang_may: req.body.thang_may,
             thang_bo: req.body.thang_bo,
             cho_do_rac: req.body.cho_do_rac,
             cho_de_xe: req.body.cho_de_xe,
         };
         console.log(req.user)
-        try{
+        try {
             const phong_tro = await Phong_tro.create(phongtro);
             tiennghi.id_phong_tro = phong_tro.id_phong_tro;
             const tien_ich = await Tien_ich.create(tiennghi);
@@ -80,39 +80,78 @@ exports.savePosts = async(req, res) => {
             console.log(insert_hinh_anh_values);
             const hinh_anh = await Hinh_anh.bulkCreate(insert_hinh_anh_values);
             res.redirect("/");
-        }catch(err){
+        } catch (err) {
             console.log(err);
         }
-    }
-    else {res.redirect('/login')}
+    } else { res.redirect('/login') }
 }
 
 exports.displayListPost = async(req, res) => {
     try {
         let type = ""
         let district = "";
-        let area =  []
+        let area = []
         switch (req.params.type) {
-            case "phong_tro":           type = "Phòng trọ";           break;
-            case "chung_cu":            type = "Chung cư";            break;
-            case "quan_cau_giay":            district = "Quận Cầu Giấy";       break;
-            case "quan_ba_dinh":        district = "Quận Ba Đình";        break;
-            case "quan_bac_tu_liem":    district = "Quận Bắc Từ Liêm";    break;
-            case "quan_dong_da":        district = "Quận Đống Đa";        break;
-            case "quan_hai_ba_trung":   district = "Quận Hai Bà Trưng";   break;
-            case "quan_ha_dong":        district = "Quận Hà Đông";        break;
-            case "quan_hoang_mai":      district = "Quận Hoàng Mai";      break;
-            case "quan_hoan_kiem":      district = "Quận Hoàn Kiếm";      break;
-            case "quan_long_bien":      district = "Quận Long Biên";      break;
-            case "quan_nam_tu_liem":    district = "Quận Nam Từ Liêm";    break;
-            case "quan_tay_ho":         district = "Quận Tây Hồ";         break;
-            case "quan_thanh_xuan":     district = "Quận Thanh Xuân";     break;
-            case "KV_bach_kinh_xay":    area = ["Quận Hai Bà Trưng"];   break;
-            case "KV_DH_quoc_gia_HN":   area = ["Quận Cầu Giấy" , "Quận Đống Đa"];    break;
-            case "KV_HV_tai_chinh":     area = ["Quận Cầu Giấy", "Quận Bắc Từ Liêm"]; break;
-            case "KV_HV_BC_VT":         area = ["Quận Hà Đông", 'Quận Thanh Xuân'];   break;
-            case "KV_DH_Y_HN":          area = ["Quận Đống Đa", "Quận Hai Bà Trưng"]; break;
-            case "KV_DH_nong_nghiep":   area = ["Quận Long Biên"];                    break;
+            case "phong_tro":
+                type = "Phòng trọ";
+                break;
+            case "chung_cu":
+                type = "Chung cư";
+                break;
+            case "quan_cau_giay":
+                district = "Quận Cầu Giấy";
+                break;
+            case "quan_ba_dinh":
+                district = "Quận Ba Đình";
+                break;
+            case "quan_bac_tu_liem":
+                district = "Quận Bắc Từ Liêm";
+                break;
+            case "quan_dong_da":
+                district = "Quận Đống Đa";
+                break;
+            case "quan_hai_ba_trung":
+                district = "Quận Hai Bà Trưng";
+                break;
+            case "quan_ha_dong":
+                district = "Quận Hà Đông";
+                break;
+            case "quan_hoang_mai":
+                district = "Quận Hoàng Mai";
+                break;
+            case "quan_hoan_kiem":
+                district = "Quận Hoàn Kiếm";
+                break;
+            case "quan_long_bien":
+                district = "Quận Long Biên";
+                break;
+            case "quan_nam_tu_liem":
+                district = "Quận Nam Từ Liêm";
+                break;
+            case "quan_tay_ho":
+                district = "Quận Tây Hồ";
+                break;
+            case "quan_thanh_xuan":
+                district = "Quận Thanh Xuân";
+                break;
+            case "KV_bach_kinh_xay":
+                area = ["Quận Hai Bà Trưng"];
+                break;
+            case "KV_DH_quoc_gia_HN":
+                area = ["Quận Cầu Giấy", "Quận Đống Đa"];
+                break;
+            case "KV_HV_tai_chinh":
+                area = ["Quận Cầu Giấy", "Quận Bắc Từ Liêm"];
+                break;
+            case "KV_HV_BC_VT":
+                area = ["Quận Hà Đông", 'Quận Thanh Xuân'];
+                break;
+            case "KV_DH_Y_HN":
+                area = ["Quận Đống Đa", "Quận Hai Bà Trưng"];
+                break;
+            case "KV_DH_nong_nghiep":
+                area = ["Quận Long Biên"];
+                break;
             default:
                 type = ""
                 district = "";
@@ -120,29 +159,32 @@ exports.displayListPost = async(req, res) => {
         }
         console.log(area);
         const phong_tro = await Phong_tro.findAll({
-            where : {[Op.or]: [
-                {
-                    phan_loai: type
-                },
-                {
-                    quan_huyen: district
-                },
-                {
-                    quan_huyen : {
-                        [Op.or] : area
+            where: {
+                [Op.or]: [{
+                        phan_loai: type
+                    },
+                    {
+                        quan_huyen: district
+                    },
+                    {
+                        quan_huyen: {
+                            [Op.or]: area
+                        }
                     }
-                }
-            ]},
+                ]
+            },
             include: [{
                 model: Nguoi_dung,
                 required: true
             }],
-            order : [["id_phong_tro", "DESC"]]
+            order: [
+                ["id_phong_tro", "DESC"]
+            ]
         });
         if (req.isAuthenticated()) {
-               res.render("user-product-grid", { user: req.user, userData : phong_tro});
-        } else { res.render("guest-product-grid", {userData:phong_tro}); }
-    }catch (err) {
+            res.render("user-product-grid", { user: req.user, userData: phong_tro });
+        } else { res.render("guest-product-grid", { userData: phong_tro }); }
+    } catch (err) {
         console.log(err);
     }
 }
@@ -152,76 +194,81 @@ exports.displayPostByNumOfPeopleOrPrice = async(req, res) => {
         let type = (req.params.type == "phong_tro") ? "Phòng trọ" : "Chung cư";
         let tong_so_nguoi = "";
         let gia_tien = [undefined, undefined]
-        switch(req.params.option){
-                case "1_nguoi" :
-                    tong_so_nguoi = "1"
-                    break;
-                case "2_nguoi":
-                    tong_so_nguoi = "2";
-                    break;
-                case "3_nguoi":
-                    tong_so_nguoi = "3"
-                    break;
-                case "4_nguoi":
-                    tong_so_nguoi = "4"
-                    break
-                case "gia_re" :
-                    gia_tien = (req.params.type == "phong_tro") ? [1000000, 4000000] : [2000000, 4000000];
-                    break;
-                case "gia_trung" :
-                    gia_tien = (req.params.type == "phong_tro") ? [4000000, 6000000] : [4000000, 7000000];
-                    break;
-                default:
-                    tong_so_nguoi = ""
-                    gia_tien = [undefined, undefined]
-            }
-            const phong_tro = await Phong_tro.findAll({
-            where : {[Op.or]: [
-                {
-                    phan_loai: type,
-                    tong_so_nguoi : tong_so_nguoi
-                },
-                {
-                    phan_loai : type,
-                    gia_phong: {[Op.between] : [gia_tien[0], gia_tien[1]]}
-                },
-                ]},
-                include: [{
-                    model: Nguoi_dung,
-                    required: true
-                }],
-                order : [["id_phong_tro", "DESC"]]
-            });
-            if (req.isAuthenticated()) {
-               res.render("user-product-grid", { user: req.user, userData : phong_tro});
-            } else { res.render("guest-product-grid", {userData:phong_tro})}
-    }catch(err) {
+        switch (req.params.option) {
+            case "1_nguoi":
+                tong_so_nguoi = "1"
+                break;
+            case "2_nguoi":
+                tong_so_nguoi = "2";
+                break;
+            case "3_nguoi":
+                tong_so_nguoi = "3"
+                break;
+            case "4_nguoi":
+                tong_so_nguoi = "4"
+                break
+            case "gia_re":
+                gia_tien = (req.params.type == "phong_tro") ? [1000000, 4000000] : [2000000, 4000000];
+                break;
+            case "gia_trung":
+                gia_tien = (req.params.type == "phong_tro") ? [4000000, 6000000] : [4000000, 7000000];
+                break;
+            default:
+                tong_so_nguoi = ""
+                gia_tien = [undefined, undefined]
+        }
+        const phong_tro = await Phong_tro.findAll({
+            where: {
+                [Op.or]: [{
+                        phan_loai: type,
+                        tong_so_nguoi: tong_so_nguoi
+                    },
+                    {
+                        phan_loai: type,
+                        gia_phong: {
+                            [Op.between]: [gia_tien[0], gia_tien[1]] }
+                    },
+                ]
+            },
+            include: [{
+                model: Nguoi_dung,
+                required: true
+            }],
+            order: [
+                ["id_phong_tro", "DESC"]
+            ]
+        });
+        if (req.isAuthenticated()) {
+            res.render("user-product-grid", { user: req.user, userData: phong_tro });
+        } else { res.render("guest-product-grid", { userData: phong_tro }) }
+    } catch (err) {
         console.log(err);
     }
 }
 
 exports.displayUserListPost = async(req, res) => {
-    if(req.isAuthenticated()) {
+    if (req.isAuthenticated()) {
         try {
             const phong_tro = await Phong_tro.findAll({
-                where : {
-                    id_chu_so_huu : req.user.id_nguoi_dung
+                where: {
+                    id_chu_so_huu: req.user.id_nguoi_dung
                 },
-                order : [["id_phong_tro", "DESC"]]
+                order: [
+                    ["id_phong_tro", "DESC"]
+                ]
             });
-            res.render('user-list-host', { user: req.user, userData:phong_tro });
-        }catch(err) {
+            res.render('user-list-host', { user: req.user, userData: phong_tro });
+        } catch (err) {
             console.log(err);
         }
-    }
-    else {res.redirect("/login")}
+    } else { res.redirect("/login") }
 }
 
 exports.displayPostProfile = async(req, res) => {
-    try{
+    try {
         const phong_tro = await Phong_tro.findAll({
-            where : {
-                id_phong_tro : req.params.id
+            where: {
+                id_phong_tro: req.params.id
             },
             include: [{
                 model: Nguoi_dung,
@@ -229,105 +276,105 @@ exports.displayPostProfile = async(req, res) => {
             }],
         });
         const hinh_anh = await Hinh_anh.findAll({
-            where : {
-                id_phong_tro : req.params.id
+            where: {
+                id_phong_tro: req.params.id
             },
         });
         const tien_ich = await Tien_ich.findAll({
-            where : {
-                id_phong_tro : req.params.id
+            where: {
+                id_phong_tro: req.params.id
             },
         });
         const binh_luan = await Binh_luan.findAll({
             include: Nguoi_dung,
-            where:{
-              id_phong_tro: req.params.id
+            where: {
+                id_phong_tro: req.params.id
             }
         });
         let userData = {};
         userData.binh_luan = [];
         const present_date = new Date();
-        for(let b of binh_luan){
-          //console.log(JSON.stringify(present_date + " " +b.dataValues.createdAt, null, 2));
-          const timeDiff = Math.round((present_date.getTime() - b.dataValues.createdAt.getTime())/(1000 * 3600)*10)/10;
-          userData.binh_luan.push({
-            id_nguoi_binh_luan: b.dataValues.nguoi_dung.dataValues.id_nguoi_dung,
-            ten_nguoi_binh_luan: b.dataValues.nguoi_dung.dataValues.ten_nguoi_dung,
-            id_phong_tro:  b.dataValues.id_phong_tro,
-            id_binh_luan: b.dataValues.id_binh_luan,
-            noi_dung: b.dataValues.noi_dung,
-            rating: b.dataValues.rating,
-            hinh_anh: b.dataValues.hinh_anh,
-            thoi_gian_dang: timeDiff,
-            lan_cuoi_chinh_sua: b.dataValues.updatedAt
-          });
+        for (let b of binh_luan) {
+            //console.log(JSON.stringify(present_date + " " +b.dataValues.createdAt, null, 2));
+            const timeDiff = Math.round((present_date.getTime() - b.dataValues.createdAt.getTime()) / (1000 * 3600) * 10) / 10;
+            userData.binh_luan.push({
+                id_nguoi_binh_luan: b.dataValues.nguoi_dung.dataValues.id_nguoi_dung,
+                ten_nguoi_binh_luan: b.dataValues.nguoi_dung.dataValues.ten_nguoi_dung,
+                id_phong_tro: b.dataValues.id_phong_tro,
+                id_binh_luan: b.dataValues.id_binh_luan,
+                noi_dung: b.dataValues.noi_dung,
+                rating: b.dataValues.rating,
+                hinh_anh: b.dataValues.hinh_anh,
+                thoi_gian_dang: timeDiff,
+                lan_cuoi_chinh_sua: b.dataValues.updatedAt
+            });
         }
         userData.phong_tro = phong_tro;
         userData.tien_ich = tien_ich;
         userData.hinh_anh = hinh_anh;
         if (req.isAuthenticated()) {
-             res.render("user-room", { user: req.user, userData : userData});
-        } else {   res.render("guest-room", {user: "", userData : userData}); };
-    }catch(err) {
+            res.render("user-room", { user: req.user, userData: userData });
+        } else { res.render("guest-room", { user: "", userData: userData }); };
+    } catch (err) {
         console.log(err);
     }
 }
 
 exports.saveComment = async(req, res) => {
-  const binh_luan_moi = {
-    rating: req.body.rating,
-    noi_dung: req.body.nd_binh_luan,
-    id_phong_tro: req.body.id_phong_tro,
-    id_nguoi_binh_luan: req.session.passport.user.id_nguoi_dung,
-  }
-  try{
-    const binh_luan = await Binh_luan.create(binh_luan_moi);
-    res.redirect("/room/" + req.body.id_phong_tro);
-  }catch(err){
-    console.log(err);
-  }
+    const binh_luan_moi = {
+        rating: req.body.rating,
+        noi_dung: req.body.nd_binh_luan,
+        id_phong_tro: req.body.id_phong_tro,
+        id_nguoi_binh_luan: req.session.passport.user.id_nguoi_dung,
+    }
+    try {
+        const binh_luan = await Binh_luan.create(binh_luan_moi);
+        res.redirect("/room/" + req.body.id_phong_tro);
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 exports.saveFavPost = async(req, res) => {
-  const id_phong_tro = req.body.addFav_id_phong_tro;
-  const id_nguoi_dung = req.body.addFav_id_nguoi_dung;
-  try{
-    const addFav = await Danh_sach_yeu_thich.create({
-      id_phong_tro: id_phong_tro,
-      id_nguoi_dung: id_nguoi_dung
-    })
-    res.redirect("/room/" + id_phong_tro);
-  }catch(err){
-    console.log("loi me r");
-    res.redirect("/room/" + id_phong_tro);
-  }
+    const id_phong_tro = req.body.addFav_id_phong_tro;
+    const id_nguoi_dung = req.body.addFav_id_nguoi_dung;
+    try {
+        const addFav = await Danh_sach_yeu_thich.create({
+            id_phong_tro: id_phong_tro,
+            id_nguoi_dung: id_nguoi_dung
+        })
+        res.redirect("/room/" + id_phong_tro);
+    } catch (err) {
+        console.log("loi me r");
+        res.redirect("/room/" + id_phong_tro);
+    }
 }
 
 exports.getPostInfo = async(id) => {
-  try{
-    const phong_tro = await Phong_tro.findAll({
-      include: {
-        model: Tien_ich
-      },
-      where: {
-        id_phong_tro: id
-      }
-    });
-    return phong_tro;
-  }catch(err){
-    console.log(err);
-  }
+    try {
+        const phong_tro = await Phong_tro.findAll({
+            include: {
+                model: Tien_ich
+            },
+            where: {
+                id_phong_tro: id
+            }
+        });
+        return phong_tro;
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 exports.deletePost = async(req, res) => {
-  try{
-    const phong_tro = await Phong_tro.destroy({
-      where: {
-        id_phong_tro: req.params.id
-      }
-    });
-    res.redirect("/list-host");
-  }catch(err){
-    console.log(err);
-  }
+    try {
+        const phong_tro = await Phong_tro.destroy({
+            where: {
+                id_phong_tro: req.params.id
+            }
+        });
+        res.redirect("/list-host");
+    } catch (err) {
+        console.log(err);
+    }
 }

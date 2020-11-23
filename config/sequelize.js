@@ -212,4 +212,4 @@ module.exports = {
         Quan_tri_vien,
         Danh_sach_yeu_thich
     }
-//squelizeInit();
+    //sequelizeInit();

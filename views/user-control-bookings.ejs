@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Đặt lịch hẹn</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <link href="/css/user-control-booking.css" rel="stylesheet">
+    <link href="/css/user-navbar-wish-list.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+</head>
+<%- include("partials/user-navbar-wish-list"); -%>
+
+    <div class="container wrap-content">
+        <br>
+        <h2>Tổng số lịch hẹn: (Số lượng)</h2>
+
+        <div class="row" style="border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);background-color: #fff;margin-bottom: 100px;">
+            <div class="col-sm-12" style="border-bottom: 2px solid #f2f2f2;">
+                <div class="wrap-content-info">
+                    <div class="col-sm-4" style="border-right: 2px solid #f2f2f2;">
+                        <div class="box-info1">
+                            <div class="status-cho">
+                                <div style="width:47%;height: 4px;background-color: rgb(245, 222, 13);margin-bottom: 8px;"></div>
+                                <div style="color: #999!important;font-weight:500;font-size:16px;margin-bottom: 8px;">Đang chờ xác nhận</div>
+                            </div>
+                            <div class="status-xacnhan">
+                                <div style="width:53%;height: 4px;background-color: #28ca6e;margin-bottom: 8px;"></div>
+                                <div style="color: #999!important;font-weight:500;font-size:16px;margin-bottom: 8px;">Xác nhận thành công</div>
+                            </div>
+                            <div class="status-tuchoi">
+                                <div style="width:38%;height: 4px;background-color: rgb(206, 11, 11);margin-bottom: 8px;"></div>
+                                <div style="color: #999!important;font-weight:500;font-size:16px;margin-bottom: 8px;">Đã hủy lịch hẹn</div>
+                            </div>
+                            <div style="color: #222222!important;font-weight:600;font-size:24px">HH:MM, DD/MM/YYYY</div>
+                            <br>
+                            <button class="btn-funtion" id="xac-nhan" style="float: left;">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="15" height="15" x="0" y="0" viewBox="0 0 434.67733 434" style="enable-background:new 0 0 512 512" xml:space="preserve" class="" style="vertical-align: middle;"><g><path xmlns="http://www.w3.org/2000/svg" d="m152.003906 304.34375c-5.460937 0-10.921875-2.089844-15.082031-6.25l-130.664063-130.667969c-8.34375-8.339843-8.34375-21.824219 0-30.164062 8.339844-8.339844 21.820313-8.339844 30.164063 0l115.582031 115.582031 246.253906-246.25c8.339844-8.339844 21.820313-8.339844 30.164063 0 8.339844 8.34375 8.339844 21.824219 0 30.167969l-261.332031 261.332031c-4.160156 4.160156-9.625 6.25-15.085938 6.25zm0 0" fill="#2cd474" data-original="#000000" style="" class=""/></g></svg>
+                                &nbsp;Xác nhận</button>
+                            <button class="btn-funtion" id="tu-choi" style="float: right;margin-bottom: 12px;margin-right: 12px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="15" height="15" x="0" y="0" viewBox="0 0 180.607 180.607" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path xmlns="http://www.w3.org/2000/svg" d="M180.607,10.607l-79.696,79.697l79.696,79.697L170,180.607l-79.696-79.696l-79.696,79.696L0,170.001l79.696-79.697L0,10.607  L10.607,0.001l79.696,79.696L170,0.001L180.607,10.607z" fill="#d01818" data-original="#000000" style=""/><g xmlns="http://www.w3.org/2000/svg"></g></g></svg>
+                                &nbsp;Từ chối</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="right-side">
+                            <div class="row">
+                                <div class="col-sm-9" id="div-name-host">
+                                    <a href="#" style="text-decoration: none;" id="a-name-host">
+                                        <h4 id="name-host">AimeeHomestay#2 - Phan Bội Châu/ Self check-in</h4>
+                                    </a>
+                                    <br>
+                                </div>
+                                <div class="col-sm-3" id="div-img">
+                                    <a href="#" style="text-decoration: none;" id="a-img">
+                                        <img src="https://res.cloudinary.com/dgncygcvs/image/upload/v1606043378/cvzgljqwnw511kndeujs.jpg">
+                                    </a>
+                                </div>
+                                <div class="col-sm-6" style="margin-top:-32px">
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;height: 15px;width: 15px;" xml:space="preserve">
+                        <path style="fill:#FF7C48;" d="M409.126,63.424C368.227,22.524,313.84,0,255.995,0C198.16,0,143.773,22.524,102.874,63.424  S39.45,158.71,39.45,216.555c0,117.01,110.642,214.336,170.077,266.622c8.258,7.258,15.396,13.537,21.075,18.845  c7.118,6.648,16.256,9.977,25.394,9.977c9.138,0,18.275-3.329,25.404-9.977c5.679-5.309,12.817-11.587,21.075-18.845  c59.435-52.287,170.077-149.612,170.077-266.622C472.55,158.71,450.026,104.324,409.126,63.424z M255.995,303.803  c-52.617,0-95.426-42.809-95.426-95.436c0-52.617,42.809-95.426,95.426-95.426c52.627,0,95.436,42.809,95.436,95.426  C351.431,260.994,308.622,303.803,255.995,303.803z"/>
+                        <path style="fill:#FF4C04;" d="M472.55,216.555c0,117.01-110.642,214.336-170.077,266.622c-8.258,7.258-15.396,13.537-21.075,18.845  c-7.128,6.648-16.266,9.977-25.404,9.977V303.803c52.627,0,95.436-42.809,95.436-95.436c0-52.617-42.809-95.426-95.436-95.426V0  c57.845,0,112.232,22.524,153.131,63.424S472.55,158.71,472.55,216.555z"/>
+                        </svg>
+                                        <span style="font-weight: 500;color: #222222;">&nbsp;Hoàn Kiếm, Hà Nội, Vietnam</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6" style="margin-top:-32px;float: right;">
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" enable-background="new 0 0 512 512" height="15" viewBox="0 0 512 512" width="15" style="vertical-align: middle;"><g><path d="m256 512c-68.38 0-132.668-26.628-181.02-74.98s-74.98-112.64-74.98-181.02 26.629-132.667 74.98-181.02 112.64-74.98 181.02-74.98 132.668 26.628 181.02 74.98 74.98 112.64 74.98 181.02-26.629 132.667-74.98 181.02-112.64 74.98-181.02 74.98zm0-480c-123.514 0-224 100.486-224 224s100.486 224 224 224 224-100.486 224-224-100.486-224-224-224z"/><path d="m256 240c-22.056 0-40-17.944-40-40s17.944-40 40-40 40 17.944 40 40c0 8.836 7.163 16 16 16s16-7.164 16-16c0-34.201-23.978-62.888-56-70.186v-17.814c0-8.836-7.163-16-16-16s-16 7.164-16 16v17.814c-32.022 7.298-56 35.985-56 70.186 0 39.701 32.299 72 72 72 22.056 0 40 17.944 40 40s-17.944 40-40 40-40-17.944-40-40c0-8.836-7.163-16-16-16s-16 7.164-16 16c0 34.201 23.978 62.888 56 70.186v17.814c0 8.836 7.163 16 16 16s16-7.164 16-16v-17.814c32.022-7.298 56-35.985 56-70.186 0-39.701-32.299-72-72-72z"/></g></svg>
+                                        <span style="font-weight: 500;color: #222222;font-weight: 900;">&nbsp;1,000,000 đ/tháng</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('#xac-nhan').on('click', function(e) {
+            e.preventDefault();
+            $('.status-cho').css("display", "none");
+            $('.status-xacnhan').css("display", "block");
+            $('.status-tuchoi').css("display", "none");
+            $('#xac-nhan').css("display", "none");
+            $('#tu-choi').css("display", "none");
+        })
+
+        $('#tu-choi').on('click', function(e) {
+            e.preventDefault();
+            $('.status-cho').css("display", "none");
+            $('.status-xacnhan').css("display", "none");
+            $('.status-tuchoi').css("display", "block");
+            $('#xac-nhan').css("display", "none");
+            $('#tu-choi').css("display", "none");
+        })
+    </script>
+    <%- include("partials/footer"); -%>

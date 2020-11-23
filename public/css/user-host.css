@@ -272,6 +272,34 @@ input::-webkit-inner-spin-button {
     color: #17ca9d;
 }
 
+.btn-date {
+    border: transparent;
+    border-bottom: 1px solid #e6e6e6;
+    color: #424242;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    padding-right: 25px;
+}
+
+.btn-date:focus {
+    border-bottom: #17ca9d;
+    box-shadow: 0 0 5px 0 #17ca9d;
+    outline: 0 none;
+    border-radius: 7px;
+}
+
+.gj-editor [role=body] {
+    border: 3px solid #f2f2f2;
+    padding: 15px;
+}
+
+.gj-editor-md {
+    border-radius: 8px;
+    border: 3px solid #f2f2f2;
+}
+
 @media (max-width:990px) {
     .uploadimg,
     .address,
