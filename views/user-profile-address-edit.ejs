@@ -1,4 +1,95 @@
 <%- include("partials/user-head-profile-info"); -%>
     <%- include("partials/user-navbar-profile"); -%>
-        <%- include("partials/content-profile-address-edit"); -%>
-            <%- include("partials/footer"); -%>
+        <div class="container" id="profile-content">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="side-profile">
+                        <div class="div-side">
+                            <a href="/profile-info" class="a-side" style="text-decoration: none;">
+                                <span id="sp">Thông tin cá nhân</span>
+                            </a>
+                        </div>
+                        <div class="div-side">
+                            <a href="/profile-change-password" class="a-side" style="text-decoration: none;">
+                                <span id="sp">Đổi mật khẩu</span>
+                            </a>
+                        </div>
+                        <div class="div-side">
+                            <a href="/profile-address" class="a-side" style="text-decoration: none;">
+                                <span id="sp-color" style="color: #333333;font-weight: 900;">Địa chỉ</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <span style="font-size: 17px;"><b>Sửa thông tin địa chỉ</b></span>
+                    <br><br>
+                    <form>
+                        <div class="content" style="background-color: white; height: 340px;border-radius: 8px;box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, .05);">
+                            <div class="row" style="padding:40px;">
+                                <div class="col-md-12">
+                                    <div class="col-md-4">
+                                        <span id="title-item-profile"><i>Họ và tên</i></span>
+                                        <br>
+                                        <input type="text" id="address" class="form-control btn-edit" placeholder="Nhập họ và tên của bạn" style="border-radius: 0;color: #424242; font-size: small;height: 35px;" required data-bv-notempty-message="Không được để trống">
+                                        <br>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <span id="title-item-profile"><i>Số điện thoại</i></span>
+                                        <br>
+                                        <input type="text" id="city" class="form-control btn-edit" style="border-radius: 0;color: #424242; font-size: small;height: 35px;text-align: center;" data-meta="Field" value="<%=user.sdt%>" readonly="" tabindex="-1">
+                                        <br>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <span id="title-item-profile"><i>Tỉnh/Thành phố</i></span>
+                                        <br>
+                                        <input type="text" id="city" class="form-control btn-edit" style="border-radius: 0;color: #424242; font-size: small;height: 35px;text-align: center;" data-meta="Field" value="Hà Nội" readonly="" tabindex="-1">
+                                        <br>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="col-md-4">
+                                        <span id="title-item-profile"><i>Quận/Huyện</i></span>
+                                        <br>
+                                        <select class="custom-select btn-edit" id="huyen" name="quan" placeholder="Vui lòng chọn quận/huyện" style="border-radius: 0;color: #424242; font-size: small;height: 35px;width: 100%;" required data-bv-notempty-message="Không được để trống">
+                                <option value="" selected= "selected">Lựa chọn Quận/Huyện</option>
+                              </select>
+                                        <br>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <span id="title-item-profile"><i>Phường/Xã</i></span>
+                                        <br>
+                                        <select class="custom-select btn-edit" id="xa" name="xa" style="border-radius: 0;color: #424242; font-size: small;height: 35px;width: 100%;" required data-bv-notempty-message="Không được để trống">
+                                <option value="" selected= "selected">Lựa chọn Phường/Xã</option>
+                              </select>
+                                        <br>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <span id="title-item-profile"><i>Địa chỉ</i></span>
+                                        <br>
+                                        <input type="text" id="address" class="form-control btn-edit" placeholder="Vui lòng nhập địa số nhà, tòa nhà, ..." style="border-radius: 0;color: #424242; font-size: small;height: 35px;" required data-bv-notempty-message="Không được để trống">
+                                        <br>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row" style="padding:40px;margin-left: 2px;">
+                                <div class="col-md-4">
+                                    <a href="address-edit" style="text-decoration: none;">
+                                        <button type="submit" class="btn btn-primary" id="button-edit"><span id = "text-btn"><b>LƯU THÔNG TIN ĐỊA CHỈ</b></span></button>
+                                    </a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a href="profile-address" style="text-decoration: none;"><button type="button" class="btn btn-primary" id="button-submit"><span id = "text-btn"><b>HỦY BỎ</b></span></button></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/profile-address-edit.js"></script>
+        <%- include("partials/footer"); -%>

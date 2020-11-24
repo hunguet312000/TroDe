@@ -1,4 +1,94 @@
 <%- include("partials/user-head-profile-info"); -%>
     <%- include("partials/user-navbar-profile"); -%>
-        <%- include("partials/content-profile-edit",{user: user}); -%>
-            <%- include("partials/footer"); -%>
+        <div class="container" id="profile-content">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="side-profile">
+                        <div class="div-side">
+                            <a href="/profile-info" class="a-side" style="text-decoration: none;">
+                                <span id="sp-color" style="color: #333333;font-weight: 900;">Thông tin cá nhân</span>
+                            </a>
+                        </div>
+                        <div class="div-side">
+                            <a href="/profile-change-password" class="a-side" style="text-decoration: none;">
+                                <span id="sp">Đổi mật khẩu</span>
+                            </a>
+                        </div>
+                        <div class="div-side">
+                            <a href="/profile-address" class="a-side" style="text-decoration: none;">
+                                <span id="sp">Địa chỉ</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <span style="font-size: 17px;"><b>Sửa thông tin cá nhân</b></span>
+                    <br><br>
+                    <div class="content" style="background-color: white; height: 400px;border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);">
+                        <form action="/profile-edit" method="post">
+                            <div class="row" style="padding:40px;">
+                                <div class="col-md-4">
+                                    <span id="title-item-profile"><i>Tên đăng nhập</i></span>
+                                    <br>
+                                    <br>
+                                    <input name="username" type="text" id="user-name1" class="form-control btn-edit" placeholder="Vui lòng nhập họ tên của bạn" value="<%=user.ten_nguoi_dung %>">
+                                    <br>
+                                </div>
+                                <div class="col-md-4">
+                                    <span id="title-item-profile"><i>Địa chỉ email</i></span>
+                                    <br>
+                                    <br>
+                                    <input name="email" type="text" id="btn-forget" class="form-control btn-edit" data-meta="Field" value="<%=user.email %>" tabindex="-1">
+                                    <br>
+                                </div>
+                                <div class="col-md-4">
+                                    <span id="title-item-profile"><i>Số điện thoại</i></span>
+                                    <br>
+                                    <br>
+                                    <input name="phone" type="number" id="btn-phone" class="form-control btn-edit" placeholder="Vui lòng nhập số điện thoại của bạn" value="<%=user.sdt %>" maxlength="11" pattern="([0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9])">
+                                    <br>
+                                </div>
+                                <div class="col-md-4">
+                                    <span id="title-item-profile"><i>Ngày sinh</i></span>
+                                    <br>
+                                    <br>
+                                    <input name="DOB" id="datepicker" placeholder="Chọn ngày sinh của bạn" value="<%=user.ngay_sinh %>" readonly="">
+                                </div>
+                                <div class="col-md-4">
+                                    <span id="title-item-profile"><i>Giới tính</i></span>
+                                    <br>
+                                    <br>
+                                    <select name="sex" class="custom-select btn-edit" id="inputGroupSelect01" required data-bv-notempty-message="Không được để trống">
+                                    <option value="" disabled selected hidden>Chọn</option>
+                                <option > <%=user.gioi_tinh %> </option>
+                                <% if(user.gioi_tinh == "Nam"){ %>
+                                  <option >Nữ</option>
+                                <% }else{ %>
+                                    <option >Nam</option>
+                                <% } %>
+                            </select>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row" style="padding:40px;">
+                                <div class="col-md-4">
+                                    <button type="submit" class="btn btn-primary" id="button-submit"><span id = "text-btn"><b>LƯU THAY ĐỔI</b></span></button>
+                                </div>
+                                <div class="col-md-4">
+                                    <a href="profile-info" style="text-decoration: none;"><button type="button" class="btn btn-primary" id="button-submit"><span id = "text-btn"><b>HỦY BỎ</b></span></button></a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </div>
+        <script>
+            $("#btn-phone").keyup(function() {
+                $("#btn-phone").val(this.value.match(/[0-9]*/));
+            });
+            $('#datepicker').datepicker();
+        </script>
+        <%- include("partials/footer"); -%>

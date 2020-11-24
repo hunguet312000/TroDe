@@ -1,4 +1,85 @@
 <%- include("partials/user-head-profile-info"); -%>
     <%- include("partials/user-navbar-profile"); -%>
-        <%- include("partials/content-profile-address"); -%>
-            <%- include("partials/footer"); -%>
+        <div class="container" id="profile-content">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="side-profile">
+                        <div class="div-side">
+                            <a href="/profile-info" class="a-side" style="text-decoration: none;">
+                                <span id="sp">Thông tin cá nhân</span>
+                            </a>
+                        </div>
+                        <div class="div-side">
+                            <a href="/profile-change-password" class="a-side" style="text-decoration: none;">
+                                <span id="sp">Đổi mật khẩu</span>
+                            </a>
+                        </div>
+                        <div class="div-side">
+                            <a href="/profile-address" class="a-side" style="text-decoration: none;">
+                                <span id="sp-color" style="color: #333333;font-weight: 900;">Địa chỉ</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <span style="font-size: 17px;"><b>Địa chỉ</b></span>
+                    <br><br>
+                    <div class="content" style="background-color: white; height: 340px;border-radius: 8px;box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, .05);">
+                        <div class="row" style="padding:40px;">
+                            <div class="col-md-12">
+                                <div class="col-md-4">
+                                    <span id="title-item-profile"><i>Họ và tên</i></span>
+                                    <br>
+                                    <div class="proflie-item-info"><b>  </b></div>
+                                    <br>
+                                </div>
+                                <div class="col-md-4">
+                                    <span id="title-item-profile"><i>Số điện thoại</i></span>
+                                    <br>
+                                    <div class="proflie-item-info"><b> <%=user.sdt%> </b></div>
+                                    <br>
+                                </div>
+                                <div class="col-md-4">
+                                    <span id="title-item-profile"><i>Tỉnh/Thành phố</i></span>
+                                    <br>
+                                    <div class="proflie-item-info"><b>Hà Nội </b></div>
+                                    <br>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="col-md-4">
+                                    <span id="title-item-profile"><i>Quận/Huyện</i></span>
+                                    <br>
+                                    <div class="proflie-item-info"><b> </b></div>
+                                    <br>
+                                </div>
+                                <div class="col-md-4">
+                                    <span id="title-item-profile"><i>Phường/Xã</i></span>
+                                    <br>
+                                    <div class="proflie-item-info"><b>  </b></div>
+                                    <br>
+                                </div>
+                                <div class="col-md-4">
+                                    <span id="title-item-profile"><i>Địa chỉ</i></span>
+                                    <br>
+                                    <div class="proflie-item-info"><b>  </b></div>
+                                    <br>
+                                </div>
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="row" style="padding:40px;">
+                            <div class="col-md-4">
+                                <a href="address-edit" style="text-decoration: none;">
+                                    <button type="button" class="btn btn-primary" id="button-edit"><span id = "text-btn"><b>CHỈNH SỬA ĐỊA CHỈ</b></span></button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <%- include("partials/footer"); -%>
