@@ -1,4 +1,4 @@
-#a-sub-3 {
+#a-sub-5 {
     color: #333;
     font-weight: 600;
     border-bottom: 3px solid #17ca9d;
@@ -19,7 +19,7 @@
     font-weight: 600;
 }
 
-#a-sub-5:hover {
+#a-sub-3:hover {
     color: #333;
     font-weight: 600;
 }
@@ -79,7 +79,14 @@ img {
 .box-info1 {
     background-color: #fff;
     height: 122px;
-    padding: 12px;
+    padding: 12px 12px;
+}
+
+.box-info2 {
+    background-color: #fff;
+    height: 122px;
+    padding: 30px 20px;
+    border-left: 2px solid #f2f2f2;
 }
 
 .status-xacnhan {
@@ -102,4 +109,9 @@ img {
 
 .btn-funtion:focus {
     outline: none;
+}
+
+#profile-content {
+    margin-top: 150px;
+    margin-bottom: 100px;
 }

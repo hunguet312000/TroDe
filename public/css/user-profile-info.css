@@ -3,33 +3,62 @@ body {
     font-family: Montserrat;
 }
 
+#a-sub-1 {
+    color: #333;
+    font-weight: 600;
+    border-bottom: 3px solid #17ca9d;
+}
+
+#a-sub-4:hover {
+    color: #333;
+    font-weight: 600;
+}
+
+#a-sub-2:hover {
+    color: #333;
+    font-weight: 600;
+}
+
+#a-sub-3:hover {
+    color: #333;
+    font-weight: 600;
+}
+
+#a-sub-5:hover {
+    color: #333;
+    font-weight: 600;
+}
+
 #profile-content {
-    margin-top: 90px;
+    margin-top: 150px;
     height: 84vh;
-}
-
-#ul-li {
-    color: #757575;
-    font-size: 14px;
-    text-decoration: none;
-}
-
-#ul-li:hover {
-    color: #17ca9d;
-}
-
-#catelogy {
-    color: #424242;
-    font-size: 16px;
-}
-
-#catelogy:hover {
-    color: #17ca9d;
 }
 
 #title-item-profile {
     font-size: 13px;
     color: #424242;
+}
+
+.side-profile {
+    background-color: #fff;
+    box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, .05);
+    border-radius: 5px!important;
+}
+
+.div-side {
+    border-bottom: 1px solid #e6e6e6;
+    padding: 12px 0px 12px 12px;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+}
+
+.a-side {
+    color: #666666;
+}
+
+.div-side:hover .a-side {
+    color: #333333;
+    font-weight: 900;
 }
 
 .proflie-item-info {

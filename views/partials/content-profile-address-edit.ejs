@@ -1,39 +1,23 @@
 <div class="container" id="profile-content">
     <div class="row">
         <div class="col-md-2">
-            <span style="font-size: 12px;">Xin chào <%=user.ten_nguoi_dung %>,</span>
-            <br><br>
-            <a href="/profile" style="text-decoration: none;">
-                <i class="fas fa-user-circle" style="color: hotpink;font-size: 19px;">&nbsp;</i><span id="catelogy"><b>Quản lý tài khoản</b></span>
-            </a>
-            <ul style="list-style: none;margin-left: -5px;">
-                <li>
-                    <a href="/profile-info" style="text-decoration: none;">
-                        <span id="ul-li">Thông tin cá nhân</span>
+            <div class="side-profile">
+                <div class="div-side">
+                    <a href="/profile-info" class="a-side" style="text-decoration: none;">
+                        <span id="sp">Thông tin cá nhân</span>
                     </a>
-                </li>
-                <li>
-                    <a href="/profile-change-password" style="text-decoration: none;">
-                        <span id="ul-li">Đổi mật khẩu</span>
+                </div>
+                <div class="div-side">
+                    <a href="/profile-change-password" class="a-side" style="text-decoration: none;">
+                        <span id="sp">Đổi mật khẩu</span>
                     </a>
-                </li>
-                <li>
-                    <a href="/profile-address" style="text-decoration: none;">
-                        <span id="ul-li" style="color: #1A9CB7;">Địa chỉ</span>
+                </div>
+                <div class="div-side">
+                    <a href="/profile-address" class="a-side" style="text-decoration: none;">
+                        <span id="sp-color" style="color: #333333;font-weight: 900;">Địa chỉ</span>
                     </a>
-                </li>
-            </ul>
-            <a href="#" style="text-decoration: none;">
-                <i class="fas fa-bell" style="color: rgb(255, 30, 0);font-size: 19px;">&nbsp;</i><span id="catelogy"><b>Thông báo</b></span>
-            </a>
-            <br><br>
-            <a href="/list-host" style="text-decoration: none;">
-                <i class="fas fa-clipboard" style="color: rgb(0, 195, 255);font-size: 19px;">&nbsp;</i><span id="catelogy"><b>Bài đã đăng</b></span>
-            </a>
-            <br><br>
-            <a href="/host" style="text-decoration: none;">
-                <i class="far fa-edit" style="color: rgb(255, 0, 98);font-size: 19px;">&nbsp;</i><span id="catelogy"><b>Tạo bài viết mới</b></span>
-            </a>
+                </div>
+            </div>
         </div>
         <div class="col-md-10">
             <span style="font-size: 17px;"><b>Sửa thông tin địa chỉ</b></span>

@@ -195,24 +195,6 @@ input::-webkit-inner-spin-button {
     font-weight: 900;
 }
 
-#btn-xuongdong,
-#btn-B,
-#btn-I,
-#btn-U,
-#btn-remove,
-#btn-display,
-#btn-xuongdong-noiquy,
-#btn-B-noiquy,
-#btn-I-noiquy,
-#btn-U-noiquy,
-#btn-remove-noiquy,
-#btn-display-noiquy,
-:focus {
-    font-weight: 500;
-    border-color: transparent;
-    outline: none;
-}
-
 #nav-bar {
     height: 110px;
 }
@@ -298,6 +280,28 @@ input::-webkit-inner-spin-button {
 .gj-editor-md {
     border-radius: 8px;
     border: 3px solid #f2f2f2;
+}
+
+.side-profile {
+    background-color: #fff;
+    box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, .05);
+    border-radius: 5px!important;
+}
+
+.div-side {
+    border-bottom: 1px solid #e6e6e6;
+    padding: 12px 0px 12px 12px;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+}
+
+.a-side {
+    color: #666666;
+}
+
+.div-side:hover .a-side {
+    color: #333333;
+    font-weight: 900;
 }
 
 @media (max-width:990px) {

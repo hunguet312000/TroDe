@@ -132,30 +132,6 @@ module.exports = (app, passport) => {
         }
     });
 
-    app.get("/wish-list", function(req, res) {
-        if (req.isAuthenticated()) {
-            res.render("user-wish-list", { username: req.user.ten_nguoi_dung });
-        } else {
-            res.redirect('/login');
-        }
-    });
-
-    app.get("/bookings", function(req, res) {
-        if (req.isAuthenticated()) {
-            res.render("user-bookings", { username: req.user.ten_nguoi_dung });
-        } else {
-            res.redirect('/login');
-        }
-    });
-
-    app.get("/control-bookings", function(req, res) {
-        if (req.isAuthenticated()) {
-            res.render("user-control-bookings", { username: req.user.ten_nguoi_dung });
-        } else {
-            res.redirect('/login');
-        }
-    });
-
 
     app.post("/comment", postManage.saveComment);
     app.post("/saveFavPost", postManage.saveFavPost);
