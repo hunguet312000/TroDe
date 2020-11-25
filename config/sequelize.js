@@ -3,8 +3,8 @@ const { DataTypes } = require("sequelize");
 const schema = require("./dbSchema");
 //Sequelize
 const sequelize = new Sequelize("trode", process.env.DATABASE_USER, process.env.DATABASE_PASSWORD, {
-  host: process.env.DATABASE_HOST,
-  dialect: 'mysql'
+    host: process.env.DATABASE_HOST,
+    dialect: 'mysql'
 });
 
 async function sequelizeInit() {
@@ -213,4 +213,4 @@ module.exports = {
         Danh_sach_yeu_thich,
         sequelize
     }
-//sequelizeInit();
+    //sequelizeInit();
