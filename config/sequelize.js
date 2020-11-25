@@ -2,10 +2,9 @@ const { Sequelize } = require('sequelize');
 const { DataTypes } = require("sequelize");
 const schema = require("./dbSchema");
 //Sequelize
-const sequelize = new Sequelize('trode', 'root', '', {
-  host: "127.0.0.1",
-  dialect : 'mysql',
-  operatorsAliases: false
+const sequelize = new Sequelize("sequelize", process.env.DATABASE_USER, process.env.DATABASE_PASSWORD, {
+  host: process.env.DATABASE_HOST,
+  dialect: 'mysql'
 });
 
 async function sequelizeInit() {
