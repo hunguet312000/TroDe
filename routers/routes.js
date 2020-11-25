@@ -11,7 +11,7 @@ require('dotenv').config();
 module.exports = (app, passport) => {
     app.get("/", function(req, res) {
         if (req.isAuthenticated()) {
-            res.render("user-home", { username: req.user.ten_nguoi_dung });
+            res.render("user-home", { user: req.user });
         } else { res.render('guest-home') }
     });
     
