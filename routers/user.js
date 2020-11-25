@@ -8,46 +8,68 @@ const forgetPassword = require("../app/forgetPassword");
 require('dotenv').config();
 
 module.exports = (app, passport) => {
-  app.get('/profile', function(req, res) {
-      if (req.isAuthenticated()) {
-          const user = req.session.passport.user;
-          res.render("user-profile-info", { user: user });
-      } else { res.redirect('/login') }
-  });
+    app.get('/profile', function(req, res) {
+        if (req.isAuthenticated()) {
+            const user = req.session.passport.user;
+            res.render("user-profile-info", { user: user });
+        } else { res.redirect('/login') }
+    });
 
-  app.get('/profile-edit', function(req, res) {
-      if (req.isAuthenticated()) {
-          const user = req.session.passport.user;
-          res.render('user-profile-edit', { user: user });
-      } else { res.redirect('/login') }
-  });
+    app.get('/wish-list', function(req, res) {
+        if (req.isAuthenticated()) {
+            const user = req.session.passport.user;
+            res.render("user-wish-list", { user: user });
+        } else { res.redirect('/login') }
+    });
 
-  app.post("/profile-edit", function(req, res) {
-      if (req.isAuthenticated()) {
-          const newInfo = req.body;
-          const oldInfo = req.session.passport.user;
-          updateInfo(newInfo, oldInfo);
-          req.logout();
-          res.redirect("/login")
-      } else { res.redirect('/login') }
-  });
+    app.get('/bookings', function(req, res) {
+        if (req.isAuthenticated()) {
+            const user = req.session.passport.user;
+            res.render("user-bookings", { user: user });
+        } else { res.redirect('/login') }
+    });
 
-  app.get('/profile-info', function(req, res) {
-      if (req.isAuthenticated()) {
-          const user = req.session.passport.user;
-          res.render('user-profile-info', { user: user });
-      } else { res.redirect('/login') }
-  });
+    app.get('/control-bookings', function(req, res) {
+        if (req.isAuthenticated()) {
+            const user = req.session.passport.user;
+            res.render("user-control-bookings", { user: user });
+        } else { res.redirect('/login') }
+    });
 
-  app.get('/list-host', postManage.displayUserListPost);
 
-  app.get('/profile-address', function(req, res) {
-      const user = req.session.passport.user;
-      res.render('user-profile-address', { user: user });
-  });
+    app.get('/profile-edit', function(req, res) {
+        if (req.isAuthenticated()) {
+            const user = req.session.passport.user;
+            res.render('user-profile-edit', { user: user });
+        } else { res.redirect('/login') }
+    });
 
-  app.get('/address-edit', function(req, res) {
-      const user = req.session.passport.user;
-      res.render('user-profile-address-edit', { user: user });
-  });
+    app.post("/profile-edit", function(req, res) {
+        if (req.isAuthenticated()) {
+            const newInfo = req.body;
+            const oldInfo = req.session.passport.user;
+            updateInfo(newInfo, oldInfo);
+            req.logout();
+            res.redirect("/login")
+        } else { res.redirect('/login') }
+    });
+
+    app.get('/profile-info', function(req, res) {
+        if (req.isAuthenticated()) {
+            const user = req.session.passport.user;
+            res.render('user-profile-info', { user: user });
+        } else { res.redirect('/login') }
+    });
+
+    app.get('/list-host', postManage.displayUserListPost);
+
+    app.get('/profile-address', function(req, res) {
+        const user = req.session.passport.user;
+        res.render('user-profile-address', { user: user });
+    });
+
+    app.get('/address-edit', function(req, res) {
+        const user = req.session.passport.user;
+        res.render('user-profile-address-edit', { user: user });
+    });
 }
