@@ -3,6 +3,9 @@ const mysql = require('mysql');
 const dbconfig = require('../config/database');
 const async = require('async')
 require('dotenv').config();
+const url = require("url");
+const sequelize = require("sequelize");
+const keywords_dict = require("../public/js/keywords_dict.js");
 const { sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan, Danh_sach_yeu_thich } = require("../config/sequelize");
 const Op = require('Sequelize').Op
 exports.savePosts = async(req, res) => {
@@ -86,11 +89,41 @@ exports.savePosts = async(req, res) => {
     } else { res.redirect('/login') }
 }
 
+exports.filterListPostByType = async(req, res) => {
+    res.redirect(url.format({
+        pathname : req.url,
+        query : req.body,
+    }))
+}
+exports.filterListPostByNumOfPeopleOrPrice = async(req, res) => {
+    res.redirect(url.format({
+        pathname : req.url,
+        query : req.body,
+    }))
+}
+// // exports.filterListPostBySearch = async(req, res) => {
+// //     console.log(req.body);
+// // let s = url.format({
+// //         pathname : req.url,
+// //         query : req.body,
+// //     })
+// //     s = s.replace("%3F", "?")
+// // res.redirect(s);
+
+// }
 exports.displayListPost = async(req, res) => {
     try {
         let type = ""
         let district = "";
         let area = []
+        let order;
+        if(JSON.stringify(req.query) == "{}"){
+            order = ["id_phong_tro", "DESC"]
+        }else if(Object.values(req.query)[0] == "ESC"){
+            order = ["gia_phong"]
+        }else if(Object.values(req.query)[0] == "DESC"){
+            order = ["gia_phong", "DESC"]
+        }
         switch (req.params.type) {
             case "phong_tro":
                 type = "Phòng trọ";
@@ -157,7 +190,6 @@ exports.displayListPost = async(req, res) => {
                 district = "";
                 area = [""];
         }
-        console.log(area);
         const phong_tro = await Phong_tro.findAll({
             where: {
                 [Op.or]: [{
@@ -178,12 +210,12 @@ exports.displayListPost = async(req, res) => {
                 required: true
             }],
             order: [
-                ["id_phong_tro", "DESC"]
+                order
             ]
         });
         if (req.isAuthenticated()) {
-            res.render("user-product-grid", { user: req.user, userData: phong_tro });
-        } else { res.render("guest-product-grid", { userData: phong_tro }); }
+            res.render("user-product-grid", { user: req.user, userData: phong_tro, type:req.params.type });
+        } else { res.render("guest-product-grid", { userData: phong_tro, type:req.params.type }); }
     } catch (err) {
         console.log(err);
     }
@@ -194,6 +226,13 @@ exports.displayPostByNumOfPeopleOrPrice = async(req, res) => {
         let type = (req.params.type == "phong_tro") ? "Phòng trọ" : "Chung cư";
         let tong_so_nguoi = "";
         let gia_tien = [undefined, undefined]
+        if(JSON.stringify(req.query) == "{}"){
+            order = ["id_phong_tro", "DESC"]
+        }else if(Object.values(req.query)[0] == "ESC"){
+            order = ["gia_phong"]
+        }else if(Object.values(req.query)[0] == "DESC"){
+            order = ["gia_phong", "DESC"]
+        }
         switch (req.params.option) {
             case "1_nguoi":
                 tong_so_nguoi = "1"
@@ -235,12 +274,12 @@ exports.displayPostByNumOfPeopleOrPrice = async(req, res) => {
                 required: true
             }],
             order: [
-                ["id_phong_tro", "DESC"]
+                order
             ]
         });
         if (req.isAuthenticated()) {
-            res.render("user-product-grid", { user: req.user, userData: phong_tro });
-        } else { res.render("guest-product-grid", { userData: phong_tro }) }
+            res.render("user-product-grid", { user: req.user, userData: phong_tro, type: req.params.type+"/"+req.params.option });
+        } else { res.render("guest-product-grid", { userData: phong_tro, type: req.params.type+"/"+req.params.option }) }
     } catch (err) {
         console.log(err);
     }
@@ -378,3 +417,167 @@ exports.deletePost = async(req, res) => {
         console.log(err);
     }
 }
+
+exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, quan_huyen, tong_songuoi, phuong_xa, cao cap, re, gia re
+    try{
+        console.log(req.query);
+        let search = Object.values(req.query)[0].toLowerCase();//search value
+        search = search.replace(/\s\s+/g, ' '); //delete multiple spaces
+
+        const result = {
+            'phan_loai' : "", 
+            'quan_huyen' : "",
+            'phuong_xa' : "",
+            'tong_so_nguoi' : "",
+            'gia_phong' : [0, 999999999]
+        }
+
+        var phan_loai_keyword;
+        var quan_huyen_keyword;
+        var phuong_xa_keyword;
+        var gia_phong_keyword;
+        //get keywordd phan loai
+        keywords_dict.keywords_dict.phan_loai.forEach(function(phan_loai) {
+            phan_loai_keyword = new RegExp(phan_loai, "i");
+            if(search.match(phan_loai_keyword)){
+                result.phan_loai = phan_loai;
+                return true;
+            }
+        })
+        //get keyword quan huyen phuong xa
+        Object.keys(keywords_dict.keywords_dict.quan_huyen_phuong_xa).forEach(quan_huyen => {
+            quan_huyen_keyword = new RegExp(quan_huyen, "i");
+            if(search.match(quan_huyen_keyword)) {result.quan_huyen = quan_huyen};
+            keywords_dict.keywords_dict.quan_huyen_phuong_xa[quan_huyen].forEach(function(phuong_xa) {
+                phuong_xa_keyword = new RegExp(phuong_xa, "i");
+                if(search.match(phuong_xa_keyword)){result.phuong_xa = phuong_xa}
+            })
+        })
+
+        
+        //get keyword gia phong
+        Object.keys(keywords_dict.keywords_dict.gia_tien).forEach(gia => {
+            gia_phong_keyword = new RegExp(gia, "i");
+            if(search.match(gia_phong_keyword)) {
+        
+                result.gia_phong[0] = keywords_dict.keywords_dict.gia_tien[gia][0];
+                result.gia_phong[1] = keywords_dict.keywords_dict.gia_tien[gia][1];
+                console.log(keywords_dict.keywords_dict.gia_tien[gia])
+            }
+        })
+
+        // get keyword tong_so_nguoi
+        var reg1 = /[+-]?\d+(?:\.\d+)?/g;//get number
+        var reg2;
+        if(search.match(reg1)) { 
+            reg2 = new RegExp(search.match(reg1)[0] + " người", "i")
+            if(search.match(reg2)){
+                result.tong_so_nguoi = search.match(reg2)[0].match(reg1)[0];
+            }
+        }    
+
+        //check having keyword -> no result
+        if(JSON.stringify(result) == JSON.stringify({
+                                                        'phan_loai' : "", 
+                                                        'quan_huyen' : "",
+                                                        'phuong_xa' : "",
+                                                        'tong_so_nguoi' : "",
+                                                        'gia_phong' : [0, 999999999]
+                                                    }))
+        {
+            result.phan_loai = null,
+            result.quan_huyen = null,
+            result.phuong_xa = null,
+            result.tong_so_nguoi = null,
+            result.gia_phong = [null, null]
+        }
+        console.log(result);
+
+        //filter order esc/desc,...
+        console.log(req.query)
+        let order = ["id_phong_tro", "DESC"]
+        if(JSON.stringify(req.query) == "{}"){
+            order = ["id_phong_tro", "DESC"]
+        }else if(Object.values(req.query)[1] == "ESC"){
+            order = ["gia_phong"]
+        }else if(Object.values(req.query)[1] == "DESC"){
+            order = ["gia_phong", "DESC"]
+        }
+
+        let phong_tro = await Phong_tro.findAll({
+            where : {
+                [Op.and] : [
+                    {
+                        phan_loai : {
+                            [Op.like] :"%" + result.phan_loai + "%"
+                        }
+                    },
+                    {
+                        quan_huyen : {
+                            [Op.like] :"%" + result.quan_huyen+"%"
+                        }
+                    },
+                    {
+                        phuong_xa : {
+                            [Op.like] : "%"+ result.phuong_xa + '%'
+                        }
+                    }, 
+                    {
+                        tong_so_nguoi : {
+                            [Op.like] : "%"+result.tong_so_nguoi+"%"
+                        }
+                    },
+                    {
+                        gia_phong : {
+                            [Op.between] : [result.gia_phong[0], result.gia_phong[1]]
+                        }
+                    }
+                ],
+
+            }
+            ,
+            order :[["id_phong_tro", "DESC"]]
+        })
+        //console.log(phong_tro);
+
+        if (req.isAuthenticated()) {
+            res.render("user-product-grid", { user: req.user, userData : phong_tro, type : req.url.slice(7) });
+        } else { res.render("guest-product-grid", {userData:phong_tro, type : req.url.slice(7) }); }
+    
+    }catch(err){
+        console.log(err);
+    }
+}
+exports.search = async(req, res) => {
+    console.log(req.body)
+   res.redirect(url.format({
+       pathname:"/rooms/",
+       query:req.body,
+   }));
+}
+
+exports.displayAllPost = async(req, res) => {
+    if (req.isAuthenticated()) {
+
+        try{
+            const phong_tro = await Phong_tro.findAll({
+                attributes: ['*', [sequelize.fn('COUNT', sequelize.col('id_binh_luan')), 'luot_danh_gia']],
+                include: [{
+                    model: Binh_luan,
+                    required: false //left join
+                }],
+                group: ['Phong_tro.id_phong_tro'],
+                raw:true,
+                order : [["id_phong_tro", "DESC"]]
+            });
+            console.log(phong_tro)
+            res.render("admin-control-post", { username: req.user.ten_nguoi_dung, userData : phong_tro });
+        }catch(err) {
+            console.log(err)
+        }
+    } else {
+        res.redirect('/login');
+    }
+}
+
+

@@ -24,26 +24,29 @@
 
 <%- include("partials/admin-navbar-control"); -%>
     <div class="container" style="margin-top: 200px;">
+        <%- include("partials/admin-navbar-control"); -%>
+        <% if(userData.length!=0){ %>
+        <% userData.forEach(function(data){ %>
         <div class="list-content" style="height: 120px;background-color: #fff;vertical-align: middle;border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);margin-bottom: 20px;">
             <div class="row">
                 <div class="col-sm-2">
-                    <a href="room" style="text-decoration: none;">
-                        <img id="gallery-img" class="gallery-img" src="https://cdn.luxstay.com/rooms/15937/large/room_15937_13_1565524643.jpg">
+                    <a href="/room/<%=data.id_phong_tro%>" style="text-decoration: none;">
+                        <img id="gallery-img" class="gallery-img" src=<%=data.path_anh_noi_bat%>
                     </a>
                 </div>
                 <div class="col-sm-8" style="line-height: 1.5;">
-                    <a href="room" style="text-decoration: none;">
+                    <a href="/room/<%=data.id_phong_tro%>" style="text-decoration: none;">
                         <div class="title">
-                            <h3><b>AimeeHomestay#2 - Phan Bội Châu/ Self check-inAimeeHomestay#2 - Phan Bội Châu/ Self check-in</b></h3>
+                            <h3><b><%=data.phan_loai%> - <%=data.ten_phong%></b></h3>
                         </div>
                     </a>
                     <div class="little-info" style="margin-top: 4px;margin-bottom: 5px;">
-                        <span class="price" style="color: #252525;font-weight: 500;font-size: 16px;"><span>Giá tiền:&nbsp;</span>315,000&nbsp;<span>₫/tháng</span></span>
+                        <span class="price" style="color: #252525;font-weight: 500;font-size: 16px;"><span>Giá tiền:&nbsp;</span><%=data.gia_phong%>&nbsp;<span>₫/tháng</span></span>
                         <span class="xem" style="color: #252525;font-weight: 500;font-size: 15px;float: right;margin-right: 20px;"><i class="far fa-eye" style="color: black;margin-right: 5px;">&nbsp;</i><span>Số lượt xem</span></span>
                     </div>
                     <div class="info">
                         <span class="thich" style="color: #252525;font-weight: 500;font-size: 15px;"><i class="far fa-heart" style="color: red;margin-right: 5px;">&nbsp;</i><span>Số lượt thích</span></span>
-                        <span class="sao" style="color: #252525;font-weight: 500;float: right;margin-right: 20px;"><i class="fas fa-star" style="color: #ffb025;font-size: 15px;">&nbsp;&nbsp;</i><span style="font-weight: 900;font-size: 15px;">5&nbsp</span><span>(Số
+                        <span class="sao" style="color: #252525;font-weight: 500;float: right;margin-right: 20px;"><i class="fas fa-star" style="color: #ffb025;font-size: 15px;">&nbsp;&nbsp;</i><span style="font-weight: 900;font-size: 15px;"><%=data.luot_danh_gia%></span><span>(Số
                         lượt đánh giá)</span></span>
                     </div>
                 </div>
@@ -53,11 +56,12 @@
                             <i class="fas fa-low-vision" style="font-weight: 900;"></i>&nbsp;Ẩn
                         </a>
                         <br>
-                        <a href="#" style="text-decoration: none;color: #252525;font-weight: 900;">
+                        <a href=  "/host-delete/<%=data.id_phong_tro%>" style="text-decoration: none;color: #252525;font-weight: 900;">
                             <i class="fas fa-trash" style="font-weight: 900;color: red;"></i>&nbsp;&nbsp;Xóa
                         </a>
                     </div>
                 </div>
             </div>
         </div>
+        <%})}%>
     </div>

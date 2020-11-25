@@ -210,6 +210,7 @@ module.exports = {
         Binh_luan,
         Bao_cao,
         Quan_tri_vien,
-        Danh_sach_yeu_thich
+        Danh_sach_yeu_thich,
+        sequelize
     }
-    //sequelizeInit();
+//sequelizeInit();

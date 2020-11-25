@@ -4,6 +4,7 @@ const upload = require('../config/multer');
 const { updateInfo, changePassword } = require("../app/updateUserProfile");
 const bcrypt = require('bcrypt');
 const postManage = require('../app/postManage');
+const userManage = require("../app/userManage");
 const forgetPassword = require("../app/forgetPassword");
 require('dotenv').config();
 
@@ -13,6 +14,8 @@ module.exports = (app, passport) => {
             res.render("user-home", { username: req.user.ten_nguoi_dung });
         } else { res.render('guest-home') }
     });
+    
+    app.post("/", postManage.search);
 
     app.get("/user-home", function(req, res) {
         res.redirect('/');
@@ -21,7 +24,8 @@ module.exports = (app, passport) => {
     app.get("/rooms/:type", postManage.displayListPost);
     app.get("/rooms/:type/:option", postManage.displayPostByNumOfPeopleOrPrice);
     app.get("/room/:id", postManage.displayPostProfile);
-
+    app.post("/rooms/:type", postManage.filterListPostByType);
+    app.post("/rooms/:type/:option", postManage.filterListPostByNumOfPeopleOrPrice)
     app.get('/content-user', function(req, res) {
         if (req.isAuthenticated()) {
             const user = req.session.passport.user;
@@ -92,21 +96,9 @@ module.exports = (app, passport) => {
         }
     });
 
-    app.get("/admin-control-post", function(req, res) {
-        if (req.isAuthenticated()) {
-            res.render("admin-control-post", { username: req.user.ten_nguoi_dung });
-        } else {
-            res.redirect('/login');
-        }
-    });
+    app.get("/admin-control-post", postManage.displayAllPost);
 
-    app.get("/admin-control-user", function(req, res) {
-        if (req.isAuthenticated()) {
-            res.render("admin-control-user", { username: req.user.ten_nguoi_dung });
-        } else {
-            res.redirect('/login');
-        }
-    });
+    app.get("/admin-control-user",userManage.displayListUser );
 
     app.get("/admin-control-report", function(req, res) {
         if (req.isAuthenticated()) {
@@ -135,4 +127,6 @@ module.exports = (app, passport) => {
 
     app.post("/comment", postManage.saveComment);
     app.post("/saveFavPost", postManage.saveFavPost);
+    app.get("/rooms", postManage.displayListPostBySearch);
+    //app.post("/rooms", postManage.filterListPostBySearch);
 }
