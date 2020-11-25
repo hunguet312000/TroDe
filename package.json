@@ -41,5 +41,8 @@
     "readmore-js": "^2.2.1",
     "sequelize": "^6.3.5",
     "slick-carousel": "^1.8.1"
+  },
+  "engines": {
+    "node": "12.16.1"
   }
 }
