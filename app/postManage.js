@@ -423,7 +423,8 @@ exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, qu
         console.log(req.query);
         let search = Object.values(req.query)[0].toLowerCase();//search value
         search = search.replace(/\s\s+/g, ' '); //delete multiple spaces
-
+        search = keywords_dict.convertStr(search);
+        console.log(search);
         const result = {
             'phan_loai' : "", 
             'quan_huyen' : "",
@@ -438,7 +439,7 @@ exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, qu
         var gia_phong_keyword;
         //get keywordd phan loai
         keywords_dict.keywords_dict.phan_loai.forEach(function(phan_loai) {
-            phan_loai_keyword = new RegExp(phan_loai, "i");
+            phan_loai_keyword = new RegExp(keywords_dict.convertStr(phan_loai), "i");
             if(search.match(phan_loai_keyword)){
                 result.phan_loai = phan_loai;
                 return true;
@@ -446,10 +447,10 @@ exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, qu
         })
         //get keyword quan huyen phuong xa
         Object.keys(keywords_dict.keywords_dict.quan_huyen_phuong_xa).forEach(quan_huyen => {
-            quan_huyen_keyword = new RegExp(quan_huyen, "i");
+            quan_huyen_keyword = new RegExp(keywords_dict.convertStr(quan_huyen), "i");
             if(search.match(quan_huyen_keyword)) {result.quan_huyen = quan_huyen};
             keywords_dict.keywords_dict.quan_huyen_phuong_xa[quan_huyen].forEach(function(phuong_xa) {
-                phuong_xa_keyword = new RegExp(phuong_xa, "i");
+                phuong_xa_keyword = new RegExp(keywords_dict.convertStr(phuong_xa), "i");
                 if(search.match(phuong_xa_keyword)){result.phuong_xa = phuong_xa}
             })
         })
@@ -457,7 +458,7 @@ exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, qu
         
         //get keyword gia phong
         Object.keys(keywords_dict.keywords_dict.gia_tien).forEach(gia => {
-            gia_phong_keyword = new RegExp(gia, "i");
+            gia_phong_keyword = new RegExp(keywords_dict.convertStr(gia), "i");
             if(search.match(gia_phong_keyword)) {
         
                 result.gia_phong[0] = keywords_dict.keywords_dict.gia_tien[gia][0];
@@ -470,7 +471,7 @@ exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, qu
         var reg1 = /[+-]?\d+(?:\.\d+)?/g;//get number
         var reg2;
         if(search.match(reg1)) { 
-            reg2 = new RegExp(search.match(reg1)[0] + " người", "i")
+            reg2 = new RegExp(search.match(reg1)[0] + " nguoi", "i")
             if(search.match(reg2)){
                 result.tong_so_nguoi = search.match(reg2)[0].match(reg1)[0];
             }

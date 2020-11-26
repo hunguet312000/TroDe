@@ -62,3 +62,8 @@ exports.keywords_dict =
             "cao cấp" :[4000000, 999999999],
         }
     }
+
+    exports.convertStr = function(str) {
+        const newStr = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        return newStr;
+    }
