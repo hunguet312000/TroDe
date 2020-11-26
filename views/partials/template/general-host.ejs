@@ -559,9 +559,9 @@
                 <div class="col-sm-12">
                     <label for="title" style="margin-bottom: 10px;">*Số tiền (VNĐ)</label>
                     <% if (phong_tro.gia_phong) { %>
-                        <input name="gia_phong" type="number" id="title" class="form-control btn-ip" value="<%=phong_tro.gia_phong %>" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
+                        <input name="gia_phong" type="text" id="title" class="form-control btn-ip" value="<%=phong_tro.gia_phong %>" min="0" oninput="convertPriceFormat(this.value)" required data-bv-notempty-message="Không được để trống">
                     <% }else{ %>
-                        <input name="gia_phong" type="number" id="title" class="form-control btn-ip" placeholder="Nhập thông tin" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
+                        <input name="gia_phong" type="text" id="title" class="form-control btn-ip" placeholder="Nhập thông tin" min="0" oninput="convertPriceFormat(this.value)" required data-bv-notempty-message="Không được để trống">
                     <% }%>
                     <br>
                 </div>
@@ -631,3 +631,12 @@
         </div>
     </div>
 </form>
+
+<script>
+  function convertPriceFormat(price) {
+      console.log(price);
+      price = price.replace(/,/g,'');
+      console.log(price = Number(price).toLocaleString("en"));
+      $("[name='gia_phong']").val(price);
+  }
+</script>

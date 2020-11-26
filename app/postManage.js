@@ -43,7 +43,7 @@ exports.savePosts = async(req, res) => {
             tre_em: req.body.tre_em,
             tre_nho: req.body.tre_nho,
             tong_so_nguoi:parseInt(req.body.tong_so_nguoi),
-            gia_phong: parseInt(req.body.gia_phong),
+            gia_phong: parseInt(req.body.gia_phong.replace(/,/g,'')),
             thoi_gian_dang: new Date(),
             path_anh_noi_bat : insert_hinh_anh_values[0].path_anh
         }
@@ -68,7 +68,7 @@ exports.savePosts = async(req, res) => {
             cho_do_rac: req.body.cho_do_rac,
             cho_de_xe: req.body.cho_de_xe,
         };
-        console.log(req.user)
+        //console.log(req.user)
         try{
             const phong_tro = await Phong_tro.create(phongtro);
             tiennghi.id_phong_tro = phong_tro.id_phong_tro;
@@ -77,7 +77,7 @@ exports.savePosts = async(req, res) => {
             insert_hinh_anh_values.forEach(function(value) {
                 value.id_phong_tro = phong_tro.id_phong_tro
             })
-            console.log(insert_hinh_anh_values);
+            //console.log(insert_hinh_anh_values);
             const hinh_anh = await Hinh_anh.bulkCreate(insert_hinh_anh_values);
             res.redirect("/");
         }catch(err){
