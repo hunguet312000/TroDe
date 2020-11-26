@@ -14,7 +14,7 @@ module.exports = (app, passport) => {
             res.render("user-home", { user: req.user });
         } else { res.render('guest-home') }
     });
-    
+
     app.post("/", postManage.search);
 
     app.get("/user-home", function(req, res) {
@@ -98,7 +98,7 @@ module.exports = (app, passport) => {
 
     app.get("/admin-control-post", postManage.displayAllPost);
 
-    app.get("/admin-control-user",userManage.displayListUser );
+    app.get("/admin-control-user", userManage.displayListUser);
 
     app.get("/admin-control-report", function(req, res) {
         if (req.isAuthenticated()) {
@@ -119,6 +119,14 @@ module.exports = (app, passport) => {
     app.get("/checkout", function(req, res) {
         if (req.isAuthenticated()) {
             res.render("user-checkout", { username: req.user.ten_nguoi_dung });
+        } else {
+            res.redirect('/login');
+        }
+    });
+
+    app.get("/confirm-checkout", function(req, res) {
+        if (req.isAuthenticated()) {
+            res.render("user-confirm-checkout", { username: req.user.ten_nguoi_dung });
         } else {
             res.redirect('/login');
         }
