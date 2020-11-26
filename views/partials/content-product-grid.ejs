@@ -2,12 +2,14 @@
     <div class="head-content">
         <h2 style="font-size: 24px;font-weight: 900;"> (Số lượng) phòng trọ, chung cư cho thuê. </h2>
         <div class="select" style="float: right;border-radius: 5px;border: 1px solid #ced4da;">
-            <span style="color: #555555;font-weight: 700;margin-left: 5px;">Sắp xếp:</span>
-            <select class="custom-select btn-edit" id="sort" name="sort" style="border-radius: 0;color: #424242; font-size: small;height: 30px;margin: 5px;border: none;font-size: 15px;font-weight: 500;">
-            <a href = "#"><option value="ASC" selected= "selected">Giá tăng dần</option></a>
-            <a href="#"><option value="DESC" selected= "selected">Giá giảm dần</option></a>
-            <option selected>Lựa chọn</option>
-       </select>
+            <form action = "/rooms/<%=type%>" method = "post">
+                <span style="color: #555555;font-weight: 700;margin-left: 5px;">Sắp xếp:</span>
+                <select onchange="this.form.submit()" class="custom-select btn-ip" id="sort" name="sort" style="border-radius: 0;color: #424242; font-size: small;height: 30px;margin: 5px;border: none;font-size: 15px;font-weight: 500;">
+                    <option value="" disabled selected hidden>Lựa chọn</option>
+                    <option value="ESC">Giá tăng dần</option>
+                    <option value="DESC">Giá giảm dần</option>
+                </select>
+       </form>
         </div>
         <div class="row wrap-post" style="margin-top: 100px;">
             <%- include("template/content-product"); -%>

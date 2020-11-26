@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>TroDe</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <script src="/node_modules/readmore-js/readmore.min.js"></script>
+    <link href="/css/general-user.css" rel="stylesheet">
+    <link href="/css/user-room.css" rel="stylesheet">
+    <link href="/css/user-content.css" rel="stylesheet">
+    <link href="/css/user-checkout.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+</head>
+
+<body>
+    <div class="header-wrap">
+        <div class="header">
+            <nav class="navbar navbar-light navbar-fixed-top navbar-custom" role="navigation" id="nav-bar" style="border-bottom: 1px solid #f2f2f2;">
+                <div class="container" style="margin-top: 10px;">
+                    <div class="navbar-header" style="padding: 6px 0px 0px;">
+                        <b><a class="navbar-brand" href="/" id="logo">TroDe</a></b>
+                        <b><span class="" style="font-size: large;color: #333;font-weight: 900;">ĐẶT LỊCH</span></b>
+                    </div>
+                    <div class="nav-item menu-info " style="float: right;margin-top: 15px;">
+                        <div class="text-admin">
+                            TÀI KHOẢN CỦA BẠN
+                        </div>
+                        <div class="admin-name">
+                            <%=username%>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container" id="content-checkout">
+        <div class="row">
+            <div class="col-sm-8">
+                <h3>Thông tin lịch hẹn</h3>
+                <div style="font-weight: 700;">
+                    <%=username%> đã đặt lịch hẹn tại (TÊN BÀI VIẾT)</div>
+                <br>
+                <div class="box-info">
+                    <div style="width:27%;height: 4px;background-color: #28ca6e;margin-bottom: 8px;"></div>
+                    <div style="color: #999!important;font-weight:500;font-size:16px;margin-bottom: 8px;">Xem phòng</div>
+                    <div style="color: #222222!important;font-weight:600;font-size:24px">HH:MM, DD/MM/YYYY</div>
+                </div>
+                <br>
+                <div class="text" style="margin-bottom: 32px;">
+                    <div style="line-height: 1.65;">
+                        <div style="font-weight: 600;font-size: 16px;margin-bottom: 10px;">Lưu ý</div>
+                        <span style="font-weight: 500;font-size: 14px;">Bạn phải có mặt đúng giờ đã hẹn dự kiến. Lịch hẹn chỉ được thay đổi nếu như có sự đồng ý của hai bên.</span>
+                        <br>
+                        <span style="font-weight: 500;font-size: 14px;">Nếu sau 48h không có sự xác nhận đến từ người cho thuê có nghĩa là lịch hẹn đã bị hủy.</span>
+                        <br>
+                        <span style="font-weight: 500;font-size: 14px;">Nếu như có bất kỳ dấu hiệu lừa đảo nào hãy báo cáo cho chúng tôi biết.</span>
+                        <br>
+                    </div>
+                </div>
+                <h3>Thông tin của bạn</h3>
+                <div class="row" style="line-height: 1.5;">
+                    <form>
+                        <div class="col-sm-12" style="margin-bottom: 20px;">
+                            <span style="color: #f65e39;font-weight: 700;">*&nbsp;</span>
+                            <span style="font-weight: 700;">Tên Khách Hàng</span>
+                            <br>
+                            <span>Họ tên trên CMND/ Thẻ căn cước</span>
+                            <br>
+                            <div style="margin-top:10px;">
+                                <input name="name" type="text" id="name" class="form-control btn-edit" placeholder="Họ và Tên" value="<%=username%>" required data-bv-notempty-message="Không được để trống">
+                            </div>
+                        </div>
+                        <div class="col-sm-6" style="margin-bottom: 20px;">
+                            <span style="color: #f65e39;font-weight: 700;">*&nbsp;</span>
+                            <span style="font-weight: 700;">Số điện thoại</span>
+                            <br>
+                            <span>Điền đúng số điện thoại của bạn</span>
+                            <br>
+                            <div style="margin-top:10px;">
+                                <input name="sdt" type="text" id="sdt" class="form-control btn-edit" placeholder="Số điện thoại" maxlength="11" pattern="([0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9])" required data-bv-notempty-message="Không được để trống">
+                            </div>
+                        </div>
+                        <div class="col-sm-6" style="margin-bottom: 20px;">
+                            <span style="color: #f65e39;font-weight: 700;">*&nbsp;</span>
+                            <span style="font-weight: 700;">Email</span>
+                            <br>
+                            <span>VD: email@example.com</span>
+                            <br>
+                            <div style="margin-top:10px;">
+                                <input name="email" type="text" id="email" class="form-control btn-edit" placeholder="Email" required data-bv-notempty-message="Không được để trống">
+                            </div>
+                        </div>
+                        <div class="col-sm-12" style="margin-bottom: 20px;"></div>
+                        <div class="col-sm-3">
+                            <a href="#" style="text-decoration: none;">
+                                <button type="button" class="btn btn-primary" id="button-submit"><span id = "text-btn"><b>HỦY BỎ</b></span></button>
+                            </a>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="submit" class="btn btn-primary" id="button-submit"><span id = "text-btn"><b>HẸN LỊCH</b></span></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <h3>Chi tiết phòng</h3>
+                <div class="right-side">
+                    <div class="row" style="border-bottom: 1px solid #e6e6e6;padding-bottom: 15px;">
+                        <div class="col-sm-7" id="div-name-host">
+                            <a href="#" style="text-decoration: none;" id="a-name-host">
+                                <h4 id="name-host">AimeeHomestay#2 - Phan Bội Châu/ Self check-in</h4>
+                            </a>
+                            <br>
+                        </div>
+                        <div class="col-sm-5" id="div-img">
+                            <a href="#" style="text-decoration: none;" id="a-img">
+                                <img src="https://res.cloudinary.com/dgncygcvs/image/upload/v1606043378/cvzgljqwnw511kndeujs.jpg">
+                            </a>
+                        </div>
+                        <div class="col-sm-7" style="margin-top:-32px">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;height: 15px;width: 15px;" xml:space="preserve">
+                                    <path style="fill:#FF7C48;" d="M409.126,63.424C368.227,22.524,313.84,0,255.995,0C198.16,0,143.773,22.524,102.874,63.424  S39.45,158.71,39.45,216.555c0,117.01,110.642,214.336,170.077,266.622c8.258,7.258,15.396,13.537,21.075,18.845  c7.118,6.648,16.256,9.977,25.394,9.977c9.138,0,18.275-3.329,25.404-9.977c5.679-5.309,12.817-11.587,21.075-18.845  c59.435-52.287,170.077-149.612,170.077-266.622C472.55,158.71,450.026,104.324,409.126,63.424z M255.995,303.803  c-52.617,0-95.426-42.809-95.426-95.436c0-52.617,42.809-95.426,95.426-95.426c52.627,0,95.436,42.809,95.436,95.426  C351.431,260.994,308.622,303.803,255.995,303.803z"/>
+                                    <path style="fill:#FF4C04;" d="M472.55,216.555c0,117.01-110.642,214.336-170.077,266.622c-8.258,7.258-15.396,13.537-21.075,18.845  c-7.128,6.648-16.266,9.977-25.404,9.977V303.803c52.627,0,95.436-42.809,95.436-95.436c0-52.617-42.809-95.426-95.436-95.426V0  c57.845,0,112.232,22.524,153.131,63.424S472.55,158.71,472.55,216.555z"/>
+                                    </svg>
+                                <span style="font-weight: 500;color: #222222;">&nbsp;Hoàn Kiếm, Hà Nội, Vietnam</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align:center;">
+                        <h2 style="font-weight: 900;margin-bottom: 10px;">10,000,000 ₫ <span style="font-size: 15px;">/tháng</span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <script>
+        $("#sdt").keyup(function() {
+            $("#sdt").val(this.value.match(/[0-9]*/));
+        });
+    </script>
+
+    <%- include("partials/footer"); -%>

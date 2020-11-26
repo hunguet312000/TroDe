@@ -14,6 +14,7 @@ $(".imgAdd").click(function() {
 $(document).on("click", "i.del", function() {
     $(this).parent().remove();
 });
+
 $(function() {
     $(document).on("change", ".uploadFile", function() {
         var uploadFile = $(this);
@@ -184,7 +185,7 @@ $(function() {
                 $('.a-subside2-2').css("color", "#17ca9d");
                 $('.a-subside2-1').css("color", "#252525");
             }
-        } else if ($(window).scrollTop() >= 1982 && $(window).scrollTop() < 2887) {
+        } else if ($(window).scrollTop() >= 2060 && $(window).scrollTop() < 3044) {
             $('.a-side4').css("color", "#252525");
             $('.a-side1').css("color", "#252525");
             $('.a-side2').css("color", "#252525");
@@ -192,20 +193,20 @@ $(function() {
             $('#side-wrap1').css("display", "none");
             $('#side-wrap2').css("display", "none");
             $('#side-wrap3').css("display", "block");
-            if ($(window).scrollTop() > 1982 && $(window).scrollTop() < 2367) {
+            if ($(window).scrollTop() > 2060 && $(window).scrollTop() < 2523) {
                 $('.a-subside3-3').css("color", "#252525");
                 $('.a-subside3-2').css("color", "#252525");
                 $('.a-subside3-1').css("color", "#17ca9d");
-            } else if ($(window).scrollTop() >= 2367 && $(window).scrollTop() < 2664) {
+            } else if ($(window).scrollTop() >= 2523 && $(window).scrollTop() < 2822) {
                 $('.a-subside3-3').css("color", "#252525");
                 $('.a-subside3-2').css("color", "#17ca9d");
                 $('.a-subside3-1').css("color", "#252525");
-            } else if ($(window).scrollTop() >= 2664 && $(window).scrollTop() < 2887) {
+            } else if ($(window).scrollTop() >= 2822 && $(window).scrollTop() < 3044) {
                 $('.a-subside3-3').css("color", "#17ca9d");
                 $('.a-subside3-2').css("color", "#252525");
                 $('.a-subside3-1').css("color", "#252525");
             }
-        } else if ($(window).scrollTop() >= 2887) {
+        } else if ($(window).scrollTop() >= 3044) {
             $('.a-side1').css("color", "#252525");
             $('.a-side3').css("color", "#252525");
             $('.a-side2').css("color", "#252525");
@@ -228,12 +229,12 @@ $(function() {
 
     $('#side3').on('click', function(e) {
         e.preventDefault();
-        $('html, body').animate({ scrollTop: 1985 }, '300');
+        $('html, body').animate({ scrollTop: 2063 }, '300');
     })
 
     $('#side4').on('click', function(e) {
         e.preventDefault();
-        $('html, body').animate({ scrollTop: 2890 }, '300');
+        $('html, body').animate({ scrollTop: 3047 }, '300');
     })
 
     $('.sub-side1-1').on('click', function(e) {
@@ -263,19 +264,36 @@ $(function() {
 
     $('.sub-side3-1').on('click', function(e) {
         e.preventDefault();
-        $('html, body').animate({ scrollTop: 1985 }, '300');
+        $('html, body').animate({ scrollTop: 2063 }, '300');
     })
 
     $('.sub-side3-2').on('click', function(e) {
         e.preventDefault();
-        $('html, body').animate({ scrollTop: 2370 }, '300');
+        $('html, body').animate({ scrollTop: 2526 }, '300');
     })
 
     $('.sub-side3-3').on('click', function(e) {
         e.preventDefault();
-        $('html, body').animate({ scrollTop: 2667 }, '300');
+        $('html, body').animate({ scrollTop: 2825 }, '300');
     })
 
+    var today, datepicker;
+    today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+    datepicker = $('#datepicker').datepicker({
+        minDate: today,
+        maxDate: today + '7d'
+    });
+    $('#datepicker').each(function() {
+        $(this).datepicker();
+    });
+    $("#editor").editor({
+        height: 200
+    });
+
+
+    $("#editor1").editor({
+        height: 200
+    });
 
 
 });

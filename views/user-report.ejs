@@ -9,6 +9,8 @@
     <link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     <link href="/css/user-report.css" rel="stylesheet">
 </head>
 
@@ -62,19 +64,9 @@
                             <div class="col-sm-12" style="border-bottom: 2px solid #f2f2f2;">
                                 <h5 style="font-weight: 700;padding: 10px; margin-bottom: 1px;font-size: 18px;">Lý do thêm</h5>
                                 <div style="padding-left: 20px;margin-bottom: 10px;">
-                                    <label for="mota">*Nội dung</label>
+                                    <label for="editor">*Nội dung</label>
                                     <br>
-                                    <span>
-                                        <button type="button" class="btn btn-primary btn-function" id="btn-xuongdong" style="background-color: rgb(23, 202, 157);">Xuống dòng</button>
-                                        <button type="button" class="btn btn-primary btn-function" id="btn-B" style="background-color: rgb(23, 202, 157);"><b>B</b></button>
-                                        <button type="button" class="btn btn-primary btn-function" id="btn-I" style="background-color: rgb(23, 202, 157);"><i>I</i></button>
-                                        <button type="button" class="btn btn-primary btn-function" id="btn-U" style="background-color: rgb(23, 202, 157);"><u>U</u></button>
-                                        <button type="button" class="btn btn-primary btn-function" id="btn-remove" style="background-color: rgb(23, 202, 157);">Xóa tất cả</button>
-                                        <button type="button" class="btn btn-primary btn-function" id="btn-display" style="background-color: rgb(23, 202, 157);">Hiển thị nội dung</button>
-                                    </span>
-                                    <br>
-                                    <textarea name="thong_tin_khac" class="form-control" id="mota-thongtin" rows="6" placeholder="Nhập thông tin ..." required data-bv-notempty-message="Không được để trống"></textarea>
-                                    <div class="hien-thi" style="width:100%;height: fit-content;border-radius: 6px;margin-top: 12px;background-color: rgba(61, 26, 26, 0.07);padding: 8px;"></div>
+                                    <textarea name="thong_tin_khac" class="form-control" id="editor" rows="6" placeholder="Nhập thông tin ..." required data-bv-notempty-message="Không được để trống"></textarea>
                                 </div>
                             </div>
                             <br>
@@ -100,7 +92,7 @@
                             </div>
 
                             <div class="col-sm-6">
-                                <a href="/host" style="text-decoration: none;">
+                                <a href="/room" style="text-decoration: none;">
                                     <button type="button" class="btn btn-primary" id="button-submit"><span id = "text-btn"><b>HỦY BỎ</b></span></button>
                                 </a>
                             </div>

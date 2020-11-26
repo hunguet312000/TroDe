@@ -1,0 +1,50 @@
+footer {
+    background-color: darkgray;
+    padding: 25px;
+}
+
+body {
+    background-color: #f7f7f7;
+    font-family: Montserrat;
+}
+
+#navbar-container {
+    background-color: #ffffff;
+    height: 105px;
+}
+
+#nav-bar {
+    background-color: #fff;
+    height: 124px;
+}
+
+#logo {
+    font-size: xxx-large;
+    font-family: 'Caveat';
+    color: black;
+    vertical-align: bottom;
+}
+
+#logo:hover {
+    color: #17ca9d;
+}
+
+.text-admin {
+    color: #999;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.admin-name {
+    font-weight: 700;
+    color: #333;
+}
+
+.a-sub-nav {
+    color: #a3acb9;
+    padding: 2px 0;
+    margin-right: 30px;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+}

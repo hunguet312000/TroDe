@@ -1,0 +1,148 @@
+footer {
+    background-color: darkgray;
+    padding: 25px;
+}
+
+body {
+    background-color: #f7f7f7;
+    font-family: Montserrat;
+}
+
+#navbar-container {
+    background-color: #ffffff;
+    height: 105px;
+}
+
+#nav-bar {
+    background-color: #fff;
+    height: 90px;
+}
+
+#logo {
+    font-size: xxx-large;
+    font-family: 'Caveat';
+    color: black;
+    vertical-align: bottom;
+}
+
+#logo:hover {
+    color: #17ca9d;
+}
+
+.text-admin {
+    color: #999;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.admin-name {
+    font-weight: 700;
+    color: #333;
+}
+
+#content-checkout {
+    margin-top: 100px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-weight: 900;
+    line-height: 1.25;
+    margin-bottom: 32px;
+    color: #222222;
+}
+
+.box-info {
+    box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, .05);
+    border-radius: 5px!important;
+    background-color: #fff!important;
+    height: 122px;
+    width: 50%;
+    padding: 12px;
+}
+
+.btn-edit {
+    color: #424242;
+    font-size: small;
+    font-weight: 500;
+    height: 40px;
+    border-radius: 5px!important;
+    background-color: rgba(61, 26, 26, 0.07)!important;
+}
+
+.btn-edit:focus {
+    background-color: #fff!important;
+    border-color: #17ca9d;
+    box-shadow: 0 0 5px 0 #17ca9d;
+    outline: 0 none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#button-submit {
+    border-radius: 7px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    width: 100%;
+    color: #fff;
+    background: rgb(23, 202, 157);
+    border-color: transparent;
+    font-weight: 900;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+}
+
+#button-submit:hover {
+    border-color: #17ca9d;
+    box-shadow: 0 0 5px 0 #17ca9d;
+    outline: 0 none;
+}
+
+#button-submit:focus {
+    outline: 0;
+}
+
+.right-side {
+    height: fit-content;
+    padding: 24px;
+    background: #fff;
+    box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, .05);
+    border: none;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+#div-name-host {
+    display: -webkit-box;
+    max-height: 55px;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+}
+
+#a-name-host:hover #name-host {
+    color: #17ca9d;
+}
+
+img {
+    margin-top: 13px;
+    width: 100%;
+    height: 80px;
+}
+
+.div-img:hover #name-host {
+    color: #17ca9d;
+}

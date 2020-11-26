@@ -1,5 +1,6 @@
 body {
     background-color: #fff;
+    font-family: Montserrat;
 }
 
 
@@ -149,6 +150,7 @@ a:focus {
     border: 2px solid #f2f2f2;
     box-shadow: 2px 4px 4px #eee;
     width: 100%;
+    border-radius: 4px;
 }
 
 .price {
@@ -157,23 +159,36 @@ a:focus {
 
 .dat-lich,
 .lien-he {
-    background-image: linear-gradient(90deg, #f65e38 0, #f68a39 51%, #f65e38);
+    background: rgb(23, 202, 157);
+    border-color: transparent;
     background-size: 200% auto;
     width: 100%;
-    box-shadow: 0 4px 12px 0 rgba(246, 116, 57, .4);
-    height: 48px;
+    height: 45px;
     border: none;
     color: #fff;
     font-weight: 500;
     font-size: 17px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    background-size: 200% auto;
+    box-shadow: 2px 4px 4px #eee;
 }
 
 .dat-lich:hover {
     font-weight: 900;
+    border-color: #17ca9d;
+    box-shadow: 0 0 5px 0 #17ca9d;
+    outline: 0 none;
 }
 
 .lien-he:hover {
     font-weight: 900;
+    border-color: #17ca9d;
+    box-shadow: 0 0 5px 0 #17ca9d;
+    outline: 0 none;
 }
 
 .btn-function {
@@ -198,24 +213,6 @@ a:focus {
     font-weight: 900;
 }
 
-#btn-xuongdong,
-#btn-B,
-#btn-I,
-#btn-U,
-#btn-remove,
-#btn-display,
-#btn-xuongdong-noiquy,
-#btn-B-noiquy,
-#btn-I-noiquy,
-#btn-U-noiquy,
-#btn-remove-noiquy,
-#btn-display-noiquy,
-:focus {
-    font-weight: 500;
-    border-color: transparent;
-    outline: none;
-}
-
 #button-submit {
     border-radius: 7px;
     width: fit-content;
@@ -229,7 +226,7 @@ a:focus {
     -ms-border-radius: 7px;
     -o-border-radius: 7px;
     float: right;
-    margin-top: -20px;
+    margin-top: -10px;
     margin-bottom: 10px;
 }
 
@@ -260,4 +257,61 @@ a:focus {
     box-shadow: 0 0 5px 0 #17ca9d;
     outline: 0 none;
     background-color: #fff!important;
+}
+
+.gj-editor [role=body] {
+    border: 3px solid #f2f2f2;
+    padding: 15px;
+}
+
+.gj-editor-md {
+    border-radius: 8px;
+    border: 3px solid #f2f2f2;
+}
+
+#circle1 {
+    font-size: 43px;
+    margin-left: 14px;
+}
+
+#fav-button:hover {
+    fill: #E61E14;
+    font-weight: 900;
+}
+
+#btn-report:hover {
+    font-weight: 900;
+    fill: #ffb025;
+}
+
+.gj-textbox-md {
+    border-radius: 5px;
+    border: 1px solid #ebebeb;
+    padding: 0px 16px;
+    height: 42px;
+}
+
+.gj-textbox-md:focus {
+    border-bottom: #17ca9d;
+    box-shadow: 0 0 5px 0 #17ca9d;
+    outline: 0 none;
+}
+
+.gj-datepicker-md [role=right-icon] {
+    top: 10px;
+    right: 16px
+}
+
+.gj-picker.datetimepicker [role=header] {
+    background-color: #17ca9d;
+}
+
+.gj-picker-md [role=switch] {
+    background-color: #17ca9d;
+}
+
+@media (max-width:990px) {
+    .fa-user-circle {
+        margin-left: 1px;
+    }
 }

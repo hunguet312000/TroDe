@@ -2,13 +2,13 @@
   console.log(phong_tro.id_phong_tro + " " + action);
 %>
 
-<% if(phong_tro.id_phong_tro){ %>
-  <form action="/host-edit/<%=phong_tro.id_phong_tro%>" method="post" enctype="multipart/form-data">
-<% }else{ %>
-  <form action="/host" method="post" enctype="multipart/form-data">
-<%}%>
-    <% if (phong_tro.id_phong_tro) { %>
-      <div class="col-sm-10"><span style="font-size: 18px;"><b>Chỉnh sửa thông tin phòng trọ</b><br><br></div>
+    <% if(phong_tro.id_phong_tro){ %>
+        <form action="/host-edit/<%=phong_tro.id_phong_tro%>" method="post" enctype="multipart/form-data">
+            <% }else{ %>
+                <form action="/host" method="post" enctype="multipart/form-data">
+                    <%}%>
+                        <% if (phong_tro.id_phong_tro) { %>
+                            <div class="col-sm-10"><span style="font-size: 18px;"><b>Chỉnh sửa thông tin phòng trọ</b><br><br></div>
     <% }else{ %>
       <div class="col-sm-10"><span style="font-size: 18px;"><b>Tạo bài viết mới</b><br><br></div>
     <% }%>
@@ -442,181 +442,163 @@
                 <div style="font-size: large;border-bottom: 2px solid #f2f2f2;"><b>Thêm quy định mới</b></div>
                 <br>
 
-                <div class="col-md-12" style="margin-top: 0px; margin-bottom: 20px;">
+                <div class="col-md-12" style="margin-top: 0px; margin-bottom: 10px;">
                     <label for="mota">*Nội dung</label>
-                    <br>
-                    <span>
-                        <button type="button" class="btn btn-primary btn-function" id="btn-xuongdong-noiquy" style="background-color: rgb(23, 202, 157);">Xuống dòng</button>
-                        <button type="button" class="btn btn-primary btn-function" id="btn-B-noiquy" style="background-color: rgb(23, 202, 157);"><b>B</b></button>
-                        <button type="button" class="btn btn-primary btn-function" id="btn-I-noiquy" style="background-color: rgb(23, 202, 157);"><i>I</i></button>
-                        <button type="button" class="btn btn-primary btn-function" id="btn-U-noiquy" style="background-color: rgb(23, 202, 157);"><u>U</u></button>
-                        <button type="button" class="btn btn-primary btn-function" id="btn-remove-noiquy" style="background-color: rgb(23, 202, 157);">Xóa tất cả</button>
-                        <button type="button" class="btn btn-primary btn-function" id="btn-display-noiquy" style="background-color: rgb(23, 202, 157);">Hiển thị nội dung</button>
-                    </span>
-        <br>
-        <% if (phong_tro.quy_dinh_khac) { %>
-            <textarea name="quy_dinh_khac" class="form-control btn-ip" id="mota-noiquy" rows="6" placeholder="<%= phong_tro.quy_dinh_khac%>"></textarea>
-        <% }else{ %>
-            <textarea name="quy_dinh_khac" class="form-control btn-ip" id="mota-noiquy" rows="6" placeholder="Thêm quy định ..."></textarea>
-        <% }%>
-        <div class="hien-thi-noi-quy" style="width:100%;height: fit-content;border-radius: 6px;margin-top: 12px;background-color: rgba(61, 26, 26, 0.07);padding: 8px;"></div>
-    </div>
-    </div>
-    </div>
-    </div>
+                                <br>
+                                <% if (phong_tro.quy_dinh_khac) { %>
+                                    <textarea name="quy_dinh_khac" class="form-control btn-ip" id="editor" rows="6" placeholder="<%= phong_tro.quy_dinh_khac%>"></textarea>
+                                    <% }else{ %>
+                                        <textarea name="quy_dinh_khac" class="form-control btn-ip" id="editor" rows="6" placeholder="Thêm quy định ..."></textarea>
+                                        <% }%>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
 
-    <div class="col-sm-10">
-        <div style="height: 10px;"></div>
-    </div>
+                            <div class="col-sm-10">
+                                <div style="height: 10px;"></div>
+                            </div>
 
-    <div class="col-sm-10 policy">
-        <div class="content" style="background-color: #fff; height: fit-content;border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);">
-            <div class="row" style="padding:40px;">
-                <div style="font-size: large;border-bottom: 2px solid #f2f2f2;"><b>*Thông tin nhà trọ</b></div>
-                <br>
+                            <div class="col-sm-10 policy">
+                                <div class="content" style="background-color: #fff; height: fit-content;border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);">
+                                    <div class="row" style="padding:40px;">
+                                        <div style="font-size: large;border-bottom: 2px solid #f2f2f2;"><b>*Thông tin nhà trọ</b></div>
+                                        <br>
 
-                <div class="col-md-12" style="margin-top: 0px; margin-bottom: 20px;">
-                    <label for="mota">*Nội dung</label>
-                    <br>
-                    <span>
-                        <button type="button" class="btn btn-primary btn-function" id="btn-xuongdong" style="background-color: rgb(23, 202, 157);">Xuống dòng</button>
-                        <button type="button" class="btn btn-primary btn-function" id="btn-B" style="background-color: rgb(23, 202, 157);"><b>B</b></button>
-                        <button type="button" class="btn btn-primary btn-function" id="btn-I" style="background-color: rgb(23, 202, 157);"><i>I</i></button>
-                        <button type="button" class="btn btn-primary btn-function" id="btn-U" style="background-color: rgb(23, 202, 157);"><u>U</u></button>
-                        <button type="button" class="btn btn-primary btn-function" id="btn-remove" style="background-color: rgb(23, 202, 157);">Xóa tất cả</button>
-                        <button type="button" class="btn btn-primary btn-function" id="btn-display" style="background-color: rgb(23, 202, 157);">Hiển thị nội dung</button>
-                    </span>
-                    <br>
-                    <% if (phong_tro.thong_tin_khac) { %>
-                        <textarea name="thong_tin_khac" class="form-control btn-ip" id="mota-thongtin" rows="6" required data-bv-notempty-message="Không được để trống" placeholder= "<%= phong_tro.thong_tin_khac%>"></textarea>
-                    <% }else{ %>
-                        <textarea name="thong_tin_khac" class="form-control btn-ip" id="mota-thongtin" rows="6" required data-bv-notempty-message="Không được để trống" placeholder="Nhập thông tin ..."></textarea>
-                    <% }%>
-                    <div class="hien-thi" style="width:100%;height: fit-content;border-radius: 6px;margin-top: 12px;background-color: rgba(61, 26, 26, 0.07);padding: 8px;"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+                                        <div class="col-md-12" style="margin-top: 0px; margin-bottom: 10px;">
+                                            <label for="mota">*Nội dung</label>
+                                            <br>
 
-    <div class="col-sm-10">
-        <div style="height: 10px;"></div>
-    </div>
+                                <% if (phong_tro.thong_tin_khac) { %>
+                                    <textarea name="thong_tin_khac" class="form-control btn-ip" id="editor1" rows="6" required data-bv-notempty-message="Không được để trống" placeholder="<%= phong_tro.thong_tin_khac%>"></textarea>
+                                    <% }else{ %>
+                                        <textarea name="thong_tin_khac" class="form-control btn-ip" id="editor1" rows="6" required data-bv-notempty-message="Không được để trống" placeholder="Nhập thông tin ..."></textarea>
+                                        <% }%>
 
-    <div class="col-sm-10 space">
-        <div class="content" style="background-color: #fff; height: fit-content;border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);">
-            <div class="row" style="padding:40px;">
-                <div style="font-size: large;border-bottom: 2px solid #f2f2f2;"><b>Số người</b></div>
-                <br>
-                <div class="col-sm-6">
-                    <label for="title">*Người lớn</label>
-                    <% if (phong_tro.nguoi_lon) { %>
-                        <input name="nguoi_lon" type="number" id="title" class="form-control btn-ip" value="<%= phong_tro.nguoi_lon%>" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
-                    <% }else{ %>
-                        <input name="nguoi_lon" type="number" id="title" class="form-control btn-ip" placeholder="Nhập thông tin" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
-                    <% }%>
-                    <br>
-                </div>
-                <div class="col-sm-3">
-                    <label for="title">*Trẻ em (2 - 12 TUỔI)</label>
-                    <% if (phong_tro.tre_em) { %>
-                        <input name="tre_em" type="number" id="title" class="form-control btn-ip" value="<%= phong_tro.tre_em%>" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
-                    <% }else{ %>
-                        <input name="tre_em" type="number" id="title" class="form-control btn-ip" placeholder="Nhập thông tin" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
-                    <% }%>
-                    <br>
-                </div>
-                <div class="col-sm-3">
-                    <label for="title">*Trẻ em (dưới 2 tuổi)</label>
-                    <% if (phong_tro.tre_nho) { %>
-                        <input name="tre_nho" type="number" id="title" class="form-control btn-ip" value="<%= phong_tro.tre_nho%>" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
-                    <% }else{ %>
-                        <input name="tre_nho" type="number" id="title" class="form-control btn-ip" placeholder="Nhập thông tin" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
-                    <% }%>
-                    <br>
-                </div>
-                <div class="col-sm-12">
-                    <label for="title">*Tổng số người</label>
-                    <% if (phong_tro.tong_so_nguoi) { %>
-                        <input name="tong_so_nguoi" type="number" id="title" class="form-control btn-ip" value="<%= phong_tro.tong_so_nguoi%>" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
-                    <% }else{ %>
-                        <input name="tong_so_nguoi" type="number" id="title" class="form-control btn-ip" placeholder="Nhập thông tin" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
-                    <% }%>
-                    <br>
-                </div>
-            </div>
-        </div>
-    </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
 
-    <div class="col-sm-10">
-        <div style="height: 10px;"></div>
-    </div>
+                            <div class="col-sm-10">
+                                <div style="height: 10px;"></div>
+                            </div>
 
-    <div class="col-sm-10 space">
-        <div class="content" style="background-color: #fff; height: fit-content;border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);">
-            <div class="row" style="padding:40px;">
-                <div style="font-size: large;border-bottom: 2px solid #f2f2f2;"><b>Giá trọ (VNĐ)/ 1 tháng</b></div>
-                <br>
-                <div class="col-sm-12">
-                    <label for="title" style="margin-bottom: 10px;">*Số tiền (VNĐ)</label>
-                    <% if (phong_tro.gia_phong) { %>
-                        <input name="gia_phong" type="text" id="title" class="form-control btn-ip" value="<%=phong_tro.gia_phong %>" min="0" oninput="convertPriceFormat(this.value)" required data-bv-notempty-message="Không được để trống">
-                    <% }else{ %>
-                        <input name="gia_phong" type="text" id="title" class="form-control btn-ip" placeholder="Nhập thông tin" min="0" oninput="convertPriceFormat(this.value)" required data-bv-notempty-message="Không được để trống">
-                    <% }%>
-                    <br>
-                </div>
-            </div>
-        </div>
-    </div>
+                            <div class="col-sm-10 space">
+                                <div class="content" style="background-color: #fff; height: fit-content;border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);">
+                                    <div class="row" style="padding:40px;">
+                                        <div style="font-size: large;border-bottom: 2px solid #f2f2f2;"><b>Số người</b></div>
+                                        <br>
+                                        <div class="col-sm-6">
+                                            <label for="title">*Người lớn</label>
+                                            <% if (phong_tro.nguoi_lon) { %>
+                                                <input name="nguoi_lon" type="number" id="title" class="form-control btn-ip" value="<%= phong_tro.nguoi_lon%>" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
+                                                <% }else{ %>
+                                                    <input name="nguoi_lon" type="number" id="title" class="form-control btn-ip" placeholder="Nhập thông tin" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
+                                                    <% }%>
+                                                        <br>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label for="title">*Trẻ em (2 - 12 TUỔI)</label>
+                                            <% if (phong_tro.tre_em) { %>
+                                                <input name="tre_em" type="number" id="title" class="form-control btn-ip" value="<%= phong_tro.tre_em%>" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
+                                                <% }else{ %>
+                                                    <input name="tre_em" type="number" id="title" class="form-control btn-ip" placeholder="Nhập thông tin" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
+                                                    <% }%>
+                                                        <br>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label for="title">*Trẻ em (dưới 2 tuổi)</label>
+                                            <% if (phong_tro.tre_nho) { %>
+                                                <input name="tre_nho" type="number" id="title" class="form-control btn-ip" value="<%= phong_tro.tre_nho%>" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
+                                                <% }else{ %>
+                                                    <input name="tre_nho" type="number" id="title" class="form-control btn-ip" placeholder="Nhập thông tin" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
+                                                    <% }%>
+                                                        <br>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <label for="title">*Tổng số người</label>
+                                            <% if (phong_tro.tong_so_nguoi) { %>
+                                                <input name="tong_so_nguoi" type="number" id="title" class="form-control btn-ip" value="<%= phong_tro.tong_so_nguoi%>" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
+                                                <% }else{ %>
+                                                    <input name="tong_so_nguoi" type="number" id="title" class="form-control btn-ip" placeholder="Nhập thông tin" min="0" oninput="validity.valid||(value='');" required data-bv-notempty-message="Không được để trống">
+                                                    <% }%>
+                                                        <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-    <div class="col-sm-10">
-        <div style="height: 10px;"></div>
-    </div>
+                            <div class="col-sm-10">
+                                <div style="height: 10px;"></div>
+                            </div>
 
-    <div class="col-sm-10 uploadimg">
-        <div class="content" style="background-color: #fff; height: fit-content;border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);">
-            <div class="row" style="padding:40px;">
-                <div style="font-size: large;border-bottom: 2px solid #f2f2f2;"><b>Hình ảnh nhà trọ</b></div>
-                <br>
-                <div style="font-size: large;padding: 10px;"><b>Ảnh bìa</b></div>
-                <div class="col-sm-12" style="margin-bottom: 30px;">
-                    <div class="row">
-                        <div class="col-md-3 imgUp">
-                            <div class="imagePreview"></div>
-                            <label class="btn btn-primary" id="btn-upload">
+                            <div class="col-sm-10 space">
+                                <div class="content" style="background-color: #fff; height: fit-content;border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);">
+                                    <div class="row" style="padding:40px;">
+                                        <div style="font-size: large;border-bottom: 2px solid #f2f2f2;"><b>Giá trọ (VNĐ)/ 1 tháng</b></div>
+                                        <br>
+                                        <div class="col-sm-12">
+                                            <label for="title" style="margin-bottom: 10px;">*Số tiền (VNĐ)</label>
+                                            <% if (phong_tro.gia_phong) { %>
+                                                <input name="gia_phong" type="text" id="title" class="form-control btn-ip" value="<%=phong_tro.gia_phong %>" min="0" oninput="convertPriceFormat(this.value)" required data-bv-notempty-message="Không được để trống">
+                                            <% }else{ %>
+                                                <input name="gia_phong" type="text" id="title" class="form-control btn-ip" placeholder="Nhập thông tin" min="0" oninput="convertPriceFormat(this.value)" required data-bv-notempty-message="Không được để trống">
+                                            <%}%>
+                                           <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-10">
+                                <div style="height: 10px;"></div>
+                            </div>
+
+                            <div class="col-sm-10 uploadimg">
+                                <div class="content" style="background-color: #fff; height: fit-content;border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);">
+                                    <div class="row" style="padding:40px;">
+                                        <div style="font-size: large;border-bottom: 2px solid #f2f2f2;"><b>Hình ảnh nhà trọ</b></div>
+                                        <br>
+                                        <div style="font-size: large;padding: 10px;"><b>Ảnh bìa</b></div>
+                                        <div class="col-sm-12" style="margin-bottom: 30px;">
+                                            <div class="row">
+                                                <div class="col-md-3 imgUp">
+                                                    <div class="imagePreview"></div>
+                                                    <label class="btn btn-primary" id="btn-upload">
                          Tải ảnh lên<input name = "image" type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;" required data-bv-notempty-message="Không được để trống">
                               </label>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div style="font-size: large;padding: 10px;"><b>Ảnh phòng trọ, chung cư</b></div>
-                <div class="col-sm-12">
-                    <div class="row">
-                        <div class="col-md-3 imgUp">
-                            <div class="imagePreview"></div>
-                            <label class="btn btn-primary" id="btn-upload">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div style="font-size: large;padding: 10px;"><b>Ảnh phòng trọ, chung cư</b></div>
+                                        <div class="col-sm-12">
+                                            <div class="row">
+                                                <div class="col-md-3 imgUp">
+                                                    <div class="imagePreview"></div>
+                                                    <label class="btn btn-primary" id="btn-upload">
                          Tải ảnh lên<input name = "image" type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;" required data-bv-notempty-message="Không được để trống">
                               </label>
-                        </div>
-                        <div class="col-md-3 imgUp">
-                            <div class="imagePreview"></div>
-                            <label class="btn btn-primary" id="btn-upload">
+                                                </div>
+                                                <div class="col-md-3 imgUp">
+                                                    <div class="imagePreview"></div>
+                                                    <label class="btn btn-primary" id="btn-upload">
                          Tải ảnh lên<input name = "image" type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;" required data-bv-notempty-message="Không được để trống">
                               </label>
-                        </div>
-                        <div class="col-md-3 imgUp">
-                            <div class="imagePreview"></div>
-                            <label class="btn btn-primary" id="btn-upload">
+                                                </div>
+                                                <div class="col-md-3 imgUp">
+                                                    <div class="imagePreview"></div>
+                                                    <label class="btn btn-primary" id="btn-upload">
                          Tải ảnh lên<input name = "image" type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;" required data-bv-notempty-message="Không được để trống">
                               </label>
-                        </div>
-                        <!-- col-2 -->
-                        <i class="fa fa-plus-circle imgAdd" aria-hidden="true"></i>
-                    </div>
-                    <!-- row -->
-                </div>
-            </div>
+                                                </div>
+                                                <!-- col-2 -->
+                                                <i class="fa fa-plus-circle imgAdd" aria-hidden="true"></i>
+                                            </div>
+                                            <!-- row -->
+                                        </div>
+                                    </div>
 
             <div class="row" style="padding:30px; margin-top: -20px;">
                 <div class="col-sm-6">
