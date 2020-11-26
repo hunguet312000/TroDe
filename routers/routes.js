@@ -128,5 +128,5 @@ module.exports = (app, passport) => {
     app.post("/comment", postManage.saveComment);
     app.post("/saveFavPost", postManage.saveFavPost);
     app.get("/rooms", postManage.displayListPostBySearch);
-    //app.post("/rooms", postManage.filterListPostBySearch);
+    app.post("/rooms", postManage.filterListPostBySearch);
 }

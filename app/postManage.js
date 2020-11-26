@@ -101,16 +101,13 @@ exports.filterListPostByNumOfPeopleOrPrice = async(req, res) => {
         query : req.body,
     }))
 }
-// // exports.filterListPostBySearch = async(req, res) => {
-// //     console.log(req.body);
-// // let s = url.format({
-// //         pathname : req.url,
-// //         query : req.body,
-// //     })
-// //     s = s.replace("%3F", "?")
-// // res.redirect(s);
+exports.filterListPostBySearch = async(req, res) => {
+    console.log(req.url)
+    req.url = req.url.split("&");
+    console.log(req.url)
+    res.redirect(req.url[0] + "&order=" + req.body.sort);
 
-// }
+}
 exports.displayListPost = async(req, res) => {
     try {
         let type = ""
@@ -420,8 +417,8 @@ exports.deletePost = async(req, res) => {
 
 exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, quan_huyen, tong_songuoi, phuong_xa, cao cap, re, gia re
     try{
-        console.log(req.query);
-        let search = Object.values(req.query)[0].toLowerCase();//search value
+        //console.log(req.query);
+        let search = req.query.search.toLowerCase();//search value
         search = search.replace(/\s\s+/g, ' '); //delete multiple spaces
         search = keywords_dict.convertStr(search);
         console.log(search);
@@ -492,16 +489,16 @@ exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, qu
             result.tong_so_nguoi = null,
             result.gia_phong = [null, null]
         }
-        console.log(result);
+        //console.log(result);
 
         //filter order esc/desc,...
         console.log(req.query)
         let order = ["id_phong_tro", "DESC"]
-        if(JSON.stringify(req.query) == "{}"){
+        if(req.query.order == ""){
             order = ["id_phong_tro", "DESC"]
-        }else if(Object.values(req.query)[1] == "ESC"){
+        }else if(req.query.order == "ESC"){
             order = ["gia_phong"]
-        }else if(Object.values(req.query)[1] == "DESC"){
+        }else if(req.query.order == "DESC"){
             order = ["gia_phong", "DESC"]
         }
 
@@ -537,7 +534,7 @@ exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, qu
 
             }
             ,
-            order :[["id_phong_tro", "DESC"]]
+            order :[order]
         })
         //console.log(phong_tro);
 
@@ -550,11 +547,13 @@ exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, qu
     }
 }
 exports.search = async(req, res) => {
-    console.log(req.body)
-   res.redirect(url.format({
-       pathname:"/rooms/",
-       query:req.body,
-   }));
+    //console.log(req.body)
+    req.body.order = ""; 
+    //console.log(req.body.search);
+    res.redirect(url.format({
+        pathname:"/rooms/",
+        query: req.body
+    }));
 }
 
 exports.displayAllPost = async(req, res) => {
