@@ -1,5 +1,5 @@
 body {
-    background-color: #eff0f5;
+    background-color: #f8f8f8;
     font-family: Montserrat;
 }
 
@@ -10,27 +10,56 @@ body {
 }
 
 #logo:hover {
-    color: hotpink;
+    color: #11c296;
 }
 
 .content-verfication {
-    background-color: white;
+    background-color: #fff;
     height: 340px;
+    box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);
+    border-radius: .625rem;
 }
 
 #continue {
+    border-radius: 7px;
+    margin-top: 1%;
+    margin-bottom: 1%;
     width: 100%;
-    background-color: #d4f3eb;
-    color: #11c296;
-    border: 1px solid #d4f3eb;
+    color: #fff;
+    background: rgb(23, 202, 157);
+    border-color: transparent;
+    font-weight: 900;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
 }
 
 #continue:hover {
-    background-color: #17ca9d;
-    color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-color: #17ca9d;
+    box-shadow: 0 0 5px 0 #17ca9d;
+    outline: 0 none;
 }
 
 #continue:focus {
     outline: 0;
+}
+
+#password {
+    border-radius: 7px;
+    color: #424242;
+    height: 40px;
+    border: 1px solid #e6e6e6;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#password:focus {
+    border-color: #17ca9d;
+    box-shadow: 0 0 5px 0 #17ca9d;
+    outline: 0 none;
 }

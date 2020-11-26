@@ -139,10 +139,57 @@ body {
     color: #17ca9d;
 }
 
+#txt-google1 {
+    display: none;
+}
+
+#txt-facebook1 {
+    display: none;
+}
+
+@media (min-width:991px) and (max-width:1200px) {
+    #button-submit {
+        width: 120%;
+    }
+    #button-gmail {
+        width: 120%;
+    }
+    #button-facebook {
+        width: 120%;
+    }
+}
+
+@media (max-width:990px) {
+    #txt-google {
+        display: none;
+    }
+    #txt-google1 {
+        display: inline-block;
+    }
+    #txt-facebook {
+        display: none;
+    }
+    #txt-facebook1 {
+        display: inline-block;
+    }
+}
+
 @media (max-width:769px) {
     .content-login {
         background-color: white;
         height: 452px;
+    }
+    #txt-google1 {
+        display: none;
+    }
+    #txt-google {
+        display: inline-block;
+    }
+    #txt-facebook1 {
+        display: none;
+    }
+    #txt-facebook {
+        display: inline-block;
     }
 }
 

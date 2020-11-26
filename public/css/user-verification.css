@@ -1,5 +1,5 @@
 body {
-    background-color: #eff0f5;
+    background-color: #f8f8f8;
     font-family: Montserrat;
 }
 
@@ -10,12 +10,14 @@ body {
 }
 
 #logo:hover {
-    color: hotpink;
+    color: #11c296;
 }
 
 .content-verfication {
-    background-color: white;
+    background-color: #fff;
     height: 340px;
+    box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);
+    border-radius: .625rem;
 }
 
 #icon {
@@ -24,7 +26,7 @@ body {
 }
 
 #icon:hover {
-    color: hotpink;
+    color: #11c296;
 }
 
 #button-verification {
