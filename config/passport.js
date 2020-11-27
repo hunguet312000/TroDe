@@ -15,7 +15,12 @@ const {sequelizeInit, Nguoi_dung} = require("./sequelize");
 //       dbConnection.end();
 //     }
 // });
-
+exports.isLoggedIn = function(req, res, next){
+  if(req.isAuthenticated()){
+    return next(null,true);
+  }
+  res.redirect("/");
+}
 module.exports = async function(passport) {
 
     // =========================================================================

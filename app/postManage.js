@@ -210,9 +210,10 @@ exports.displayListPost = async(req, res) => {
                 order
             ]
         });
-        if (req.isAuthenticated()) {
-            res.render("user-product-grid", { user: req.user, userData: phong_tro, type:req.params.type });
-        } else { res.render("guest-product-grid", { userData: phong_tro, type:req.params.type }); }
+        // if (req.isAuthenticated()) {
+        //     res.render("user-product-grid", { user: req.user, userData: phong_tro, type:req.params.type });
+        // } else { res.render("guest-product-grid", { userData: phong_tro, type:req.params.type }); }
+        res.render("rooms", {user : req.user, userData : phong_tro, type:req.params.type, login : req.isAuthenticated()})
     } catch (err) {
         console.log(err);
     }
@@ -348,9 +349,10 @@ exports.displayPostProfile = async(req, res) => {
         userData.phong_tro = phong_tro;
         userData.tien_ich = tien_ich;
         userData.hinh_anh = hinh_anh;
-        if (req.isAuthenticated()) {
-            res.render("user-room", { user: req.user, userData: userData });
-        } else { res.render("guest-room", { user: "", userData: userData }); };
+        // if (req.isAuthenticated()) {
+        //     res.render("user-room", { user: req.user, userData: userData });
+        // } else { res.render("guest-room", { user: "", userData: userData }); };
+        res.render("room", {user : req.user, userData : userData, login : req.isAuthenticated()})
     } catch (err) {
         console.log(err);
     }

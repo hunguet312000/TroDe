@@ -1,0 +1,10 @@
+<% if(login) {%>
+   <%- include("partials/user-head-product-grid"); -%>
+<%}else{%>
+   <%- include("partials/guest-head-product-grid"); -%>
+<%}%>
+ 
+
+      <%- include("partials/navbar-content"); -%>
+        <%- include("partials/content-product-grid"); -%>
+            <%- include("partials/footer"); -%>

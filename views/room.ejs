@@ -1,0 +1,13 @@
+<% if(login) {%>
+    <%- include("partials/user-head-room"); -%>
+<%}else{%>
+    <%- include("partials/guest-head-room"); -%>
+<%}%>
+ 
+        <%- include("partials/navbar-content"); -%>
+        <% if (login) {%>
+            <%- include("partials/content-room-user"); -%>
+        <%}else{%>
+            <%- include("partials/content-room-guest"); -%>
+        <%}%>
+            <%- include("partials/footer"); -%>

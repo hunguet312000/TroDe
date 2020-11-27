@@ -7,13 +7,17 @@ const postManage = require('../app/postManage');
 const userManage = require("../app/userManage");
 const forgetPassword = require("../app/forgetPassword");
 require('dotenv').config();
-
+const passport = require("../config/passport.js");
 module.exports = (app, passport) => {
+    // app.get("/", function(req, res) {
+    //     if (req.isAuthenticated()) {
+    //         res.render("user-home", { user: req.user });
+    //     } else { res.render('home') }
+    // });
+
     app.get("/", function(req, res) {
-        if (req.isAuthenticated()) {
-            res.render("user-home", { user: req.user });
-        } else { res.render('guest-home') }
-    });
+        res.render("home", {user : req.user, login : req.isAuthenticated()})
+    })
 
     app.post("/", postManage.search);
 
