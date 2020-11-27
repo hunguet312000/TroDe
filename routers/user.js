@@ -1,7 +1,7 @@
 const fs = require('fs');
 const cloudinary = require('../config/cloudinary');
 const upload = require('../config/multer');
-const { updateInfo, changePassword } = require("../app/updateUserProfile");
+const userProfileManage = require("../app/userProfileManage");
 const bcrypt = require('bcrypt');
 const postManage = require('../app/postManage');
 const forgetPassword = require("../app/forgetPassword");
@@ -15,12 +15,7 @@ module.exports = (app, passport) => {
         } else { res.redirect('/login') }
     });
 
-    app.get('/wish-list', function(req, res) {
-        if (req.isAuthenticated()) {
-            const user = req.session.passport.user;
-            res.render("user-wish-list", { user: user });
-        } else { res.redirect('/login') }
-    });
+    app.get('/wish-list',  userProfileManage.showWishList);
 
     app.get('/bookings', function(req, res) {
         if (req.isAuthenticated()) {
@@ -72,4 +67,5 @@ module.exports = (app, passport) => {
         const user = req.session.passport.user;
         res.render('user-profile-address-edit', { user: user });
     });
+
 }

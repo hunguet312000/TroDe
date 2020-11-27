@@ -72,7 +72,7 @@ exports.savePosts = async(req, res) => {
             cho_do_rac: req.body.cho_do_rac,
             cho_de_xe: req.body.cho_de_xe,
         };
-        console.log(req.user)
+        //console.log(req.user)
         try {
             const phong_tro = await Phong_tro.create(phongtro);
             tiennghi.id_phong_tro = phong_tro.id_phong_tro;
@@ -81,7 +81,7 @@ exports.savePosts = async(req, res) => {
             insert_hinh_anh_values.forEach(function(value) {
                 value.id_phong_tro = phong_tro.id_phong_tro
             })
-            console.log(insert_hinh_anh_values);
+            //console.log(insert_hinh_anh_values);
             const hinh_anh = await Hinh_anh.bulkCreate(insert_hinh_anh_values);
             res.redirect("/");
         } catch (err) {
@@ -336,7 +336,7 @@ exports.displayPostProfile = async(req, res) => {
         const present_date = new Date();
         for (let b of binh_luan) {
             //console.log(JSON.stringify(present_date + " " +b.dataValues.createdAt, null, 2));
-            const timeDiff = Math.round((present_date.getTime() - b.dataValues.createdAt.getTime()) / (1000 * 3600) * 10) / 10;
+            const timeDiff = Math.round((present_date.getTime() - b.dataValues.createdAt.getTime()) / (1000 * 3600));
             userData.binh_luan.push({
                 id_nguoi_binh_luan: b.dataValues.nguoi_dung.dataValues.id_nguoi_dung,
                 ten_nguoi_binh_luan: b.dataValues.nguoi_dung.dataValues.ten_nguoi_dung,
@@ -385,7 +385,7 @@ exports.saveFavPost = async(req, res) => {
         })
         res.redirect("/room/" + id_phong_tro);
     } catch (err) {
-        console.log("loi me r");
+        //console.log("loi me r");
         res.redirect("/room/" + id_phong_tro);
     }
 }
@@ -421,7 +421,7 @@ exports.deletePost = async(req, res) => {
 
 exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, quan_huyen, tong_songuoi, phuong_xa, cao cap, re, gia re
     try{
-        console.log(req.query);
+        //console.log(req.query);
         let search = Object.values(req.query)[0].toLowerCase();//search value
         search = search.replace(/\s\s+/g, ' '); //delete multiple spaces
 
@@ -463,7 +463,7 @@ exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, qu
 
                 result.gia_phong[0] = keywords_dict.keywords_dict.gia_tien[gia][0];
                 result.gia_phong[1] = keywords_dict.keywords_dict.gia_tien[gia][1];
-                console.log(keywords_dict.keywords_dict.gia_tien[gia])
+                //console.log(keywords_dict.keywords_dict.gia_tien[gia])
             }
         })
 
@@ -492,10 +492,10 @@ exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, qu
             result.tong_so_nguoi = null,
             result.gia_phong = [null, null]
         }
-        console.log(result);
+        //console.log(result);
 
         //filter order esc/desc,...
-        console.log(req.query)
+        //console.log(req.query)
         let order = ["id_phong_tro", "DESC"]
         if(JSON.stringify(req.query) == "{}"){
             order = ["id_phong_tro", "DESC"]
@@ -550,7 +550,7 @@ exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, qu
     }
 }
 exports.search = async(req, res) => {
-    console.log(req.body)
+    //console.log(req.body)
    res.redirect(url.format({
        pathname:"/rooms/",
        query:req.body,
@@ -571,7 +571,7 @@ exports.displayAllPost = async(req, res) => {
                 raw:true,
                 order : [["id_phong_tro", "DESC"]]
             });
-            console.log(phong_tro)
+            //console.log(phong_tro)
             res.render("admin-control-post", { username: req.user.ten_nguoi_dung, userData : phong_tro });
         }catch(err) {
             console.log(err)

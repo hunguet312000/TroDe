@@ -25,38 +25,41 @@
 <%- include("partials/user-navbar-profile"); -%>
     <div class="container wrap-content">
         <br>
-        <h3>Chỗ ở yêu thích : (Số lượng)</h3>
-        <div class="head-content">
-            <div class="row wrap-post" style="margin-top: 20px;">
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-card">
-                        <a href="room" style="text-decoration: none;">
-                            <div class="product-img">
-                                <img class="img-link" src="https://cdn.luxstay.com/rooms/34370/large/room_34370_4_1570514075.jpg">
-                            </div>
-                            <div class="product-info">
-                                <div class="phongtro-chungcu">
-                                    Chung cư
-                                </div>
-                                <div class="info-title">
-                                    AimeeHomestay#2 - Phan Bội Châu/ Self check-in
-                                </div>
-                                <div class="info-category">
-                                    <span>Diện tích  m2</span>
-                                    <span>·</span>
-                                    <span class="so-nguoi">2 người</span>
-                                </div>
-                                <div class="price">
-                                    1.000.000 đ/1 tháng
-                                </div>
-                                <div class="address">
-                                    Xuân thủy
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <h3>Chỗ ở yêu thích : <%= roomList.length %></h3>
+          <div class="head-content">
+              <div class="row wrap-post" style="margin-top: 20px;">
+                <% for (room of roomList){ %>
+                <% console.log(room[0].dataValues)%>
+                  <div class="col-md-3 col-sm-6">
+                      <div class="product-card">
+                          <a href="room/<%=room[0].dataValues.id_phong_tro%>" style="text-decoration: none;">
+                              <div class="product-img">
+                                  <img class="img-link" src="<%=room[0].dataValues.path_anh_noi_bat%>">
+                              </div>
+                              <div class="product-info">
+                                  <div class="phongtro-chungcu">
+                                      <%= room[0].dataValues.phan_loai %>
+                                  </div>
+                                  <div class="info-title">
+                                      <%= room[0].dataValues.ten_phong %>
+                                  </div>
+                                  <div class="info-category">
+                                      <span><%= room[0].dataValues.dien_tich %>m2</span>
+                                      <span>·</span>
+                                      <span class="so-nguoi"><%= room[0].dataValues.tong_so_nguoi %> người</span>
+                                  </div>
+                                  <div class="price">
+                                      <%= Number(room[0].dataValues.gia_phong).toLocaleString("en") %> đ/1 tháng
+                                  </div>
+                                  <div class="address">
+                                      <%= room[0].dataValues.quan_huyen %>
+                                  </div>
+                              </div>
+                          </a>
+                      </div>
+                  </div>
+                    <% } %>
+              </div>
+          </div>
     </div>
     <%- include("partials/footer"); -%>

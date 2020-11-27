@@ -55,6 +55,10 @@ const Danh_sach_yeu_thich = sequelize.define('danh_sach_yeu_thich', schema.danh_
     freezeTableName: true
 });
 
+const Lich_hen = sequelize.define('lich_hen', schema.lich_hen, {
+    freezeTableName: true
+});
+
 // Phong tro va Nguoi dung
 Phong_tro.belongsTo(Nguoi_dung, {
     foreignKey: {
@@ -170,6 +174,41 @@ Phong_tro.belongsToMany(Nguoi_dung, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
 });
+
+//Lich hen
+Lich_hen.belongsTo(Nguoi_dung, {
+    foreignKey: {
+      name: "id_nguoi_hen",
+      allowNull: false
+    },
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+});
+Nguoi_dung.hasMany(Lich_hen, {
+    foreignKey: {
+      name: "id_nguoi_hen",
+      allowNull: false
+    },
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+});
+
+Lich_hen.belongsTo(Phong_tro, {
+    foreignKey: {
+      name: "id_phong_tro",
+      allowNull: false
+    },
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+});
+Phong_tro.hasMany(Lich_hen, {
+    foreignKey: {
+      name: "id_phong_tro",
+      allowNull: false
+    },
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+});
 //
 // Danh_sach_yeu_thich.belongsTo(Nguoi_dung,{
 //   foreignKey: {
@@ -211,6 +250,7 @@ module.exports = {
         Bao_cao,
         Quan_tri_vien,
         Danh_sach_yeu_thich,
+        Lich_hen,
         sequelize
     }
     //sequelizeInit();

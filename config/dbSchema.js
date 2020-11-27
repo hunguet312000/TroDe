@@ -354,6 +354,27 @@ const danh_sach_yeu_thich = {
     }
 }
 
+const lich_hen = {
+    id_buoi_hen: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true
+    },
+    id_nguoi_hen: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    id_phong_tro: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    thoi_gian: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
+}
+
 module.exports = {
     nguoi_dung,
     phong_tro,
@@ -362,5 +383,6 @@ module.exports = {
     binh_luan,
     bao_cao,
     quan_tri_vien,
-    danh_sach_yeu_thich
+    danh_sach_yeu_thich,
+    lich_hen
 }

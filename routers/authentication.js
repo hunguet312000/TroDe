@@ -1,7 +1,7 @@
 const fs = require('fs');
 const cloudinary = require('../config/cloudinary');
 const upload = require('../config/multer');
-const { updateInfo, changePassword } = require("../app/updateUserProfile");
+const { updateInfo, changePassword } = require("../app/userProfileManage");
 const bcrypt = require('bcrypt');
 const postManage = require('../app/postManage');
 const forgetPassword = require("../app/forgetPassword");
