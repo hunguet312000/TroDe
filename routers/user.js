@@ -4,6 +4,7 @@ const upload = require('../config/multer');
 const userProfileManage = require("../app/userProfileManage");
 const bcrypt = require('bcrypt');
 const postManage = require('../app/postManage');
+const bookingManage = require("../app/bookingManage");
 const forgetPassword = require("../app/forgetPassword");
 require('dotenv').config();
 
@@ -17,12 +18,7 @@ module.exports = (app, passport) => {
 
     app.get('/wish-list',  userProfileManage.showWishList);
 
-    app.get('/booked-list', function(req, res) {
-        if (req.isAuthenticated()) {
-            const user = req.session.passport.user;
-            res.render("user-booked-list", { user: user });
-        } else { res.redirect('/login') }
-    });
+    app.get('/booked-list', bookingManage.bookedList);
 
     app.get('/await-bookings', function(req, res) {
         if (req.isAuthenticated()) {
