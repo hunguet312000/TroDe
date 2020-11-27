@@ -1,71 +1,89 @@
-<%- include("partials/user-head-profile"); -%>
-    <%- include("partials/user-navbar-profile"); -%>
-        <div class="container" id="profile-content">
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="side-profile">
-                        <div class="div-side">
-                            <a href="/profile-info" style="text-decoration: none;">
-                                <span id="sp-color" style="color: #17ca9d;">Thông tin cá nhân</span>
-                            </a>
-                        </div>
-                        <div class="div-side">
-                            <a href="/profile-change-password" style="text-decoration: none;">
-                                <span id="sp">Đổi mật khẩu</span>
-                            </a>
-                        </div>
-                        <div class="div-side">
-                            <a href="/profile-address" style="text-decoration: none;">
-                                <span id="sp">Địa chỉ</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-10">
-                    <span style="font-size: 17px;"><b>Thông tin cá nhân</b></span>
-                    <br><br>
-                    <div class="content" style="background-color: white; height: fit-content; border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);">
-                        <div class="row" style="padding:40px;">
-                            <div class="col-md-4">
-                                <span id="title-item-profile"><i>Tên đăng nhập</i></span>
-                                <br>
-                                <div class="proflie-item-info"><b> <%=user.ten_nguoi_dung%> </b></div>
-                                <br>
-                            </div>
-                            <div class="col-md-4">
-                                <span id="title-item-profile"><i>Địa chỉ email</i></span>
-                                <br>
-                                <div class="proflie-item-info"><b> <%=user.email%> </b></div>
-                                <br>
-                            </div>
-                            <div class="col-md-4">
-                                <span id="title-item-profile"><i>Số điện thoại</i></span>
-                                <br>
-                                <div class="proflie-item-info"><b> <%=user.sdt%> </b></div>
-                                <br>
-                            </div>
-                            <div class="col-md-4">
-                                <span id="title-item-profile"><i>Ngày sinh</i></span>
-                                <br>
-                                <div class="proflie-item-info"><b> <%=user.ngay_sinh%> </b></div>
-                            </div>
-                            <div class="col-md-4">
-                                <span id="title-item-profile"><i>Giới tính</i></span>
-                                <br>
-                                <div class="proflie-item-info"><b> <%=user.gioi_tinh%> </b></div>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row" style="padding:40px;">
-                            <div class="col-md-4">
-                                <a href="profile-edit" style="text-decoration: none;">
-                                    <button type="button" class="btn btn-primary" id="button-edit"><span id = "text-btn"><b>SỬA THÔNG TIN</b></span></button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <title>TroDe</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link href="/css/user-profile.css" rel="stylesheet">
+    <link href="/css/user-navbar-profile.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+</head>
+<%- include("partials/user-navbar-profile"); -%>
+    <div class="container" id="profile-content">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="side-profile">
+                    <div class="div-side">
+                        <a href="/profile-info" style="text-decoration: none;">
+                            <span id="sp-color" style="color: #17ca9d;">Thông tin cá nhân</span>
+                        </a>
+                    </div>
+                    <div class="div-side">
+                        <a href="/profile-change-password" style="text-decoration: none;">
+                            <span id="sp">Đổi mật khẩu</span>
+                        </a>
+                    </div>
+                    <div class="div-side">
+                        <a href="/profile-address" style="text-decoration: none;">
+                            <span id="sp">Địa chỉ</span>
+                        </a>
+                    </div>
                 </div>
             </div>
+            <div class="col-md-10">
+                <span style="font-size: 17px;"><b>Thông tin cá nhân</b></span>
+                <br><br>
+                <div class="content" style="background-color: white; height: fit-content; border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);">
+                    <div class="row" style="padding:40px;">
+                        <div class="col-md-4">
+                            <span id="title-item-profile"><i>Tên đăng nhập</i></span>
+                            <br>
+                            <div class="proflie-item-info"><b> <%=user.ten_nguoi_dung%> </b></div>
+                            <br>
+                        </div>
+                        <div class="col-md-4">
+                            <span id="title-item-profile"><i>Địa chỉ email</i></span>
+                            <br>
+                            <div class="proflie-item-info"><b> <%=user.email%> </b></div>
+                            <br>
+                        </div>
+                        <div class="col-md-4">
+                            <span id="title-item-profile"><i>Số điện thoại</i></span>
+                            <br>
+                            <div class="proflie-item-info"><b> <%=user.sdt%> </b></div>
+                            <br>
+                        </div>
+                        <div class="col-md-4">
+                            <span id="title-item-profile"><i>Ngày sinh</i></span>
+                            <br>
+                            <div class="proflie-item-info"><b> <%=user.ngay_sinh%> </b></div>
+                        </div>
+                        <div class="col-md-4">
+                            <span id="title-item-profile"><i>Giới tính</i></span>
+                            <br>
+                            <div class="proflie-item-info"><b> <%=user.gioi_tinh%> </b></div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row" style="padding:40px;">
+                        <div class="col-md-4">
+                            <a href="profile-edit" style="text-decoration: none;">
+                                <button type="button" class="btn btn-primary" id="button-edit"><span id = "text-btn"><b>SỬA THÔNG TIN</b></span></button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <%- include("partials/footer"); -%>
+    </div>
+    <%- include("partials/footer"); -%>

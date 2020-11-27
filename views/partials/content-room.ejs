@@ -19,11 +19,11 @@
                     lượt đánh giá)</span></span>
                     <form name="fav-post" action="/saveFavPost" method="post">
                         <input type="hidden" name="addFav_id_phong_tro" value="<%= userData.phong_tro[0].dataValues.id_phong_tro %>">
-                        <%if(user){ %>
+                        <%if(user){%>
                             <input type="hidden" name="addFav_id_nguoi_dung" value="<%= user.id_nguoi_dung %>">
                             <button type="submit" id="fav-button" class="btn-like"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="heart" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;height: 18px;width: 18px;vertical-align: middle;" xml:space="preserve"><g><g><path d="M376,30c-27.783,0-53.255,8.804-75.707,26.168c-21.525,16.647-35.856,37.85-44.293,53.268    c-8.437-15.419-22.768-36.621-44.293-53.268C189.255,38.804,163.783,30,136,30C58.468,30,0,93.417,0,177.514    c0,90.854,72.943,153.015,183.369,247.118c18.752,15.981,40.007,34.095,62.099,53.414C248.38,480.596,252.12,482,256,482    s7.62-1.404,10.532-3.953c22.094-19.322,43.348-37.435,62.111-53.425C439.057,330.529,512,268.368,512,177.514    C512,93.417,453.532,30,376,30z"/></g></g></svg>&nbsp;Thêm vào yêu thích</button>
                             <%}%>
-                        </form>
+                    </form>
                 </div>
             </div>
             <div class="col-sm-9" style="margin-top: 20px;">
@@ -173,16 +173,44 @@
                 <div class="binh-luan" style="margin-top: 60px;">
                     <h3><b>Bình luận</b></h3>
                     <br>
-                    <% for(let b of userData.binh_luan) {%>
-                        <div class="binh-luan" style="border-bottom: 2px solid #f2f2f2;margin-bottom: 10px;height: fit-content;width: 100%; word-wrap: break-word;">
-                            <div class="row">
-                                <div class="col-sm-1">
-                                    <i class="far fa-user-circle" id="circle1"></i>
+                    <% if (login) {%>
+                        <div class="binh-luan-cua-ban" style="border: 2px solid #f2f2f2;margin-bottom: 15px;border-radius: 8px;height: fit-content;">
+                            <form action="/comment" method="post" style="padding: 10px;">
+                                <div>
+                                    <label for="danh-gia" style="border-bottom: 2px solid #f2f2f2;margin-bottom: 20px; margin-right: 10px;">*Đánh giá của bạn</label>
+                                    <select name="rating" class="custom-select btn-ip" id="danh-gia" required data-bv-notempty-message="Không được để trống" style="width:120px;">
+                                    <option value="" disabled selected hidden>Đánh giá</option>
+                                    <option value="1">1 sao</option>
+                                    <option value="2">2 sao</option>
+                                    <option value="3">3 sao</option>
+                                    <option value="4">4 sao</option>
+                                    <option value="5">5 sao</option>
+                                    </select>
                                 </div>
-                                <div class="col-sm-11">
-                                    <div class="user-name" style="margin-bottom: 5px;font-weight: 900;">
-                                        <%= b.ten_nguoi_binh_luan %>
-                                            <span class="sao" style="color: #252525;font-weight: 500;float: right;margin-left: 10px;">
+                                <input type="hidden" name="id_phong_tro" value="<%= userData.phong_tro[0].id_phong_tro %>">
+                                <div>
+                                    <label for="editor" style="border-bottom: 2px solid #f2f2f2;">*Bình luận của bạn</label>
+                                    <br>
+                                    <textarea name="nd_binh_luan" class="form-control btn-ip" id="editor" rows="4" wrap="hard" data-bv-notempty-message="Không được để trống" placeholder="Nhập thông tin ..."></textarea>
+                                </div>
+                                <br>
+                                <div style="float: right;">
+                                    <button type="submit" class="btn btn-primary btn-function" id="button-submit">Gửi bình luận</button>
+                                </div>
+                                <br>
+                            </form>
+                        </div>
+                        <%}%>
+                            <% for(let b of userData.binh_luan) {%>
+                                <div class="binh-luan" style="border-bottom: 2px solid #f2f2f2;margin-bottom: 10px;height: fit-content;width: 100%; word-wrap: break-word;">
+                                    <div class="row">
+                                        <div class="col-sm-1">
+                                            <i class="far fa-user-circle" id="circle1"></i>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <div class="user-name" style="margin-bottom: 5px;font-weight: 900;">
+                                                <%= b.ten_nguoi_binh_luan %>
+                                                    <span class="sao" style="color: #252525;font-weight: 500;float: right;margin-left: 10px;">
                                             <% if (b.rating == 1){%>
                                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -10 511.98685 511" width="16" style = "vertical-align: middle;"><path d="m510.652344 185.902344c-3.351563-10.367188-12.546875-17.730469-23.425782-18.710938l-147.773437-13.417968-58.433594-136.769532c-4.308593-10.023437-14.121093-16.511718-25.023437-16.511718s-20.714844 6.488281-25.023438 16.535156l-58.433594 136.746094-147.796874 13.417968c-10.859376 1.003906-20.03125 8.34375-23.402344 18.710938-3.371094 10.367187-.257813 21.738281 7.957031 28.90625l111.699219 97.960937-32.9375 145.089844c-2.410156 10.667969 1.730468 21.695313 10.582031 28.09375 4.757813 3.4375 10.324219 5.1875 15.9375 5.1875 4.839844 0 9.640625-1.304687 13.949219-3.882813l127.46875-76.183593 127.421875 76.183593c9.324219 5.609376 21.078125 5.097657 29.910156-1.304687 8.855469-6.417969 12.992187-17.449219 10.582031-28.09375l-32.9375-145.089844 111.699219-97.941406c8.214844-7.1875 11.351563-18.539063 7.980469-28.925781zm0 0" fill="#ffc107"/></svg>
                                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -10 511.98685 511" width="16" style = "vertical-align: middle;"><path d="m510.652344 185.902344c-3.351563-10.367188-12.546875-17.730469-23.425782-18.710938l-147.773437-13.417968-58.433594-136.769532c-4.308593-10.023437-14.121093-16.511718-25.023437-16.511718s-20.714844 6.488281-25.023438 16.535156l-58.433594 136.746094-147.796874 13.417968c-10.859376 1.003906-20.03125 8.34375-23.402344 18.710938-3.371094 10.367187-.257813 21.738281 7.957031 28.90625l111.699219 97.960937-32.9375 145.089844c-2.410156 10.667969 1.730468 21.695313 10.582031 28.09375 4.757813 3.4375 10.324219 5.1875 15.9375 5.1875 4.839844 0 9.640625-1.304687 13.949219-3.882813l127.46875-76.183593 127.421875 76.183593c9.324219 5.609376 21.078125 5.097657 29.910156-1.304687 8.855469-6.417969 12.992187-17.449219 10.582031-28.09375l-32.9375-145.089844 111.699219-97.941406c8.214844-7.1875 11.351563-18.539063 7.980469-28.925781zm0 0" fill="#e6e6e6"/></svg>
@@ -215,32 +243,32 @@
                                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -10 511.98685 511" width="16" style = "vertical-align: middle;"><path d="m510.652344 185.902344c-3.351563-10.367188-12.546875-17.730469-23.425782-18.710938l-147.773437-13.417968-58.433594-136.769532c-4.308593-10.023437-14.121093-16.511718-25.023437-16.511718s-20.714844 6.488281-25.023438 16.535156l-58.433594 136.746094-147.796874 13.417968c-10.859376 1.003906-20.03125 8.34375-23.402344 18.710938-3.371094 10.367187-.257813 21.738281 7.957031 28.90625l111.699219 97.960937-32.9375 145.089844c-2.410156 10.667969 1.730468 21.695313 10.582031 28.09375 4.757813 3.4375 10.324219 5.1875 15.9375 5.1875 4.839844 0 9.640625-1.304687 13.949219-3.882813l127.46875-76.183593 127.421875 76.183593c9.324219 5.609376 21.078125 5.097657 29.910156-1.304687 8.855469-6.417969 12.992187-17.449219 10.582031-28.09375l-32.9375-145.089844 111.699219-97.941406c8.214844-7.1875 11.351563-18.539063 7.980469-28.925781zm0 0" fill="#ffc107"/></svg>
                                             <%}%>
                                             </span>
-                                    </div>
-                                    <% if( b.thoi_gian_dang >= 24){ %>
-                                        <% if( b.thoi_gian_dang/24 > 31){ %>
-                                            <div class="time" style="margin-bottom: 10px;">
-                                                <%= b.thoi_gian_dang/31%> Tháng trước</div>
-                                            <% }%>
-                                                <div class="time" style="margin-bottom: 10px;">
-                                                    <%= b.thoi_gian_dang/24%> Ngày trước</div>
-                                                <% }else if ( b.thoi_gian_dang < 1) { %>
-                                                    <% if ( b.thoi_gian_dang*3600 <= 0) {%>
-                                                        <div class="time" style="margin-bottom: 10px;"> Vừa xong</div>
-                                                        <% }else{ %>
-                                                            <div class="time" style="margin-bottom: 10px;">
-                                                                <%= b.thoi_gian_dang*60%> Phút trước</div>
-                                                            <% }%>
-                                                                <% }else { %>
+                                            </div>
+                                            <% if( b.thoi_gian_dang >= 24){ %>
+                                                <% if( b.thoi_gian_dang/24 > 31){ %>
+                                                    <div class="time" style="margin-bottom: 10px;">
+                                                        <%= b.thoi_gian_dang/31%> Tháng trước</div>
+                                                    <% }%>
+                                                        <div class="time" style="margin-bottom: 10px;">
+                                                            <%= b.thoi_gian_dang/24%> Ngày trước</div>
+                                                        <% }else if ( b.thoi_gian_dang < 1) { %>
+                                                            <% if ( b.thoi_gian_dang*3600 <= 0) {%>
+                                                                <div class="time" style="margin-bottom: 10px;"> Vừa xong</div>
+                                                                <% }else{ %>
                                                                     <div class="time" style="margin-bottom: 10px;">
-                                                                        <%= b.thoi_gian_dang%> Giờ trước</div>
+                                                                        <%= b.thoi_gian_dang*60%> Phút trước</div>
                                                                     <% }%>
+                                                                        <% }else { %>
+                                                                            <div class="time" style="margin-bottom: 10px;">
+                                                                                <%= b.thoi_gian_dang%> Giờ trước</div>
+                                                                            <% }%>
+                                        </div>
+                                    </div>
+                                    <div class="comment" style="padding: 8px 15px;height: fit-content;margin-top: 5px;font-weight: 500;">
+                                        <%- b.noi_dung %>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="comment" style="padding: 8px 15px;height: fit-content;margin-top: 5px;font-weight: 500;">
-                                <%- b.noi_dung %>
-                            </div>
-                        </div>
-                        <% } %>
+                                <% } %>
                 </div>
             </div>
             <div class="col-sm-3">
