@@ -156,6 +156,18 @@ const phong_tro = {
     path_anh_noi_bat: {
         type: DataTypes.STRING,
         allowNull: true
+    },
+    luot_xem: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+    },
+    luot_thich: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+    },
+    luot_binh_luan: {
+        type: DataTypes.INTEGER,
+        allowNull: true
     }
 }
 
