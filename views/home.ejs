@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>TroDe</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <% if (login) {%>
+        <link href="/css/general-user.css" rel="stylesheet">
+        <link href="/css/home-user.css" rel="stylesheet">
+        <%} else {%>
+            <link href="/css/general.css" rel="stylesheet">
+            <link href="/css/home.css" rel="stylesheet">
+            <%}%>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+</head>
+<%- include("partials/navbar-content"); -%>
+    <div class="container wrap-content">
+        <div class="admin-post">
+            <img src="" style="width:100%; height:230px;border-radius: 6px;display: none;">
+        </div>
+        <% if(login) {%>
+            <div class="greeting">
+                <h3>Chào mừng đến với TroDe,
+                    <%=user.ten_nguoi_dung%> !</h3>
+                <div>Tìm kiếm phòng, đặt lịch xem phòng một cách dễ dàng với TroDe. </div>
+            </div>
+            <%} else{%>
+                <div class="greeting">
+                    <h3>Chào mừng đến với TroDe!</h3>
+                    <div>Tìm kiếm phòng, đặt lịch xem phòng một cách dễ dàng với TroDe. </div>
+                    <div><a href="login" style="text-decoration: none;color: #222222; font-weight: 900;"><u>Đăng nhập</u></a> hoặc <a href="signup" style="text-decoration: none;color: #222222; font-weight: 900;"><u>Đăng ký</u></a> để trải nghiệm !</div>
+                </div>
+                <%}%>
+                    <%- include("partials/content-home"); -%>
+    </div>
+
+    <script type="text/javascript" src="js/home.js"></script>
+    <%- include("partials/footer"); -%>

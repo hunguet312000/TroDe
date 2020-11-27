@@ -102,16 +102,13 @@ exports.filterListPostByNumOfPeopleOrPrice = async(req, res) => {
         query : req.body,
     }))
 }
-// // exports.filterListPostBySearch = async(req, res) => {
-// //     console.log(req.body);
-// // let s = url.format({
-// //         pathname : req.url,
-// //         query : req.body,
-// //     })
-// //     s = s.replace("%3F", "?")
-// // res.redirect(s);
+exports.filterListPostBySearch = async(req, res) => {
+    console.log(req.url)
+    req.url = req.url.split("&");
+    console.log(req.url)
+    res.redirect(req.url[0] + "&order=" + req.body.sort);
 
-// }
+}
 exports.displayListPost = async(req, res) => {
     try {
         let type = ""
@@ -214,9 +211,10 @@ exports.displayListPost = async(req, res) => {
                 order
             ]
         });
-        if (req.isAuthenticated()) {
-            res.render("user-product-grid", { user: req.user, userData: phong_tro, type:req.params.type });
-        } else { res.render("guest-product-grid", { userData: phong_tro, type:req.params.type }); }
+        // if (req.isAuthenticated()) {
+        //     res.render("user-product-grid", { user: req.user, userData: phong_tro, type:req.params.type });
+        // } else { res.render("guest-product-grid", { userData: phong_tro, type:req.params.type }); }
+        res.render("rooms", {user : req.user, userData : phong_tro, type:req.params.type, login : req.isAuthenticated()})
     } catch (err) {
         console.log(err);
     }
@@ -352,9 +350,10 @@ exports.displayPostProfile = async(req, res) => {
         userData.phong_tro = phong_tro;
         userData.tien_ich = tien_ich;
         userData.hinh_anh = hinh_anh;
-        if (req.isAuthenticated()) {
-            res.render("user-room", { user: req.user, userData: userData });
-        } else { res.render("guest-room", { user: "", userData: userData }); };
+        // if (req.isAuthenticated()) {
+        //     res.render("user-room", { user: req.user, userData: userData });
+        // } else { res.render("guest-room", { user: "", userData: userData }); };
+        res.render("room", {user : req.user, userData : userData, login : req.isAuthenticated()})
     } catch (err) {
         console.log(err);
     }
@@ -422,9 +421,10 @@ exports.deletePost = async(req, res) => {
 exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, quan_huyen, tong_songuoi, phuong_xa, cao cap, re, gia re
     try{
         //console.log(req.query);
-        let search = Object.values(req.query)[0].toLowerCase();//search value
+        let search = req.query.search.toLowerCase();//search value
         search = search.replace(/\s\s+/g, ' '); //delete multiple spaces
-
+        search = keywords_dict.convertStr(search);
+        console.log(search);
         const result = {
             'phan_loai' : "",
             'quan_huyen' : "",
@@ -439,7 +439,7 @@ exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, qu
         var gia_phong_keyword;
         //get keywordd phan loai
         keywords_dict.keywords_dict.phan_loai.forEach(function(phan_loai) {
-            phan_loai_keyword = new RegExp(phan_loai, "i");
+            phan_loai_keyword = new RegExp(keywords_dict.convertStr(phan_loai), "i");
             if(search.match(phan_loai_keyword)){
                 result.phan_loai = phan_loai;
                 return true;
@@ -447,10 +447,10 @@ exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, qu
         })
         //get keyword quan huyen phuong xa
         Object.keys(keywords_dict.keywords_dict.quan_huyen_phuong_xa).forEach(quan_huyen => {
-            quan_huyen_keyword = new RegExp(quan_huyen, "i");
+            quan_huyen_keyword = new RegExp(keywords_dict.convertStr(quan_huyen), "i");
             if(search.match(quan_huyen_keyword)) {result.quan_huyen = quan_huyen};
             keywords_dict.keywords_dict.quan_huyen_phuong_xa[quan_huyen].forEach(function(phuong_xa) {
-                phuong_xa_keyword = new RegExp(phuong_xa, "i");
+                phuong_xa_keyword = new RegExp(keywords_dict.convertStr(phuong_xa), "i");
                 if(search.match(phuong_xa_keyword)){result.phuong_xa = phuong_xa}
             })
         })
@@ -458,7 +458,7 @@ exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, qu
 
         //get keyword gia phong
         Object.keys(keywords_dict.keywords_dict.gia_tien).forEach(gia => {
-            gia_phong_keyword = new RegExp(gia, "i");
+            gia_phong_keyword = new RegExp(keywords_dict.convertStr(gia), "i");
             if(search.match(gia_phong_keyword)) {
 
                 result.gia_phong[0] = keywords_dict.keywords_dict.gia_tien[gia][0];
@@ -471,7 +471,7 @@ exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, qu
         var reg1 = /[+-]?\d+(?:\.\d+)?/g;//get number
         var reg2;
         if(search.match(reg1)) {
-            reg2 = new RegExp(search.match(reg1)[0] + " người", "i")
+            reg2 = new RegExp(search.match(reg1)[0] + " nguoi", "i")
             if(search.match(reg2)){
                 result.tong_so_nguoi = search.match(reg2)[0].match(reg1)[0];
             }
@@ -497,11 +497,11 @@ exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, qu
         //filter order esc/desc,...
         //console.log(req.query)
         let order = ["id_phong_tro", "DESC"]
-        if(JSON.stringify(req.query) == "{}"){
+        if(req.query.order == ""){
             order = ["id_phong_tro", "DESC"]
-        }else if(Object.values(req.query)[1] == "ESC"){
+        }else if(req.query.order == "ESC"){
             order = ["gia_phong"]
-        }else if(Object.values(req.query)[1] == "DESC"){
+        }else if(req.query.order == "DESC"){
             order = ["gia_phong", "DESC"]
         }
 
@@ -537,7 +537,7 @@ exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, qu
 
             }
             ,
-            order :[["id_phong_tro", "DESC"]]
+            order :[order]
         })
         //console.log(phong_tro);
 
@@ -551,10 +551,12 @@ exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, qu
 }
 exports.search = async(req, res) => {
     //console.log(req.body)
-   res.redirect(url.format({
-       pathname:"/rooms/",
-       query:req.body,
-   }));
+    req.body.order = "";
+    //console.log(req.body.search);
+    res.redirect(url.format({
+        pathname:"/rooms/",
+        query: req.body
+    }));
 }
 
 exports.displayAllPost = async(req, res) => {

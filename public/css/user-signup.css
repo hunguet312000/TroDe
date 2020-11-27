@@ -163,3 +163,15 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+@media (max-width:990px) and (min-width:768px) {
+    #button-submit {
+        width: 125%;
+    }
+    #button-gmail {
+        width: 125%;
+    }
+    #button-facebook {
+        width: 125%;
+    }
+}

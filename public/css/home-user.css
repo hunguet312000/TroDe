@@ -224,14 +224,50 @@ a:focus {
     color: #17ca9d;
 }
 
+#chung-cu {
+    float: left;
+    margin-top: 40px;
+    margin-right: 0.5%;
+}
+
+#phong-tro {
+    margin-top: 40px;
+    margin-left: 0.5%;
+}
+
 @media (min-width:991px) and (max-width:1200px) {
     .slick-slide #wrap-content1-img {
         height: 233.75px;
     }
+    #chung-cu {
+        margin-right: 3%;
+    }
+    #phong-tro {
+        margin-left: 3%;
+    }
 }
 
-@media (max-width:990px) {
+@media (min-width:769px) and (max-width:990px) {
     .slick-slide #wrap-content1-img {
         height: 255px;
+    }
+    #chung-cu {
+        margin-right: 9%;
+    }
+    #phong-tro {
+        margin-left: 9%;
+    }
+}
+
+@media (max-width:769px) {
+    .slick-slide #wrap-content1-img {
+        height: 255px;
+    }
+    #chung-cu {
+        margin-bottom: 3%;
+        margin-right: 0%;
+    }
+    #phong-tro {
+        margin-left: 0%;
     }
 }

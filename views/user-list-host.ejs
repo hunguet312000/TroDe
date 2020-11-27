@@ -21,5 +21,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </head>
 <%- include("partials/user-navbar-profile" ,{user: user}); -%>
-    <%- include("partials/content-list-host"); -%>
-        <%- include("partials/footer"); -%>
+    <div class="container" id="profile-content">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 style="margin-bottom: -20px;margin-top: -15px;"><b>Danh sách các bài đã đăng</b></h2>
+                <br><br>
+                <div class="content">
+                    <%- include("partials/content-list-host"); -%>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <%- include("partials/footer"); -%>

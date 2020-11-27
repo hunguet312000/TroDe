@@ -20,8 +20,21 @@
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     <script src="/node_modules/readmore-js/readmore.min.js"></script>
-    <link href="/css/general-user.css" rel="stylesheet">
-    <link href="/css/user-room.css" rel="stylesheet">
-    <link href="/css/user-content.css" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <% if(login) {%>
+        <link href="/css/general-user.css" rel="stylesheet">
+        <link href="/css/user-room.css" rel="stylesheet">
+        <link href="/css/user-content.css" rel="stylesheet">
+        <%}else{%>
+            <link href="/css/general.css" rel="stylesheet">
+            <link href="/css/user-room.css" rel="stylesheet">
+            <link href="/css/user-content.css" rel="stylesheet">
+            <%}%>
+
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </head>
+
+
+<%- include("partials/navbar-content"); -%>
+
+    <%- include("partials/content-room"); -%>
+        <%- include("partials/footer"); -%>

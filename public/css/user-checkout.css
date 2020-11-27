@@ -146,3 +146,28 @@ img {
 .div-img:hover #name-host {
     color: #17ca9d;
 }
+
+#button-submit1 {
+    border-radius: 7px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    width: 100%;
+    color: #fff;
+    background: rgb(17, 17, 17);
+    border-color: transparent;
+    font-weight: 900;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+}
+
+#button-submit1:hover {
+    border-color: #0c0c0c;
+    box-shadow: 0 0 5px 0 #0c0c0c;
+    outline: 0 none;
+}
+
+#button-submit1:focus {
+    outline: 0;
+}
