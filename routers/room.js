@@ -33,11 +33,7 @@ module.exports = (app, passport) => {
           book_date: book_date
         });
       } else {
-        res.render("user-checkout", {
-          user: '',
-          phong_tro: phong_tro,
-          book_date: book_date
-        });
+        res.redirect("/login");
       }
   });
 

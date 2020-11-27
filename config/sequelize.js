@@ -253,4 +253,4 @@ module.exports = {
         Lich_hen,
         sequelize
     }
-    //sequelizeInit();
+  //sequelizeInit();

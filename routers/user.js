@@ -17,17 +17,17 @@ module.exports = (app, passport) => {
 
     app.get('/wish-list',  userProfileManage.showWishList);
 
-    app.get('/bookings', function(req, res) {
+    app.get('/booked-list', function(req, res) {
         if (req.isAuthenticated()) {
             const user = req.session.passport.user;
-            res.render("user-bookings", { user: user });
+            res.render("user-booked-list", { user: user });
         } else { res.redirect('/login') }
     });
 
-    app.get('/control-bookings', function(req, res) {
+    app.get('/await-bookings', function(req, res) {
         if (req.isAuthenticated()) {
             const user = req.session.passport.user;
-            res.render("user-control-bookings", { user: user });
+            res.render("user-await-bookings", { user: user });
         } else { res.redirect('/login') }
     });
 
