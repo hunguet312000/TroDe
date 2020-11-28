@@ -384,6 +384,10 @@ const lich_hen = {
     thoi_gian: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    tinh_trang:{
+      type: DataTypes.INTEGER,
+      allowNull: true
     }
 }
 

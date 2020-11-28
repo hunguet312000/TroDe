@@ -31,7 +31,7 @@ module.exports = (app, passport) => {
 
   app.get("/login/error", function(req, res) {
       res.render("user-login", {
-          message: "Email already assigned"
+          message: "Email đã được sử dụng."
       });
   });
 
@@ -51,7 +51,7 @@ module.exports = (app, passport) => {
   );
 
   app.get('/auth/facebook/user-home',passport.authenticate('facebook', {
-        failureRedirect: '/login' ,
+        failureRedirect: '/login/error' ,
         failureFlash: true
       }),
       function(req, res) {

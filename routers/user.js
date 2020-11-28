@@ -20,13 +20,9 @@ module.exports = (app, passport) => {
 
     app.get('/booked-list', bookingManage.bookedList);
 
-    app.get('/await-bookings', function(req, res) {
-        if (req.isAuthenticated()) {
-            const user = req.session.passport.user;
-            res.render("user-await-bookings", { user: user });
-        } else { res.redirect('/login') }
-    });
+    app.get('/await-bookings', bookingManage.awaitBooking);
 
+    app.post('/await-bookings/:id/:response', bookingManage.bookingResponse);
 
     app.get('/profile-edit', function(req, res) {
         if (req.isAuthenticated()) {

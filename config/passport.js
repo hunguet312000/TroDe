@@ -77,44 +77,6 @@ module.exports = async function(passport) {
             }catch(err){
                 return done(null, false, req.flash('signupMessage', 'Please enter a valid email.'));
             }
-            //
-            // dbConnection = mysql.createConnection(dbconfig);
-            // dbConnection.connect();
-            // var queryString = "SELECT * FROM nguoi_dung WHERE ten_nguoi_dung = ?";
-            // if(username.includes("@")){
-            //   console.log(username);
-            //   queryString = "SELECT * FROM nguoi_dung WHERE email = ?";
-            // }
-            // dbConnection.query("SELECT * FROM nguoi_dung WHERE ten_nguoi_dung = ?",[username], function(err, rows) {
-            //     if (err)
-            //         return done(err);
-            //     if (rows.length){
-            //         return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
-            //     }else{
-            //         // if there is no user with that username
-            //         // create the user
-            //     const newUserMysql = {
-            //         ten_nguoi_dung: username,
-            //         email: email,
-            //         sdt: phone,
-            //         mat_khau: bcrypt.hashSync(password, 10),  // use the generateHash function in our user model
-            //         gioi_tinh: sex,
-            //         ngay_sinh: dob,
-            //
-            //     };
-            //     var insertQuery = "INSERT INTO nguoi_dung ( ten_nguoi_dung, email, sdt, mat_khau, gioi_tinh, ngay_sinh ) values ('" + newUserMysql.ten_nguoi_dung + "','" + newUserMysql.email + "','" + newUserMysql.sdt + "','"  + newUserMysql.mat_khau + "','" + newUserMysql.gioi_tinh + "'," + "STR_TO_DATE('" + newUserMysql.ngay_sinh + "', '%m/%d/%Y'))";
-            //     dbConnection = mysql.createConnection(dbconfig);
-            //     dbConnection.connect();
-            //     dbConnection.query(insertQuery,function(err, rows) {
-            //       if(err){
-            //         return done(err);
-            //       }
-            //       return done(null, newUserMysql);
-            //     });
-            //     dbConnection.end();
-            //   }
-            // });
-            // dbConnection.end();
         })
     );
 
@@ -157,33 +119,6 @@ module.exports = async function(passport) {
             }catch(err){
               console.log(err);
             }
-
-            // dbConnection = mysql.createConnection(dbconfig);
-            // dbConnection.connect();
-            // var queryString = "SELECT * FROM nguoi_dung WHERE ten_nguoi_dung = ?";
-            // if(username.includes("@")){
-            //   queryString = "SELECT * FROM nguoi_dung WHERE email = ?";
-            // }
-            // dbConnection.query(queryString, [username], function(err, rows){
-            //     if (err)
-            //         return done(err);
-            //     if (!rows.length) {
-            //         return done(null, false, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
-            //     }
-            //
-            //     // if the user is found but the password is wrong
-            //     if (!bcrypt.compareSync(password, rows[0].mat_khau))
-            //         return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
-            //
-            //     // all is well, return successful user
-            //     if (req.body.remember) {
-            //       req.session.cookie.maxAge = 24 * 60 * 60 * 1000; // Cookie expires after 1 days
-            //     } else {
-            //       req.session.cookie.expires = false; // Cookie expires at end of session
-            //     }
-            //     return done(null, rows[0]);
-            // });
-            // dbConnection.end();
         })
     );
 
@@ -215,45 +150,6 @@ module.exports = async function(passport) {
         }catch(err){
           return cb(null, null);
         }
-        // User.findOrCreate({
-        //   googleId: profile.id
-        // }, function(err, user) {
-        //   return cb(err, user);
-        // });
-        // dbConnection = mysql.createConnection(dbconfig);
-        // dbConnection.connect();
-        // dbConnection.query("SELECT * FROM nguoi_dung WHERE ten_nguoi_dung = ?",[google_id], function(err, rows){
-        //     if (err)
-        //         return cb(err);
-        //     if (rows.length) {
-        //         return cb(err, rows[0]);
-        //     }else{
-        //       const newUserMysql = {
-        //           ten_nguoi_dung: google_id,
-        //           ho_va_ten: ho_va_ten,
-        //           mat_khau:" ",
-        //           email: email
-        //       };
-        //       const insertQuery = "INSERT INTO nguoi_dung ( ten_nguoi_dung, email, mat_khau, ho_va_ten ) values (?,?,?,?)";
-        //       dbConnection = mysql.createConnection(dbconfig);
-        //       dbConnection.connect();
-        //       dbConnection.query(insertQuery,
-        //         [newUserMysql.ten_nguoi_dung, newUserMysql.email, newUserMysql.mat_khau, newUserMysql.ho_va_ten],
-        //         function(err, rows) {
-        //             return cb(err, rows[0])
-        //       });
-        //       dbConnection.end();
-        //       // return done(null, false, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
-        //     }
-        //
-        //     // // if the user is found but the password is wrong
-        //     // if (!bcrypt.compareSync(password, rows[0].mat_khau))
-        //     //     return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
-        //
-        //     // all is well, return successful user
-        //     //return done(null, rows[0]);
-        // });
-        // dbConnection.end();
       }
     ));
 
@@ -266,49 +162,25 @@ module.exports = async function(passport) {
       callbackURL: "http://localhost:3000/auth/facebook/user-home",
       profileFields: ['id', 'displayName', 'email']
     },
-      function(accessToken, refreshToken, profile, cb) {
+      async function(accessToken, refreshToken, profile, cb) {
         const facebook_id = profile.id;
         const ho_va_ten = profile.displayName;
         const email = profile.emails[0].value;
-        // User.findOrCreate({
-        //   googleId: profile.id
-        // }, function(err, user) {
-        //   return cb(err, user);
-        // });
-        dbConnection = mysql.createConnection(dbconfig);
-        dbConnection.connect();
-        dbConnection.query("SELECT * FROM nguoi_dung WHERE ten_nguoi_dung = ?",[facebook_id], function(err, rows){
-            if (err)
-                return cb(err);
-            if (rows.length) {
-                return cb(err, rows[0]);
-            }else{
-              const newUserMysql = {
-                  ten_nguoi_dung: facebook_id,
-                  ho_va_ten: ho_va_ten,
-                  mat_khau:" ",
-                  email: email
-              };
-              const insertQuery = "INSERT INTO nguoi_dung ( ten_nguoi_dung, email, mat_khau, ho_va_ten ) values (?,?,?,?)";
-              dbConnection = mysql.createConnection(dbconfig);
-              dbConnection.connect();
-              dbConnection.query(insertQuery,
-                [newUserMysql.ten_nguoi_dung, newUserMysql.email, newUserMysql.mat_khau, newUserMysql.ho_va_ten],
-                function(err, rows) {
-                    return cb(err, rows[0])
-              });
-              dbConnection.end();
-              // return done(null, false, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
+
+        try {
+          const nUser = await Nguoi_dung.findOrCreate({
+            where: { ten_nguoi_dung: facebook_id}, // we search for this user
+            defaults: {
+              ten_nguoi_dung: facebook_id,
+              email: email,
+              mat_khau: " ",
+              ho_va_ten: profile.displayName
             }
-
-            // // if the user is found but the password is wrong
-            // if (!bcrypt.compareSync(password, rows[0].mat_khau))
-            //     return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
-
-            // all is well, return successful user
-            //return done(null, rows[0]);
-        });
-        dbConnection.end();
+          });
+            return cb(null, nUser[0].dataValues);
+        } catch (err) {
+            return cb(null,null)
+        }
       }
     ));
 

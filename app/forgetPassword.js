@@ -30,16 +30,16 @@ exports.forgetPassword = async (req, res) => {
             var transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                  user: 'vuthiphuong2910@gmail.com',
-                  pass: 'ghiaog123'
+                  user: 'trodehn@gmail.com',
+                  pass: 'trode10000'
                 }
               });
 
               var mailOptions = {
-                from: 'vuthiphuong2910@gmail.com',
+                from: 'trodehn@gmail.com',
                 to: req.body.email,
-                subject: 'Sending Email using Node.js',
-                html: '<p>Dể thay đổi mật khẩu của bạn xin vui lòng nhấn vào <a href="http://localhost:3000/reset-password/' + token + '">link.</a> </p>'
+                subject: 'Đổi mật khẩu cho tài khoản của bạn',
+                html: '<p>Để thay đổi mật khẩu của bạn xin vui lòng nhấn vào <a href="http://localhost:3000/reset-password/' + token + '">link.</a> </p>'
               };
 
               transporter.sendMail(mailOptions, function(error, info){

@@ -39,7 +39,7 @@
                             TÀI KHOẢN CỦA BẠN
                         </div>
                         <div class="admin-name">
-                            <%=username%>
+                            <%=user.ten_nguoi_dung%>
                         </div>
                     </div>
                 </div>
@@ -49,16 +49,16 @@
 
     <div class="container" id="content-checkout">
         <div class="row">
-            <h3>Yêu cầu đặt lịch của bạn đã được gửi đến người cho thuê thành công!</h3>
+            <h3>Yêu cầu đặt lịch của bạn đã được gửi đến chủ nhà thành công!</h3>
             <br>
             <div class="col-sm-12" style="font-size: 16px;font-weight: 500;margin-top: -10px;margin-bottom: 45px;">
-                <span>Chúng tôi đã gửi thông tin đặt lịch đến email</span> <span style="color: #17ca9d;font-weight: 900;">(tên email)</span><span>. Bạn vui lòng kiểm tra hộp thư trong vòng ít phút.</span>
+                <span>Chúng tôi đã gửi thông tin đặt lịch đến email</span> <span style="color: #17ca9d;font-weight: 900;"><%=user.email%></span><span>. Bạn vui lòng kiểm tra hộp thư trong ít phút.</span>
                 <br> <br><span>Ngay khi có phản hồi từ người cho thuê, TroDe sẽ ngay lập tức thông báo cho bạn. Cảm ơn bạn đã tin dùng dịch vụ của TroDe.</span>
             </div>
 
             <br>
             <div class="col-sm-4">
-                <a href="/bookings" style="text-decoration: none;">
+                <a href="/booked-list" style="text-decoration: none;">
                     <button type="button" class="btn btn-primary" id="button-submit" style="height: 40px;border-radius: 2px;margin-bottom: 10px;"><span id = "text-btn"><b>QUẢN LÝ ĐẶT LỊCH</b></span></button>
                 </a>
                 <br>
