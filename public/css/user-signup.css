@@ -164,6 +164,101 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
+.gj-textbox-md:focus {
+    border-bottom: #17ca9d;
+    box-shadow: 0 0 5px 0 #17ca9d;
+    outline: 0 none;
+}
+
+.gj-picker.gj-picker-md.datetimepicker.gj-unselectable {
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.gj-picker.datetimepicker [role=header] {
+    background-color: #ffffff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color: #222222;
+}
+
+.gj-picker .selected {
+    color: #222222;
+}
+
+.gj-icon.selected {
+    display: inline-block;
+}
+
+.gj-picker-md [role=switch] {
+    background-color: #ffffff;
+    color: #222222;
+}
+
+.gj-picker.datetimepicker [role=header] [role=date] {
+    display: none;
+}
+
+.gj-picker-md table tr td.selected.gj-cursor-pointer div {
+    background: #17ca9d;
+    color: #ffffff;
+    border-radius: 0;
+}
+
+.gj-picker-md table tr td.gj-cursor-pointer div:hover {
+    border-radius: 0;
+}
+
+.gj-picker-md [role=footer] button.gj-button-md {
+    color: #17ca9d;
+}
+
+.gj-picker.gj-picker-md.datetimepicker.gj-unselectable {
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.current-month.disabled {
+    border: 1px solid #e4e7e7;
+    font-weight: 700;
+}
+
+.today.gj-cursor-pointer {
+    border: 1px solid #e4e7e7;
+    font-weight: 700;
+}
+
+.current-month.gj-cursor-pointer {
+    border: 1px solid #e4e7e7;
+    font-weight: 700;
+}
+
+.gj-picker-md .arrow-begin,
+.gj-picker-md [role=body] [role=arrow] {
+    background: #17ca9d;
+}
+
+.gj-picker [role=body] [role=hour].selected {
+    background: #17ca9d;
+    font-weight: 700;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.gj-picker-md .arrow-end {
+    background: #17ca9d;
+    border: 16px solid #17ca9d;
+}
+
 @media (max-width:990px) and (min-width:768px) {
     #button-submit {
         width: 125%;

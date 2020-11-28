@@ -178,16 +178,16 @@ Phong_tro.belongsToMany(Nguoi_dung, {
 //Lich hen
 Lich_hen.belongsTo(Nguoi_dung, {
     foreignKey: {
-      name: "id_nguoi_hen",
-      allowNull: false
+        name: "id_nguoi_hen",
+        allowNull: false
     },
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
 });
 Nguoi_dung.hasMany(Lich_hen, {
     foreignKey: {
-      name: "id_nguoi_hen",
-      allowNull: false
+        name: "id_nguoi_hen",
+        allowNull: false
     },
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
@@ -195,16 +195,16 @@ Nguoi_dung.hasMany(Lich_hen, {
 
 Lich_hen.belongsTo(Phong_tro, {
     foreignKey: {
-      name: "id_phong_tro",
-      allowNull: false
+        name: "id_phong_tro",
+        allowNull: false
     },
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
 });
 Phong_tro.hasMany(Lich_hen, {
     foreignKey: {
-      name: "id_phong_tro",
-      allowNull: false
+        name: "id_phong_tro",
+        allowNull: false
     },
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
@@ -253,4 +253,4 @@ module.exports = {
         Lich_hen,
         sequelize
     }
-  //sequelizeInit();
+    //sequelizeInit();

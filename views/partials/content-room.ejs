@@ -285,7 +285,7 @@
                     <br>
                     <form action="<%=userData.phong_tro[0].dataValues.id_phong_tro %>/confirm-booking-info" method="post">
                         <div>
-                            <input name="bookDate" id="datepicker" class="btn-date" placeholder="dd/mm/yyyy" required data-bv-notempty-message="Không được để trống" autocomplete="off">
+                            <input name="bookDate" id="datepicker" type="text" class="btn-date" placeholder="dd/mm/yyyy" required data-bv-notempty-message="Không được để trống" autocomplete="off">
                         </div>
                         <br>
                         <div>
@@ -341,7 +341,8 @@
                 disableDates: function(date) {
                     return date >= today ? true : false;
                 }
-            }
+            },
+            footer: true
         });
     });
 </script>
