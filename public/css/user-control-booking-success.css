@@ -104,13 +104,13 @@ img {
     outline: none;
 }
 
-#wrap-a-1 {
+#wrap-a-2 {
     color: #333;
     font-weight: 600;
-    border-bottom: 3px solid rgb(245, 222, 13);
+    border-bottom: 3px solid #28ca6e;
 }
 
-#wrap-a-2:hover {
+#wrap-a-1:hover {
     color: #333;
     font-weight: 600;
 }
