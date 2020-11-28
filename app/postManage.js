@@ -6,8 +6,9 @@ require('dotenv').config();
 const url = require("url");
 const sequelize = require("sequelize");
 const keywords_dict = require("../public/js/keywords_dict.js");
-const { sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan, Danh_sach_yeu_thich } = require("../config/sequelize");
+const { sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan, Danh_sach_yeu_thich, Lich_hen } = require("../config/sequelize");
 const Op = require('Sequelize').Op
+const bookingManage = require("./bookingManage");
 
 exports.savePosts = async(req, res) => {
     if (req.isAuthenticated()) {
@@ -79,9 +80,9 @@ exports.savePosts = async(req, res) => {
             const tien_ich = await Tien_ich.create(tiennghi);
             insert_hinh_anh_values = insert_hinh_anh_values.slice(1, insert_hinh_anh_values.length);
             insert_hinh_anh_values.forEach(function(value) {
-                value.id_phong_tro = phong_tro.id_phong_tro
-            })
-            //console.log(insert_hinh_anh_values);
+                    value.id_phong_tro = phong_tro.id_phong_tro
+                })
+                //console.log(insert_hinh_anh_values);
             const hinh_anh = await Hinh_anh.bulkCreate(insert_hinh_anh_values);
             res.redirect("/");
         } catch (err) {
@@ -92,14 +93,14 @@ exports.savePosts = async(req, res) => {
 
 exports.filterListPostByType = async(req, res) => {
     res.redirect(url.format({
-        pathname : req.url,
-        query : req.body,
+        pathname: req.url,
+        query: req.body,
     }))
 }
 exports.filterListPostByNumOfPeopleOrPrice = async(req, res) => {
     res.redirect(url.format({
-        pathname : req.url,
-        query : req.body,
+        pathname: req.url,
+        query: req.body,
     }))
 }
 exports.filterListPostBySearch = async(req, res) => {
@@ -115,11 +116,11 @@ exports.displayListPost = async(req, res) => {
         let district = "";
         let area = []
         let order;
-        if(JSON.stringify(req.query) == "{}"){
+        if (JSON.stringify(req.query) == "{}") {
             order = ["id_phong_tro", "DESC"]
-        }else if(Object.values(req.query)[0] == "ESC"){
+        } else if (Object.values(req.query)[0] == "ESC") {
             order = ["gia_phong"]
-        }else if(Object.values(req.query)[0] == "DESC"){
+        } else if (Object.values(req.query)[0] == "DESC") {
             order = ["gia_phong", "DESC"]
         }
         switch (req.params.type) {
@@ -211,10 +212,17 @@ exports.displayListPost = async(req, res) => {
                 order
             ]
         });
+        const bookedUserList = await bookingManage.getBookedUser();
         // if (req.isAuthenticated()) {
         //     res.render("user-product-grid", { user: req.user, userData: phong_tro, type:req.params.type });
         // } else { res.render("guest-product-grid", { userData: phong_tro, type:req.params.type }); }
-        res.render("rooms", {user : req.user, userData : phong_tro, type:req.params.type, login : req.isAuthenticated()})
+        res.render("rooms", {
+            user: req.user,
+            userData: phong_tro,
+            type: req.params.type,
+            login: req.isAuthenticated(),
+            bookedUserList: bookedUserList
+        })
     } catch (err) {
         console.log(err);
     }
@@ -225,11 +233,11 @@ exports.displayPostByNumOfPeopleOrPrice = async(req, res) => {
         let type = (req.params.type == "phong_tro") ? "Phòng trọ" : "Chung cư";
         let tong_so_nguoi = "";
         let gia_tien = [undefined, undefined]
-        if(JSON.stringify(req.query) == "{}"){
+        if (JSON.stringify(req.query) == "{}") {
             order = ["id_phong_tro", "DESC"]
-        }else if(Object.values(req.query)[0] == "ESC"){
+        } else if (Object.values(req.query)[0] == "ESC") {
             order = ["gia_phong"]
-        }else if(Object.values(req.query)[0] == "DESC"){
+        } else if (Object.values(req.query)[0] == "DESC") {
             order = ["gia_phong", "DESC"]
         }
         switch (req.params.option) {
@@ -264,7 +272,8 @@ exports.displayPostByNumOfPeopleOrPrice = async(req, res) => {
                     {
                         phan_loai: type,
                         gia_phong: {
-                            [Op.between]: [gia_tien[0], gia_tien[1]] }
+                            [Op.between]: [gia_tien[0], gia_tien[1]]
+                        }
                     },
                 ]
             },
@@ -277,8 +286,8 @@ exports.displayPostByNumOfPeopleOrPrice = async(req, res) => {
             ]
         });
         if (req.isAuthenticated()) {
-            res.render("user-product-grid", { user: req.user, userData: phong_tro, type: req.params.type+"/"+req.params.option });
-        } else { res.render("guest-product-grid", { userData: phong_tro, type: req.params.type+"/"+req.params.option }) }
+            res.render("user-product-grid", { user: req.user, userData: phong_tro, type: req.params.type + "/" + req.params.option });
+        } else { res.render("guest-product-grid", { userData: phong_tro, type: req.params.type + "/" + req.params.option }) }
     } catch (err) {
         console.log(err);
     }
@@ -350,10 +359,11 @@ exports.displayPostProfile = async(req, res) => {
         userData.phong_tro = phong_tro;
         userData.tien_ich = tien_ich;
         userData.hinh_anh = hinh_anh;
+        const bookedUserList = await bookingManage.getBookedUser();
         // if (req.isAuthenticated()) {
         //     res.render("user-room", { user: req.user, userData: userData });
         // } else { res.render("guest-room", { user: "", userData: userData }); };
-        res.render("room", {user : req.user, userData : userData, login : req.isAuthenticated()})
+        res.render("room", { user: req.user, userData: userData, login: req.isAuthenticated(), bookedUserList: bookedUserList })
     } catch (err) {
         console.log(err);
     }
@@ -418,19 +428,19 @@ exports.deletePost = async(req, res) => {
     }
 }
 
-exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, quan_huyen, tong_songuoi, phuong_xa, cao cap, re, gia re
-    try{
+exports.displayListPostBySearch = async(req, res) => { // search by phan_loai, quan_huyen, tong_songuoi, phuong_xa, cao cap, re, gia re
+    try {
         //console.log(req.query);
-        let search = req.query.search.toLowerCase();//search value
+        let search = req.query.search.toLowerCase(); //search value
         search = search.replace(/\s\s+/g, ' '); //delete multiple spaces
         search = keywords_dict.convertStr(search);
         console.log(search);
         const result = {
-            'phan_loai' : "",
-            'quan_huyen' : "",
-            'phuong_xa' : "",
-            'tong_so_nguoi' : "",
-            'gia_phong' : [0, 999999999]
+            'phan_loai': "",
+            'quan_huyen': "",
+            'phuong_xa': "",
+            'tong_so_nguoi': "",
+            'gia_phong': [0, 999999999]
         }
 
         var phan_loai_keyword;
@@ -439,19 +449,19 @@ exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, qu
         var gia_phong_keyword;
         //get keywordd phan loai
         keywords_dict.keywords_dict.phan_loai.forEach(function(phan_loai) {
-            phan_loai_keyword = new RegExp(keywords_dict.convertStr(phan_loai), "i");
-            if(search.match(phan_loai_keyword)){
-                result.phan_loai = phan_loai;
-                return true;
-            }
-        })
-        //get keyword quan huyen phuong xa
+                phan_loai_keyword = new RegExp(keywords_dict.convertStr(phan_loai), "i");
+                if (search.match(phan_loai_keyword)) {
+                    result.phan_loai = phan_loai;
+                    return true;
+                }
+            })
+            //get keyword quan huyen phuong xa
         Object.keys(keywords_dict.keywords_dict.quan_huyen_phuong_xa).forEach(quan_huyen => {
             quan_huyen_keyword = new RegExp(keywords_dict.convertStr(quan_huyen), "i");
-            if(search.match(quan_huyen_keyword)) {result.quan_huyen = quan_huyen};
+            if (search.match(quan_huyen_keyword)) { result.quan_huyen = quan_huyen };
             keywords_dict.keywords_dict.quan_huyen_phuong_xa[quan_huyen].forEach(function(phuong_xa) {
                 phuong_xa_keyword = new RegExp(keywords_dict.convertStr(phuong_xa), "i");
-                if(search.match(phuong_xa_keyword)){result.phuong_xa = phuong_xa}
+                if (search.match(phuong_xa_keyword)) { result.phuong_xa = phuong_xa }
             })
         })
 
@@ -459,7 +469,7 @@ exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, qu
         //get keyword gia phong
         Object.keys(keywords_dict.keywords_dict.gia_tien).forEach(gia => {
             gia_phong_keyword = new RegExp(keywords_dict.convertStr(gia), "i");
-            if(search.match(gia_phong_keyword)) {
+            if (search.match(gia_phong_keyword)) {
 
                 result.gia_phong[0] = keywords_dict.keywords_dict.gia_tien[gia][0];
                 result.gia_phong[1] = keywords_dict.keywords_dict.gia_tien[gia][1];
@@ -468,84 +478,81 @@ exports.displayListPostBySearch = async(req, res) => {// search by phan_loai, qu
         })
 
         // get keyword tong_so_nguoi
-        var reg1 = /[+-]?\d+(?:\.\d+)?/g;//get number
+        var reg1 = /[+-]?\d+(?:\.\d+)?/g; //get number
         var reg2;
-        if(search.match(reg1)) {
+        if (search.match(reg1)) {
             reg2 = new RegExp(search.match(reg1)[0] + " nguoi", "i")
-            if(search.match(reg2)){
+            if (search.match(reg2)) {
                 result.tong_so_nguoi = search.match(reg2)[0].match(reg1)[0];
             }
         }
 
         //check having keyword -> no result
-        if(JSON.stringify(result) == JSON.stringify({
-                                                        'phan_loai' : "",
-                                                        'quan_huyen' : "",
-                                                        'phuong_xa' : "",
-                                                        'tong_so_nguoi' : "",
-                                                        'gia_phong' : [0, 999999999]
-                                                    }))
-        {
+        if (JSON.stringify(result) == JSON.stringify({
+                'phan_loai': "",
+                'quan_huyen': "",
+                'phuong_xa': "",
+                'tong_so_nguoi': "",
+                'gia_phong': [0, 999999999]
+            })) {
             result.phan_loai = null,
-            result.quan_huyen = null,
-            result.phuong_xa = null,
-            result.tong_so_nguoi = null,
-            result.gia_phong = [null, null]
+                result.quan_huyen = null,
+                result.phuong_xa = null,
+                result.tong_so_nguoi = null,
+                result.gia_phong = [null, null]
         }
         //console.log(result);
 
         //filter order esc/desc,...
         //console.log(req.query)
         let order = ["id_phong_tro", "DESC"]
-        if(req.query.order == ""){
+        if (req.query.order == "") {
             order = ["id_phong_tro", "DESC"]
-        }else if(req.query.order == "ESC"){
+        } else if (req.query.order == "ESC") {
             order = ["gia_phong"]
-        }else if(req.query.order == "DESC"){
+        } else if (req.query.order == "DESC") {
             order = ["gia_phong", "DESC"]
         }
 
         let phong_tro = await Phong_tro.findAll({
-            where : {
-                [Op.and] : [
-                    {
-                        phan_loai : {
-                            [Op.like] :"%" + result.phan_loai + "%"
+                where: {
+                    [Op.and]: [{
+                            phan_loai: {
+                                [Op.like]: "%" + result.phan_loai + "%"
+                            }
+                        },
+                        {
+                            quan_huyen: {
+                                [Op.like]: "%" + result.quan_huyen + "%"
+                            }
+                        },
+                        {
+                            phuong_xa: {
+                                [Op.like]: "%" + result.phuong_xa + '%'
+                            }
+                        },
+                        {
+                            tong_so_nguoi: {
+                                [Op.like]: "%" + result.tong_so_nguoi + "%"
+                            }
+                        },
+                        {
+                            gia_phong: {
+                                [Op.between]: [result.gia_phong[0], result.gia_phong[1]]
+                            }
                         }
-                    },
-                    {
-                        quan_huyen : {
-                            [Op.like] :"%" + result.quan_huyen+"%"
-                        }
-                    },
-                    {
-                        phuong_xa : {
-                            [Op.like] : "%"+ result.phuong_xa + '%'
-                        }
-                    },
-                    {
-                        tong_so_nguoi : {
-                            [Op.like] : "%"+result.tong_so_nguoi+"%"
-                        }
-                    },
-                    {
-                        gia_phong : {
-                            [Op.between] : [result.gia_phong[0], result.gia_phong[1]]
-                        }
-                    }
-                ],
+                    ],
 
-            }
-            ,
-            order :[order]
-        })
-        //console.log(phong_tro);
+                },
+                order: [order]
+            })
+            //console.log(phong_tro);
 
         if (req.isAuthenticated()) {
-            res.render("user-product-grid", { user: req.user, userData : phong_tro, type : req.url.slice(7) });
-        } else { res.render("guest-product-grid", {userData:phong_tro, type : req.url.slice(7) }); }
+            res.render("user-product-grid", { user: req.user, userData: phong_tro, type: req.url.slice(7) });
+        } else { res.render("guest-product-grid", { userData: phong_tro, type: req.url.slice(7) }); }
 
-    }catch(err){
+    } catch (err) {
         console.log(err);
     }
 }
@@ -554,7 +561,7 @@ exports.search = async(req, res) => {
     req.body.order = "";
     //console.log(req.body.search);
     res.redirect(url.format({
-        pathname:"/rooms/",
+        pathname: "/rooms/",
         query: req.body
     }));
 }
@@ -562,7 +569,7 @@ exports.search = async(req, res) => {
 exports.displayAllPost = async(req, res) => {
     if (req.isAuthenticated()) {
 
-        try{
+        try {
             const phong_tro = await Phong_tro.findAll({
                 attributes: ['*', [sequelize.fn('COUNT', sequelize.col('id_binh_luan')), 'luot_danh_gia']],
                 include: [{
@@ -570,12 +577,14 @@ exports.displayAllPost = async(req, res) => {
                     required: false //left join
                 }],
                 group: ['Phong_tro.id_phong_tro'],
-                raw:true,
-                order : [["id_phong_tro", "DESC"]]
+                raw: true,
+                order: [
+                    ["id_phong_tro", "DESC"]
+                ]
             });
             //console.log(phong_tro)
-            res.render("admin-control-post", { username: req.user.ten_nguoi_dung, userData : phong_tro });
-        }catch(err) {
+            res.render("admin-control-post", { username: req.user.ten_nguoi_dung, userData: phong_tro });
+        } catch (err) {
             console.log(err)
         }
     } else {
