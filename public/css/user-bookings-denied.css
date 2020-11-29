@@ -1,4 +1,4 @@
-#a-sub-3 {
+#a-sub-2 {
     color: #333;
     font-weight: 600;
     border-bottom: 3px solid #17ca9d;
@@ -9,7 +9,7 @@
     font-weight: 600;
 }
 
-#a-sub-2:hover {
+#a-sub-3:hover {
     color: #333;
     font-weight: 600;
 }
@@ -23,6 +23,9 @@
     color: #333;
     font-weight: 600;
 }
+
+
+/*----------------------------------------*/
 
 h1,
 h2,
@@ -105,10 +108,10 @@ img {
     outline: none;
 }
 
-#wrap-a-2 {
+#wrap-a-3 {
     color: #333;
     font-weight: 600;
-    border-bottom: 3px solid #28ca6e;
+    border-bottom: 3px solid rgb(206, 11, 11);
 }
 
 #wrap-a-1:hover {
@@ -116,7 +119,7 @@ img {
     font-weight: 600;
 }
 
-#wrap-a-3:hover {
+#wrap-a-2:hover {
     color: #333;
     font-weight: 600;
 }
