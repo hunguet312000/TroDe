@@ -51,6 +51,7 @@ h5 {
     padding: 12px;
     background: #fff;
     border: none;
+    border-right: 2px solid #f2f2f2;
 }
 
 #div-name-host {
