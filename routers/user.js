@@ -20,6 +20,8 @@ module.exports = (app, passport) => {
 
     app.get('/booked-list', bookingManage.bookedList);
 
+    app.get('/booked-list/:status', bookingManage.bookedListStatus);
+
     app.get('/await-bookings', bookingManage.awaitBooking);
 
     app.get('/await-bookings/:status', bookingManage.awaitBookingStatus);

@@ -75,6 +75,7 @@ module.exports = async function(passport) {
               }
                 return done(null, nguoi_dung[0].dataValues);
             }catch(err){
+              console.log(err);
                 return done(null, false, req.flash('signupMessage', 'Please enter a valid email.'));
             }
         })

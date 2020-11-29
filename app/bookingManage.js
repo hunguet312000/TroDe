@@ -60,14 +60,20 @@ exports.bookedList = async(req, res) => {
         const user = req.session.passport.user;
         const bookedList = await Lich_hen.findAll({
             where: {
-                id_nguoi_hen: user.id_nguoi_dung
+              [Op.and]: [
+                {id_nguoi_hen: user.id_nguoi_dung},
+                {tinh_trang: null}
+              ]
             },
-            include: [{
+            include: [
+              {
                 model: Phong_tro,
-                required: true
-            }]
+                required: true,
+                include: {model: Nguoi_dung, required: true}
+              }
+            ]
         });
-        //console.log(bookedList);
+        //console.log(bookedList[0].dataValues.phong_tro.dataValues.nguoi_dung.sdt);
         res.render("user-booked-list", {
             user: user,
             bookedList: bookedList
@@ -77,12 +83,47 @@ exports.bookedList = async(req, res) => {
     }
 }
 
+exports.bookedListStatus = async(req, res) => {
+  let tinh_trang;
+  if(req.params.status === "accepted"){
+    tinh_trang = 1
+  }else{
+    tinh_trang = 0
+  }
+  try {
+      const bookedList = await Lich_hen.findAll({
+          include: {
+              model: Phong_tro,
+              required: true,
+              include: {model: Nguoi_dung, required: true}
+          },
+          where: {
+              tinh_trang: tinh_trang
+          }
+      });
+      if (tinh_trang === 1){
+        res.render("user-booked-list-accepted", {
+          user: req.session.passport.user,
+          bookedList: bookedList
+        })
+      }else{
+        res.render("user-booked-list-denied", {
+          user: req.session.passport.user,
+          bookedList: bookedList
+        })
+      }
+  } catch (e) {
+      console.log(e);
+  }
+}
+
 exports.awaitBooking = async(req, res) => {
     if (req.isAuthenticated()) {
         const user = req.session.passport.user;
         try {
             const awaitList = await Lich_hen.findAll({
-                include: {
+                include: [
+                  {
                     model: Phong_tro,
                     required: true,
                     where: {
@@ -90,12 +131,17 @@ exports.awaitBooking = async(req, res) => {
                             [Op.like]: user.id_nguoi_dung
                         }
                     }
-                },
+                  },
+                  {
+                    model: Nguoi_dung,
+                    required: true,
+                  }
+              ],
                 where: {
                     tinh_trang: null
                 }
             });
-            //console.log(awaitList);
+            //console.log(awaitList[0].dataValues.nguoi_dung.sdt);
             res.render("user-await-bookings", {
                 user: user,
                 awaitList: awaitList
@@ -117,10 +163,16 @@ exports.awaitBookingStatus = async(req, res) => {
   }
   try {
       const bookingList = await Lich_hen.findAll({
-          include: {
+          include: [
+            {
               model: Phong_tro,
               required: true,
-          },
+            },
+            {
+              model: Nguoi_dung,
+              required: true,
+            }
+          ],
           where: {
               tinh_trang: tinh_trang
           }
@@ -130,7 +182,7 @@ exports.awaitBookingStatus = async(req, res) => {
           user: req.session.passport.user,
           bookingList: bookingList
         })
-      }else{  
+      }else{
         res.render("user-await-bookings-denied", {
           user: req.session.passport.user,
           bookingList: bookingList
