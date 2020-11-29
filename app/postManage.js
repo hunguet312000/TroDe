@@ -6,8 +6,9 @@ require('dotenv').config();
 const url = require("url");
 const sequelize = require("sequelize");
 const keywords_dict = require("../public/js/keywords_dict.js");
-const { sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan, Danh_sach_yeu_thich } = require("../config/sequelize");
+const { sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan, Danh_sach_yeu_thich, Lich_hen } = require("../config/sequelize");
 const Op = require('Sequelize').Op
+const bookingManage = require("./bookingManage");
 
 exports.savePosts = async(req, res) => {
     if (req.isAuthenticated()) {
@@ -211,10 +212,17 @@ exports.displayListPost = async(req, res) => {
                 order
             ]
         });
+      const bookedUserList = bookingManage.getBookedUser();
         // if (req.isAuthenticated()) {
         //     res.render("user-product-grid", { user: req.user, userData: phong_tro, type:req.params.type });
         // } else { res.render("guest-product-grid", { userData: phong_tro, type:req.params.type }); }
-        res.render("rooms", {user : req.user, userData : phong_tro, type:req.params.type, login : req.isAuthenticated()})
+        res.render("rooms", {
+          user : req.user,
+          userData : phong_tro,
+          type:req.params.type,
+          login : req.isAuthenticated(),
+          bookedUserList: bookedUserList
+        })
     } catch (err) {
         console.log(err);
     }
@@ -350,10 +358,17 @@ exports.displayPostProfile = async(req, res) => {
         userData.phong_tro = phong_tro;
         userData.tien_ich = tien_ich;
         userData.hinh_anh = hinh_anh;
+        const bookedUserList = bookingManage.getBookedUser();
+
         // if (req.isAuthenticated()) {
         //     res.render("user-room", { user: req.user, userData: userData });
         // } else { res.render("guest-room", { user: "", userData: userData }); };
-        res.render("room", {user : req.user, userData : userData, login : req.isAuthenticated()})
+        res.render("room", {
+          user : req.user,
+          userData : userData,
+          login : req.isAuthenticated(),
+          bookedUserList: bookedUserList
+        })
     } catch (err) {
         console.log(err);
     }

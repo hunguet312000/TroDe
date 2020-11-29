@@ -142,3 +142,24 @@ exports.checkBookStatus = async(id_buoi_hen) => {
     return false;
   }
 }
+
+exports.getBookedUser = async () =>{
+  try {
+    const bookedList = await Lich_hen.findAll({
+      include: {
+        model: Phong_tro,
+        required: true,
+      },
+      where:{
+        tinh_trang: 1
+      }
+    });
+    var bookedUserIdList = []
+    for(b of bookedList){
+      bookedUserList.push(b.dataValues.id_nguoi_hen);
+    }
+    return bookedUserIdList;
+  } catch (e) {
+    console.log(e);
+  }
+}
