@@ -22,6 +22,8 @@ module.exports = (app, passport) => {
 
     app.get('/await-bookings', bookingManage.awaitBooking);
 
+    app.get('/await-bookings/:status', bookingManage.awaitBookingStatus);
+
     app.post('/await-bookings/:id/:response', bookingManage.bookingResponse);
 
     app.get('/profile-edit', function(req, res) {

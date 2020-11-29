@@ -108,6 +108,41 @@ exports.awaitBooking = async(req, res) => {
     }
 }
 
+exports.awaitBookingStatus = async(req, res) => {
+  let tinh_trang;
+  if(req.params.status === "accepted"){
+    tinh_trang = 1
+  }else{
+    tinh_trang = 0
+  }
+  try {
+      const bookingList = await Lich_hen.findAll({
+          include: {
+              model: Phong_tro,
+              required: true,
+          },
+          where: {
+              tinh_trang: tinh_trang
+          }
+      });
+      if (tinh_trang === 1){
+        console.log("ola");
+        res.render("user-await-bookings-accepted", {
+          user: req.session.passport.user,
+          bookingList: bookingList
+        })
+      }else{
+        console.log("alo");
+        res.render("user-await-bookings-denied", {
+          user: req.session.passport.user,
+          bookingList: bookingList
+        })
+      }
+  } catch (e) {
+      console.log(e);
+  }
+}
+
 exports.bookingResponse = async(req, res) => {
     const id_buoi_hen = req.params.id;
     const response = req.params.response;
