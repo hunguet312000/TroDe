@@ -4,6 +4,7 @@ const upload = require('../config/multer');
 const bcrypt = require('bcrypt');
 const postManage = require('../app/postManage');
 const userManage = require("../app/userManage");
+const reportManage = require("../app/reportManage")
 const forgetPassword = require("../app/forgetPassword");
 require('dotenv').config();
 
@@ -20,12 +21,6 @@ module.exports = (app, passport) => {
 
   app.get("/admin-control-user",userManage.displayListUser );
 
-  app.get("/admin-control-report", function(req, res) {
-      if (req.isAuthenticated()) {
-          res.render("admin-control-report", { username: req.user.ten_nguoi_dung });
-      } else {
-          res.redirect('/login');
-      }
-  });
+  app.get("/admin-control-report", reportManage.displayListReport);
 
 }

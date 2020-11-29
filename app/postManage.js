@@ -585,3 +585,4 @@ exports.displayAllPost = async(req, res) => {
         res.redirect('/login');
     }
 }
+

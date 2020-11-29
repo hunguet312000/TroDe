@@ -1,3 +1,4 @@
+const { on } = require('nodemon');
 const { Sequelize } = require('sequelize');
 const { DataTypes } = require("sequelize");
 const schema = require("./dbSchema");
@@ -209,6 +210,40 @@ Phong_tro.hasMany(Lich_hen, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
 });
+Nguoi_dung.hasMany(Bao_cao, {
+    foreignKey: {
+        name :'id_nguoi_dung',
+        allowNull: false,
+        primaryKey: true
+    },
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+});
+Phong_tro.hasMany(Bao_cao, {
+    foreignKey: {
+        name : "id_phong_tro",
+        allowNull: false,
+        primaryKey: true
+    },
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+});
+Bao_cao.belongsTo(Nguoi_dung, {
+    foreignKey: {
+        name : 'id_nguoi_dung',
+        allowNull: false
+    },
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+});
+Bao_cao.belongsTo(Phong_tro, {
+    foreignKey: {
+        name : 'id_phong_tro',
+        allowNull: false
+    },
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+})
 //
 // Danh_sach_yeu_thich.belongsTo(Nguoi_dung,{
 //   foreignKey: {

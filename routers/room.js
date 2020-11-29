@@ -19,7 +19,7 @@ module.exports = (app, passport) => {
   app.post("/rooms/:type", postManage.filterListPostByType);
 
   app.post("/rooms/:type/:option", postManage.filterListPostByNumOfPeopleOrPrice);
-
+  app.post("/rooms/", postManage.filterListPostBySearch)
   app.post("/room/:id/confirm-booking-info", async function(req, res) {
       //console.log(req.body.bookDate);
       const id_phong_tro = req.params.id;
