@@ -17,7 +17,7 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-    <link href="/css/user-control-booking.css" rel="stylesheet">
+    <link href="/css/user-control-booking-fail.css" rel="stylesheet">
     <link href="/css/user-navbar-profile.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </head>
@@ -55,24 +55,13 @@
                         <div class="col-sm-4 " style="border-right: 2px solid #f2f2f2; ">
                             <div class="box-info1 ">
                                 <div class="status-cho ">
-                                    <div style="width:47%;height: 4px;background-color: rgb(245, 222, 13);margin-bottom: 8px; "></div>
-                                    <div style="color: #999!important;font-weight:500;font-size:16px;margin-bottom: 8px; ">Đang chờ xác nhận</div>
+                                    <div style="width:38%;height: 4px;background-color: rgb(206, 11, 11);margin-bottom: 8px;"></div>
+                                    <div style="color: #999!important;font-weight:500;font-size:16px;margin-bottom: 8px;">Đã hủy lịch hẹn</div>
                                 </div>
                                 <div style="color: #222222!important;font-weight:600;font-size:24px ">
                                     <%=await.dataValues.thoi_gian%>
                                 </div>
                                 <br>
-                                <form action="await-bookings/<%=await.dataValues.id_buoi_hen%>/accept" method="post">
-                                    <button type="submit" class="btn-funtion" id="xac-nhan" style="float: left;">
-                                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="15" height="15" x="0" y="0" viewBox="0 0 434.67733 434" style="enable-background:new 0 0 512 512" xml:space="preserve" class="" style="vertical-align: middle;"><g><path xmlns="http://www.w3.org/2000/svg" d="m152.003906 304.34375c-5.460937 0-10.921875-2.089844-15.082031-6.25l-130.664063-130.667969c-8.34375-8.339843-8.34375-21.824219 0-30.164062 8.339844-8.339844 21.820313-8.339844 30.164063 0l115.582031 115.582031 246.253906-246.25c8.339844-8.339844 21.820313-8.339844 30.164063 0 8.339844 8.34375 8.339844 21.824219 0 30.167969l-261.332031 261.332031c-4.160156 4.160156-9.625 6.25-15.085938 6.25zm0 0" fill="#2cd474" data-original="#000000" style="" class=""/></g></svg>
-                                  &nbsp;Xác nhận</button>
-                                </form>
-
-                                <form action="await-bookings/<%=await.dataValues.id_buoi_hen%>/deny" method="post">
-                                    <button type="submit" class="btn-funtion" id="tu-choi" style="float: right;margin-bottom: 12px;margin-right: 12px;">
-                                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="15" height="15" x="0" y="0" viewBox="0 0 180.607 180.607" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path xmlns="http://www.w3.org/2000/svg" d="M180.607,10.607l-79.696,79.697l79.696,79.697L170,180.607l-79.696-79.696l-79.696,79.696L0,170.001l79.696-79.697L0,10.607  L10.607,0.001l79.696,79.696L170,0.001L180.607,10.607z" fill="#d01818" data-original="#000000" style=""/><g xmlns="http://www.w3.org/2000/svg"></g></g></svg>
-                                  &nbsp;Từ chối</button>
-                                </form>
                                 <%- include("partials/content-await-bookings"); -%>
                                     <%}%>
                             </div>
@@ -80,15 +69,4 @@
                 </div>
             </div>
 
-            <script>
-                $('#xac-nhan').click(function(e) {
-                    $('#xac-nhan').css("display", "none");
-                    $('#tu-choi').css("display", "none");
-                })
-
-                $('#tu-choi').on('click', function(e) {
-                    $('#xac-nhan').css("display", "none");
-                    $('#tu-choi').css("display", "none");
-                })
-            </script>
             <%- include("partials/footer"); -%>
