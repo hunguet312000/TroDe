@@ -52,7 +52,7 @@
 
             <div class="col-sm-12 " style="border-bottom: 2px solid #f2f2f2; ">
                 <div class="wrap-content-info ">
-                    <% for(await of awaitList){ %>
+                    <% for(booking of awaitList){ %>
                         <div class="col-sm-4 " style="border-right: 2px solid #f2f2f2; ">
                             <div class="box-info1 ">
                                 <div class="status-cho ">
@@ -60,7 +60,7 @@
                                     <div style="color: #999!important;font-weight:500;font-size:16px;margin-bottom: 8px; ">Đang chờ xác nhận</div>
                                 </div>
                                 <div style="color: #222222!important;font-weight:600;font-size:24px ">
-                                    <%=await.dataValues.thoi_gian%>
+                                    <%=booking.dataValues.thoi_gian%>
                                 </div>
                                 <br>
                                 <form action="await-bookings/<%=await.dataValues.id_buoi_hen%>/accept" method="post">

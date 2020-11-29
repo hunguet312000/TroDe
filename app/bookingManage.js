@@ -126,13 +126,11 @@ exports.awaitBookingStatus = async(req, res) => {
           }
       });
       if (tinh_trang === 1){
-        console.log("ola");
         res.render("user-await-bookings-accepted", {
           user: req.session.passport.user,
           bookingList: bookingList
         })
-      }else{
-        console.log("alo");
+      }else{  
         res.render("user-await-bookings-denied", {
           user: req.session.passport.user,
           bookingList: bookingList
