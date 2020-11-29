@@ -44,9 +44,8 @@ h5 {
 
 .box-info {
     background-color: #fff;
-    height: 122px;
+    height: fit-content;
     padding: 12px;
-    border-right: 2px solid #f2f2f2;
 }
 
 .right-side {
@@ -55,6 +54,7 @@ h5 {
     background: #fff;
     border: none;
     border-right: 2px solid #f2f2f2;
+    border-left: 2px solid #f2f2f2;
 }
 
 #div-name-host {
