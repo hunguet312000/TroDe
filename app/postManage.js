@@ -285,9 +285,7 @@ exports.displayPostByNumOfPeopleOrPrice = async(req, res) => {
                 order
             ]
         });
-        if (req.isAuthenticated()) {
-            res.render("user-product-grid", { user: req.user, userData: phong_tro, type: req.params.type + "/" + req.params.option });
-        } else { res.render("guest-product-grid", { userData: phong_tro, type: req.params.type + "/" + req.params.option }) }
+        res.render("rooms", { user: req.user, login: req.isAuthenticated(), userData: phong_tro, type: req.params.type + "/" + req.params.option });
     } catch (err) {
         console.log(err);
     }
@@ -547,11 +545,7 @@ exports.displayListPostBySearch = async(req, res) => { // search by phan_loai, q
                 order: [order]
             })
             //console.log(phong_tro);
-
-        if (req.isAuthenticated()) {
-            res.render("user-product-grid", { user: req.user, userData: phong_tro, type: req.url.slice(7) });
-        } else { res.render("guest-product-grid", { userData: phong_tro, type: req.url.slice(7) }); }
-
+        res.render("rooms", { user: req.user, login: req.isAuthenticated(), userData: phong_tro, type: req.url.slice(7) });
     } catch (err) {
         console.log(err);
     }
