@@ -33,7 +33,7 @@
             </div>
             <div class="col-sm-10 offset-sm-1">
                 <div class="content-report" style="padding: 25px 50px 50px 25px;box-shadow: 0 9px 46px 8px rgba(0,0,0,.02), 0 24px 38px 3px rgba(0,0,0,.04), 0 11px 15px -7px rgba(0,0,0,.05);border-radius: .625rem;">
-                    <form action = "/report/<%=room%>" method = "post" enctype="multipart/form-data">
+                    <form action="/report/<%=room%>" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-sm-12" style="border-bottom: 2px solid #f2f2f2;">
                                 <h5 style="font-weight: 700;padding: 10px; margin-bottom: 1px;font-size: 18px;">Tiêu đề báo cáo</h5>
@@ -106,5 +106,28 @@
             <br><br>
         </div>
     </div>
-    <script type="text/javascript" src="js/host.js"></script>
+    <script>
+        $(".imgAdd").click(function() {
+            $(this).closest(".row").find('.imgAdd').before('<div class="col-sm-3 imgUp"><div class="imagePreview"></div><label class="btn btn-primary" id="btn-upload">Tải ảnh lên<input type="file" name = "image" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fas fa-trash-alt del"></i></div>');
+        });
+        $(document).on("click", "i.del", function() {
+            $(this).parent().remove();
+        });
+
+        $(function() {
+            $(document).on("change", ".uploadFile", function() {
+                var uploadFile = $(this);
+                var files = !!this.files ? this.files : [];
+                if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+                if (/^image/.test(files[0].type)) { // only image file
+                    var reader = new FileReader(); // instance of the FileReader
+                    reader.readAsDataURL(files[0]); // read the local file
+                    reader.onloadend = function() { // set image data as background of div
+                        //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
+                        uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(" + this.result + ")");
+                    }
+                }
+            });
+        });
+    </script>
     <%- include("partials/footer"); -%>
