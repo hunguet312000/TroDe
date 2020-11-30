@@ -7,6 +7,7 @@ const userManage = require("../app/userManage");
 const forgetPassword = require("../app/forgetPassword");
 require('dotenv').config();
 const passport = require("../config/passport.js");
+const reportManage = require("../app/reportManage");
 module.exports = (app, passport) => {
     // app.get("/", function(req, res) {
     //     if (req.isAuthenticated()) {
@@ -80,20 +81,7 @@ module.exports = (app, passport) => {
 
     app.get("/host-delete/:id", postManage.deletePost);
 
-    app.get("/report", function(req, res) {
-        if (req.isAuthenticated()) {
-            res.render("user-report");
-        } else {
-            res.redirect('/login');
-        }
-    });
-
-    app.get("/report-info", function(req, res) {
-        if (req.isAuthenticated()) {
-            res.render("report-info", { username: req.user.ten_nguoi_dung });
-        } else {
-            res.redirect('/login');
-        }
-    });
-
+    app.get("/report/:room", reportManage.report);
+    app.post("/report/:room", upload.array('image'), reportManage.createReport)
+    app.get("/report-info/:id", reportManage.reportInfo);
 }

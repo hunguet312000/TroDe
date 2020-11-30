@@ -27,14 +27,12 @@
         <div class="row">
             <div class="col-sm-1"></div>
             <div class="col-sm-10" id="wrap-content-report">
-                <div class="title-report">Tên báo cáo</div>
-                <div class="content-report">Nội dung báo cáo</div>
+                <div class="title-report"><%=userData[0].dataValues.tieu_de%></div>
+                <div class="content-report"><%=userData[0].dataValues.noi_dung%></div>
                 <div class="img" style="padding: 10px;">
                     <h4 style="font-weight: 900;">Hình ảnh đính kèm</h4>
                     <div class="gallery">
-                        <img id="gallery-img" class="gallery-img" src="https://cdn.luxstay.com/rooms/15937/large/room_15937_13_1565524643.jpg">
-                        <img id="gallery-img" class="gallery-img" src="https://cdn.luxstay.com/rooms/15937/large/room_15937_13_1565524643.jpg">
-                        <img id="gallery-img" class="gallery-img" src="https://cdn.luxstay.com/rooms/15937/large/room_15937_3_1565524510.jpg">
+                        <img id="gallery-img" class="gallery-img" src=<%=userData[0].dataValues.hinh_anh%>>
                     </div>
                 </div>
             </div>

@@ -301,13 +301,17 @@ const bao_cao = {
         primaryKey: true,
         autoIncrement: true
     },
-    id_nguoi_bao_cao: {
+    id_nguoi_dung: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    id_nguoi_bi_bao_cao: {
+    id_phong_tro: {
         type: DataTypes.INTEGER,
         allowNull: false,
+    },
+    tieu_de : {
+        type : DataTypes.STRING,
+        allowNull: false
     },
     noi_dung: {
         type: DataTypes.STRING,
