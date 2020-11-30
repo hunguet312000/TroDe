@@ -24,8 +24,8 @@
 <%- include("partials/user-navbar-profile"); -%>
     <div class="container wrap-content">
         <br>
-        <h2>Tổng số lịch hẹn đã đặt:
-            <%= bookedList.length%>
+        <h2>Tổng số lịch hẹn đã bị huỷ:
+            <%=bookedStatusNum%>
         </h2>
         <div style="float: right;">
             <span class="wrap-nav-item">
@@ -54,7 +54,7 @@
                         <div class="wrap-content-info">
                             <div class="col-sm-3">
                                 <div class="box-info">
-                                    <% console.log(booked.dataValues.tinh_trang) %>
+
                                         <div class="status">
                                             <div style="width:33%;height: 4px;background-color: rgb(206, 11, 11);margin-bottom: 8px;"></div>
                                             <div style="color: #999!important;font-weight:500;font-size:16px;margin-bottom: 8px;">Đã bị hủy</div>
@@ -69,5 +69,6 @@
                     </div>
             </div>
             <%}%>
+            <%- include("partials/template/paginate"); -%>
     </div>
     <%- include("partials/footer"); -%>

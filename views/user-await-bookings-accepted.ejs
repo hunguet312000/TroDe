@@ -25,22 +25,22 @@
 
     <div class="container wrap-content">
         <br>
-        <h2 style="margin-bottom: 20px;">Tổng số lịch hẹn được chấp nhận:
-            <%= bookingList.length%>
+        <h2 style="margin-bottom: 20px;">Tổng số lịch hẹn đã xác nhận:
+            <%= bookingNum%>
         </h2>
         <div style="float: right;">
             <span class="wrap-nav-item">
-                <a href = "/await-bookings" class = "wrap-a" style="text-decoration: none; " id = "wrap-a-1">
+                <a href = "/await-bookings/1" class = "wrap-a" style="text-decoration: none; " id = "wrap-a-1">
                     Đang chờ được xác nhận
                 </a>
             </span>
             <span class="wrap-nav-item ">
-                <a href = "/await-bookings/accepted" class = "wrap-a" style="text-decoration: none; " id = "wrap-a-2">
+                <a href = "/await-bookings/accepted/1" class = "wrap-a" style="text-decoration: none; " id = "wrap-a-2">
                     Đã xác nhận
                 </a>
             </span>
             <span class="wrap-nav-item ">
-                <a href = "/await-bookings/denied" class = "wrap-a" style="text-decoration: none; " id = "wrap-a-3">
+                <a href = "/await-bookings/denied/1" class = "wrap-a" style="text-decoration: none; " id = "wrap-a-3">
                     Đã hủy
                 </a>
             </span>
@@ -70,6 +70,6 @@
                 </div>
             </div>
             <%}%>
-
+  <%- include("partials/template/paginate"); -%>
 
                 <%- include("partials/footer"); -%>

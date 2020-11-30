@@ -22,9 +22,9 @@ module.exports = (app, passport) => {
 
     app.get('/booked-list/:status/:page', bookingManage.bookedListStatus);
 
-    app.get('/await-bookings', bookingManage.awaitBooking);
+    app.get('/await-bookings/:page', bookingManage.awaitBooking);
 
-    app.get('/await-bookings/:status', bookingManage.awaitBookingStatus);
+    app.get('/await-bookings/:status/:page', bookingManage.awaitBookingStatus);
 
     app.post('/await-bookings/:id/:response', bookingManage.bookingResponse);
 
