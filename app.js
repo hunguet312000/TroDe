@@ -6,7 +6,6 @@ const flash = require('connect-flash');
 const dotenv = require('dotenv');
 const mysql = require('mysql');
 const dgconfig = require("./config/database");
-const paginate = require('express-paginate');
 dotenv.config({ path: './.env' });
 const port = process.env.PORT || 3000;
 

@@ -49,7 +49,6 @@ exports.booking = async(req, res) => {
                 console.log('Email sent: ' + info.response);
             }
         });
-
         res.render("user-confirm-checkout", { user: req.session.passport.user });
     } catch (err) {
         console.log(err);
@@ -75,6 +74,9 @@ exports.bookedList = async(req, res) => {
                 required: true,
                 include: {model: Nguoi_dung, required: true}
               }
+            ],
+            order: [
+              ["id_buoi_hen", "DESC"]
             ]
         });
         //console.log(bookedList[0].dataValues.phong_tro.dataValues.nguoi_dung.sdt);
@@ -92,32 +94,52 @@ exports.bookedList = async(req, res) => {
 }
 
 exports.bookedListStatus = async(req, res) => {
-  let tinh_trang;
+  var tinh_trang;
   if(req.params.status === "accepted"){
     tinh_trang = 1
   }else{
     tinh_trang = 0
   }
+  //console.log(req.params.status);
+  const user = req.session.passport.user;
+  const calculatePaginate = await paginate.calculateBookedStatusPages(req, res, tinh_trang);
   try {
       const bookedList = await Lich_hen.findAll({
+          offset: calculatePaginate.offset,
+          limit: calculatePaginate.limit,
           include: {
               model: Phong_tro,
               required: true,
               include: {model: Nguoi_dung, required: true}
           },
-          where: {
-              tinh_trang: tinh_trang
-          }
+          where:{
+            [Op.and]: [
+              {id_nguoi_hen: user.id_nguoi_dung},
+              {tinh_trang: tinh_trang}
+            ]
+          },
+          order: [
+            ["id_buoi_hen", "DESC"]
+          ]
       });
+      //console.log(bookedList);
       if (tinh_trang === 1){
         res.render("user-booked-list-accepted", {
           user: req.session.passport.user,
-          bookedList: bookedList
+          bookedList: bookedList,
+          pages: calculatePaginate.pages,
+          bookedStatusNum: calculatePaginate.bookedStatusNum,
+          current: req.params.page,
+          type: 'accepted'
         })
       }else{
         res.render("user-booked-list-denied", {
           user: req.session.passport.user,
-          bookedList: bookedList
+          bookedList: bookedList,
+          pages: calculatePaginate.pages,
+          bookedStatusNum: calculatePaginate.bookedStatusNum,
+          current: req.params.page,
+          type: 'denied'
         })
       }
   } catch (e) {
@@ -128,8 +150,11 @@ exports.bookedListStatus = async(req, res) => {
 exports.awaitBooking = async(req, res) => {
     if (req.isAuthenticated()) {
         const user = req.session.passport.user;
+        const calculatePaginate = await paginate.calculateBookingPages(req, res);
         try {
             const awaitList = await Lich_hen.findAll({
+                offset: calculatePaginate.offset,
+                limit: calculatePaginate.limit,
                 include: [
                   {
                     model: Phong_tro,
@@ -152,7 +177,11 @@ exports.awaitBooking = async(req, res) => {
             //console.log(awaitList[0].dataValues.nguoi_dung.sdt);
             res.render("user-await-bookings", {
                 user: user,
-                awaitList: awaitList
+                awaitList: awaitList,
+                pages: calculatePaginate.pages,
+                bookingNum: calculatePaginate.bookingNum,
+                current: req.params.page,
+                type: 'await-bookings'
             });
         } catch (err) {
             console.log(err);
@@ -169,12 +198,20 @@ exports.awaitBookingStatus = async(req, res) => {
   }else{
     tinh_trang = 0
   }
+  const calculatePaginate = await paginate.calculateBookingStatusPages(req, res, tinh_trang);
   try {
       const bookingList = await Lich_hen.findAll({
+          offset: calculatePaginate.offset,
+          limit: calculatePaginate.limit,
           include: [
             {
               model: Phong_tro,
               required: true,
+              where: {
+                  id_chu_so_huu: {
+                      [Op.like]:  req.session.passport.user.id_nguoi_dung
+                  }
+              }
             },
             {
               model: Nguoi_dung,
@@ -188,12 +225,20 @@ exports.awaitBookingStatus = async(req, res) => {
       if (tinh_trang === 1){
         res.render("user-await-bookings-accepted", {
           user: req.session.passport.user,
-          bookingList: bookingList
+          bookingList: bookingList,
+          pages: calculatePaginate.pages,
+          bookingNum: calculatePaginate.bookingNum,
+          current: req.params.page,
+          type: 'accepted'
         })
       }else{
         res.render("user-await-bookings-denied", {
           user: req.session.passport.user,
-          bookingList: bookingList
+          bookingList: bookingList,
+          pages: calculatePaginate.pages,
+          bookingNum: calculatePaginate.bookingNum,
+          current: req.params.page,
+          type: 'denied'
         })
       }
   } catch (e) {
@@ -216,7 +261,7 @@ exports.bookingResponse = async(req, res) => {
                 id_buoi_hen: id_buoi_hen
             }
         })
-        res.redirect('/await-bookings')
+        res.redirect('/await-bookings/1')
     } catch (err) {
         console.log(err);
     }
