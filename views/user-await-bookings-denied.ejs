@@ -19,56 +19,69 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
     <link href="/css/user-control-booking-fail.css" rel="stylesheet">
     <link href="/css/user-navbar-profile.css" rel="stylesheet">
+    <link href="/css/paginate.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </head>
 <%- include("partials/user-navbar-profile"); -%>
 
     <div class="container wrap-content">
         <br>
-        <h2 style="margin-bottom: 20px;">Tổng số lịch hẹn đã huỷ:
-            <%= bookingNum%>
-        </h2>
-        <div style="float: right;">
-            <span class="wrap-nav-item">
+        <% if(bookingNum != 0){%>
+            <h2>Tổng số lịch hẹn đã huỷ:
+                <%= bookingNum%>
+            </h2>
+            <%} else{%>
+                <br>
+                <%}%>
+                    <div style="float: right;">
+                        <span class="wrap-nav-item">
                 <a href = "/await-bookings/1" class = "wrap-a" style="text-decoration: none; " id = "wrap-a-1">
                     Đang chờ được xác nhận
                 </a>
             </span>
-            <span class="wrap-nav-item ">
+                        <span class="wrap-nav-item ">
                 <a href = "/await-bookings/accepted/1" class = "wrap-a" style="text-decoration: none; " id = "wrap-a-2">
                     Đã xác nhận
                 </a>
             </span>
-            <span class="wrap-nav-item ">
+                        <span class="wrap-nav-item ">
                 <a href = "/await-bookings/denied/1" class = "wrap-a" style="text-decoration: none; " id = "wrap-a-3">
                     Đã hủy
                 </a>
             </span>
-        </div>
-        <br>
-        <br>
-        <br>
-        <% for(booking of bookingList){ %>
-            <div class="row " style="border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);background-color: #fff;margin-bottom: 20px; ">
-                <div class="col-sm-12 " style="border-bottom: 2px solid #f2f2f2; ">
-                    <div class="wrap-content-info ">
-                        <div class="col-sm-3 ">
-                            <div class="box-info1 ">
-                                <div class="status-cho ">
-                                    <div style="width:38%;height: 4px;background-color: rgb(206, 11, 11);margin-bottom: 8px;"></div>
-                                    <div style="color: #999!important;font-weight:500;font-size:16px;margin-bottom: 8px;">Đã hủy lịch hẹn</div>
-                                </div>
-                                <div style="color: #222222!important;font-weight:600;font-size:24px ">
-                                    <%=booking.dataValues.thoi_gian%>
-                                </div>
-                                <br>
-
-                            </div>
-                        </div>
-                        <%- include("partials/content-await-bookings"); -%>
                     </div>
-                </div>
-            </div>
-            <%}%>
-  <%- include("partials/template/paginate"); -%>
-                <%- include("partials/footer"); -%>
+                    <% if(bookingNum != 0) {%>
+                        <br>
+                        <br>
+                        <br>
+                        <div class="row " style="border-radius: 8px;box-shadow: 2px 4px 4px #eee;transform: translate3d(0px, 0px, 0px);background-color: #fff;margin-bottom: 20px; ">
+                            <% for(booking of bookingList){ %>
+                                <div class="col-sm-12 " style="border-bottom: 2px solid #f2f2f2; ">
+                                    <div class="wrap-content-info ">
+                                        <div class="col-sm-3 ">
+                                            <div class="box-info1 ">
+                                                <div class="status-cho ">
+                                                    <div style="width:38%;height: 4px;background-color: rgb(206, 11, 11);margin-bottom: 8px;"></div>
+                                                    <div style="color: #999!important;font-weight:500;font-size:16px;margin-bottom: 8px;">Đã hủy lịch hẹn</div>
+                                                </div>
+                                                <div style="color: #222222!important;font-weight:600;font-size:24px ">
+                                                    <%=booking.dataValues.thoi_gian%>
+                                                </div>
+                                                <br>
+
+                                            </div>
+                                        </div>
+                                        <%- include("partials/content-await-bookings"); -%>
+                                    </div>
+                                </div>
+                                <%}%>
+                        </div>
+                        <%- include("partials/template/paginate"); -%>
+                            <%- include("partials/template/paginate"); -%>
+                                <%} else {%>
+                                    <div style="margin-top:150px;">
+                                        <svg version="1.1" viewBox="0 0 1024 1024" class="svg-icon svg-fill" style="width: 150px; height: 150px;display:block;margin:auto;"><path fill="#999999" stroke="none" pid="0" d="M621.19 958.604H388.126a6.599 6.599 0 01-6.596-6.593 6.595 6.595 0 016.596-6.591H621.19a6.596 6.596 0 016.597 6.59 6.597 6.597 0 01-6.597 6.594m-23.043-806.172c-7.494 0-14.272-5.142-16.042-12.753l-13.087-56.19c-2.065-8.868 3.45-17.728 12.315-19.794 8.87-2.064 17.729 3.45 19.794 12.315l13.087 56.195c2.066 8.868-3.445 17.729-12.315 19.794a16.777 16.777 0 01-3.752.433M781.63 297.346a16.28 16.28 0 01-3.285-.331l-56.554-11.42c-8.922-1.8-14.696-10.496-12.897-19.422 1.805-8.925 10.501-14.696 19.425-12.894l56.557 11.419c8.92 1.8 14.696 10.5 12.894 19.422-1.583 7.827-8.456 13.226-16.14 13.226m-90.15-113.332c-4.748 0-9.46-2.038-12.72-5.983-5.796-7.02-4.807-17.413 2.209-23.21l48.497-40.065c7.02-5.801 17.407-4.811 23.208 2.209 5.802 7.016 4.808 17.408-2.208 23.209L701.97 180.24a16.421 16.421 0 01-10.49 3.774m159.24 728.215H461.919l272.528-98.782c16.884-6.119 30.374-18.444 37.988-34.712 7.612-16.267 8.431-34.524 2.312-51.409L757.08 678.59c-2.17-5.993-8.79-9.09-14.78-6.916-5.992 2.17-9.09 8.791-6.916 14.78l17.664 48.736c4.017 11.09 3.48 23.077-1.52 33.765-4.998 10.681-13.859 18.78-24.95 22.796l-306.69 111.167c-11.096 4.018-23.083 3.48-33.767-1.52-10.68-5-18.779-13.857-22.795-24.95l-169.46-467.526c-8.296-22.888 3.575-48.262 26.467-56.56l306.695-111.17c11.09-4.016 23.079-3.473 33.765 1.524 10.683 4.999 18.78 13.86 22.794 24.93l69.22 191.647c2.166 5.996 8.776 9.098 14.775 6.933 5.993-2.165 9.095-8.777 6.93-14.77l-69.225-191.658c-6.119-16.883-18.446-30.372-34.712-37.989-16.267-7.611-34.524-8.43-51.408-2.312l-306.7 111.168c-34.856 12.635-52.931 51.27-40.3 86.124l169.46 467.523c8.243 22.74 27.547 38.325 49.65 42.917a8.094 8.094 0 004.43 1.314h5.78a68.99 68.99 0 003.419.1c1.142 0 2.283-.038 3.428-.1H850.72a8.156 8.156 0 008.156-8.157 8.156 8.156 0 00-8.157-8.157M770.66 418.512l-17.924-9.729c-7.16-3.878-17.408 1.172-22.901 11.292l-149.18 274.957c-.664 1.224-1.007 2.574-.962 3.815l.976 30.42a4.74 4.74 0 00-1.384.3l-46.34 17.268a4.945 4.945 0 103.453 9.27l44.603-16.623.01.354c.11 3.356 2.869 4.851 5.738 3.112l35.08-21.24c1.062-.642 2.008-1.663 2.672-2.887l149.18-274.963c5.488-10.112 4.137-21.464-3.02-25.346M437.172 782.537l-34.008 12.675a4.941 4.941 0 00-2.906 6.36 4.946 4.946 0 004.634 3.22 4.894 4.894 0 001.727-.313l34.008-12.675a4.943 4.943 0 002.907-6.36 4.94 4.94 0 00-6.362-2.907m71.056-26.49l-46.34 17.274a4.946 4.946 0 103.455 9.267l46.34-17.273a4.94 4.94 0 002.905-6.361 4.941 4.941 0 00-6.36-2.907m-136.397-76.44a4.95 4.95 0 01-4.64-3.22 4.948 4.948 0 012.908-6.36l29.08-10.84a4.945 4.945 0 013.455 9.267l-29.08 10.84a4.874 4.874 0 01-1.723.313m53.792-20.05a4.95 4.95 0 01-4.634-3.226 4.945 4.945 0 012.907-6.36l46.34-17.275a4.945 4.945 0 016.36 2.906 4.94 4.94 0 01-2.906 6.362l-46.34 17.274a4.89 4.89 0 01-1.727.318m71.054-26.485a4.952 4.952 0 01-4.634-3.219 4.941 4.941 0 012.907-6.361l46.34-17.28a4.943 4.943 0 016.36 2.907 4.94 4.94 0 01-2.905 6.361l-46.341 17.275a4.923 4.923 0 01-1.727.317m71.056-26.49a4.946 4.946 0 01-1.726-9.581l46.339-17.274a4.944 4.944 0 016.361 2.907 4.942 4.942 0 01-2.905 6.36l-46.342 17.275a4.93 4.93 0 01-1.727.312m0 0"></path></svg>
+                                        <br>
+                                        <div style="text-align: center;color: #999!important;font-size: 16px;">Không có kết quả phù hợp.</div>
+                                    </div>
+                                    <%}%>

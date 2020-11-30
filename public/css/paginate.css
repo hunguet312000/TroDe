@@ -6,6 +6,7 @@
 .pagination>li:first-child>span {
     border: none;
     cursor: pointer;
+    background-color: transparent;
 }
 
 .pagination>.active>a,
@@ -30,6 +31,7 @@
 .pagination>li:last-child>span {
     border: none;
     cursor: pointer;
+    background-color: transparent;
 }
 
 .pagination>li>a,
@@ -40,6 +42,7 @@
     font-weight: 900;
     cursor: pointer;
     color: #000000;
+    background-color: transparent;
 }
 
 .pagination>li>a:focus,
@@ -55,4 +58,19 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.pagination>.disabled>a,
+.pagination>.disabled>a:focus,
+.pagination>.disabled>a:hover,
+.pagination>.disabled>span,
+.pagination>.disabled>span:focus,
+.pagination>.disabled>span:hover {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.pagination {
+    padding: 30px;
 }
