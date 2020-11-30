@@ -9,6 +9,7 @@ const keywords_dict = require("../public/js/keywords_dict.js");
 const { sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan, Danh_sach_yeu_thich, Lich_hen } = require("../config/sequelize");
 const Op = require('Sequelize').Op
 const bookingManage = require("./bookingManage");
+const paginate = require("./paginate");
 
 exports.savePosts = async(req, res) => {
     if (req.isAuthenticated()) {
@@ -111,6 +112,8 @@ exports.filterListPostBySearch = async(req, res) => {
 
 }
 exports.displayListPost = async(req, res) => {
+    const rType = req.params.type;
+    const current = req.params.page;
     try {
         let type = ""
         let district = "";
@@ -123,7 +126,8 @@ exports.displayListPost = async(req, res) => {
         } else if (Object.values(req.query)[0] == "DESC") {
             order = ["gia_phong", "DESC"]
         }
-        switch (req.params.type) {
+
+        switch (rType) {
             case "phong_tro":
                 type = "Phòng trọ";
                 break;
@@ -189,7 +193,12 @@ exports.displayListPost = async(req, res) => {
                 district = "";
                 area = [""];
         }
+        const bookedUserList = await bookingManage.getBookedUser();
+        const calculatePagniate = await paginate.calculateRoomsPages(req, res, type, district, area);
+
         const phong_tro = await Phong_tro.findAll({
+            offset: calculatePagniate.offset,
+            limit: calculatePagniate.limit,
             where: {
                 [Op.or]: [{
                         phan_loai: type
@@ -212,16 +221,15 @@ exports.displayListPost = async(req, res) => {
                 order
             ]
         });
-        const bookedUserList = await bookingManage.getBookedUser();
-        // if (req.isAuthenticated()) {
-        //     res.render("user-product-grid", { user: req.user, userData: phong_tro, type:req.params.type });
-        // } else { res.render("guest-product-grid", { userData: phong_tro, type:req.params.type }); }
         res.render("rooms", {
             user: req.user,
             userData: phong_tro,
-            type: req.params.type,
+            type: rType,
             login: req.isAuthenticated(),
-            bookedUserList: bookedUserList
+            bookedUserList: bookedUserList,
+            pages: calculatePagniate.pages,
+            current: req.params.page,
+            roomsNum: calculatePagniate.roomsNum
         })
     } catch (err) {
         console.log(err);
@@ -358,6 +366,7 @@ exports.displayPostProfile = async(req, res) => {
         userData.tien_ich = tien_ich;
         userData.hinh_anh = hinh_anh;
         const bookedUserList = await bookingManage.getBookedUser();
+        console.log("alo");
         // if (req.isAuthenticated()) {
         //     res.render("user-room", { user: req.user, userData: userData });
         // } else { res.render("guest-room", { user: "", userData: userData }); };

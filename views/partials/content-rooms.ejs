@@ -1,7 +1,7 @@
 <div class="container wrap-content" id="wrap-content">
     <div class="head-content">
         <h2 style="font-size: 24px;font-weight: 900;">
-            <%= userData.length %> phòng trọ, chung cư cho thuê. </h2>
+            <%= roomsNum %> phòng trọ/chung cư cho thuê. </h2>
         <div class="select" style="float: right;border-radius: 5px;border: 1px solid #ced4da;">
             <form action="/rooms/<%=type%>" method="post">
                 <span style="color: #555555;font-weight: 700;margin-left: 5px;">Sắp xếp:</span>
@@ -15,6 +15,7 @@
         <div class="row wrap-post" style="margin-top: 100px;">
             <%- include("template/content-product"); -%>
         </div>
-    </div>
-
+      </div>
+        <!-- pagination -->
+<%- include("template/paginate"); -%>
 </div>

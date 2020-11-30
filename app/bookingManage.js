@@ -9,6 +9,7 @@ const keywords_dict = require("../public/js/keywords_dict.js");
 const { sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan, Danh_sach_yeu_thich, Lich_hen } = require("../config/sequelize");
 const nodemailer = require('nodemailer');
 const { Op } = require("sequelize");
+const paginate = require("./paginate");
 
 exports.booking = async(req, res) => {
     //console.log(req.body);
@@ -58,7 +59,10 @@ exports.booking = async(req, res) => {
 exports.bookedList = async(req, res) => {
     if (req.isAuthenticated()) {
         const user = req.session.passport.user;
+        const calculatePaginate = await paginate.calculateBookedPages(req, res);
         const bookedList = await Lich_hen.findAll({
+            offset: calculatePaginate.offset,
+            limit: calculatePaginate.limit,
             where: {
               [Op.and]: [
                 {id_nguoi_hen: user.id_nguoi_dung},
@@ -76,7 +80,11 @@ exports.bookedList = async(req, res) => {
         //console.log(bookedList[0].dataValues.phong_tro.dataValues.nguoi_dung.sdt);
         res.render("user-booked-list", {
             user: user,
-            bookedList: bookedList
+            bookedList: bookedList,
+            pages: calculatePaginate.pages,
+            bookedNum: calculatePaginate.bookedNum,
+            current: req.params.page,
+            type: 'booked-list'
         });
     } else {
         res.redirect('/login');

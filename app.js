@@ -6,6 +6,7 @@ const flash = require('connect-flash');
 const dotenv = require('dotenv');
 const mysql = require('mysql');
 const dgconfig = require("./config/database");
+const paginate = require('express-paginate');
 dotenv.config({ path: './.env' });
 const port = process.env.PORT || 3000;
 
@@ -34,6 +35,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 // app.use(cookieParser());
 
 //Mysql routes
+//app.use(paginate.middleware(10, 50));
 require("./routers/authentication.js")(app,passport);
 require("./routers/routes.js")(app, passport); // load our routes and pass in our app and fully configured passport
 

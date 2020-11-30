@@ -6,13 +6,17 @@ const postManage = require('../app/postManage');
 const userManage = require("../app/userManage");
 const bookingManage = require("../app/bookingManage");
 const forgetPassword = require("../app/forgetPassword");
+
 require('dotenv').config();
 
 module.exports = (app, passport) => {
 
-    app.get("/rooms/:type", postManage.displayListPost);
 
-    app.get("/rooms/:type/:option", postManage.displayPostByNumOfPeopleOrPrice);
+    //app.get("/rooms/:type", postManage.displayListPost);
+
+    app.get("/rooms/:type/:page", postManage.displayListPost);
+
+    app.get("/rooms/:type/:option/:page", postManage.displayPostByNumOfPeopleOrPrice);
 
     app.get("/room/:id", postManage.displayPostProfile);
 

@@ -25,21 +25,21 @@
     <div class="container wrap-content">
         <br>
         <h2>Tổng số lịch hẹn đã đặt:
-            <%= bookedList.length%>
+            <%= bookedNum%>
         </h2>
         <div style="float: right;">
             <span class="wrap-nav-item">
-                <a href = "/booked-list" class = "wrap-a" style="text-decoration: none; " id = "wrap-a-1">
+                <a href = "/booked-list/1" class = "wrap-a" style="text-decoration: none; " id = "wrap-a-1">
                     Đang chờ xác nhận
                 </a>
             </span>
             <span class="wrap-nav-item ">
-                <a href = "/booked-list/accepted" class = "wrap-a" style="text-decoration: none; " id = "wrap-a-2">
+                <a href = "/booked-list/accepted/1" class = "wrap-a" style="text-decoration: none; " id = "wrap-a-2">
                     Đã được xác nhận
                 </a>
             </span>
             <span class="wrap-nav-item ">
-                <a href = "/booked-list/denied" class = "wrap-a" style="text-decoration: none; " id = "wrap-a-3">
+                <a href = "/booked-list/denied/1" class = "wrap-a" style="text-decoration: none; " id = "wrap-a-3">
                     Đã bị từ chối
                 </a>
             </span>
@@ -49,7 +49,6 @@
         <br>
         <% for(booked of bookedList){ %>
             <div class="row" style="border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);background-color: #fff;margin-bottom: 20px;">
-                
                     <div class="col-sm-12" style="border-bottom: 2px solid #f2f2f2;">
                         <div class="wrap-content-info">
                             <div class="col-sm-3">
@@ -69,5 +68,7 @@
                     </div>
             </div>
             <%}%>
+            <%- include("partials/template/paginate"); -%>
     </div>
+
     <%- include("partials/footer"); -%>
