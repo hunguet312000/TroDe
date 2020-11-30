@@ -212,7 +212,7 @@ Phong_tro.hasMany(Lich_hen, {
 });
 Nguoi_dung.hasMany(Bao_cao, {
     foreignKey: {
-        name :'id_nguoi_dung',
+        name: 'id_nguoi_dung',
         allowNull: false,
         primaryKey: true
     },
@@ -221,7 +221,7 @@ Nguoi_dung.hasMany(Bao_cao, {
 });
 Phong_tro.hasMany(Bao_cao, {
     foreignKey: {
-        name : "id_phong_tro",
+        name: "id_phong_tro",
         allowNull: false,
         primaryKey: true
     },
@@ -230,50 +230,50 @@ Phong_tro.hasMany(Bao_cao, {
 });
 Bao_cao.belongsTo(Nguoi_dung, {
     foreignKey: {
-        name : 'id_nguoi_dung',
+        name: 'id_nguoi_dung',
         allowNull: false
     },
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
 });
 Bao_cao.belongsTo(Phong_tro, {
-    foreignKey: {
-        name : 'id_phong_tro',
-        allowNull: false
-    },
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE'
-})
-//
-// Danh_sach_yeu_thich.belongsTo(Nguoi_dung,{
-//   foreignKey: {
-//     name: "id_nguoi_dung",
-//     allowNull: false,
-//     primaryKey: true
-//   }
-// });
-// Nguoi_dung.hasMany(Danh_sach_yeu_thich,{
-//   foreignKey: {
-//     name: "id_nguoi_dung",
-//     allowNull: false,
-//     primaryKey: true
-//   }
-// });
-//
-// Danh_sach_yeu_thich.belongsTo(Phong_tro,{
-//   foreignKey: {
-//     name: "id_phong_tro",
-//     allowNull: false,
-//     primaryKey: true
-//   }
-// });
-// Phong_tro.hasMany(Danh_sach_yeu_thich,{
-//   foreignKey: {
-//     name: "id_phong_tro",
-//     allowNull: false,
-//     primaryKey: true
-//   }
-// });
+        foreignKey: {
+            name: 'id_phong_tro',
+            allowNull: false
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+    })
+    //
+    // Danh_sach_yeu_thich.belongsTo(Nguoi_dung,{
+    //   foreignKey: {
+    //     name: "id_nguoi_dung",
+    //     allowNull: false,
+    //     primaryKey: true
+    //   }
+    // });
+    // Nguoi_dung.hasMany(Danh_sach_yeu_thich,{
+    //   foreignKey: {
+    //     name: "id_nguoi_dung",
+    //     allowNull: false,
+    //     primaryKey: true
+    //   }
+    // });
+    //
+    // Danh_sach_yeu_thich.belongsTo(Phong_tro,{
+    //   foreignKey: {
+    //     name: "id_phong_tro",
+    //     allowNull: false,
+    //     primaryKey: true
+    //   }
+    // });
+    // Phong_tro.hasMany(Danh_sach_yeu_thich,{
+    //   foreignKey: {
+    //     name: "id_phong_tro",
+    //     allowNull: false,
+    //     primaryKey: true
+    //   }
+    // });
 
 module.exports = {
     sequelizeInit,

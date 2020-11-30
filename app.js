@@ -6,7 +6,6 @@ const flash = require('connect-flash');
 const dotenv = require('dotenv');
 const mysql = require('mysql');
 const dgconfig = require("./config/database");
-const paginate = require('express-paginate');
 dotenv.config({ path: './.env' });
 const port = process.env.PORT || 3000;
 
@@ -18,13 +17,13 @@ app.set('view engine', 'ejs');
 app.set("views", "./views");
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({
-  extended: true
+    extended: true
 }));
 app.use(bodyParser.json());
 app.use(session({
-  secret:  process.env.SESSION_SECRET,
-  resave: true,
-  saveUninitialized: true
+    secret: process.env.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: true
 }));
 
 app.use(passport.initialize());
@@ -36,7 +35,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 //Mysql routes
 //app.use(paginate.middleware(10, 50));
-require("./routers/authentication.js")(app,passport);
+require("./routers/authentication.js")(app, passport);
 require("./routers/routes.js")(app, passport); // load our routes and pass in our app and fully configured passport
 
 // const {sequelizeInit, Nguoi_dung} = require("./config/sequelize.js");
@@ -72,6 +71,6 @@ require("./routers/routes.js")(app, passport); // load our routes and pass in ou
 //     }
 // });
 
-app.listen(port, function(req, res){
-  console.log("Sever is running!");
+app.listen(port, function(req, res) {
+    console.log("Sever is running!");
 });

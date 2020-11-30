@@ -1,21 +1,138 @@
 <div class="container wrap-content" id="wrap-content">
-    <div class="head-content">
-        <h2 style="font-size: 24px;font-weight: 900;">
-            <%= roomsNum %> phòng trọ/chung cư cho thuê. </h2>
-        <div class="select" style="float: right;border-radius: 5px;border: 1px solid #ced4da;">
-            <form action="/rooms/<%=type%>" method="post">
-                <span style="color: #555555;font-weight: 700;margin-left: 5px;">Sắp xếp:</span>
-                <select onchange="this.form.submit()" class="custom-select btn-ip" id="sort" name="sort" style="border-radius: 0;color: #424242; font-size: small;height: 30px;margin: 5px;border: none;font-size: 15px;font-weight: 500;">
-                    <option value="" disabled selected hidden>Lựa chọn</option>
-                    <option value="ESC">Giá tăng dần</option>
-                    <option value="DESC">Giá giảm dần</option>
-                </select>
-            </form>
+    <% if(roomsNum != 0){%>
+        <div class="head-content">
+            <h2 style="font-size: 24px;font-weight: 900;">
+                <%= roomsNum %> phòng trọ/chung cư cho thuê. </h2>
+            <div class="select" style="float: right;border-radius: 5px;border: 1px solid #ced4da;">
+                <form action="/rooms/<%=type%>" method="post">
+                    <span style="color: #555555;font-weight: 700;margin-left: 5px;">Sắp xếp:</span>
+                    <select onchange="this.form.submit()" class="custom-select btn-ip" id="sort" name="sort" style="border-radius: 0;color: #424242; font-size: small;height: 30px;margin: 5px;border: none;font-size: 15px;font-weight: 500;">
+                        <option value="" disabled selected hidden>Lựa chọn</option>
+                        <option value="ESC">Giá tăng dần</option>
+                        <option value="DESC">Giá giảm dần</option>
+                    </select>
+                </form>
+            </div>
+            <div class="row wrap-post" style="margin-top: 100px;">
+                <%- include("template/content-product"); -%>
+            </div>
         </div>
-        <div class="row wrap-post" style="margin-top: 100px;">
-            <%- include("template/content-product"); -%>
-        </div>
-      </div>
-        <!-- pagination -->
-<%- include("template/paginate"); -%>
+        <%} else{%>
+            <div class="wrap-content1" style="margin-top: -20px;">
+                <div class="greeting">
+                    <h3>Các quận ở Hà Nội</h3>
+                    <div>Cùng TroDe bắt đầu tìm kiếm các phòng trọ, chung cư ở khắp Hà Nội.</div>
+                </div>
+                <div class="items" style="margin-bottom: 30px;">
+                    <div class="item-content">
+                        <a href="/rooms/quan_ba_dinh/1">
+                            <img id="wrap-content1-img" data-lazy="https://res.cloudinary.com/dt6qnb0hs/image/upload/v1604424596/location_1_1559734709_qgppcu.png">
+                            <div id="text-item">Quận Ba Đình</div>
+                        </a>
+                    </div>
+                    <div class="item-content">
+                        <a href="/rooms/quan_bac_tu_liem/1">
+                            <img id="wrap-content1-img" data-lazy="https://res.cloudinary.com/dt6qnb0hs/image/upload/v1604457941/Capture_gs0alo.png">
+                            <div id="text-item">Quận Bắc Từ Liêm</div>
+                        </a>
+                    </div>
+                    <div class="item-content">
+                        <a href="/rooms/quan_cau_giay/1">
+                            <img id="wrap-content1-img" data-lazy="https://res.cloudinary.com/dt6qnb0hs/image/upload/v1604458086/Capture_sov2ak.png">
+                            <div id="text-item">Quận Cầu Giấy</div>
+                        </a>
+                    </div>
+                    <div class="item-content">
+                        <a href="/rooms/quan_dong_da/1">
+                            <img id="wrap-content1-img" data-lazy="https://res.cloudinary.com/dt6qnb0hs/image/upload/v1604458223/Capture_z7ocyr.png">
+                            <div id="text-item">Quận Đống Đa</div>
+                        </a>
+                    </div>
+                    <div class="item-content">
+                        <a href="/rooms/quan_ha_dong/1">
+                            <img id="wrap-content1-img" data-lazy="https://res.cloudinary.com/dt6qnb0hs/image/upload/v1604458651/Capture_dgc057.png">
+                            <div id="text-item">Quận Hà Đông</div>
+                        </a>
+                    </div>
+                    <div class="item-content">
+                        <a href="/rooms/quan_hai_ba_trung/1">
+                            <img id="wrap-content1-img" data-lazy="https://res.cloudinary.com/dt6qnb0hs/image/upload/v1604458883/Capture_zhjpyg.png">
+                            <div id="text-item">Quận Hai Bà Trưng</div>
+                        </a>
+                    </div>
+                    <div class="item-content">
+                        <a href="/rooms/quan_hoang_mai/1">
+                            <img id="wrap-content1-img" data-lazy="https://res.cloudinary.com/dt6qnb0hs/image/upload/v1604459028/Capture_ub8ed7.png">
+                            <div id="text-item">Quận Hoàng Mai</div>
+                        </a>
+                    </div>
+                    <div class="item-content">
+                        <a href="/rooms/quan_hoan_kiem/1">
+                            <img id="wrap-content1-img" data-lazy="https://res.cloudinary.com/dt6qnb0hs/image/upload/v1604459145/Capture_uyjk3f.png">
+                            <div id="text-item">Quận Hoàn Kiếm</div>
+                        </a>
+                    </div>
+                    <div class="item-content">
+                        <a href="/rooms/quan_long_bien/1">
+                            <img id="wrap-content1-img" data-lazy="https://res.cloudinary.com/dt6qnb0hs/image/upload/v1604459339/Capture_q2dz3y.png">
+                            <div id="text-item">Quận Long Biên</div>
+                        </a>
+                    </div>
+                    <div class="item-content">
+                        <a href="/rooms/quan_nam_tu_liem/1">
+                            <img id="wrap-content1-img" data-lazy="https://res.cloudinary.com/dt6qnb0hs/image/upload/v1604459398/Capture_j2txsg.png">
+                            <div id="text-item">Quận Nam Từ Liêm</div>
+                        </a>
+                    </div>
+                    <div class="item-content">
+                        <a href="/rooms/quan_tay_ho/1">
+                            <img id="wrap-content1-img" data-lazy="https://res.cloudinary.com/dt6qnb0hs/image/upload/v1604459526/hoang-hon-tay-h-goc-kinh_hf9kmd.jpg">
+                            <div id="text-item">Quận Tây Hồ</div>
+                        </a>
+                    </div>
+                    <div class="item-content">
+                        <a href="/rooms/quan_thanh_xuan/1">
+                            <img id="wrap-content1-img" data-lazy="https://res.cloudinary.com/dt6qnb0hs/image/upload/v1604459645/Capture_slhrmj.png">
+                            <div id="text-item">Quận Thanh Xuân</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <h2 style="font-weight: 900;text-align: center;color: #17ca9d;margin-top: 35px;">Không tìm thấy kết quả phù hợp.</h2>
+            <br>
+            <div style="font-size:16px;text-align: center;margin-bottom: 15px;">1. Kiểm tra lại từ khóa của bạn.</div>
+            <div style="font-size:16px;text-align: center;margin-bottom: 115px;">2. Lựa chọn chỗ ở tại các bộ sưu tập sẵn có.</div>
+
+            <%}%>
+                <!-- pagination -->
+                <%- include("template/paginate"); -%>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('.items').slick({
+            infinite: false,
+            lazyLoad: 'ondemand',
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            responsive: [{
+                breakpoint: 990,
+                settings: {
+                    slidesToShow: 3
+                }
+            }]
+        });
+        $('.wrap-content2-items').slick({
+            infinite: false,
+            lazyLoad: 'ondemand',
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            responsive: [{
+                breakpoint: 990,
+                settings: {
+                    slidesToShow: 2
+                }
+            }]
+        });
+    });
+</script>

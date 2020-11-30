@@ -1,0 +1,58 @@
+.arrow-left {
+    border: none;
+}
+
+.pagination>li:first-child>a,
+.pagination>li:first-child>span {
+    border: none;
+    cursor: pointer;
+}
+
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus {
+    border: none;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    background-color: #000000;
+    color: #fff;
+    text-align: center;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.pagination>li:last-child>a,
+.pagination>li:last-child>span {
+    border: none;
+    cursor: pointer;
+}
+
+.pagination>li>a,
+.pagination>li>span {
+    border: none;
+    color: #fff;
+    text-align: center;
+    font-weight: 900;
+    cursor: pointer;
+    color: #000000;
+}
+
+.pagination>li>a:focus,
+.pagination>li>a:hover,
+.pagination>li>span:focus,
+.pagination>li>span:hover {
+    border: none;
+    color: #17ca9d;
+    background-color: transparent;
+}
+
+#paginate {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}

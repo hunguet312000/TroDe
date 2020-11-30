@@ -7,6 +7,7 @@ body {
 
 .wrap-content {
     margin-top: 110px;
+    height: fit-content;
 }
 
 .product-card {
@@ -16,7 +17,7 @@ body {
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     box-shadow: 2px 4px 4px #eee;
-    margin-bottom: 100px;
+    margin-bottom: 24px;
     height: 375px;
 }
 
@@ -78,7 +79,6 @@ body {
     text-transform: uppercase;
     color: #888;
     display: -webkit-box;
-    max-height: 1.5rem;
     -webkit-line-clamp: 1;
     overflow: hidden;
     text-overflow: ellipsis;
