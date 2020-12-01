@@ -16,7 +16,7 @@ module.exports = (app, passport) => {
         } else { res.redirect('/login') }
     });
 
-    app.get('/wish-list',  userProfileManage.showWishList);
+    app.get('/wish-list/:page',  userProfileManage.showWishList);
 
     app.get('/booked-list/:page', bookingManage.bookedList);
 
@@ -52,7 +52,7 @@ module.exports = (app, passport) => {
         } else { res.redirect('/login') }
     });
 
-    app.get('/list-host', postManage.displayUserListPost);
+    app.get('/list-host/:page', postManage.displayUserListPost);
 
     app.get('/profile-address', function(req, res) {
         const user = req.session.passport.user;

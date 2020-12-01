@@ -2,6 +2,7 @@ const mysql = require('mysql');
 const dbconfig = require('../config/database');
 const bcrypt = require('bcrypt');
 const { sequelizeInit, Nguoi_dung, Phong_tro, Danh_sach_yeu_thich } = require("../config/sequelize");
+const paginate = require("./paginate");
 
 exports.updateInfo = async(newInfo, oldInfo) => {
     const username = newInfo.username;
@@ -46,14 +47,21 @@ exports.changePassword = async(newInfo, oldInfo) => {
 }
 
 exports.showWishList = async(req, res) => {
+    console.log("ALO: " + req.params.page);
     let roomList = [];
+    const calculatePagniate = await paginate.calculateWishListPages(req, res);
     if (req.isAuthenticated()) {
         const user = req.session.passport.user;
         try {
             const roomIdList = await Danh_sach_yeu_thich.findAll({
+                offset: calculatePagniate.offset,
+                limit: calculatePagniate.limit,
                 where: {
                     id_nguoi_dung: user.id_nguoi_dung
-                }
+                },
+                order: [
+                    ["createdAt", "ASC"]
+                ]
             });
             for (room of roomIdList) {
                 const roomInfo = await Phong_tro.findAll({
@@ -65,7 +73,11 @@ exports.showWishList = async(req, res) => {
             }
             res.render("user-wish-list", {
                 user: user,
-                roomList: roomList
+                roomList: roomList,
+                pages: calculatePagniate.pages,
+                current: req.params.page,
+                postNum: calculatePagniate.postNum,
+                type: "wish-list"
             });
         } catch (err) {
             console.log(err);
