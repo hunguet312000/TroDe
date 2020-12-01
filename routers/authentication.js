@@ -76,7 +76,7 @@ module.exports = (app, passport) => {
       res.redirect("/");
   });
 
-  app.get('/profile-change-password', function(req, res) {
+  app.get('/profile/change-password', function(req, res) {
       if (req.isAuthenticated()) {
           const user = req.session.passport.user;
           console.log(user)

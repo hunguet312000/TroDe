@@ -28,7 +28,7 @@ module.exports = (app, passport) => {
 
     app.post('/await-bookings/:id/:response', bookingManage.bookingResponse);
 
-    app.get('/profile-edit', function(req, res) {
+    app.get('/profile/edit', function(req, res) {
         if (req.isAuthenticated()) {
             const user = req.session.passport.user;
             res.render('user-profile-edit', { user: user });
@@ -39,13 +39,13 @@ module.exports = (app, passport) => {
         if (req.isAuthenticated()) {
             const newInfo = req.body;
             const oldInfo = req.session.passport.user;
-            updateInfo(newInfo, oldInfo);
+            userProfileManage.updateInfo(newInfo, oldInfo);
             req.logout();
             res.redirect("/login")
         } else { res.redirect('/login') }
     });
 
-    app.get('/profile-info', function(req, res) {
+    app.get('/profile/info', function(req, res) {
         if (req.isAuthenticated()) {
             const user = req.session.passport.user;
             res.render('user-profile-info', { user: user });
@@ -54,12 +54,12 @@ module.exports = (app, passport) => {
 
     app.get('/list-host/:page', postManage.displayUserListPost);
 
-    app.get('/profile-address', function(req, res) {
+    app.get('/profile/address', function(req, res) {
         const user = req.session.passport.user;
         res.render('user-profile-address', { user: user });
     });
 
-    app.get('/address-edit', function(req, res) {
+    app.get('/profile/address-edit', function(req, res) {
         const user = req.session.passport.user;
         res.render('user-profile-address-edit', { user: user });
     });

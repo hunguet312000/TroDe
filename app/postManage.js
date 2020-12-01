@@ -10,6 +10,7 @@ const { sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan, Dan
 const Op = require('Sequelize').Op
 const bookingManage = require("./bookingManage");
 const paginate = require("./paginate");
+const userProfileManage = require("./userProfileManage");
 
 exports.savePosts = async(req, res) => {
     if (req.isAuthenticated()) {
@@ -325,7 +326,7 @@ exports.displayUserListPost = async(req, res) => {
                     ["id_phong_tro", "DESC"]
                 ]
             });
-            console.log("alo");
+            //console.log("alo");
             res.render('user-list-host', {
               user: req.user,
               userData: phong_tro,
@@ -389,11 +390,20 @@ exports.displayPostProfile = async(req, res) => {
         userData.tien_ich = tien_ich;
         userData.hinh_anh = hinh_anh;
         const bookedUserList = await bookingManage.getBookedUser();
-        console.log("alo");
+        let isInWishList = null;
+        if(req.isAuthenticated()){
+          isInWishList = await userProfileManage.isInWishList(req.params.id, req.session.passport.user.id_nguoi_dung);
+        }
         // if (req.isAuthenticated()) {
         //     res.render("user-room", { user: req.user, userData: userData });
         // } else { res.render("guest-room", { user: "", userData: userData }); };
-        res.render("room", { user: req.user, userData: userData, login: req.isAuthenticated(), bookedUserList: bookedUserList })
+        res.render("room", {
+          user: req.user,
+          userData: userData,
+          login: req.isAuthenticated(),
+          bookedUserList: bookedUserList,
+          isInWishList: isInWishList
+        })
     } catch (err) {
         console.log(err);
     }

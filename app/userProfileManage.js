@@ -3,6 +3,7 @@ const dbconfig = require('../config/database');
 const bcrypt = require('bcrypt');
 const { sequelizeInit, Nguoi_dung, Phong_tro, Danh_sach_yeu_thich } = require("../config/sequelize");
 const paginate = require("./paginate");
+const Op = require('Sequelize').Op
 
 exports.updateInfo = async(newInfo, oldInfo) => {
     const username = newInfo.username;
@@ -47,7 +48,7 @@ exports.changePassword = async(newInfo, oldInfo) => {
 }
 
 exports.showWishList = async(req, res) => {
-    console.log("ALO: " + req.params.page);
+    //console.log("ALO: " + req.params.page);
     let roomList = [];
     const calculatePagniate = await paginate.calculateWishListPages(req, res);
     if (req.isAuthenticated()) {
@@ -84,5 +85,24 @@ exports.showWishList = async(req, res) => {
         }
     } else {
         res.redirect('/login')
+    }
+}
+
+exports.isInWishList = async(id_phong_tro, id_nguoi_dung) => {
+    //console.log("ALO: " + req.params.page);
+    try {
+        const roomIdList = await Danh_sach_yeu_thich.findAll({
+            where: {
+                [Op.and]:[
+                  {id_nguoi_dung: id_nguoi_dung},
+                  {id_phong_tro: id_phong_tro}
+                ]
+            }
+        });
+        console.log(true);
+        return true;
+    } catch (err) {
+        console.log(err);
+        return false;
     }
 }
