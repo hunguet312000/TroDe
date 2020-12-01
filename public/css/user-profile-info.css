@@ -287,6 +287,32 @@ input::-webkit-inner-spin-button {
     border: 16px solid #17ca9d;
 }
 
+#btn-upload {
+    border-radius: 7px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    color: #fff;
+    background: rgb(23, 202, 157);
+    border-color: transparent;
+    font-weight: 900;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    height: 38px;
+    padding-top: 8px;
+}
+
+#btn-upload:hover {
+    border-color: #17ca9d;
+    box-shadow: 0 0 5px 0 #17ca9d;
+    outline: 0 none;
+}
+
+#btn-upload:focus {
+    outline: 0;
+}
+
 @media (min-width:769px) and (max-width:990px) {
     #a-sub-2 {
         display: none;

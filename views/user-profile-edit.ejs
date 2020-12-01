@@ -22,10 +22,24 @@
                     </div>
                 </div>
                 <div class="col-md-10">
-                    <span style="font-size: 17px;"><b>Sửa thông tin cá nhân</b></span>
-                    <br><br>
-                    <div class="content" style="background-color: white; height: 400px;border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);">
-                        <form action="/profile-edit" method="post">
+                    <form action="/profile-edit" method="post">
+                        <div class="avatar" style="margin-left: 15px;">
+                            <div class="row">
+                                <div class="col-sm-2" style="border-radius: 50%;border:none;">
+                                    <img id="imgava" style="width:80px;height: 80px;border-radius: 50%;border:none;background-color: #ffffff;vertical-align: middle;">
+                                </div>
+                                <div class="col-sm-6" style="vertical-align: middle;margin-top: 25px;float: left;margin-left: -5%;">
+                                    <label class="btn btn-primary" id="btn-upload" style="display:inline-block;">
+                                        Đổi ảnh đại diện<input name = "image" id = "uploadimg" type="file" class="btn-edit" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;" required data-bv-notempty-message="Không được để trống">
+                                             </label>
+                                </div>
+                            </div>
+                            <img src="#" id="ava" style="width:80px;height: 80px;border-radius: 50%;display: none;">
+                        </div>
+                        <br>
+                        <span style="font-size: 17px;"><b>Sửa thông tin cá nhân</b></span>
+                        <br><br>
+                        <div class="content" style="background-color: white; height: 400px;border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);">
                             <div class="row" style="padding:40px;">
                                 <div class="col-md-4">
                                     <span id="title-item-profile"><i>Tên đăng nhập</i></span>
@@ -78,11 +92,12 @@
                                     <a href="/profile/info" style="text-decoration: none;"><button type="button" class="btn btn-primary" id="button-submit"><span id = "text-btn"><b>HỦY BỎ</b></span></button></a>
                                 </div>
                             </div>
-                        </form>
-                    </div>
+                        </div>
                 </div>
 
             </div>
+            </form>
+
         </div>
         </div>
         <script>
@@ -90,4 +105,20 @@
                 $("#btn-phone").val(this.value.match(/[0-9]*/));
             });
             $('#datepicker').datepicker();
+
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        $('#imgava').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]); // convert to base64 string
+                }
+            }
+
+            $("#uploadimg").change(function() {
+                readURL(this);
+            });
         </script>
