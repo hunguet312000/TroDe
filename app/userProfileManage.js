@@ -99,10 +99,12 @@ exports.isInWishList = async(id_phong_tro, id_nguoi_dung) => {
                 ]
             }
         });
-        console.log(true);
-        return true;
+        if (roomIdList.length >0){
+          return true;
+        }else{
+          return false;
+        }
     } catch (err) {
         console.log(err);
-        return false;
     }
 }
