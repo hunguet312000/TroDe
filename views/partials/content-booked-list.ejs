@@ -14,7 +14,7 @@
             <img src="<%= booked.dataValues.phong_tro.dataValues.path_anh_noi_bat %>">
         </a>
             </div>
-            <div class="col-sm-6" style="margin-top:-30px">
+            <div class="col-sm-6 info">
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;height: 15px;width: 15px;" xml:space="preserve">
 <path style="fill:#FF7C48;" d="M409.126,63.424C368.227,22.524,313.84,0,255.995,0C198.16,0,143.773,22.524,102.874,63.424  S39.45,158.71,39.45,216.555c0,117.01,110.642,214.336,170.077,266.622c8.258,7.258,15.396,13.537,21.075,18.845  c7.118,6.648,16.256,9.977,25.394,9.977c9.138,0,18.275-3.329,25.404-9.977c5.679-5.309,12.817-11.587,21.075-18.845  c59.435-52.287,170.077-149.612,170.077-266.622C472.55,158.71,450.026,104.324,409.126,63.424z M255.995,303.803  c-52.617,0-95.426-42.809-95.426-95.436c0-52.617,42.809-95.426,95.426-95.426c52.627,0,95.436,42.809,95.436,95.426  C351.431,260.994,308.622,303.803,255.995,303.803z"/>
@@ -25,7 +25,7 @@
             </span>
                 </div>
             </div>
-            <div class="col-sm-6" style="margin-top:-30px;float: right;">
+            <div class="col-sm-6 info1">
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" enable-background="new 0 0 512 512" height="15" viewBox="0 0 512 512" width="15" style="vertical-align: middle;"><g><path d="m256 512c-68.38 0-132.668-26.628-181.02-74.98s-74.98-112.64-74.98-181.02 26.629-132.667 74.98-181.02 112.64-74.98 181.02-74.98 132.668 26.628 181.02 74.98 74.98 112.64 74.98 181.02-26.629 132.667-74.98 181.02-112.64 74.98-181.02 74.98zm0-480c-123.514 0-224 100.486-224 224s100.486 224 224 224 224-100.486 224-224-100.486-224-224-224z"/><path d="m256 240c-22.056 0-40-17.944-40-40s17.944-40 40-40 40 17.944 40 40c0 8.836 7.163 16 16 16s16-7.164 16-16c0-34.201-23.978-62.888-56-70.186v-17.814c0-8.836-7.163-16-16-16s-16 7.164-16 16v17.814c-32.022 7.298-56 35.985-56 70.186 0 39.701 32.299 72 72 72 22.056 0 40 17.944 40 40s-17.944 40-40 40-40-17.944-40-40c0-8.836-7.163-16-16-16s-16 7.164-16 16c0 34.201 23.978 62.888 56 70.186v17.814c0 8.836 7.163 16 16 16s16-7.164 16-16v-17.814c32.022-7.298 56-35.985 56-70.186 0-39.701-32.299-72-72-72z"/></g></svg>
                     <span style="font-weight: 500;color: #222222;font-weight: 900;">&nbsp;<%= Number(booked.dataValues.phong_tro.dataValues.gia_phong).toLocaleString('en')%> đ/<sub>tháng</sub></span>
@@ -34,8 +34,8 @@
         </div>
     </div>
 </div>
-<div class="col-sm-2">
-    <div style="margin-top: 40px;text-align: center;">
+<div class="col-sm-2" id="sdt">
+    <div>
         <span style="font-weight: 900;">SĐT <%=(booked.dataValues.phong_tro.dataValues.phan_loai).toLowerCase()%></span>
         <br>
         <span style="font-weight: 500;"><%=booked.dataValues.phong_tro.dataValues.nguoi_dung.sdt%></span>

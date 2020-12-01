@@ -134,5 +134,17 @@
                 }
             }]
         });
+        $('.img-link').lazy({
+            delay: 250,
+            placeholder: "data:image/gif;base64,https://res.cloudinary.com/dt6qnb0hs/image/upload/v1606789819/photo-lazy_dwd9hw.jpg",
+        });
+
+        $('.lazy').lazy({
+            asyncLoader: function(element) {
+                setTimeout(function() {
+                    element.load()
+                }, 250);
+            }
+        })
     });
 </script>

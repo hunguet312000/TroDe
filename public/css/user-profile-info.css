@@ -286,3 +286,27 @@ input::-webkit-inner-spin-button {
     background: #17ca9d;
     border: 16px solid #17ca9d;
 }
+
+@media (min-width:769px) and (max-width:990px) {
+    #a-sub-2 {
+        display: none;
+    }
+    #a-sub-3 {
+        display: none;
+    }
+}
+
+@media (max-width:769px) {
+    #a-sub-2 {
+        display: none;
+    }
+    #a-sub-3 {
+        display: none;
+    }
+    #a-sub-4 {
+        display: none;
+    }
+    #a-sub-5 {
+        display: none;
+    }
+}

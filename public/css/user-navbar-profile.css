@@ -48,3 +48,12 @@ body {
     font-size: 16px;
     font-weight: 500;
 }
+
+@media (max-width:769px) {
+    .menu-info {
+        display: none;
+    }
+    #sub-nav {
+        margin-bottom: 30px;
+    }
+}

@@ -18,7 +18,7 @@ body {
     border-bottom-right-radius: 6px;
     box-shadow: 2px 4px 4px #eee;
     margin-bottom: 24px;
-    height: 375px;
+    height: 385px;
 }
 
 .img-link {
@@ -29,6 +29,8 @@ body {
     background-position: 50%;
     background-size: cover;
     background-color: #eee;
+    background-image: url('https://res.cloudinary.com/dt6qnb0hs/image/upload/v1606789819/photo-lazy_dwd9hw.jpg');
+    background-repeat: no-repeat;
 }
 
 .product-info {
