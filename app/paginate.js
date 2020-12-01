@@ -226,3 +226,49 @@ exports.calculateWishListPages = async(req, res) => {
     console.log(e);
   }
 }
+
+exports.calculateSearchPages = async(req, res, result) => {
+  try {
+    const currentPage = Number(req.params.page);
+    const postPerPage = 12;
+    const roomsNum = await Phong_tro.count({
+      where: {
+          [Op.and]: [{
+                  phan_loai: {
+                      [Op.like]: "%" + result.phan_loai + "%"
+                  }
+              },
+              {
+                  quan_huyen: {
+                      [Op.like]: "%" + result.quan_huyen + "%"
+                  }
+              },
+              {
+                  phuong_xa: {
+                      [Op.like]: "%" + result.phuong_xa + '%'
+                  }
+              },
+              {
+                  tong_so_nguoi: {
+                      [Op.like]: "%" + result.tong_so_nguoi + "%"
+                  }
+              },
+              {
+                  gia_phong: {
+                      [Op.between]: [result.gia_phong[0], result.gia_phong[1]]
+                  }
+              }
+          ],
+
+      }
+    });
+    return {
+      pages: Math.ceil(roomsNum/postPerPage),
+      offset: (postPerPage*currentPage)-postPerPage,
+      limit: postPerPage,
+      roomsNum: roomsNum
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}

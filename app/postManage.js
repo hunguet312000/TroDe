@@ -554,7 +554,10 @@ exports.displayListPostBySearch = async(req, res) => { // search by phan_loai, q
             order = ["gia_phong", "DESC"]
         }
 
+        const calculatePagniate = await paginate.calculateSearchPages(req, res, result);
         let phong_tro = await Phong_tro.findAll({
+                offset: calculatePagniate.offset,
+                limit: calculatePagniate.limit,
                 where: {
                     [Op.and]: [{
                             phan_loai: {
@@ -587,7 +590,16 @@ exports.displayListPostBySearch = async(req, res) => { // search by phan_loai, q
                 order: [order]
             })
             //console.log(phong_tro);
-        res.render("rooms", { user: req.user, login: req.isAuthenticated(), userData: phong_tro, type: req.url.slice(7) });
+        res.render("rooms", {
+          user: req.user,
+          login: req.isAuthenticated(),
+          userData: phong_tro,
+          type: req.url.slice(7),
+          pages: calculatePagniate.pages,
+          current: req.params.page,
+          roomsNum: calculatePagniate.roomsNum,
+          type: "rooms"
+        });
     } catch (err) {
         console.log(err);
     }
@@ -597,7 +609,7 @@ exports.search = async(req, res) => {
     req.body.order = "";
     //console.log(req.body.search);
     res.redirect(url.format({
-        pathname: "/rooms/",
+        pathname: "/rooms/1",
         query: req.body
     }));
 }
