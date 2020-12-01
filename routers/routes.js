@@ -16,7 +16,7 @@ module.exports = (app, passport) => {
     // });
 
     app.get("/", function(req, res) {
-        res.render("home", {user : req.user, login : req.isAuthenticated()})
+        res.render("home", { user: req.user, login: req.isAuthenticated() })
     })
 
     app.post("/", postManage.search);
@@ -84,4 +84,7 @@ module.exports = (app, passport) => {
     app.get("/report/:room", reportManage.report);
     app.post("/report/:room", upload.array('image'), reportManage.createReport)
     app.get("/report-info/:id", reportManage.reportInfo);
+    app.get("/hosts", function(req, res) {
+        res.render("hosts", { user: req.user, login: req.isAuthenticated() })
+    })
 }

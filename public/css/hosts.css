@@ -1,0 +1,18 @@
+#wrap-content {
+    margin-top: 85px;
+    margin-bottom: 100px;
+}
+
+.ten-user {
+    font-weight: 900;
+    font-size: 24px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.dia-chi {
+    color: #999!important;
+    text-align: center;
+    padding-top: 5px;
+    font-size: 16px;
+}

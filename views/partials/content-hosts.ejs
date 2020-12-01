@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-sm-3">
+        <div style="background-color:#f6f6f6!important;width: 100%;height: 230px;border-radius: 5px;">
+            <div class="ava" style="display: table;margin: 0 auto;padding-top: 20px;">
+                <img src="#" style="width:80px;height: 80px;border-radius: 50%;border:none;background-color: #ffffff;">
+            </div>
+            <div class="ten-user">
+                TÊN USER
+            </div>
+            <div class="dia-chi">
+                Việt Nam,Hà Nội, Cầu Giấy
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-9">
+        <div>
+            <h1 style="font-size: 20px;font-weight: 900;">(Số lượng) bài đăng</h1>
+        </div>
+        <div class="row">
+            <%- include("template/content-room-hosts"); -%>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('.items').slick({
+            infinite: false,
+            lazyLoad: 'ondemand',
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            responsive: [{
+                breakpoint: 990,
+                settings: {
+                    slidesToShow: 3
+                }
+            }]
+        });
+        $('.wrap-content2-items').slick({
+            infinite: false,
+            lazyLoad: 'ondemand',
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            responsive: [{
+                breakpoint: 990,
+                settings: {
+                    slidesToShow: 2
+                }
+            }]
+        });
+        $('.img-link').lazy({
+            delay: 250,
+            placeholder: "data:image/gif;base64,https://res.cloudinary.com/dt6qnb0hs/image/upload/v1606789819/photo-lazy_dwd9hw.jpg",
+        });
+
+        $('.lazy').lazy({
+            asyncLoader: function(element) {
+                setTimeout(function() {
+                    element.load()
+                }, 250);
+            }
+        })
+    });
+</script>
