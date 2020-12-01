@@ -10,6 +10,7 @@ const { sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan, Dan
 const Op = require('Sequelize').Op
 const bookingManage = require("./bookingManage");
 const paginate = require("./paginate");
+const userProfileManage = require("./userProfileManage");
 
 exports.savePosts = async(req, res) => {
     if (req.isAuthenticated()) {
@@ -271,7 +272,10 @@ exports.displayPostByNumOfPeopleOrPrice = async(req, res) => {
                 tong_so_nguoi = ""
                 gia_tien = [undefined, undefined]
         }
+        const calculatePagniate = await paginate.calculateRoomsByPeopleOrPricePages(req, res, type, tong_so_nguoi, gia_tien);
         const phong_tro = await Phong_tro.findAll({
+            offset: calculatePagniate.offset,
+            limit: calculatePagniate.limit,
             where: {
                 [Op.or]: [{
                         phan_loai: type,
@@ -293,7 +297,16 @@ exports.displayPostByNumOfPeopleOrPrice = async(req, res) => {
                 order
             ]
         });
-        res.render("rooms", { user: req.user, login: req.isAuthenticated(), userData: phong_tro, type: req.params.type + "/" + req.params.option });
+        res.render("rooms", {
+          user: req.user,
+          login: req.isAuthenticated(),
+          userData: phong_tro,
+          type: req.params.type + "/" + req.params.option,
+          pages: calculatePagniate.pages,
+          current: req.params.page,
+          roomsNum: calculatePagniate.roomsNum,
+          type: req.params.type
+        });
     } catch (err) {
         console.log(err);
     }
@@ -301,8 +314,11 @@ exports.displayPostByNumOfPeopleOrPrice = async(req, res) => {
 
 exports.displayUserListPost = async(req, res) => {
     if (req.isAuthenticated()) {
+      const calculatePagniate = await paginate.calculateListHostPages(req,res);
         try {
             const phong_tro = await Phong_tro.findAll({
+                offset: calculatePagniate.offset,
+                limit: calculatePagniate.limit,
                 where: {
                     id_chu_so_huu: req.user.id_nguoi_dung
                 },
@@ -310,7 +326,15 @@ exports.displayUserListPost = async(req, res) => {
                     ["id_phong_tro", "DESC"]
                 ]
             });
-            res.render('user-list-host', { user: req.user, userData: phong_tro });
+            //console.log("alo");
+            res.render('user-list-host', {
+              user: req.user,
+              userData: phong_tro,
+              pages: calculatePagniate.pages,
+              current: req.params.page,
+              postNum: calculatePagniate.postNum,
+              type: "list-host"
+              });
         } catch (err) {
             console.log(err);
         }
@@ -366,11 +390,20 @@ exports.displayPostProfile = async(req, res) => {
         userData.tien_ich = tien_ich;
         userData.hinh_anh = hinh_anh;
         const bookedUserList = await bookingManage.getBookedUser();
-        console.log("alo");
+        let isInWishList = null;
+        if(req.isAuthenticated()){
+          isInWishList = await userProfileManage.isInWishList(req.params.id, req.session.passport.user.id_nguoi_dung);
+        }
         // if (req.isAuthenticated()) {
         //     res.render("user-room", { user: req.user, userData: userData });
         // } else { res.render("guest-room", { user: "", userData: userData }); };
-        res.render("room", { user: req.user, userData: userData, login: req.isAuthenticated(), bookedUserList: bookedUserList })
+        res.render("room", {
+          user: req.user,
+          userData: userData,
+          login: req.isAuthenticated(),
+          bookedUserList: bookedUserList,
+          isInWishList: isInWishList
+        })
     } catch (err) {
         console.log(err);
     }
@@ -429,7 +462,7 @@ exports.deletePost = async(req, res) => {
                 id_phong_tro: req.params.id
             }
         });
-        res.redirect("/list-host");
+        res.redirect("/list-host/1");
     } catch (err) {
         console.log(err);
     }

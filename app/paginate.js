@@ -46,6 +46,36 @@ exports.calculateRoomsPages = async(req, res, type, district, area) => {
   }
 }
 
+exports.calculateRoomsByPeopleOrPricePages = async(req, res, type, tong_so_nguoi, gia_tien) => {
+  try {
+    const currentPage = Number(req.params.page);
+    const roomPerPage = 12;
+    const roomsNum = await Phong_tro.count({
+      where: {
+          [Op.or]: [{
+                  phan_loai: type,
+                  tong_so_nguoi: tong_so_nguoi
+              },
+              {
+                  phan_loai: type,
+                  gia_phong: {
+                      [Op.between]: [gia_tien[0], gia_tien[1]]
+                  }
+              },
+          ]
+      }
+    });
+    return {
+      pages: Math.ceil(roomsNum/roomPerPage),
+      offset: (roomPerPage*currentPage)-roomPerPage,
+      limit: roomPerPage,
+      roomsNum: roomsNum
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 exports.calculateBookedPages = async(req, res) => {
   try {
     const currentPage = Number(req.params.page);
@@ -148,6 +178,49 @@ exports.calculateBookingStatusPages = async(req, res, tinh_trang) => {
       offset: (bookingPerPage*currentPage)-bookingPerPage,
       limit: bookingPerPage,
       bookingNum: bookingNum
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+exports.calculateListHostPages = async(req, res) => {
+  try {
+    const currentPage = Number(req.params.page);
+    const postPerPage = 3;
+    const postNum = await Phong_tro.count({
+      where: {
+          id_chu_so_huu: req.user.id_nguoi_dung
+      },
+      order: [
+          ["id_phong_tro", "DESC"]
+      ]
+    });
+    return {
+      pages: Math.ceil(postNum/postPerPage),
+      offset: (postPerPage*currentPage)-postPerPage,
+      limit: postPerPage,
+      postNum: postNum
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+exports.calculateWishListPages = async(req, res) => {
+  try {
+    const currentPage = Number(req.params.page);
+    const postPerPage = 12;
+    const postNum = await Danh_sach_yeu_thich.count({
+      where: {
+          id_nguoi_dung:  req.session.passport.user.id_nguoi_dung
+      }
+    });
+    return {
+      pages: Math.ceil(postNum/postPerPage),
+      offset: (postPerPage*currentPage)-postPerPage,
+      limit: postPerPage,
+      postNum: postNum
     }
   } catch (e) {
     console.log(e);
