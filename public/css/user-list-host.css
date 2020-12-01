@@ -50,6 +50,8 @@ h5 {
     padding: 12px;
     background: #fff;
     border: none;
+    border-right: 2px solid #f2f2f2;
+    border-left: 2px solid #f2f2f2;
 }
 
 #div-name-host {
@@ -141,10 +143,13 @@ img {
 }
 
 @media (min-width:769px) and (max-width:990px) {
-    #a-sub-2 {
+    #a-sub-1 {
         display: none;
     }
     #a-sub-3 {
+        display: none;
+    }
+    #a-sub-4 {
         display: none;
     }
     .info,
@@ -161,7 +166,7 @@ img {
 }
 
 @media (max-width:769px) {
-    #a-sub-2 {
+    #a-sub-1 {
         display: none;
     }
     #a-sub-3 {

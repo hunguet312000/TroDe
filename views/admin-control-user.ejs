@@ -23,7 +23,12 @@
 </head>
 
 <%- include("partials/admin-navbar-control"); -%>
-    <div class="container" style="margin-top: 200px;">
+    <div class="container" style="margin-top: 150px;">
+        <form action="/" method="post" class="form-inline flex-nowrap bg-light">
+            <input class="form-control " id="search-new" name="search" placeholder="Tìm tên user ... " autocomplete="on " type="text">
+            <button class="btn btn-outline-success" id="btserach" type="submit"><i class="fas fa-search" style="color: white;"></i></button>
+        </form>
+
         <div class="row">
             <%- include("partials/admin-list-user"); -%>
         </div>
