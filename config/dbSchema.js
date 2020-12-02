@@ -50,6 +50,10 @@ const nguoi_dung = {
     },
     token: {
         type: DataTypes.STRING(1000)
+    },
+    avatar_path : {
+        type: DataTypes.STRING,
+        allowNull: true
     }
 }
 
@@ -266,7 +270,7 @@ const hinh_anh = {
 
 const binh_luan = {
     // Model attributes are defined here
-    id_binh_luan: {
+     id_binh_luan: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
@@ -293,6 +297,22 @@ const binh_luan = {
     }
 }
 
+const hinh_anh_bao_cao = {
+    id_anh: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        primaryKey: true,
+    },
+    path_anh: {
+        type: DataTypes.STRING(1000),
+        allowNull: false
+    },
+    id_bao_cao : {
+        type: DataTypes.INTEGER,
+        allowNull : false,
+        foreignKey : true
+    }
+}
 const bao_cao = {
     // Model attributes are defined here
     id_bao_cao: {
@@ -317,9 +337,6 @@ const bao_cao = {
         type: DataTypes.STRING,
         allowNull: false
     },
-    hinh_anh: {
-        type: DataTypes.STRING(1000)
-    }
 }
 
 const quan_tri_vien = {
@@ -404,5 +421,6 @@ module.exports = {
     bao_cao,
     quan_tri_vien,
     danh_sach_yeu_thich,
-    lich_hen
+    lich_hen,
+    hinh_anh_bao_cao
 }
