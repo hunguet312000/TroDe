@@ -20,7 +20,7 @@ module.exports = (app, passport) => {
 
     app.get("/room/:id", postManage.displayPostProfile);
 
-    app.post("/rooms/:type", postManage.filterListPostByType);
+    app.post("/rooms/:type/:page/:option", postManage.filterListPostByType);
 
     app.post("/rooms/:type/:option", postManage.filterListPostByNumOfPeopleOrPrice);
 

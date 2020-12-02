@@ -100,6 +100,7 @@ exports.filterListPostByType = async(req, res) => {
     }))
 }
 exports.filterListPostByNumOfPeopleOrPrice = async(req, res) => {
+    //console.log("OLALA: " + req.url);
     res.redirect(url.format({
         pathname: req.url,
         query: req.body,
@@ -222,6 +223,7 @@ exports.displayListPost = async(req, res) => {
                 order
             ]
         });
+        console.log(rType);
         res.render("rooms", {
             user: req.user,
             userData: phong_tro,

@@ -13,7 +13,7 @@ const bookingManage = require("./bookingManage");
 exports.calculateRoomsPages = async(req, res, type, district, area) => {
   try {
     const currentPage = Number(req.params.page);
-    const roomPerPage = 12;
+    const roomPerPage = 4;
     const roomsNum = await Phong_tro.count({
       where: {
           [Op.or]: [{
