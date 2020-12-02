@@ -292,6 +292,43 @@ input::-webkit-inner-spin-button {
     margin-top: 1%;
     margin-bottom: 1%;
     color: #fff;
+    background: transparent;
+    border-color: transparent;
+    font-weight: 900;
+    height: 38px;
+    margin-top: 50px;
+    margin-left: -35px;
+    position: absolute;
+}
+
+#btn-upload:hover {
+    opacity: 0.6;
+}
+
+.btn.active,
+.btn:active {
+    background-image: none;
+    outline: 0 none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#btn-upload:hover {
+    border-color: transparent;
+    outline: 0 none;
+    background: transparent;
+}
+
+#btn-upload:focus {
+    outline: 0;
+    background: transparent;
+}
+
+#submit {
+    border-radius: 7px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    color: #fff;
     background: rgb(23, 202, 157);
     border-color: transparent;
     font-weight: 900;
@@ -300,16 +337,16 @@ input::-webkit-inner-spin-button {
     -ms-border-radius: 7px;
     -o-border-radius: 7px;
     height: 38px;
-    padding-top: 8px;
+    padding-top: 3px;
 }
 
-#btn-upload:hover {
+#submit:hover {
     border-color: #17ca9d;
     box-shadow: 0 0 5px 0 #17ca9d;
     outline: 0 none;
 }
 
-#btn-upload:focus {
+#submit:focus {
     outline: 0;
 }
 

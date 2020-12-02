@@ -241,29 +241,29 @@ Bao_cao.belongsTo(Nguoi_dung, {
     onUpdate: 'CASCADE'
 });
 Bao_cao.belongsTo(Phong_tro, {
-        foreignKey: {
-            name: 'id_phong_tro',
-            allowNull: false
-        },
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE'
-    })
+    foreignKey: {
+        name: 'id_phong_tro',
+        allowNull: false
+    },
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+})
 Bao_cao.hasMany(Hinh_anh_bao_cao, {
     foreignKey: {
-        name : 'id_bao_cao',
+        name: 'id_bao_cao',
         allowNull: false,
     },
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
 })
 Hinh_anh_bao_cao.belongsTo(Bao_cao, {
-    foreignKey: {
-        name : 'id_bao_cao',
-        allowNull: false,
-    },
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE'
-})
+        foreignKey: {
+            name: 'id_bao_cao',
+            allowNull: false,
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+    })
     //
     // Danh_sach_yeu_thich.belongsTo(Nguoi_dung,{
     //   foreignKey: {
