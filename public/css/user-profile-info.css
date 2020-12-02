@@ -47,13 +47,14 @@ body {
 
 .div-side {
     border-bottom: 1px solid #e6e6e6;
-    padding: 12px 0px 12px 12px;
+    padding: 15px 0px 15px 15px;
     font-weight: 500;
     -webkit-font-smoothing: antialiased;
 }
 
 .a-side {
     color: #666666;
+    padding: 12px 20px 12px 20px;
 }
 
 .div-side:hover .a-side {
@@ -142,25 +143,34 @@ input::-webkit-inner-spin-button {
 .gj-icon {
     vertical-align: middle;
     margin-top: 7px;
-    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.gj-datepicker-md [role=right-icon] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 24px;
 }
 
 #datepicker {
-    border: transparent;
-    border-bottom: 1px solid #e6e6e6;
+    border-radius: 5px!important;
+    background-color: rgba(61, 26, 26, 0.07)!important;
     color: #424242;
     height: 40px;
     font-size: 14px;
     font-weight: 500;
-    text-align: center;
     padding-right: 25px;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    padding-left: 40px;
 }
 
 #datepicker:focus {
-    border-bottom: #17ca9d;
+    background-color: #fff!important;
+    border-color: #17ca9d;
     box-shadow: 0 0 5px 0 #17ca9d;
     outline: 0 none;
-    border-radius: 7px;
 }
 
 #gallery-img {
@@ -233,11 +243,13 @@ input::-webkit-inner-spin-button {
 .gj-picker-md table tr td.selected.gj-cursor-pointer div {
     background: #17ca9d;
     color: #ffffff;
-    border-radius: 0;
 }
 
 .gj-picker-md table tr td.gj-cursor-pointer div:hover {
-    border-radius: 0;
+    background-color: transparent;
+    border: transparent;
+    color: #17ca9d;
+    font-weight: 700;
 }
 
 .gj-picker-md [role=footer] button.gj-button-md {
@@ -253,18 +265,20 @@ input::-webkit-inner-spin-button {
 }
 
 .current-month.disabled {
-    border: 1px solid #e4e7e7;
-    font-weight: 700;
+    font-weight: 500;
 }
 
 .today.gj-cursor-pointer {
-    border: 1px solid #e4e7e7;
-    font-weight: 700;
+    font-weight: 500;
 }
 
 .current-month.gj-cursor-pointer {
-    border: 1px solid #e4e7e7;
-    font-weight: 700;
+    font-weight: 500;
+}
+
+.gj-picker-md table thead {
+    color: #333333;
+    font-weight: 500;
 }
 
 .gj-picker-md .arrow-begin,
@@ -285,6 +299,10 @@ input::-webkit-inner-spin-button {
 .gj-picker-md .arrow-end {
     background: #17ca9d;
     border: 16px solid #17ca9d;
+}
+
+.gj-picker div[role=navigator] div[role=period] {
+    margin-top: 7px;
 }
 
 #btn-upload {
@@ -348,6 +366,14 @@ input::-webkit-inner-spin-button {
 
 #submit:focus {
     outline: 0;
+}
+
+input[type=checkbox],
+input[type=radio] {
+    width: 15px;
+    height: 15px;
+    margin-right: 3px;
+    border: 2px solid #ced4da;
 }
 
 @media (min-width:769px) and (max-width:990px) {

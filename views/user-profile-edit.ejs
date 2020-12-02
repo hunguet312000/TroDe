@@ -2,10 +2,10 @@
     <%- include("partials/user-navbar-profile"); -%>
         <div class="container" id="profile-content">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="side-profile">
                         <div class="div-side">
-                            <a href="/profile/info" class="a-side" style="text-decoration: none;">
+                            <a href="/profile/edit" class="a-side" style="text-decoration: none;">
                                 <span id="sp-color" style="color: #333333;font-weight: 900;">Thông tin cá nhân</span>
                             </a>
                         </div>
@@ -15,13 +15,13 @@
                             </a>
                         </div>
                         <div class="div-side">
-                            <a href="/profile/address" class="a-side" style="text-decoration: none;">
+                            <a href="/profile/address-edit" class="a-side" style="text-decoration: none;">
                                 <span id="sp">Địa chỉ</span>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-10">
+                <div class="col-md-9">
                     <form action="/profile/edit" method="post" enctype="multipart/form-data">
                         <div class="avatar" style="margin-left: 15px;">
                             <div class="row">
@@ -42,57 +42,50 @@
                         <br>
                         <span style="font-size: 17px;"><b>Sửa thông tin cá nhân</b></span>
                         <br><br>
-                        <div class="content" style="background-color: white; height: 400px;border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);">
-                            <div class="row" style="padding:40px;">
-                                <div class="col-md-4">
-                                    <span id="title-item-profile"><i>Tên đăng nhập</i></span>
-                                    <br>
-                                    <br>
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Tên đăng nhập</div>
                                     <input name="username" type="text" id="user-name1" class="form-control btn-edit" placeholder="Vui lòng nhập họ tên của bạn" value="<%=user.ten_nguoi_dung %>">
                                     <br>
                                 </div>
-                                <div class="col-md-4">
-                                    <span id="title-item-profile"><i>Địa chỉ email</i></span>
-                                    <br>
-                                    <br>
-                                    <input name="email" type="text" id="btn-forget" class="form-control btn-edit" data-meta="Field" value="<%=user.email %>" tabindex="-1">
+                                <div class="col-md-12">
+                                    <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Địa chỉ email</div>
+                                    <input name="email" type="text" id="btn-forget" class="form-control btn-edit" data-meta="Field" value="<%=user.email %>" tabindex="-1" readonly>
                                     <br>
                                 </div>
-                                <div class="col-md-4">
-                                    <span id="title-item-profile"><i>Số điện thoại</i></span>
-                                    <br>
-                                    <br>
+                                <div class="col-md-12">
+                                    <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Số điện thoại</div>
                                     <input name="phone" type="number" id="btn-phone" class="form-control btn-edit" placeholder="Vui lòng nhập số điện thoại của bạn" value="<%=user.sdt %>" maxlength="11" pattern="([0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9])">
                                     <br>
                                 </div>
-                                <div class="col-md-4">
-                                    <span id="title-item-profile"><i>Ngày sinh</i></span>
-                                    <br>
-                                    <br>
+                                <div class="col-md-12">
+                                    <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Ngày sinh</div>
                                     <input name="DOB" id="datepicker" placeholder="Chọn ngày sinh của bạn" value="<%=user.ngay_sinh %>" readonly="">
+                                    <br>
                                 </div>
-                                <div class="col-md-4">
-                                    <span id="title-item-profile"><i>Giới tính</i></span>
-                                    <br>
-                                    <br>
-                                    <select name="sex" class="custom-select btn-edit" id="inputGroupSelect01" required data-bv-notempty-message="Không được để trống">
-                                    <option value="" disabled selected hidden>Chọn</option>
-                                <option > <%=user.gioi_tinh %> </option>
-                                <% if(user.gioi_tinh == "Nam"){ %>
-                                  <option >Nữ</option>
-                                <% }else{ %>
-                                    <option >Nam</option>
-                                <% } %>
-                            </select>
+                                <div class="col-md-12">
+                                    <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Giới tính</div>
+                                    <div class="row">
+                                        <div class="col-sm-3 form-check form-check-inline">
+                                            <input name="Gioi Tinh" class="form-check-input" type="radio" id="Nam" value="Nam">
+                                            <label class="form-check-label" for="Nam" style="vertical-align: middle;font-weight: 700;font-size: 16px;">Nam</label>
+                                        </div>
+                                        <div class="col-sm-3 form-check form-check-inline">
+                                            <input name="Gioi Tinh" class="form-check-input" type="radio" id="Nữ" value="Nữ">
+                                            <label class="form-check-label" for="Nữ" style="vertical-align: middle;font-weight: 700;font-size: 16px;">Nữ</label>
+                                        </div>
+                                        <div class="col-sm-3 form-check form-check-inline">
+                                            <input name="Gioi Tinh" class="form-check-input" type="radio" id="Khác" value="Khác">
+                                            <label class="form-check-label" for="Khác" style="vertical-align: middle;font-weight: 700;font-size: 16px;">Khác</label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <br>
-                            <div class="row" style="padding:40px;">
-                                <div class="col-md-4">
-                                    <button type="submit" class="btn btn-primary" id="button-submit"><span id = "text-btn"><b>LƯU THAY ĐỔI</b></span></button>
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="/profile/info" style="text-decoration: none;"><button type="button" class="btn btn-primary" id="button-submit"><span id = "text-btn"><b>HỦY BỎ</b></span></button></a>
+                            <div class="row" style="margin-top: -10px;">
+                                <div class="col-md-2">
+                                    <button type="submit" class="btn btn-primary" id="button-submit" style="height: 38px;"><span id = "text-btn"><b>CẬP NHẬT</b></span></button>
                                 </div>
                             </div>
                         </div>
