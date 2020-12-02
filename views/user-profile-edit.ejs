@@ -26,7 +26,11 @@
                         <div class="avatar" style="margin-left: 15px;">
                             <div class="row">
                                 <div class="col-sm-2" style="border-radius: 50%;border:none;">
-                                    <img id="imgava" style="width:80px;height: 80px;border-radius: 50%;border:none;background-color: #ffffff;vertical-align: middle;">
+                                    <%if(userData[0].dataValues.avatar_path != undefined) {%>
+                                        <img src=<%=userData[0].dataValues.avatar_path%> id="ava" style="width:80px;height: 80px;border-radius: 50%;;">
+                                    <%}else{%>
+                                        <img id="imgava" style="width:80px;height: 80px;border-radius: 50%;border:none;background-color: #ffffff;vertical-align: middle;">
+                                    <%}%>
                                     <label class="btn btn-primary label-up" id="btn-upload" style="display:inline-block;">
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 37.434 37.434" style="enable-background:new 0 0 37.434 37.434;width:20px;height:20px;" xml:space="preserve"><g>    <path d="M32.932,8.578H27.52V8.022c0-2.484-2.016-4.5-4.5-4.5h-8.607c-2.485,0-4.5,2.016-4.5,4.5v0.556H4.5   c-2.485,0-4.5,2.015-4.5,4.5v16.334c0,2.484,2.015,4.5,4.5,4.5h28.434c2.485,0,4.5-2.016,4.5-4.5V13.078   C37.432,10.592,35.417,8.578,32.932,8.578z M18.715,29.244c-4.688,0-8.5-3.812-8.5-8.5c0-4.687,3.812-8.5,8.5-8.5   c4.688,0,8.5,3.812,8.5,8.5C27.215,25.432,23.402,29.244,18.715,29.244z M23.215,20.744c0,2.479-2.02,4.5-4.5,4.5   c-2.48,0-4.5-2.021-4.5-4.5c0-2.48,2.02-4.5,4.5-4.5C21.195,16.244,23.215,18.264,23.215,20.744z"/></g></svg>                                            <input name="image" id="uploadimg" type="file" class="btn-edit" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
                                         </label>
@@ -38,7 +42,7 @@
                             <img src="#" id="ava" style="width:80px;height: 80px;border-radius: 50%;display: none;">
                         </div>
                     </form>
-                    <form action="/profile/edit" method="post" enctype="multipart/form-data">
+                    <form action="/profile/edit" method="post">
                         <br>
                         <span style="font-size: 17px;"><b>Sửa thông tin cá nhân</b></span>
                         <br><br>

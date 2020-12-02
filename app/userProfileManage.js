@@ -1,10 +1,11 @@
 const cloudinary = require('../config/cloudinary');
 
 const mysql = require('mysql');
+const { QueryTypes } = require('sequelize');
 
 const dbconfig = require('../config/database');
 const bcrypt = require('bcrypt');
-const { sequelizeInit, Nguoi_dung, Phong_tro, Danh_sach_yeu_thich } = require("../config/sequelize");
+const { sequelizeInit, Nguoi_dung, Phong_tro, Danh_sach_yeu_thich, sequelize } = require("../config/sequelize");
 const paginate = require("./paginate");
 const Op = require('Sequelize').Op
 
@@ -111,19 +112,13 @@ exports.isInWishList = async(id_phong_tro, id_nguoi_dung) => {
         console.log(err);
     }
 }
-
-
-exports.watchUserProfile = async(req, res) => {
-    if (req.isAuthenticated()) {
-        try {
-            const nguoi_dung = await Nguoi_dung.findAll({
-                where: { id_nguoi_dung: req.user.id_nguoi_dung }
-            })
-            const user = req.session.passport.user;
-            console.log(nguoi_dung[0].dataValues.avatar_path)
-            res.render("user-profile-info", { user: user, userData: nguoi_dung });
-        } catch (err) { console.log(err) }
-    } else { res.redirect('/login') }
+exports.editUserProfile = async(req, res) =>{
+    try{
+        console.log(req.body)
+    }
+    catch(err){
+        err
+    }
 }
 exports.changeAvatar = async(req, res) => {
     try {
@@ -134,29 +129,44 @@ exports.changeAvatar = async(req, res) => {
             const newPath = await uploader(path)
             insert_hinh_anh_values.push(newPath);
         }
-        const result = await Nguoi_dung.update({ avatar_path: insert_hinh_anh_values[0].path_anh }, { where: { id_nguoi_dung: req.user.id_nguoi_dung } })
-
-        console.log(result)
-        res.redirect("/profile");
+        if(JSON.stringify(req.files) != "[]"){
+            const result = await Nguoi_dung.update({ avatar_path: insert_hinh_anh_values[0].path_anh }, { where: { id_nguoi_dung: req.user.id_nguoi_dung } })
+        }
+        res.redirect("/profile/edit");
     } catch (err) {
         console.log(err)
     }
 
 }
-exports.editUserProfile = async(req, res) => {
+exports.watchUserProfile = async(req, res) => {
     if (req.isAuthenticated()) {
-        const user = req.session.passport.user;
-        res.render('user-profile-edit', { user: user });
+        try{
+            const nguoi_dung = await Nguoi_dung.findAll({
+                where: {id_nguoi_dung : req.user.id_nguoi_dung}
+            })
+            const user = req.session.passport.user;
+            res.render('user-profile-edit', { user: user, userData : nguoi_dung });
+        }
+        catch(err){
+            console.log(err)
+        }
     } else { res.redirect('/login') }
 }
 
 
 exports.watchHostProfile = async(req, res) => {
     try {
-        const nguoi_dung = await Nguoi_dung.findAll({
-            where: { id_nguoi_dung: req.params.id }
+        const queryValue = "SELECT *, count(id_phong_tro) as so_bai_dang  FROM nguoi_dung" +
+                                " left outer join phong_tro on phong_tro.id_chu_so_huu = nguoi_dung.id_nguoi_dung" +
+                                " where id_nguoi_dung = " + req.params.id + 
+                                " group by nguoi_dung.id_nguoi_dung" +
+                                " order by nguoi_dung.id_nguoi_dung desc";
+        const nguoi_dung = await sequelize.query(queryValue, { type: QueryTypes.SELECT });
+        const phong_tro =await Phong_tro.findAll({
+            where: {id_chu_so_huu : req.params.id}
         })
-        res.render("hosts", { user: req.user, login: req.isAuthenticated(), userData: nguoi_dung })
+        console.log(phong_tro[0].dataValues.id_phong_tro)
+        res.render("hosts", { user: req.user, login: req.isAuthenticated(), nguoi_dung: nguoi_dung, phong_tro :phong_tro })
     } catch (err) {
         console.log(err);
     }
