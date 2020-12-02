@@ -9,7 +9,6 @@ const forgetPassword = require("../app/forgetPassword");
 require('dotenv').config();
 
 module.exports = (app, passport) => {
-    app.get('/profile', userProfileManage.watchUserProfile);
 
     app.get('/wish-list/:page',  userProfileManage.showWishList);
 
@@ -23,8 +22,9 @@ module.exports = (app, passport) => {
 
     app.post('/await-bookings/:id/:response', bookingManage.bookingResponse);
 
-    app.get('/profile/edit', userProfileManage.editUserProfile);
+    app.get('/profile/edit', userProfileManage.watchUserProfile);
     app.post("/profile/edit", upload.array('image'), userProfileManage.changeAvatar)
+    app.post("/profile/edit", userProfileManage.editUserProfile)
     // app.post("/profile-edit", function(req, res) {
     //     if (req.isAuthenticated()) {
     //         const newInfo = req.body;
