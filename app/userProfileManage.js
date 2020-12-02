@@ -1,4 +1,3 @@
-
 const cloudinary = require('../config/cloudinary');
 
 const mysql = require('mysql');
@@ -97,16 +96,16 @@ exports.isInWishList = async(id_phong_tro, id_nguoi_dung) => {
     try {
         const roomIdList = await Danh_sach_yeu_thich.findAll({
             where: {
-                [Op.and]:[
-                  {id_nguoi_dung: id_nguoi_dung},
-                  {id_phong_tro: id_phong_tro}
+                [Op.and]: [
+                    { id_nguoi_dung: id_nguoi_dung },
+                    { id_phong_tro: id_phong_tro }
                 ]
             }
         });
-        if (roomIdList.length >0){
-          return true;
-        }else{
-          return false;
+        if (roomIdList.length > 0) {
+            return true;
+        } else {
+            return false;
         }
     } catch (err) {
         console.log(err);
@@ -116,34 +115,30 @@ exports.isInWishList = async(id_phong_tro, id_nguoi_dung) => {
 
 exports.watchUserProfile = async(req, res) => {
     if (req.isAuthenticated()) {
-        try{
+        try {
             const nguoi_dung = await Nguoi_dung.findAll({
-                where: {id_nguoi_dung : req.user.id_nguoi_dung}
+                where: { id_nguoi_dung: req.user.id_nguoi_dung }
             })
             const user = req.session.passport.user;
             console.log(nguoi_dung[0].dataValues.avatar_path)
-            res.render("user-profile-info", { user: user, userData : nguoi_dung });
-        }
-        catch(err) {console.log(err)}
+            res.render("user-profile-info", { user: user, userData: nguoi_dung });
+        } catch (err) { console.log(err) }
     } else { res.redirect('/login') }
 }
 exports.changeAvatar = async(req, res) => {
-    try{
+    try {
         const uploader = async(path) => await cloudinary.uploads(path, 'Image');
         let insert_hinh_anh_values = []
         for (const file of req.files) {
-            const {path} = file
+            const { path } = file
             const newPath = await uploader(path)
             insert_hinh_anh_values.push(newPath);
         }
-        const result = await Nguoi_dung.update(
-            { avatar_path: insert_hinh_anh_values[0].path_anh },
-            { where: { id_nguoi_dung: req.user.id_nguoi_dung  } }
-        )
+        const result = await Nguoi_dung.update({ avatar_path: insert_hinh_anh_values[0].path_anh }, { where: { id_nguoi_dung: req.user.id_nguoi_dung } })
 
         console.log(result)
         res.redirect("/profile");
-    }catch(err) {
+    } catch (err) {
         console.log(err)
     }
 
@@ -157,13 +152,13 @@ exports.editUserProfile = async(req, res) => {
 
 
 exports.watchHostProfile = async(req, res) => {
-    try{
-            const nguoi_dung = await Nguoi_dung.findAll({
-                where: {id_nguoi_dung : req.params.id}
-            })
-            res.render("hosts", { user: req.user, login: req.isAuthenticated(), userData : nguoi_dung })
-        }catch(err) {
-            console.log(err);
-        }
-    
+    try {
+        const nguoi_dung = await Nguoi_dung.findAll({
+            where: { id_nguoi_dung: req.params.id }
+        })
+        res.render("hosts", { user: req.user, login: req.isAuthenticated(), userData: nguoi_dung })
+    } catch (err) {
+        console.log(err);
+    }
+
 }
