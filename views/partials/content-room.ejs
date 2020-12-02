@@ -38,7 +38,7 @@
                     <h2><b><%=userData.phong_tro[0].dataValues.phan_loai%> - <%=userData.phong_tro[0].dataValues.ten_phong%></b></h2>
                 </div>
                 <div class="author">
-                    <span>Đăng bởi: <a href = "#" style="text-decoration: none;"><span class= "author-name" style="color: #222222;font-weight: 900;">
+                    <span>Đăng bởi: <a href = "/host-profile/<%=userData.phong_tro[0].dataValues.nguoi_dung.dataValues.id_nguoi_dung%>" style="text-decoration: none;"><span class= "author-name" style="color: #222222;font-weight: 900;">
                       <% if(userData.phong_tro[0].dataValues.nguoi_dung.dataValues.ho_va_ten){%>
                         <%= userData.phong_tro[0].dataValues.nguoi_dung.dataValues.ho_va_ten %>
                       <%}else{%>
@@ -222,7 +222,11 @@
                                         <div class="binh-luan" style="border-bottom: 2px solid #f2f2f2;margin-bottom: 10px;height: fit-content;width: 100%; word-wrap: break-word;">
                                             <div class="row">
                                                 <div class="col-sm-1">
-                                                    <i class="far fa-user-circle" id="circle1"></i>
+                                                    <%if(b.avatar_path != undefined) {%>
+                                                    <img src=<%=b.avatar_path%> id="ava" style="width:80px;height: 80px;border-radius: 50%;;">
+                                                    <%}else {%> 
+                                                        <i class="far fa-user-circle" id="circle1"></i>
+                                                    <%}%>
                                                 </div>
                                                 <div class="col-sm-11">
                                                     <div class="user-name" style="margin-bottom: 5px;font-weight: 900;">
