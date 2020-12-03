@@ -51,7 +51,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Tên đăng nhập</div>
-                                    <input name="username" type="text" id="user-name1" class="form-control btn-edit" placeholder="Vui lòng nhập tên đăng nhập của bạn" value="<%=user.ten_nguoi_dung %>">
+                                    <input name="ten_nguoi_dung type="text" id="user-name1" class="form-control btn-edit" placeholder="Vui lòng nhập tên đăng nhập của bạn" value="<%=userData[0].dataValues.ten_nguoi_dung %>">
                                     <br>
                                 </div>
                                 <div class="col-md-12">
@@ -66,12 +66,12 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Số điện thoại</div>
-                                    <input name="phone" type="number" id="btn-phone" class="form-control btn-edit" placeholder="Vui lòng nhập số điện thoại của bạn" value="<%=user.sdt %>" maxlength="11" pattern="([0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9])">
+                                    <input name="sdt" type="number" id="btn-phone" class="form-control btn-edit" placeholder="Vui lòng nhập số điện thoại của bạn" value="<%=userData[0].dataValues.sdt %>" maxlength="11" pattern="([0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9])">
                                     <br>
                                 </div>
                                 <div class="col-md-12">
                                     <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Ngày sinh</div>
-                                    <input name="DOB" id="datepicker" placeholder="Chọn ngày sinh của bạn" value="<%=user.ngay_sinh %>" readonly="">
+                                    <input name="ngay_sinh" id="datepicker" placeholder="Chọn ngày sinh của bạn" value="<%=userData[0].dataValues.ngay_sinh %>" readonly="">
                                     <br>
                                 </div>
                                 <div class="col-md-12">

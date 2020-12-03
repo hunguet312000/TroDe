@@ -25,22 +25,6 @@ module.exports = (app, passport) => {
     app.get('/profile/edit', userProfileManage.viewUserProfile);
 
     app.post("/profile/edit", upload.array('image'), userProfileManage.editAvatarAndProfile)
-    // app.post("/profile-edit", function(req, res) {
-    //     if (req.isAuthenticated()) {
-    //         const newInfo = req.body;
-    //         const oldInfo = req.session.passport.user;
-    //         userProfileManage.updateInfo(newInfo, oldInfo);
-    //         req.logout();
-    //         res.redirect("/login")
-    //     } else { res.redirect('/login') }
-    // });
-
-    app.get('/profile/info', function(req, res) {
-        if (req.isAuthenticated()) {
-            const user = req.session.passport.user;
-            res.render('user-profile-info', { user: user });
-        } else { res.redirect('/login') }
-    });
 
     app.get('/list-host/:page', postManage.displayUserListPost);
 
