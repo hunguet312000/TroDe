@@ -82,7 +82,7 @@ exports.showWishList = async(req, res) => {
                 pages: calculatePagniate.pages,
                 current: req.params.page,
                 postNum: calculatePagniate.postNum,
-                type: "wish-list"
+                type: "/wish-list"
             });
         } catch (err) {
             console.log(err);
@@ -129,12 +129,12 @@ exports.editAvatarAndProfile = async(req, res) => {
                     const result = await Nguoi_dung.update({ avatar_path: insert_hinh_anh_values[0].path_anh }, { where: { id_nguoi_dung: req.user.id_nguoi_dung } })
                 }
                 break;
-            case "submit_profile" : 
+            case "submit_profile" :
                 const nguoi_dung = await Nguoi_dung.findAll({
                 where: {id_nguoi_dung: req.user.id_nguoi_dung}
                 })
                 const oldInfoUser = {
-                    ten_nguoi_dung : nguoi_dung[0].dataValues.ten_nguoi_dung, 
+                    ten_nguoi_dung : nguoi_dung[0].dataValues.ten_nguoi_dung,
                     email : nguoi_dung[0].dataValues.email,
                     sdt : nguoi_dung[0].dataValues.sdt,
                     ngay_sinh : nguoi_dung[0].dataValues.ngay_sinh,
@@ -147,9 +147,9 @@ exports.editAvatarAndProfile = async(req, res) => {
                 if(oldInfoUser.sdt != input.sdt) {newInfoUser.sdt = input.sdt}
                 if(oldInfoUser.ngay_sinh != input.ngay_sinh) {newInfoUser.ngay_sinh = input.ngay_sinh}
                 if(oldInfoUser.gioi_tinh != input.gioi_tinh) {newInfoUser.gioi_tinh = input.gioi_tinh}
-                console.log(newInfoUser)
+                console.log(typeof newInfoUser.ngay_sinh)
                 const nguoi_dung_info = await Nguoi_dung.update(
-                    newInfoUser, 
+                    newInfoUser,
                     {
                         where: { id_nguoi_dung: req.user.id_nguoi_dung }
                     }
@@ -183,7 +183,7 @@ exports.watchHostProfile = async(req, res) => {
     try {
         const queryValue = "SELECT *, count(id_phong_tro) as so_bai_dang  FROM nguoi_dung" +
                                 " left outer join phong_tro on phong_tro.id_chu_so_huu = nguoi_dung.id_nguoi_dung" +
-                                " where id_nguoi_dung = " + req.params.id + 
+                                " where id_nguoi_dung = " + req.params.id +
                                 " group by nguoi_dung.id_nguoi_dung" +
                                 " order by nguoi_dung.id_nguoi_dung desc";
         const nguoi_dung = await sequelize.query(queryValue, { type: QueryTypes.SELECT });

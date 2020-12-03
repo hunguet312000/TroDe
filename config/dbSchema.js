@@ -45,7 +45,7 @@ const nguoi_dung = {
         allowNull: true
     },
     ngay_sinh: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: true
     },
     token: {

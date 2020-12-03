@@ -86,7 +86,7 @@ exports.bookedList = async(req, res) => {
             pages: calculatePaginate.pages,
             bookedNum: calculatePaginate.bookedNum,
             current: req.params.page,
-            type: 'booked-list'
+            type: '/booked-list'
         });
     } else {
         res.redirect('/login');
@@ -130,7 +130,7 @@ exports.bookedListStatus = async(req, res) => {
           pages: calculatePaginate.pages,
           bookedStatusNum: calculatePaginate.bookedStatusNum,
           current: req.params.page,
-          type: 'accepted'
+          type: '/booked-list/accepted'
         })
       }else{
         res.render("user-booked-list-denied", {
@@ -139,7 +139,7 @@ exports.bookedListStatus = async(req, res) => {
           pages: calculatePaginate.pages,
           bookedStatusNum: calculatePaginate.bookedStatusNum,
           current: req.params.page,
-          type: 'denied'
+          type: '/booked-list/denied'
         })
       }
   } catch (e) {
@@ -181,7 +181,7 @@ exports.awaitBooking = async(req, res) => {
                 pages: calculatePaginate.pages,
                 bookingNum: calculatePaginate.bookingNum,
                 current: req.params.page,
-                type: 'await-bookings'
+                type: '/await-bookings'
             });
         } catch (err) {
             console.log(err);
@@ -229,7 +229,7 @@ exports.awaitBookingStatus = async(req, res) => {
           pages: calculatePaginate.pages,
           bookingNum: calculatePaginate.bookingNum,
           current: req.params.page,
-          type: 'accepted'
+          type: '/await-bookings/accepted'
         })
       }else{
         res.render("user-await-bookings-denied", {
@@ -238,7 +238,7 @@ exports.awaitBookingStatus = async(req, res) => {
           pages: calculatePaginate.pages,
           bookingNum: calculatePaginate.bookingNum,
           current: req.params.page,
-          type: 'denied'
+          type: '/await-bookings/denied'
         })
       }
   } catch (e) {

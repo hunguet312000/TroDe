@@ -139,7 +139,7 @@ module.exports = async function(passport) {
 
         try{
           const nguoi_dung = await Nguoi_dung.findOrCreate({
-          where: { ten_nguoi_dung: google_id}, // we search for this user
+          where: { email: email}, // we search for this user
           defaults: {
             ten_nguoi_dung: google_id,
             email: email,

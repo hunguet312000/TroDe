@@ -18,9 +18,7 @@ module.exports = (app, passport) => {
 
     app.get("/", function(req, res) {
         res.render("home", { user: req.user, login: req.isAuthenticated() })
-    })
-
-    app.post("/", postManage.search);
+    });
 
     app.get("/user-home", function(req, res) {
         res.redirect('/');

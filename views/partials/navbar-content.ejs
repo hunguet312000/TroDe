@@ -6,7 +6,7 @@
                     <div class="navbar-header" style="padding: 6px 0px 0px;">
                         <b><a class="navbar-brand" href="/" id="logo">TroDe</a></b>
                         <div class="nav navbar-nav " id="navsearch" style="margin-left: 20px;">
-                            <form action="/" method="post" class="form-inline flex-nowrap bg-light">
+                            <form action="/search" method="post" class="form-inline flex-nowrap bg-light">
                                 <input class="form-control " id="search-new" name="search" placeholder="Tìm kiếm nơi mà bạn muốn ... " autocomplete="on " type="text">
                                 <button class="btn btn-outline-success" id="btserach" type="submit"><i class="fas fa-search" style="color: white;"></i></button>
                             </form>
@@ -15,7 +15,13 @@
                     <% if (login){%>
                         <div class="nav-item menu-info ">
                             <a class="nav-link btn btn-primary dropdown dropdown-toggle dropbtn" data-toggle="dropdown" id="user-name" aria-haspopup="true" aria-expanded="false">
-                                <span id="sp-username"><%=user.ten_nguoi_dung%></span>
+                                <span id="sp-username">
+                                  <% if(user.ho_va_ten){%>
+                                    <%= user.ho_va_ten %>
+                                  <%}else{%>
+                                    <%= user.ten_nguoi_dung %>
+                                  <%}%>
+                                </span>
                                 <span><i class="fas fa-caret-down" style="color: black;"></i></span>
                             </a>
                             <span id="div-host"><a href="/host" id = "a-host">Host&nbsp;&nbsp;&nbsp;</a></span>

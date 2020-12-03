@@ -113,6 +113,7 @@ exports.filterListPostBySearch = async(req, res) => {
     res.redirect(req.url[0] + "&order=" + req.body.sort);
 
 }
+
 exports.displayListPost = async(req, res) => {
     const rType = req.params.type;
     const current = req.params.page;
@@ -223,11 +224,11 @@ exports.displayListPost = async(req, res) => {
                 order
             ]
         });
-        console.log(rType);
+        //console.log(rType);
         res.render("rooms", {
             user: req.user,
             userData: phong_tro,
-            type: rType,
+            type: "/rooms/" + rType,
             login: req.isAuthenticated(),
             bookedUserList: bookedUserList,
             pages: calculatePagniate.pages,
@@ -275,14 +276,18 @@ exports.displayPostByNumOfPeopleOrPrice = async(req, res) => {
                 gia_tien = [undefined, undefined]
         }
         const calculatePagniate = await paginate.calculateRoomsByPeopleOrPricePages(req, res, type, tong_so_nguoi, gia_tien);
+        console.log(type + " " + tong_so_nguoi);
         const phong_tro = await Phong_tro.findAll({
             offset: calculatePagniate.offset,
             limit: calculatePagniate.limit,
             where: {
-                [Op.or]: [{
-                        phan_loai: type,
-                        tong_so_nguoi: tong_so_nguoi
-                    },
+                [Op.or]: [
+                      {
+                        [Op.and]:[
+                          {phan_loai: type},
+                          {tong_so_nguoi: tong_so_nguoi}
+                        ]
+                      },
                     {
                         phan_loai: type,
                         gia_phong: {
@@ -299,15 +304,15 @@ exports.displayPostByNumOfPeopleOrPrice = async(req, res) => {
                 order
             ]
         });
+        //console.log(req.params.type + "/" + req.params.option);
         res.render("rooms", {
           user: req.user,
           login: req.isAuthenticated(),
           userData: phong_tro,
-          type: req.params.type + "/" + req.params.option,
+          type: "/rooms/" + req.params.type + "/" + req.params.option,
           pages: calculatePagniate.pages,
           current: req.params.page,
-          roomsNum: calculatePagniate.roomsNum,
-          type: req.params.type
+          roomsNum: calculatePagniate.roomsNum
         });
     } catch (err) {
         console.log(err);
@@ -335,7 +340,7 @@ exports.displayUserListPost = async(req, res) => {
               pages: calculatePagniate.pages,
               current: req.params.page,
               postNum: calculatePagniate.postNum,
-              type: "list-host"
+              type: "/list-host"
               });
         } catch (err) {
             console.log(err);
@@ -473,13 +478,23 @@ exports.deletePost = async(req, res) => {
     }
 }
 
+exports.search = async(req, res) => {
+    //console.log(req.body)
+    req.body.order = "";
+    console.log(req.body.search);
+    res.redirect(url.format({
+        pathname: "/search/" + req.body.search + "/1",
+        query: req.body
+    }));
+}
+
 exports.displayListPostBySearch = async(req, res) => { // search by phan_loai, quan_huyen, tong_songuoi, phuong_xa, cao cap, re, gia re
     try {
-        //console.log(req.query);
-        let search = req.query.search.toLowerCase(); //search value
+        //console.log(req.query.search);
+        let search = req.params.keyword.toLowerCase(); //search value
         search = search.replace(/\s\s+/g, ' '); //delete multiple spaces
         search = keywords_dict.convertStr(search);
-        console.log(search);
+        //console.log(search);
         const result = {
             'phan_loai': "",
             'quan_huyen': "",
@@ -603,20 +618,11 @@ exports.displayListPostBySearch = async(req, res) => { // search by phan_loai, q
           pages: calculatePagniate.pages,
           current: req.params.page,
           roomsNum: calculatePagniate.roomsNum,
-          type: "rooms"
+          type: "/search/" + req.params.keyword
         });
     } catch (err) {
         console.log(err);
     }
-}
-exports.search = async(req, res) => {
-    //console.log(req.body)
-    req.body.order = "";
-    //console.log(req.body.search);
-    res.redirect(url.format({
-        pathname: "/rooms/1",
-        query: req.body
-    }));
 }
 
 exports.displayAllPost = async(req, res) => {
