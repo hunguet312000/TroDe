@@ -20,7 +20,7 @@
                 <br>
                 <div class="col-sm-6">
                     <label for="phan-loai">*Phân loại nơi cho thuê</label>
-                    <select class="custom-select btn-ip" id="phan-loai" name="phan_loai" required data-bv-notempty-message="Không được để trống">
+                    <select class="custom-select btn-ip" id="phan-loai-thue" name="phan_loai" required data-bv-notempty-message="Không được để trống">
                     <% if (phong_tro.id_phong_tro) { %>
                       <option value="<%= phong_tro.phan_loai %>" disabled selected hidden> <%= phong_tro.phan_loai %></option>
                     <% }else{ %>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="col-sm-6">
                     <label for="phan-loai">*Hình thức cho thuê</label>
-                    <select class="custom-select btn-ip" id="phan-loai" name="hinh_thuc_thue" required data-bv-notempty-message="Không được để trống">
+                    <select class="custom-select btn-ip" id="hinh-thuc" name="hinh_thuc_thue" required data-bv-notempty-message="Không được để trống">
                     <% if (phong_tro.id_phong_tro) { %>
                       <option value="<%= phong_tro.hinh_thuc_thue %>" disabled selected hidden> <%= phong_tro.hinh_thuc_thue %></option>
                     <% }else{ %>
@@ -53,7 +53,7 @@
                 </div>
                 <div class="col-sm-6">
                     <label for="phan-loai">Khác (dành riêng cho phòng trọ)</label>
-                    <select class="custom-select btn-ip" id="phan-loai" name="phan_loai_khac" required data-bv-notempty-message="Không được để trống">
+                    <select class="custom-select btn-ip" id="khac" name="phan_loai_khac" required data-bv-notempty-message="Không được để trống">
                     <% if (phong_tro.id_phong_tro) { %>
                       <option value="<%= phong_tro.phan_loai_khac %>" disabled selected hidden> <%= phong_tro.phan_loai_khac %></option>
                     <% }else{ %>
@@ -154,7 +154,7 @@
                 </div>
                 <div class="col-sm-3">
                     <label for="phan-loai">*Phòng khách</label>
-                    <select name="phong_khach" class="custom-select btn-ip" id="phan-loai" required data-bv-notempty-message="Không được để trống">
+                    <select name="phong_khach" class="custom-select btn-ip" id="phong-khach" required data-bv-notempty-message="Không được để trống">
                     <% if (phong_tro.id_phong_tro) { %>
                         <option value="<%= phong_tro.phong_khach%>" disabled selected hidden><%= phong_tro.phong_khach%></option>
                     <% }else{ %>
@@ -621,4 +621,9 @@
                         console.log(price = Number(price).toLocaleString("en"));
                         $("[name='gia_phong']").val(price);
                     }
+                    $('#phan-loai-thue').select2();
+                    $('#hinh-thuc').select2();
+                    $('#khac').select2();
+                    $('select').select2();
+                    $('#phong-khach').select2();
                 </script>
