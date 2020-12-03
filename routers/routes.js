@@ -80,8 +80,4 @@ module.exports = (app, passport) => {
 
     app.get("/host-delete/:id", postManage.deletePost);
 
-    app.get("/report/:room", reportManage.report);
-    app.post("/report/:room", upload.array('image'), reportManage.createReport)
-    app.get("/report-info/:id", reportManage.reportInfo);
-    
 }
