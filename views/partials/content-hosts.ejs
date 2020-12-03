@@ -20,12 +20,13 @@
         <div>
             <h1 style="font-size: 20px;font-weight: 900;">
                 <%=nguoi_dung[0].so_bai_dang%> bài đăng</h1>
+            <% console.log(nguoi_dung[0].so_bai_dang) %>
         </div>
         <br>
         <div class="row">
             <%- include("template/content-room-hosts"); -%>
-            <%- include("template/paginate")-%>
         </div>
+        <%- include("template/paginate")-%>
     </div>
 </div>
 
