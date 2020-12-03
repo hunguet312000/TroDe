@@ -72,4 +72,6 @@ $(function() {
         }
     }
 
+    $('#huyen').select2();
+    $('#xa').select2();
 });
