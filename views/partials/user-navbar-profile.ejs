@@ -11,7 +11,11 @@
                             TÀI KHOẢN CỦA BẠN
                         </div>
                         <div class="admin-name">
-                            <%= user.ho_va_ten %>
+                            <%if (user.ho_va_ten != null){%>
+                                <%= user.ho_va_ten %>
+                                    <%} else {%>
+                                        <%= user.ten_nguoi_dung %>
+                                            <%}%>
                         </div>
                     </div>
                 </div>
