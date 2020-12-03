@@ -36,7 +36,7 @@
                                         </label>
                                 </div>
                                 <div class="col-sm-6" style="vertical-align: middle;margin-top: 25px;float: left;margin-left: -5%;">
-                                    <button type="submit" class="btn btn-primary" id="submit"><span id = "text-btn"><b>ĐỔI ẢNH ĐẠI DIỆN</b></span></button>
+                                    <button name = "submit" value = "submit_avatar" type="submit" class="btn btn-primary" id="submit"><span id = "text-btn"><b>ĐỔI ẢNH ĐẠI DIỆN</b></span></button>
                                 </div>
                             </div>
                             <img src="#" id="ava" style="width:80px;height: 80px;border-radius: 50%;display: none;">
@@ -50,37 +50,37 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Tên đăng nhập</div>
-                                    <input name="username" type="text" id="user-name1" class="form-control btn-edit" placeholder="Vui lòng nhập họ tên của bạn" value="<%=user.ten_nguoi_dung %>">
+                                    <input name="ten_nguoi_dung" type="text" id="user-name1" class="form-control btn-edit" placeholder="Vui lòng nhập họ tên của bạn" value="<%=userData[0].dataValues.ten_nguoi_dung %>">
                                     <br>
                                 </div>
                                 <div class="col-md-12">
                                     <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Địa chỉ email</div>
-                                    <input name="email" type="text" id="btn-forget" class="form-control btn-edit" data-meta="Field" value="<%=user.email %>" tabindex="-1" readonly>
+                                    <input name="email" type="text" id="btn-forget" class="form-control btn-edit" data-meta="Field" value="<%=userData[0].dataValues.email %>" tabindex="-1" readonly>
                                     <br>
                                 </div>
                                 <div class="col-md-12">
                                     <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Số điện thoại</div>
-                                    <input name="phone" type="number" id="btn-phone" class="form-control btn-edit" placeholder="Vui lòng nhập số điện thoại của bạn" value="<%=user.sdt %>" maxlength="11" pattern="([0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9])">
+                                    <input name="sdt" type="number" id="btn-phone" class="form-control btn-edit" placeholder="Vui lòng nhập số điện thoại của bạn" value="<%=userData[0].dataValues.sdt %>" maxlength="11" pattern="([0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9])">
                                     <br>
                                 </div>
                                 <div class="col-md-12">
                                     <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Ngày sinh</div>
-                                    <input name="DOB" id="datepicker" placeholder="Chọn ngày sinh của bạn" value="<%=user.ngay_sinh %>" readonly="">
+                                    <input name="ngay_sinh" id="datepicker" placeholder="Chọn ngày sinh của bạn" value="<%=userData[0].dataValues.ngay_sinh %>" readonly="">
                                     <br>
                                 </div>
                                 <div class="col-md-12">
                                     <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Giới tính</div>
                                     <div class="row">
                                         <div class="col-sm-3 form-check form-check-inline">
-                                            <input name="Gioi Tinh" class="form-check-input" type="radio" id="Nam" value="Nam">
+                                            <input name="gioi_tinh" class="form-check-input" type="radio" id="Nam" value="Nam">
                                             <label class="form-check-label" for="Nam" style="vertical-align: middle;font-weight: 700;font-size: 16px;">Nam</label>
                                         </div>
                                         <div class="col-sm-3 form-check form-check-inline">
-                                            <input name="Gioi Tinh" class="form-check-input" type="radio" id="Nữ" value="Nữ">
+                                            <input name="gioi_tinh" class="form-check-input" type="radio" id="Nữ" value="Nữ">
                                             <label class="form-check-label" for="Nữ" style="vertical-align: middle;font-weight: 700;font-size: 16px;">Nữ</label>
                                         </div>
                                         <div class="col-sm-3 form-check form-check-inline">
-                                            <input name="Gioi Tinh" class="form-check-input" type="radio" id="Khác" value="Khác">
+                                            <input name="gioi_tinh" class="form-check-input" type="radio" id="Khác" value="Khác">
                                             <label class="form-check-label" for="Khác" style="vertical-align: middle;font-weight: 700;font-size: 16px;">Khác</label>
                                         </div>
                                     </div>
@@ -89,7 +89,7 @@
                             <br>
                             <div class="row" style="margin-top: -10px;">
                                 <div class="col-md-2">
-                                    <button type="submit" class="btn btn-primary" id="button-submit" style="height: 38px;"><span id = "text-btn"><b>CẬP NHẬT</b></span></button>
+                                    <button name = "submit" value = "submit_profile" type="submit" class="btn btn-primary" id="button-submit" style="height: 38px;"><span id = "text-btn"><b>CẬP NHẬT</b></span></button>
                                 </div>
                             </div>
                         </div>
