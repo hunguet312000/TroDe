@@ -28,6 +28,12 @@ module.exports = (app, passport) => {
 
     app.post('/await-bookings/:id/:response', bookingManage.bookingResponse);
 
+    app.get('/user/:id/profile', function(req, res){
+      res.render('user-profile', {
+        user: req.session.passport.user
+      })
+    })
+
     app.get('/profile/edit', function(req, res) {
         if (req.isAuthenticated()) {
             const user = req.session.passport.user;
