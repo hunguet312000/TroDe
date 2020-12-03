@@ -1,5 +1,5 @@
 const cloudinary = require('../config/cloudinary');
-
+var formidable = require("formidable");
 const mysql = require('mysql');
 const { QueryTypes } = require('sequelize');
 
@@ -112,25 +112,49 @@ exports.isInWishList = async(id_phong_tro, id_nguoi_dung) => {
         console.log(err);
     }
 }
-exports.editUserProfile = async(req, res) =>{
-    try{
-        console.log(req.body)
-    }
-    catch(err){
-        err
-    }
-}
-exports.changeAvatar = async(req, res) => {
+
+exports.editAvatarAndProfile = async(req, res) => {
     try {
-        const uploader = async(path) => await cloudinary.uploads(path, 'Image');
-        let insert_hinh_anh_values = []
-        for (const file of req.files) {
-            const { path } = file
-            const newPath = await uploader(path)
-            insert_hinh_anh_values.push(newPath);
-        }
-        if(JSON.stringify(req.files) != "[]"){
-            const result = await Nguoi_dung.update({ avatar_path: insert_hinh_anh_values[0].path_anh }, { where: { id_nguoi_dung: req.user.id_nguoi_dung } })
+        switch(req.body.submit){
+            case "submit_avatar" :
+                if(JSON.stringify(req.files) != "[]" && req.body.submit == "submit_avatar"){
+                    const uploader = async(path) => await cloudinary.uploads(path, 'Image');
+                    let insert_hinh_anh_values = []
+                    for (const file of req.files) {
+                        const { path } = file
+                        const newPath = await uploader(path)
+                        insert_hinh_anh_values.push(newPath);
+                    }
+
+                    const result = await Nguoi_dung.update({ avatar_path: insert_hinh_anh_values[0].path_anh }, { where: { id_nguoi_dung: req.user.id_nguoi_dung } })
+                }
+                break;
+            case "submit_profile" : 
+                const nguoi_dung = await Nguoi_dung.findAll({
+                where: {id_nguoi_dung: req.user.id_nguoi_dung}
+                })
+                const oldInfoUser = {
+                    ten_nguoi_dung : nguoi_dung[0].dataValues.ten_nguoi_dung, 
+                    email : nguoi_dung[0].dataValues.email,
+                    sdt : nguoi_dung[0].dataValues.sdt,
+                    ngay_sinh : nguoi_dung[0].dataValues.ngay_sinh,
+                    gioi_tinh : nguoi_dung[0].dataValues.gioi_tinh,
+                }
+                const input = req.body
+                const newInfoUser = {}
+                if(oldInfoUser.ten_nguoi_dung != input.ten_nguoi_dung){newInfoUser.ten_nguoi_dung = input.ten_nguoi_dung}
+                if(oldInfoUser.email != input.email) {newInfoUser.email = input.email}
+                if(oldInfoUser.sdt != input.sdt) {newInfoUser.sdt = input.sdt}
+                if(oldInfoUser.ngay_sinh != input.ngay_sinh) {newInfoUser.ngay_sinh = input.ngay_sinh}
+                if(oldInfoUser.gioi_tinh != input.gioi_tinh) {newInfoUser.gioi_tinh = input.gioi_tinh}
+                console.log(newInfoUser)
+                const nguoi_dung_info = await Nguoi_dung.update(
+                    newInfoUser, 
+                    {
+                        where: { id_nguoi_dung: req.user.id_nguoi_dung }
+                    }
+                );
+                break;
         }
         res.redirect("/profile/edit");
     } catch (err) {
@@ -138,6 +162,7 @@ exports.changeAvatar = async(req, res) => {
     }
 
 }
+
 exports.watchUserProfile = async(req, res) => {
     if (req.isAuthenticated()) {
         try{
