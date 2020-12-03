@@ -22,7 +22,8 @@ module.exports = (app, passport) => {
 
     app.post('/await-bookings/:id/:response', bookingManage.bookingResponse);
 
-    app.get('/profile/edit', userProfileManage.watchUserProfile);
+    app.get('/profile/edit', userProfileManage.viewUserProfile);
+
     app.post("/profile/edit", upload.array('image'), userProfileManage.editAvatarAndProfile)
     // app.post("/profile-edit", function(req, res) {
     //     if (req.isAuthenticated()) {
