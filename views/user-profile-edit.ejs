@@ -75,21 +75,24 @@
                                     <br>
                                 </div>
                                 <div class="col-md-12">
-                                    <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Giới tính</div>
-                                    <div class="row">
-                                        <div class="col-sm-3 form-check form-check-inline">
-                                            <input name="Gioi Tinh" class="form-check-input" type="radio" id="Nam" value="Nam">
-                                            <label class="form-check-label" for="Nam" style="vertical-align: middle;font-weight: 700;font-size: 16px;">Nam</label>
+                                    <% console.log(user.gioi_tinh)%>
+                                        <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Giới tính:
+                                            <%=user.gioi_tinh%>
                                         </div>
-                                        <div class="col-sm-3 form-check form-check-inline">
-                                            <input name="Gioi Tinh" class="form-check-input" type="radio" id="Nữ" value="Nữ">
-                                            <label class="form-check-label" for="Nữ" style="vertical-align: middle;font-weight: 700;font-size: 16px;">Nữ</label>
+                                        <div class="row">
+                                            <div class="col-sm-3 form-check form-check-inline">
+                                                <input name="Gioi Tinh" class="form-check-input" type="radio" id="Nam" value="Nam">
+                                                <label class="form-check-label" for="Nam" style="vertical-align: middle;font-weight: 700;font-size: 16px;">Nam</label>
+                                            </div>
+                                            <div class="col-sm-3 form-check form-check-inline">
+                                                <input name="Gioi Tinh" class="form-check-input" type="radio" id="Nữ" value="Nữ">
+                                                <label class="form-check-label" for="Nữ" style="vertical-align: middle;font-weight: 700;font-size: 16px;">Nữ</label>
+                                            </div>
+                                            <div class="col-sm-3 form-check form-check-inline">
+                                                <input name="Gioi Tinh" class="form-check-input" type="radio" id="Khác" value="Khác">
+                                                <label class="form-check-label" for="Khác" style="vertical-align: middle;font-weight: 700;font-size: 16px;">Khác</label>
+                                            </div>
                                         </div>
-                                        <div class="col-sm-3 form-check form-check-inline">
-                                            <input name="Gioi Tinh" class="form-check-input" type="radio" id="Khác" value="Khác">
-                                            <label class="form-check-label" for="Khác" style="vertical-align: middle;font-weight: 700;font-size: 16px;">Khác</label>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <br>
