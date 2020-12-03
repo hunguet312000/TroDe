@@ -121,38 +121,34 @@ exports.editAvatarAndProfile = async(req, res) => {
                     ngay_sinh : nguoi_dung[0].dataValues.ngay_sinh,
                     gioi_tinh : nguoi_dung[0].dataValues.gioi_tinh,
                 }
-                const newInfoUser = {
-                    id_nguoi_dung: req.user.id_nguoi_dung,
-                    ho_va_ten: req.body.ho_va_ten,
-                    ten_nguoi_dung: req.body.username,
-                    email: req.body.email,
-                    ngay_sinh: req.body.DOB,
-                    gioi_tinh: req.body.sex,
-                    sdt: req.body.phone
-                }
+                const input = req.body;
+                const newInfoUser = {}
 
-                // if (oldInfoUser.ho_va_ten != input.ho_va_ten) { newInfoUser. }
-                // if (oldInfoUser.ten_nguoi_dung != input.ten_nguoi_dung) { newInfoUser.ten_nguoi_dung = input.username }
-                // if (oldInfoUser.email != input.email) { newInfoUser.email = input.email }
-                // if (oldInfoUser.sdt != input.sdt) { newInfoUser.sdt = input.phone }
-                // if (oldInfoUser.ngay_sinh != input.ngay_sinh) { newInfoUser.ngay_sinh = input.DOB }
-                // if (oldInfoUser.gioi_tinh != input.gioi_tinh) { newInfoUser.gioi_tinh = input.sex }
-                // console.log(newInfoUser)
-                const nguoi_dung_info = await Nguoi_dung.update(
-                    newInfoUser, {
-                        where: { id_nguoi_dung: req.user.id_nguoi_dung }
-                    }
-                );
-                req.session.passport.user.ten_nguoi_dung = newInfoUser.ten_nguoi_dung;
-                req.session.passport.user.ho_va_ten = newInfoUser.ho_va_ten;
-                req.session.passport.user.email = newInfoUser.email;
-                req.session.passport.user.gioi_tinh = newInfoUser.gioi_tinh;
-                req.session.passport.user.ngay_sinh = newInfoUser.ngay_sinh;
-                req.session.passport.user.phone = newInfoUser.sdt;
-                console.log(req.session.passport);
-                res.render('user-profile-edit', { user: newInfoUser, userData: nguoi_dung });
+                if (oldInfoUser.ho_va_ten != input.ho_va_ten) { newInfoUser.ho_va_ten = input.ho_va_ten }
+                if (oldInfoUser.ten_nguoi_dung != input.ten_nguoi_dung) { newInfoUser.ten_nguoi_dung = input.ten_nguoi_dung }
+                if (oldInfoUser.email != input.email) { newInfoUser.email = input.email }
+                if (oldInfoUser.sdt != input.sdt) { newInfoUser.sdt = input.sdt }
+                if (oldInfoUser.ngay_sinh != input.ngay_sinh) { newInfoUser.ngay_sinh = input.ngay_sinh }
+                if (oldInfoUser.gioi_tinh != input.gioi_tinh) { newInfoUser.gioi_tinh = input.gioi_tinh }
+                if(JSON.stringify(newInfoUser) != "{}")
+                {
+                    const nguoi_dung_info = await Nguoi_dung.update(
+                        newInfoUser, {
+                            where: { id_nguoi_dung: req.user.id_nguoi_dung }
+                        }
+                    );
+                    req.session.passport.user.ten_nguoi_dung = newInfoUser.ten_nguoi_dung;
+                    req.session.passport.user.ho_va_ten = newInfoUser.ho_va_ten;
+                    req.session.passport.user.email = newInfoUser.email;
+                    req.session.passport.user.gioi_tinh = newInfoUser.gioi_tinh;
+                    req.session.passport.user.ngay_sinh = newInfoUser.ngay_sinh;
+                    req.session.passport.user.phone = newInfoUser.sdt;
+                    console.log(req.session.passport);
+                }
                 break;
               }
+
+              res.redirect("/profile/edit")
     } catch (err) {
         console.log(err)
     }
