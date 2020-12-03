@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <br>
-                <div class="thong-tin" style="font-size: 16px;margin-top: 15px;height: fit-content;width: 100%;font-family: Montserrat;line-height: 1.35;">
+                <div class="thong-tin">
                     <%- userData.phong_tro[0].dataValues.thong_tin_khac %>
                 </div>
                 <br>
@@ -401,6 +401,13 @@
                 }
             },
             footer: true
+        });
+        $('.thong-tin').readmore({
+            speed: 75,
+            moreLink: '<a href="#" class = "doc-them">Đọc thêm</a>',
+            lessLink: '<a href="#" class = "thu-gon">Thu gọn</a>',
+            collapsedHeight: 300,
+            maxHeight: 300
         });
     });
 </script>
