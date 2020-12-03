@@ -38,7 +38,7 @@
                     <h2><b><%=userData.phong_tro[0].dataValues.phan_loai%> - <%=userData.phong_tro[0].dataValues.ten_phong%></b></h2>
                 </div>
                 <div class="author">
-                    <span>Đăng bởi: <a href = "/host-profile/<%=userData.phong_tro[0].dataValues.nguoi_dung.dataValues.id_nguoi_dung%>" style="text-decoration: none;"><span class= "author-name" style="color: #222222;font-weight: 900;">
+                    <span>Đăng bởi: <a href = "/host-profile/<%=userData.phong_tro[0].dataValues.nguoi_dung.dataValues.id_nguoi_dung%>/1" style="text-decoration: none;"><span class= "author-name" style="color: #222222;font-weight: 900;">
                       <% if(userData.phong_tro[0].dataValues.nguoi_dung.dataValues.ho_va_ten){%>
                         <%= userData.phong_tro[0].dataValues.nguoi_dung.dataValues.ho_va_ten %>
                       <%}else{%>

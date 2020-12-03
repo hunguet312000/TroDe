@@ -272,3 +272,23 @@ exports.calculateSearchPages = async(req, res, result) => {
     console.log(e);
   }
 }
+
+exports.calculateHostProfilePages = async(req, res) => {
+  try {
+    const currentPage = Number(req.params.page);
+    const postPerPage = 6;
+    const postNum = await Phong_tro.count({
+      where: {
+          id_chu_so_huu:  req.params.id
+      }
+    });
+    return {
+      pages: Math.ceil(postNum/postPerPage),
+      offset: (postPerPage*currentPage)-postPerPage,
+      limit: postPerPage,
+      postNum: postNum
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}

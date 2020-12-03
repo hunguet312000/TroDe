@@ -83,5 +83,5 @@ module.exports = (app, passport) => {
     app.get("/report/:room", reportManage.report);
     app.post("/report/:room", upload.array('image'), reportManage.createReport)
     app.get("/report-info/:id", reportManage.reportInfo);
-    app.get("/host-profile/:id", userProfileManage.watchHostProfile)
+    
 }

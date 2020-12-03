@@ -147,8 +147,10 @@ module.exports = async function(passport) {
             ho_va_ten: ho_va_ten
           } // if it doesn't exist, we create it with this additional data
           });
+            //console.log(nguoi_dung);
             return cb(null, nguoi_dung[0].dataValues);
         }catch(err){
+          console.log(err);
           return cb(null, null);
         }
       }

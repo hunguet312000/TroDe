@@ -38,10 +38,11 @@ module.exports = (app, passport) => {
         res.render('user-profile-address-edit', { user: user });
     });
 
-    app.get("/user-profile/:id", function(req, res)
-    {
+    app.get("/user-profile/:id", function(req, res){
         const user = req.session.passport.user;
-        res.render('user-profile.ejs', {user : user})
-    })
+        res.render('user-profile', {user : user})
+    });
+
+    app.get("/host-profile/:id/:page", userProfileManage.viewHostProfile)
 
 }

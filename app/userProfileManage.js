@@ -23,6 +23,7 @@ exports.changePassword = async(newInfo, oldInfo) => {
         }, {
             where: { id_nguoi_dung: id_nguoi_dung }
         });
+        req.session.passport.user.mat_khau = newHashPass;
     } catch (err) {
         console.log(err);
     }
@@ -149,7 +150,7 @@ exports.editAvatarAndProfile = async(req, res) => {
                 req.session.passport.user.gioi_tinh = newInfoUser.gioi_tinh;
                 req.session.passport.user.ngay_sinh = newInfoUser.ngay_sinh;
                 req.session.passport.user.phone = newInfoUser.sdt;
-                console.log(req.session.passport);
+                //console.log(req.session.passport);
                 res.render('user-profile-edit', { user: newInfoUser, userData: nguoi_dung });
                 break;
               }
@@ -174,21 +175,40 @@ exports.viewUserProfile = async(req, res) => {
 }
 
 
-exports.watchHostProfile = async(req, res) => {
-    try {
-        const queryValue = "SELECT *, count(id_phong_tro) as so_bai_dang  FROM nguoi_dung" +
-                                " left outer join phong_tro on phong_tro.id_chu_so_huu = nguoi_dung.id_nguoi_dung" +
-                                " where id_nguoi_dung = " + req.params.id +
-                                " group by nguoi_dung.id_nguoi_dung" +
-                                " order by nguoi_dung.id_nguoi_dung desc";
-        const nguoi_dung = await sequelize.query(queryValue, { type: QueryTypes.SELECT });
-        const phong_tro =await Phong_tro.findAll({
-            where: {id_chu_so_huu : req.params.id}
-        })
-        console.log(phong_tro[0].dataValues.id_phong_tro)
-        res.render("hosts", { user: req.user, login: req.isAuthenticated(), nguoi_dung: nguoi_dung, phong_tro :phong_tro })
-    } catch (err) {
-        console.log(err);
+exports.viewHostProfile = async(req, res) => {
+    const calculatePagniate = await paginate.calculateHostProfilePages(req, res);
+    if (req.isAuthenticated()) {
+        try {
+            const phong_tro = await Phong_tro.findAll({
+                offset: calculatePagniate.offset,
+                limit: calculatePagniate.limit,
+                where: {
+                    id_chu_so_huu: req.params.id
+                },
+                order: [
+                    ["createdAt", "ASC"]
+                ]
+            });
+            const nguoi_dung = await Nguoi_dung.findAll({
+                where: {
+                    id_nguoi_dung: req.params.id
+                }
+            });
+            console.log(JSON.stringify(nguoi_dung,null,4));
+            res.render("hosts", {
+              user: req.user,
+              login: req.isAuthenticated(),
+              nguoi_dung: nguoi_dung,
+              phong_tro :phong_tro,
+              pages: calculatePagniate.pages,
+              current: req.params.page,
+              postNum: calculatePagniate.postNum,
+              type: "/host-profile/" + req.params.id
+            })
+        } catch (err) {
+            console.log(err);
+        }
+    } else {
+        res.redirect('/login')
     }
-
 }

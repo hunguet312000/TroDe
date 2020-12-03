@@ -6,6 +6,7 @@ const postManage = require('../app/postManage');
 const userManage = require("../app/userManage");
 const bookingManage = require("../app/bookingManage");
 const forgetPassword = require("../app/forgetPassword");
+const reportManage = require("../app/reportManage");
 
 require('dotenv').config();
 
@@ -53,7 +54,14 @@ module.exports = (app, passport) => {
     // });
     //
     app.post("/comment", postManage.saveComment);
+
     app.post("/saveFavPost", postManage.saveFavPost);
+
+    app.get("/report/:room", reportManage.report);
+
+    app.post("/report/:room", upload.array('image'), reportManage.createReport);
+
+    app.get("/report-info/:id", reportManage.reportInfo);
 
     //app.post("/rooms", postManage.filterListPostBySearch);
 }
