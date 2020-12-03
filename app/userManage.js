@@ -13,6 +13,7 @@ exports.displayListUser = async(req, res) =>{
                                 " group by nguoi_dung.id_nguoi_dung" +
                                 " order by nguoi_dung.id_nguoi_dung desc";
             const nguoi_dung = await sequelize.query(queryValue, { type: QueryTypes.SELECT });
+            console.log(nguoi_dung)
             res.render("admin-control-user", { username: req.user.ten_nguoi_dung, userData : nguoi_dung });
         }catch(err) {
             console.log(err)

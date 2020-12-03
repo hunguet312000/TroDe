@@ -8,6 +8,7 @@ const forgetPassword = require("../app/forgetPassword");
 require('dotenv').config();
 const passport = require("../config/passport.js");
 const reportManage = require("../app/reportManage");
+const userProfileManage = require("../app/userProfileManage")
 module.exports = (app, passport) => {
     // app.get("/", function(req, res) {
     //     if (req.isAuthenticated()) {
@@ -84,7 +85,5 @@ module.exports = (app, passport) => {
     app.get("/report/:room", reportManage.report);
     app.post("/report/:room", upload.array('image'), reportManage.createReport)
     app.get("/report-info/:id", reportManage.reportInfo);
-    app.get("/hosts", function(req, res) {
-        res.render("hosts", { user: req.user, login: req.isAuthenticated() })
-    })
+    app.get("/host-profile/:id", userProfileManage.watchHostProfile)
 }

@@ -2,10 +2,10 @@
     <%- include("partials/user-navbar-profile"); -%>
         <div class="container" id="profile-content">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="side-profile">
                         <div class="div-side">
-                            <a href="/profile/info" class="a-side" style="text-decoration: none;">
+                            <a href="/profile/edit" class="a-side" style="text-decoration: none;">
                                 <span id="sp-color" style="color: #333333;font-weight: 900;">Thông tin cá nhân</span>
                             </a>
                         </div>
@@ -15,89 +15,88 @@
                             </a>
                         </div>
                         <div class="div-side">
-                            <a href="/profile/address" class="a-side" style="text-decoration: none;">
+                            <a href="/profile/address-edit" class="a-side" style="text-decoration: none;">
                                 <span id="sp">Địa chỉ</span>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-10">
-                    <form action="/profile-edit" method="post">
+                <div class="col-md-9">
+                    <form action="/profile/edit" method="post" enctype="multipart/form-data">
                         <div class="avatar" style="margin-left: 15px;">
                             <div class="row">
                                 <div class="col-sm-2" style="border-radius: 50%;border:none;">
-                                    <img id="imgava" style="width:80px;height: 80px;border-radius: 50%;border:none;background-color: #ffffff;vertical-align: middle;">
+                                    <%if(userData[0].dataValues.avatar_path != undefined) {%>
+                                        <img src=<%=userData[0].dataValues.avatar_path%> id="imgava" style="width:80px;height: 80px;border-radius: 50%;">
+                                        <%}else{%>
+                                            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" enable-background="new 0 0 512 512" height="80" viewBox="0 0 512 512" width="80" style="border-radius: 50%;"><g><g><g><g id="XMLID_3975_"><g id="XMLID_3976_"><g id="XMLID_3977_"><g id="XMLID_3978_"><g id="XMLID_3979_"><g id="XMLID_3980_"><g id="XMLID_3981_"><g id="XMLID_3982_"><g id="XMLID_3983_"><g id="XMLID_3984_"><g id="XMLID_3985_"><g id="XMLID_3986_"><g id="XMLID_3987_"><g id="XMLID_3988_"><g id="XMLID_3989_"><circle cx="256" cy="256" fill="#4f4359" r="256"/></g></g></g></g></g></g></g></g></g></g></g></g></g></g></g></g></g><path d="m512 256c0-31.595-5.738-61.846-16.205-89.786l-94.1-95.525-307.288 327.737 107.92 107.92c17.309 3.694 35.261 5.654 53.673 5.654 141.385 0 256-114.615 256-256z" fill="#372a44"/><g><g><g id="XMLID_3931_"><g id="XMLID_3932_"><g id="XMLID_3933_"><g id="XMLID_3934_"><g id="XMLID_3935_"><g id="XMLID_3936_"><g id="XMLID_3937_"><g id="XMLID_3938_"><g id="XMLID_3952_"><g id="XMLID_3953_"><g id="XMLID_3969_"><g id="XMLID_3970_"><g id="XMLID_3971_"><g id="XMLID_3972_"><g id="XMLID_3973_"><circle cx="255.999" cy="256" fill="#fed940" r="179.923"/></g></g></g></g></g></g></g></g></g></g></g></g></g></g></g></g></g><g><g><g id="XMLID_3833_"><g id="XMLID_3834_"><g id="XMLID_3835_"><g id="XMLID_3836_"><g id="XMLID_3837_"><g id="XMLID_3853_"><g id="XMLID_3900_"><g id="XMLID_3916_"><g id="XMLID_3917_"><g id="XMLID_3918_"><g id="XMLID_3919_"><g id="XMLID_3920_"><g id="XMLID_3921_"><g id="XMLID_3922_"><g><path d="m435.923 256c0 99.367-80.557 179.924-179.924 179.924v-359.848c99.368 0 179.924 80.557 179.924 179.924z" fill="#ffc024"/></g></g></g></g></g></g></g></g></g></g></g></g></g></g></g></g></g><g><path d="m256 340.822c-38.854 0-70.463-31.609-70.463-70.463h35c0 19.554 15.908 35.463 35.463 35.463s35.463-15.909 35.463-35.463h35c0 38.853-31.61 70.463-70.463 70.463z" fill="#7f6866"/></g><g><g><path d="m326.46 270.355c0 38.86-31.61 70.47-70.46 70.47v-35c19.55 0 35.46-15.91 35.46-35.47z" fill="#634c4c"/></g></g><g><g><g><path d="m149.404 191.499c7.27-3.524 15.055-5.996 23.097-7.277 18.432-2.933 37.535.504 53.788 9.68l-14.749 26.125c-21.568-12.176-48.312-7.921-65.033 10.351l-22.131-20.253c7.104-7.762 15.635-14.073 25.028-18.626z" fill="#7f6866"/></g></g><g><g><path d="m362.595 191.499c-7.27-3.524-15.055-5.996-23.097-7.277-18.432-2.933-37.535.504-53.789 9.68l14.749 26.125c21.568-12.176 48.312-7.921 65.033 10.351l22.132-20.253c-7.104-7.762-15.635-14.073-25.028-18.626z" fill="#634c4c"/></g></g></g><g><g><path d="m158.213 332.781c-23.03-8.09-32.53 13.885-32.53 13.885s-9.5-21.975-32.531-13.885c-23.814 8.365-32.531 58.424 32.531 83.9 65.061-25.476 56.344-75.535 32.53-83.9z" fill="#ff6643"/></g><g><path d="m418.847 332.781c-23.03-8.09-32.531 13.885-32.531 13.885s-9.5-21.975-32.531-13.885c-23.814 8.365-32.531 58.424 32.531 83.9 65.061-25.476 56.344-75.535 32.531-83.9z" fill="#ff3b3b"/></g></g><g><path d="m391.057 63.31c-24.371-8.561-34.424 14.694-34.424 14.694s-10.053-23.255-34.424-14.694c-25.2 8.852-34.424 61.825 34.424 88.784 68.849-26.959 59.624-79.932 34.424-88.784z" fill="#ff3b3b"/></g></g></svg>
+                                            <%}%>
+                                                <label class="btn btn-primary label-up" id="btn-upload" style="display:inline-block;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 37.434 37.434" style="enable-background:new 0 0 37.434 37.434;width:20px;height:20px;" xml:space="preserve"><g>    <path d="M32.932,8.578H27.52V8.022c0-2.484-2.016-4.5-4.5-4.5h-8.607c-2.485,0-4.5,2.016-4.5,4.5v0.556H4.5   c-2.485,0-4.5,2.015-4.5,4.5v16.334c0,2.484,2.015,4.5,4.5,4.5h28.434c2.485,0,4.5-2.016,4.5-4.5V13.078   C37.432,10.592,35.417,8.578,32.932,8.578z M18.715,29.244c-4.688,0-8.5-3.812-8.5-8.5c0-4.687,3.812-8.5,8.5-8.5   c4.688,0,8.5,3.812,8.5,8.5C27.215,25.432,23.402,29.244,18.715,29.244z M23.215,20.744c0,2.479-2.02,4.5-4.5,4.5   c-2.48,0-4.5-2.021-4.5-4.5c0-2.48,2.02-4.5,4.5-4.5C21.195,16.244,23.215,18.264,23.215,20.744z"/></g></svg>                                            <input name="image" id="uploadimg" type="file" class="btn-edit" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                        </label>
                                 </div>
                                 <div class="col-sm-6" style="vertical-align: middle;margin-top: 25px;float: left;margin-left: -5%;">
-                                    <label class="btn btn-primary" id="btn-upload" style="display:inline-block;">
-                                        Đổi ảnh đại diện<input name = "image" id = "uploadimg" type="file" class="btn-edit" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;" required data-bv-notempty-message="Không được để trống">
-                                             </label>
+                                    <button name = "submit" value = "submit_avatar" type="submit" class="btn btn-primary" id="submit"><span id = "text-btn"><b>ĐỔI ẢNH ĐẠI DIỆN</b></span></button>
                                 </div>
                             </div>
                             <img src="#" id="ava" style="width:80px;height: 80px;border-radius: 50%;display: none;">
                         </div>
+                    </form>
+                    <form action="/profile/edit" method="post">
                         <br>
                         <span style="font-size: 17px;"><b>Sửa thông tin cá nhân</b></span>
                         <br><br>
-                        <div class="content" style="background-color: white; height: 400px;border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);">
-                            <div class="row" style="padding:40px;">
-                                <div class="col-md-4">
-                                    <span id="title-item-profile"><i>Tên đăng nhập</i></span>
-                                    <br>
-                                    <br>
-                                    <input name="username" type="text" id="user-name1" class="form-control btn-edit" placeholder="Vui lòng nhập họ tên của bạn" value="<%=user.ten_nguoi_dung %>">
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Tên đăng nhập</div>
+                                    <input name="ten_nguoi_dung" type="text" id="user-name1" class="form-control btn-edit" placeholder="Vui lòng nhập họ tên của bạn" value="<%=userData[0].dataValues.ten_nguoi_dung %>">
                                     <br>
                                 </div>
-                                <div class="col-md-4">
-                                    <span id="title-item-profile"><i>Địa chỉ email</i></span>
-                                    <br>
-                                    <br>
-                                    <input name="email" type="text" id="btn-forget" class="form-control btn-edit" data-meta="Field" value="<%=user.email %>" tabindex="-1">
+                                <div class="col-md-12">
+                                    <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Địa chỉ email</div>
+                                    <input name="email" type="text" id="btn-forget" class="form-control btn-edit" data-meta="Field" value="<%=userData[0].dataValues.email %>" tabindex="-1" readonly>
                                     <br>
                                 </div>
-                                <div class="col-md-4">
-                                    <span id="title-item-profile"><i>Số điện thoại</i></span>
-                                    <br>
-                                    <br>
-                                    <input name="phone" type="number" id="btn-phone" class="form-control btn-edit" placeholder="Vui lòng nhập số điện thoại của bạn" value="<%=user.sdt %>" maxlength="11" pattern="([0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9])">
+                                <div class="col-md-12">
+                                    <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Số điện thoại</div>
+                                    <input name="sdt" type="number" id="btn-phone" class="form-control btn-edit" placeholder="Vui lòng nhập số điện thoại của bạn" value="<%=userData[0].dataValues.sdt %>" maxlength="11" pattern="([0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9])">
                                     <br>
                                 </div>
-                                <div class="col-md-4">
-                                    <span id="title-item-profile"><i>Ngày sinh</i></span>
+                                <div class="col-md-12">
+                                    <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Ngày sinh</div>
+                                    <input name="ngay_sinh" id="datepicker" placeholder="Chọn ngày sinh của bạn" value="<%=userData[0].dataValues.ngay_sinh %>" readonly="">
                                     <br>
-                                    <br>
-                                    <input name="DOB" id="datepicker" placeholder="Chọn ngày sinh của bạn" value="<%=user.ngay_sinh %>" readonly="">
                                 </div>
-                                <div class="col-md-4">
-                                    <span id="title-item-profile"><i>Giới tính</i></span>
-                                    <br>
-                                    <br>
-                                    <select name="sex" class="custom-select btn-edit" id="inputGroupSelect01" required data-bv-notempty-message="Không được để trống">
-                                    <option value="" disabled selected hidden>Chọn</option>
-                                <option > <%=user.gioi_tinh %> </option>
-                                <% if(user.gioi_tinh == "Nam"){ %>
-                                  <option >Nữ</option>
-                                <% }else{ %>
-                                    <option >Nam</option>
-                                <% } %>
-                            </select>
+                                <div class="col-md-12">
+                                    <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Giới tính</div>
+                                    <div class="row">
+                                        <div class="col-sm-3 form-check form-check-inline">
+                                            <input name="gioi_tinh" class="form-check-input" type="radio" id="Nam" value="Nam">
+                                            <label class="form-check-label" for="Nam" style="vertical-align: middle;font-weight: 700;font-size: 16px;">Nam</label>
+                                        </div>
+                                        <div class="col-sm-3 form-check form-check-inline">
+                                            <input name="gioi_tinh" class="form-check-input" type="radio" id="Nữ" value="Nữ">
+                                            <label class="form-check-label" for="Nữ" style="vertical-align: middle;font-weight: 700;font-size: 16px;">Nữ</label>
+                                        </div>
+                                        <div class="col-sm-3 form-check form-check-inline">
+                                            <input name="gioi_tinh" class="form-check-input" type="radio" id="Khác" value="Khác">
+                                            <label class="form-check-label" for="Khác" style="vertical-align: middle;font-weight: 700;font-size: 16px;">Khác</label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <br>
-                            <div class="row" style="padding:40px;">
-                                <div class="col-md-4">
-                                    <button type="submit" class="btn btn-primary" id="button-submit"><span id = "text-btn"><b>LƯU THAY ĐỔI</b></span></button>
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="/profile/info" style="text-decoration: none;"><button type="button" class="btn btn-primary" id="button-submit"><span id = "text-btn"><b>HỦY BỎ</b></span></button></a>
+                            <div class="row" style="margin-top: -10px;">
+                                <div class="col-md-2">
+                                    <button name = "submit" value = "submit_profile" type="submit" class="btn btn-primary" id="button-submit" style="height: 38px;"><span id = "text-btn"><b>CẬP NHẬT</b></span></button>
                                 </div>
                             </div>
                         </div>
+                    </form>
                 </div>
 
             </div>
-            </form>
-
         </div>
         </div>
         <script>

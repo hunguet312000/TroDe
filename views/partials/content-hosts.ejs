@@ -2,19 +2,24 @@
     <div class="col-sm-3">
         <div style="background-color:#f6f6f6!important;width: 100%;height: 230px;border-radius: 5px;">
             <div class="ava" style="display: table;margin: 0 auto;padding-top: 20px;">
-                <img src="#" style="width:80px;height: 80px;border-radius: 50%;border:none;background-color: #ffffff;">
+                <%if(nguoi_dung[0].avatar_path != undefined) {%>
+                    <img src=<%=nguoi_dung[0].avatar_path%> id="ava" style="width:80px;height: 80px;border-radius: 50%;;">
+                    <%}else {%>
+                        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" enable-background="new 0 0 512 512" height="80" viewBox="0 0 512 512" width="80" style="border-radius: 50%;"><g><g><g><g id="XMLID_3975_"><g id="XMLID_3976_"><g id="XMLID_3977_"><g id="XMLID_3978_"><g id="XMLID_3979_"><g id="XMLID_3980_"><g id="XMLID_3981_"><g id="XMLID_3982_"><g id="XMLID_3983_"><g id="XMLID_3984_"><g id="XMLID_3985_"><g id="XMLID_3986_"><g id="XMLID_3987_"><g id="XMLID_3988_"><g id="XMLID_3989_"><circle cx="256" cy="256" fill="#4f4359" r="256"/></g></g></g></g></g></g></g></g></g></g></g></g></g></g></g></g></g><path d="m512 256c0-31.595-5.738-61.846-16.205-89.786l-94.1-95.525-307.288 327.737 107.92 107.92c17.309 3.694 35.261 5.654 53.673 5.654 141.385 0 256-114.615 256-256z" fill="#372a44"/><g><g><g id="XMLID_3931_"><g id="XMLID_3932_"><g id="XMLID_3933_"><g id="XMLID_3934_"><g id="XMLID_3935_"><g id="XMLID_3936_"><g id="XMLID_3937_"><g id="XMLID_3938_"><g id="XMLID_3952_"><g id="XMLID_3953_"><g id="XMLID_3969_"><g id="XMLID_3970_"><g id="XMLID_3971_"><g id="XMLID_3972_"><g id="XMLID_3973_"><circle cx="255.999" cy="256" fill="#fed940" r="179.923"/></g></g></g></g></g></g></g></g></g></g></g></g></g></g></g></g></g><g><g><g id="XMLID_3833_"><g id="XMLID_3834_"><g id="XMLID_3835_"><g id="XMLID_3836_"><g id="XMLID_3837_"><g id="XMLID_3853_"><g id="XMLID_3900_"><g id="XMLID_3916_"><g id="XMLID_3917_"><g id="XMLID_3918_"><g id="XMLID_3919_"><g id="XMLID_3920_"><g id="XMLID_3921_"><g id="XMLID_3922_"><g><path d="m435.923 256c0 99.367-80.557 179.924-179.924 179.924v-359.848c99.368 0 179.924 80.557 179.924 179.924z" fill="#ffc024"/></g></g></g></g></g></g></g></g></g></g></g></g></g></g></g></g></g><g><path d="m256 340.822c-38.854 0-70.463-31.609-70.463-70.463h35c0 19.554 15.908 35.463 35.463 35.463s35.463-15.909 35.463-35.463h35c0 38.853-31.61 70.463-70.463 70.463z" fill="#7f6866"/></g><g><g><path d="m326.46 270.355c0 38.86-31.61 70.47-70.46 70.47v-35c19.55 0 35.46-15.91 35.46-35.47z" fill="#634c4c"/></g></g><g><g><g><path d="m149.404 191.499c7.27-3.524 15.055-5.996 23.097-7.277 18.432-2.933 37.535.504 53.788 9.68l-14.749 26.125c-21.568-12.176-48.312-7.921-65.033 10.351l-22.131-20.253c7.104-7.762 15.635-14.073 25.028-18.626z" fill="#7f6866"/></g></g><g><g><path d="m362.595 191.499c-7.27-3.524-15.055-5.996-23.097-7.277-18.432-2.933-37.535.504-53.789 9.68l14.749 26.125c21.568-12.176 48.312-7.921 65.033 10.351l22.132-20.253c-7.104-7.762-15.635-14.073-25.028-18.626z" fill="#634c4c"/></g></g></g><g><g><path d="m158.213 332.781c-23.03-8.09-32.53 13.885-32.53 13.885s-9.5-21.975-32.531-13.885c-23.814 8.365-32.531 58.424 32.531 83.9 65.061-25.476 56.344-75.535 32.53-83.9z" fill="#ff6643"/></g><g><path d="m418.847 332.781c-23.03-8.09-32.531 13.885-32.531 13.885s-9.5-21.975-32.531-13.885c-23.814 8.365-32.531 58.424 32.531 83.9 65.061-25.476 56.344-75.535 32.531-83.9z" fill="#ff3b3b"/></g></g><g><path d="m391.057 63.31c-24.371-8.561-34.424 14.694-34.424 14.694s-10.053-23.255-34.424-14.694c-25.2 8.852-34.424 61.825 34.424 88.784 68.849-26.959 59.624-79.932 34.424-88.784z" fill="#ff3b3b"/></g></g></svg>
+                        <%}%>
             </div>
             <div class="ten-user">
-                TÊN USER
+                <%=nguoi_dung[0].ho_va_ten%>
             </div>
             <div class="dia-chi">
-                Việt Nam,Hà Nội, Cầu Giấy
+                <%=nguoi_dung[0].dia_chi%>
             </div>
         </div>
     </div>
     <div class="col-sm-9">
         <div>
-            <h1 style="font-size: 20px;font-weight: 900;">(Số lượng) bài đăng</h1>
+            <h1 style="font-size: 20px;font-weight: 900;">
+                <%=nguoi_dung[0].so_bai_dang%> bài đăng</h1>
         </div>
         <br>
         <div class="row">

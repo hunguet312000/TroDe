@@ -100,7 +100,7 @@ exports.filterListPostByType = async(req, res) => {
     }))
 }
 exports.filterListPostByNumOfPeopleOrPrice = async(req, res) => {
-    //console.log("OLALA: " + req.url);
+    console.log("OLALA: " + req.url);
     res.redirect(url.format({
         pathname: req.url,
         query: req.body,
@@ -370,6 +370,7 @@ exports.displayPostProfile = async(req, res) => {
                 id_phong_tro: req.params.id
             }
         });
+        console.log(binh_luan)
         let userData = {};
         userData.binh_luan = [];
         const present_date = new Date();
@@ -380,6 +381,7 @@ exports.displayPostProfile = async(req, res) => {
                 id_nguoi_binh_luan: b.dataValues.nguoi_dung.dataValues.id_nguoi_dung,
                 ten_nguoi_binh_luan: b.dataValues.nguoi_dung.dataValues.ten_nguoi_dung,
                 id_phong_tro: b.dataValues.id_phong_tro,
+                avatar_path : b.dataValues.nguoi_dung.dataValues.avatar_path,
                 id_binh_luan: b.dataValues.id_binh_luan,
                 noi_dung: b.dataValues.noi_dung,
                 rating: b.dataValues.rating,
@@ -388,6 +390,7 @@ exports.displayPostProfile = async(req, res) => {
                 lan_cuoi_chinh_sua: b.dataValues.updatedAt
             });
         }
+        console.log(userData.binh_luan)
         userData.phong_tro = phong_tro;
         userData.tien_ich = tien_ich;
         userData.hinh_anh = hinh_anh;
