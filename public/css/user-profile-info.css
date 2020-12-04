@@ -558,6 +558,22 @@ input[type=radio] {
     display: none;
 }
 
+.loading1 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    margin-top: -300px;
+    display: none;
+}
+
+.loading2 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    margin-top: -320px;
+    display: none;
+}
+
 @media (min-width:769px) and (max-width:990px) {
     #a-sub-2 {
         display: none;

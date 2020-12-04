@@ -26,6 +26,7 @@ $(function() {
             reader.onloadend = function() { // set image data as background of div
                 //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
                 uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(" + this.result + ")");
+                $('.imgpre').hide();
             }
         }
     });

@@ -26,7 +26,7 @@
                     <br><br>
                     <form action="/profile/address-edit" method="post">
                         <div class="content">
-                            <div class="row">
+                            <div class="row" id="wrap-text">
                                 <div class="col-sm-12">
                                     <div class="col-sm-12">
                                         <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Tỉnh/Thành phố</div>
@@ -35,50 +35,65 @@
                                     </div>
                                 </div>
                                 <% console.log(userData[0].dataValues)%>
-                                <div class="col-sm-12">
-                                    <div class="col-md-4">
-                                        <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Quận/Huyện</div>
-                                        <select class="custom-select btn-edit" id="huyen" name="quan_huyen" placeholder="Vui lòng chọn quận/huyện" style="border-radius: 0;color: #424242; font-size: small;height: 35px;width: 100%;" required data-bv-notempty-message="Không được để trống">
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-4">
+                                            <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Quận/Huyện</div>
+                                            <select class="custom-select btn-edit" id="huyen" name="quan_huyen" placeholder="Vui lòng chọn quận/huyện" style="border-radius: 0;color: #424242; font-size: small;height: 35px;width: 100%;" required data-bv-notempty-message="Không được để trống">
                                           <% if (userData[0].dataValues.quan_huyen) { %>
                                             <option value="<%= userData[0].dataValues.quan_huyen%>" disabled selected hidden><%= userData[0].dataValues.quan_huyen%></option>
                                           <% }else{%>
                                             <option value="" disabled selected hidden>Lựa chọn Quận/Huyện</option>
                                           <% }%>
                                         </select>
-                                        <br>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Phường/Xã</div>
-                                        <select class="custom-select btn-edit" id="xa" name="phuong_xa" style="border-radius: 0;color: #424242; font-size: small;height: 35px;width: 100%;" required data-bv-notempty-message="Không được để trống">
+                                            <br>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Phường/Xã</div>
+                                            <select class="custom-select btn-edit" id="xa" name="phuong_xa" style="border-radius: 0;color: #424242; font-size: small;height: 35px;width: 100%;" required data-bv-notempty-message="Không được để trống">
                                           <% if (userData[0].dataValues.phuong_xa) { %>
                                             <option value="<%= userData[0].dataValues.phuong_xa%>" disabled selected hidden><%= userData[0].dataValues.phuong_xa%></option>
                                           <% }else{%>
                                             <option value="" disabled selected hidden>Lựa chọn Phường/Xã</option>
                                           <% } %>
                                         </select>
-                                        <br>
+                                            <br>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Địa chỉ cụ thể</div>
+                                            <% if (userData[0].dataValues.dia_chi_cu_the) { %>
+                                                <input name="dia_chi_cu_the" type="text" value="<%=userData[0].dataValues.dia_chi_cu_the%>" id="address" class="form-control btn-edit" placeholder="Vui lòng nhập địa số nhà, tòa nhà, ..." style="border-radius: 0;color: #424242; font-size: small;height: 35px;"
+                                                    required data-bv-notempty-message="Không được để trống">
+                                                <% }else{ %>
+                                                    <input name="dia_chi_cu_the" type="text" id="address" class="form-control btn-edit" placeholder="Vui lòng nhập địa số nhà, tòa nhà, ..." style="border-radius: 0;color: #424242; font-size: small;height: 35px;" required data-bv-notempty-message="Không được để trống">
+                                                    <% }%>
+
+                                                        <br>
+                                        </div>
+
                                     </div>
-
-                                    <div class="col-sm-4">
-                                        <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Địa chỉ cụ thể</div>
-                                        <% if (userData[0].dataValues.dia_chi_cu_the) { %>
-                                          <input name="dia_chi_cu_the" type="text" value="<%=userData[0].dataValues.dia_chi_cu_the%>" id="address" class="form-control btn-edit" placeholder="Vui lòng nhập địa số nhà, tòa nhà, ..." style="border-radius: 0;color: #424242; font-size: small;height: 35px;" required data-bv-notempty-message="Không được để trống">
-                                        <% }else{ %>
-                                          <input name="dia_chi_cu_the" type="text" id="address" class="form-control btn-edit" placeholder="Vui lòng nhập địa số nhà, tòa nhà, ..." style="border-radius: 0;color: #424242; font-size: small;height: 35px;" required data-bv-notempty-message="Không được để trống">
-                                        <% }%>
-
-                                        <br>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="col-sm-2">
+                                        <button type="submit" class="btn btn-primary" id="button-submit" style="height: 38px;"><span id = "text-btn"><b>CẬP NHẬT</b></span></button>
                                     </div>
                                 </div>
 
                             </div>
-                            <div class="col-md-2">
-                                <button type="submit" class="btn btn-primary" id="button-submit" style="height: 38px;"><span id = "text-btn"><b>CẬP NHẬT</b></span></button>
-                            </div>
+                            <div class="loading1">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgb(255, 255, 255); display: block; shape-rendering: auto;background:transparent;" width="300px" height="300px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><circle cx="50" cy="50" r="0" fill="none" stroke="#e90c59" stroke-width="2"><animate attributeName="r" repeatCount="indefinite" dur="2s" values="0;40" keyTimes="0;1" keySplines="0 0.2 0.8 1" calcMode="spline" begin="-1s"/><animate attributeName="opacity" repeatCount="indefinite" dur="2s" values="1;0" keyTimes="0;1" keySplines="0.2 0 0.8 1" calcMode="spline" begin="-1s"/></circle><circle cx="50" cy="50" r="0" fill="none" stroke="#46dff0" stroke-width="2"><animate attributeName="r" repeatCount="indefinite" dur="2s" values="0;40" keyTimes="0;1" keySplines="0 0.2 0.8 1" calcMode="spline"/><animate attributeName="opacity" repeatCount="indefinite" dur="2s" values="1;0" keyTimes="0;1" keySplines="0.2 0 0.8 1" calcMode="spline"/></circle></svg>                                </div>
                         </div>
-
-                    </form>
                 </div>
+
+                </form>
             </div>
         </div>
+        </div>
         <script type="text/javascript" src="../js/profile-address-edit.js"></script>
+        <script>
+            $("form").submit(function() {
+                $(".loading1").css("display", "block");
+                $("#wrap-text").css("opacity", "0.5");
+            });
+        </script>
