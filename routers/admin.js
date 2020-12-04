@@ -2,9 +2,9 @@ const fs = require('fs');
 const cloudinary = require('../config/cloudinary');
 const upload = require('../config/multer');
 const bcrypt = require('bcrypt');
-const postManage = require('../app/postManage');
-const userManage = require("../app/userManage");
-const reportManage = require("../app/reportManage")
+const adminPostManage = require('../app/adminPostManage');
+const adminUserManage = require("../app/adminUserManage");
+const adminReportManage = require("../app/adminReportManage")
 const forgetPassword = require("../app/forgetPassword");
 require('dotenv').config();
 
@@ -17,10 +17,10 @@ module.exports = (app, passport) => {
       }
   });
 
-  app.get("/admin-control-post", postManage.displayAllPost);
+  app.get("/admin-control-post/:page", adminPostManage.displayAllPostForAdmin);
 
-  app.get("/admin-control-user",userManage.displayListUser );
+  app.get("/admin-control-user",adminUserManage.displayListUser );
 
-  app.get("/admin-control-report", reportManage.displayListReport);
+  app.get("/admin-control-report", adminReportManage.displayListReport);
 
 }

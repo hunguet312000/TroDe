@@ -3,11 +3,9 @@ const cloudinary = require('../config/cloudinary');
 const upload = require('../config/multer');
 const bcrypt = require('bcrypt');
 const postManage = require('../app/postManage');
-const userManage = require("../app/userManage");
 const forgetPassword = require("../app/forgetPassword");
 require('dotenv').config();
 const passport = require("../config/passport.js");
-const reportManage = require("../app/reportManage");
 const userProfileManage = require("../app/userProfileManage")
 module.exports = (app, passport) => {
     // app.get("/", function(req, res) {
@@ -61,8 +59,8 @@ module.exports = (app, passport) => {
 
     app.get("/host-edit/:id", async function(req, res) {
         let phong_tro = await postManage.getPostInfo(req.params.id);
-        console.log(phong_tro[0].dataValues);
-        console.log(phong_tro[0].dataValues.tien_ich_tien_nghi);
+        //console.log(phong_tro[0].dataValues);
+        //console.log(phong_tro[0].dataValues.hinh_anhs);
         if (req.isAuthenticated()) {
             res.render("user-host-edit", {
                 username: req.user.ten_nguoi_dung,

@@ -10,7 +10,7 @@ const { sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan, Dan
 const Op = require('Sequelize').Op
 
 exports.createReport = async(req, res) =>{
-    
+
     const uploader = async(path) => await cloudinary.uploads(path, 'Image');
     let insert_hinh_anh_values = []
     let files = req.files;
@@ -21,7 +21,7 @@ exports.createReport = async(req, res) =>{
         insert_hinh_anh_values.push(newPath);
         //fs.unlinkSync(path);
     }
-    
+
     const bao_cao_value = {
         id_phong_tro : req.params.room,
         id_nguoi_dung : req.user.id_nguoi_dung,
@@ -30,9 +30,9 @@ exports.createReport = async(req, res) =>{
     }
     if(req.body.ly_do_1 != undefined) {bao_cao_value.noi_dung+=(req.body.ly_do_1 + " ")}
     if(req.body.ly_do_2 != undefined) {bao_cao_value.noi_dung+=(req.body.ly_do_2 + " ")}
-    if(req.body.thong_tin_khac != undefined) {bao_cao_value.noi_dung+=req.body.thong_tin_khac}    
+    if(req.body.thong_tin_khac != undefined) {bao_cao_value.noi_dung+=req.body.thong_tin_khac}
     const bao_cao = await Bao_cao.create(bao_cao_value);
-    
+
     insert_hinh_anh_values.forEach(function(value) {
         value.id_bao_cao = bao_cao.id_bao_cao
     })
@@ -59,33 +59,9 @@ exports.reportInfo = async(req, res) => {
                 where : {
                     id_bao_cao : req.params.id
                 }
-            }) 
+            })
             console.log(bao_cao);
             res.render("report-info", { username: req.user.ten_nguoi_dung, bao_cao : bao_cao, hinh_anh_bao_cao : hinh_anh_bao_cao });
-        }catch(err){
-            console.log(err)
-        }
-    } else {
-        res.redirect('/login');
-    }
-}
-exports.displayListReport = async(req, res) => {
-    if (req.isAuthenticated()) {
-        try{
-            const bao_cao = await Bao_cao.findAll({
-                include: [{
-                    model: Nguoi_dung,
-                    required: true
-                },
-                {
-                    model: Phong_tro,
-                    required: true
-                }
-
-            ],
-            order: ['id_bao_cao']
-            })
-            res.render("admin-control-report", { username: req.user.ten_nguoi_dung, userData : bao_cao });
         }catch(err){
             console.log(err)
         }

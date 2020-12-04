@@ -452,13 +452,21 @@ exports.saveFavPost = async(req, res) => {
 exports.getPostInfo = async(id) => {
     try {
         const phong_tro = await Phong_tro.findAll({
-            include: {
-                model: Tien_ich
-            },
+            include: [
+              {
+                  model: Tien_ich,
+                  required: true
+              },
+              {
+                  model: Hinh_anh,
+                  required: true
+              },
+            ],
             where: {
                 id_phong_tro: id
             }
         });
+        console.log("ALO: " + JSON.stringify(phong_tro,null,4));
         return phong_tro;
     } catch (err) {
         console.log(err);
@@ -622,31 +630,5 @@ exports.displayListPostBySearch = async(req, res) => { // search by phan_loai, q
         });
     } catch (err) {
         console.log(err);
-    }
-}
-
-exports.displayAllPost = async(req, res) => {
-    if (req.isAuthenticated()) {
-
-        try {
-            const phong_tro = await Phong_tro.findAll({
-                attributes: ['*', [sequelize.fn('COUNT', sequelize.col('id_binh_luan')), 'luot_danh_gia']],
-                include: [{
-                    model: Binh_luan,
-                    required: false //left join
-                }],
-                group: ['Phong_tro.id_phong_tro'],
-                raw: true,
-                order: [
-                    ["id_phong_tro", "DESC"]
-                ]
-            });
-            //console.log(phong_tro)
-            res.render("admin-control-post", { username: req.user.ten_nguoi_dung, userData: phong_tro });
-        } catch (err) {
-            console.log(err)
-        }
-    } else {
-        res.redirect('/login');
     }
 }
