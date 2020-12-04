@@ -446,7 +446,7 @@
                     <label for="mota">*Nội dung</label>
                                 <br>
                                 <% if (phong_tro.quy_dinh_khac) { %>
-                                    <textarea name="quy_dinh_khac" class="form-control btn-ip" id="editor" rows="6" placeholder="<%= phong_tro.quy_dinh_khac%>"></textarea>
+                                    <textarea name="quy_dinh_khac" class="form-control btn-ip" id="editor" rows="6" placeholder=""><%= phong_tro.quy_dinh_khac%></textarea>
                                     <% }else{ %>
                                         <textarea name="quy_dinh_khac" class="form-control btn-ip" id="editor" rows="6" placeholder="Thêm quy định ..."></textarea>
                                         <% }%>
@@ -470,7 +470,7 @@
                                             <br>
 
                                 <% if (phong_tro.thong_tin_khac) { %>
-                                    <textarea name="thong_tin_khac" class="form-control btn-ip" id="editor1" rows="6" required data-bv-notempty-message="Không được để trống" placeholder="<%= phong_tro.thong_tin_khac%>"></textarea>
+                                    <textarea name="thong_tin_khac" class="form-control btn-ip" id="editor1" rows="6" required data-bv-notempty-message="Không được để trống" placeholder=""><%= phong_tro.thong_tin_khac%></textarea>
                                     <% }else{ %>
                                         <textarea name="thong_tin_khac" class="form-control btn-ip" id="editor1" rows="6" required data-bv-notempty-message="Không được để trống" placeholder="Nhập thông tin ..."></textarea>
                                         <% }%>

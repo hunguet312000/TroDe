@@ -391,6 +391,41 @@ a:focus {
     border: 16px solid #17ca9d;
 }
 
+.thong-tin {
+    font-size: 16px;
+    margin-top: 15px;
+    height: fit-content;
+    width: 100%;
+    font-family: Montserrat;
+    line-height: 1.35;
+    overflow: hidden;
+}
+
+.doc-them,
+.thu-gon {
+    margin-top: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #17ca9d;
+    font-weight: 900;
+    display: block;
+    width: fit-content;
+}
+
+.doc-them:hover {
+    color: #333333;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 900;
+}
+
+.thu-gon:hover {
+    color: #333333;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 900;
+}
+
 @media (max-width:990px) {
     .fa-user-circle {
         margin-left: 1px;

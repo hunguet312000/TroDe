@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="col-md-9">
-                    <form action="/profile/edit" method="post" enctype="multipart/form-data">
+                    <form action="/profile/edit" method="post" enctype="multipart/form-data" id="form-ava">
                         <div class="avatar" style="margin-left: 15px;">
                             <div class="row">
                                 <div class="col-sm-2" style="border-radius: 50%;border:none;">
@@ -32,23 +32,37 @@
                                             <%}else{%>
                                                 <img src="https://res.cloudinary.com/dt6qnb0hs/image/upload/v1606991923/love_ma2rdz.png" id="imgava" style="width:80px;height: 80px;border-radius: 50%;">
                                                 <%}%>
+                                                    <div class="lds-default">
+                                                        <div></div>
+                                                        <div></div>
+                                                        <div></div>
+                                                        <div></div>
+                                                        <div></div>
+                                                        <div></div>
+                                                        <div></div>
+                                                        <div></div>
+                                                        <div></div>
+                                                        <div></div>
+                                                        <div></div>
+                                                        <div></div>
+                                                    </div>
                                                     <label class="btn btn-primary label-up" id="btn-upload" style="display:inline-block;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 37.434 37.434" style="enable-background:new 0 0 37.434 37.434;width:20px;height:20px;" xml:space="preserve"><g>    <path d="M32.932,8.578H27.52V8.022c0-2.484-2.016-4.5-4.5-4.5h-8.607c-2.485,0-4.5,2.016-4.5,4.5v0.556H4.5   c-2.485,0-4.5,2.015-4.5,4.5v16.334c0,2.484,2.015,4.5,4.5,4.5h28.434c2.485,0,4.5-2.016,4.5-4.5V13.078   C37.432,10.592,35.417,8.578,32.932,8.578z M18.715,29.244c-4.688,0-8.5-3.812-8.5-8.5c0-4.687,3.812-8.5,8.5-8.5   c4.688,0,8.5,3.812,8.5,8.5C27.215,25.432,23.402,29.244,18.715,29.244z M23.215,20.744c0,2.479-2.02,4.5-4.5,4.5   c-2.48,0-4.5-2.021-4.5-4.5c0-2.48,2.02-4.5,4.5-4.5C21.195,16.244,23.215,18.264,23.215,20.744z"/></g></svg>                                            <input name="image" id="uploadimg" type="file" class="btn-edit" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="30" height="30" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve"><g><g xmlns="http://www.w3.org/2000/svg"><circle cx="256" cy="256" fill="#ffffff" r="256" data-original="#f9f9f9" style="" class=""/><path d="m256 0v512c141.385 0 256-114.615 256-256s-114.615-256-256-256z" fill="#fdfdff" data-original="#e2dff4" style="" class=""/><path d="m441.608 195.971-96.792-113.682c-46.266-23.614-100.054-27.589-148.845-11.897l-113.682 96.792c-23.614 46.266-27.589 100.054-11.897 148.845l96.792 113.682c46.266 23.614 100.054 27.589 148.846 11.897l113.682-96.792c23.613-46.266 27.588-100.054 11.896-148.845zm-125.579 59.02c.276 15.724-5.609 31.484-17.582 43.456l-21.552 21.553-19.886-3.971c-15.724.276-31.484-5.609-43.456-17.582l-43.012-43.012 25.43 1.573c-.276-15.724 5.609-31.484 17.582-43.456l42.425-42.425-.986 24.843c15.724-.276 31.484 5.609 43.456 17.582l47.707 47.707z" fill="#ff1f3d" data-original="#ff1f3d" style="" class=""/><g><path d="m441.608 195.971-96.792-113.682c-27.795-14.187-58.305-21.275-88.816-21.279v134.968c15.388-.012 30.731 5.859 42.447 17.575l47.707 47.707-30.125-6.268c.276 15.724-5.609 31.484-17.582 43.456l-21.552 21.552-19.886-3.971c-.336.006-.673-.007-1.009-.007v134.968c20.275.003 40.55-3.117 60.029-9.382l113.682-96.792c23.614-46.266 27.589-100.054 11.897-148.845z" fill="#93293b" data-original="#93293b" style="" class=""/></g><g><path d="m256 316.03h-185.635c16.017 49.413 51.241 90.257 96.837 113.662l131.958-131.958c-10.923 11.313-26.228 18.296-43.16 18.296z" fill="#ff6b6b" data-original="#ff6b6b" style="" class=""/></g><g><path d="m316.03 256v185.635c49.413-16.017 90.257-51.241 113.662-96.837l-131.958-131.959c11.313 10.924 18.296 26.229 18.296 43.161z" fill="#ff6b6b" data-original="#ff6b6b" style="" class=""/></g><g><path d="m256 195.97h185.635c-16.017-49.413-51.241-90.257-96.837-113.662l-131.959 131.958c10.924-11.313 26.229-18.296 43.161-18.296z" fill="#ff6b6b" data-original="#ff6b6b" style="" class=""/></g><g><path d="m195.97 256v-185.635c-49.413 16.017-90.257 51.241-113.662 96.837l131.958 131.958c-11.313-10.923-18.296-26.228-18.296-43.16z" fill="#ff6b6b" data-original="#ff6b6b" style="" class=""/></g><g><g><path d="m316.03 256v185.635c49.413-16.017 90.257-51.241 113.662-96.837l-131.958-131.959c11.313 10.924 18.296 26.229 18.296 43.161z" fill="#ff1f3d" data-original="#ff1f3d" style="" class=""/></g><g><path d="m195.97 256v-185.635c-49.413 16.017-90.257 51.241-113.662 96.837l131.958 131.958c-11.313-10.923-18.296-26.228-18.296-43.16z" fill="#ff6b6b" data-original="#ff6b6b" style="" class=""/></g><g fill="#ff1f3d"><path d="m256 316.03v24.865l43.161-43.161c-10.924 11.313-26.229 18.296-43.161 18.296z" fill="#ff1f3d" data-original="#ff1f3d" style="" class=""/><path d="m344.798 82.308-88.798 88.798v24.865h185.635c-16.018-49.414-51.241-90.258-96.837-113.663z" fill="#ff1f3d" data-original="#ff1f3d" style="" class=""/></g></g></g></g></svg>
+                                            <input name="image" id="uploadimg" type="file" class="btn-edit" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
                                         </label>
                                 </div>
                                 <div class="col-sm-6" style="vertical-align: middle;margin-top: 25px;float: left;margin-left: -5%;">
                                     <button name="submit" value="submit_avatar" type="submit" class="btn btn-primary" id="submit"><span id = "text-btn"><b>ĐỔI ẢNH ĐẠI DIỆN</b></span></button>
                                 </div>
                             </div>
-                            <img src="#" id="ava" style="width:80px;height: 80px;border-radius: 50%;display: none;">
                         </div>
                     </form>
-                    <form action="/profile/edit" method="post">
+                    <form action="/profile/edit" method="post" id="form-text">
                         <br>
                         <span style="font-size: 17px;"><b>Sửa thông tin cá nhân</b></span>
                         <br><br>
                         <div class="content">
-                            <div class="row">
+                            <div class="row" id="wrap-text">
                                 <div class="col-md-12">
                                     <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Tên đăng nhập</div>
                                     <input name="ten_nguoi_dung" type="text" id="user-name1" class="form-control btn-edit" placeholder="Vui lòng nhập tên đăng nhập của bạn" value="<%=userData[0].dataValues.ten_nguoi_dung %>" required>
@@ -120,6 +134,8 @@
                                     <button name="submit" value="submit_profile" type="submit" class="btn btn-primary" id="button-submit" style="height: 38px;"><span id = "text-btn"><b>CẬP NHẬT</b></span></button>
                                 </div>
                             </div>
+                            <div class="loading">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgb(255, 255, 255); display: block; shape-rendering: auto;background:transparent;" width="543px" height="543px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><circle cx="50" cy="50" r="0" fill="none" stroke="#e90c59" stroke-width="2"><animate attributeName="r" repeatCount="indefinite" dur="2s" values="0;40" keyTimes="0;1" keySplines="0 0.2 0.8 1" calcMode="spline" begin="-1s"/><animate attributeName="opacity" repeatCount="indefinite" dur="2s" values="1;0" keyTimes="0;1" keySplines="0.2 0 0.8 1" calcMode="spline" begin="-1s"/></circle><circle cx="50" cy="50" r="0" fill="none" stroke="#46dff0" stroke-width="2"><animate attributeName="r" repeatCount="indefinite" dur="2s" values="0;40" keyTimes="0;1" keySplines="0 0.2 0.8 1" calcMode="spline"/><animate attributeName="opacity" repeatCount="indefinite" dur="2s" values="1;0" keyTimes="0;1" keySplines="0.2 0 0.8 1" calcMode="spline"/></circle></svg>                                </div>
                         </div>
                     </form>
                 </div>
@@ -147,5 +163,14 @@
 
             $("#uploadimg").change(function() {
                 readURL(this);
+            });
+
+            $("#form-ava").submit(function() {
+                $(".lds-default").css("display", "inline-block");
+                $("#imgava").css("opacity", "0.5");
+            });
+            $("#form-text").submit(function() {
+                $(".loading").css("display", "block");
+                $("#wrap-text").css("opacity", "0.5");
             });
         </script>
