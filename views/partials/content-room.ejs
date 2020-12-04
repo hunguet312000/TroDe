@@ -334,6 +334,9 @@
                                         </div>
                                         <% } %>
                 </div>
+
+                <div id="map" style="height:100%; width:100%;">
+                </div>
             </div>
             <div class="col-sm-3">
                 <div class="dat-lich-room">
@@ -409,5 +412,15 @@
             collapsedHeight: 300,
             maxHeight: 300
         });
+
+        function initMap() {
+            const map = new google.maps.Map($("#map"), {
+                zoom: 15,
+                center: {
+                    lat: 21.041740,
+                    lng: 105.775009
+                },
+            });
+        }
     });
 </script>
