@@ -46,9 +46,9 @@ module.exports = (app, passport) => {
                 username: req.user.ten_nguoi_dung,
                 phong_tro: {
                     dataValues: "",
-                    tien_ich_tien_nghi: "",
+                    tien_ich_tien_nghi: ""
                 },
-                action: "new-post"
+                action: "/host"
             });
         } else {
             res.redirect('/login');
@@ -65,15 +65,15 @@ module.exports = (app, passport) => {
             res.render("user-host-edit", {
                 username: req.user.ten_nguoi_dung,
                 phong_tro: phong_tro[0].dataValues,
-                action: "post-edit"
+                action: "/host-edit/" + req.params.id
             });
         } else {
             res.redirect('/login');
         }
     });
 
-    app.post("/host-edit/:id", async function(req, res) {
-        console.log(req.body);
+    app.post("/host-edit/:id", function(req, res) {
+        console.log("OLA" + JSON.stringify(req.body,null,4));
     });
 
     app.get("/host-delete/:id", postManage.deletePost);

@@ -13,6 +13,7 @@ const paginate = require("./paginate");
 const userProfileManage = require("./userProfileManage");
 
 exports.savePosts = async(req, res) => {
+    console.log(req.body);
     if (req.isAuthenticated()) {
         const uploader = async(path) => await cloudinary.uploads(path, 'Image');
         let insert_hinh_anh_values = []
@@ -466,7 +467,7 @@ exports.getPostInfo = async(id) => {
                 id_phong_tro: id
             }
         });
-        console.log("ALO: " + JSON.stringify(phong_tro,null,4));
+        //console.log("ALO: " + JSON.stringify(phong_tro,null,4));
         return phong_tro;
     } catch (err) {
         console.log(err);
