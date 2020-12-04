@@ -292,3 +292,20 @@ exports.calculateHostProfilePages = async(req, res) => {
     console.log(e);
   }
 }
+
+exports.calculateAdminPostListPages = async(req, res) => {
+  try {
+    const currentPage = Number(req.params.page);
+    const postPerPage = 6;
+    const postNum = await Phong_tro.count({
+    });
+    return {
+      pages: Math.ceil(postNum/postPerPage),
+      offset: (postPerPage*currentPage)-postPerPage,
+      limit: postPerPage,
+      postNum: postNum
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}

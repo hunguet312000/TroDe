@@ -1,5 +1,5 @@
 <%
-  console.log(phong_tro.id_phong_tro + " " + action);
+  //console.log(phong_tro.id_phong_tro + " " + action);
 %>
 
     <% if(phong_tro.id_phong_tro){ %>
@@ -554,7 +554,6 @@
                             <div class="col-sm-10">
                                 <div style="height: 10px;"></div>
                             </div>
-
                             <div class="col-sm-10 uploadimg">
                                 <div class="content" style="background-color: #fff; height: fit-content;border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);">
                                     <div class="row" style="padding:40px;">
@@ -573,6 +572,10 @@
                                         </div>
                                         <br>
                                         <div style="font-size: large;padding: 10px;"><b>Ảnh phòng trọ, chung cư</b></div>
+
+                                        <% for (anh of phong_tro.hinh_anhs){%>
+                                           <% console.log(anh)%>
+                                        <%}%>
                                         <div class="col-sm-12">
                                             <div class="row">
                                                 <div class="col-md-3 imgUp">

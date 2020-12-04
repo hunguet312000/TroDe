@@ -3,7 +3,6 @@ const cloudinary = require('../config/cloudinary');
 const upload = require('../config/multer');
 const bcrypt = require('bcrypt');
 const postManage = require('../app/postManage');
-const userManage = require("../app/userManage");
 const bookingManage = require("../app/bookingManage");
 const forgetPassword = require("../app/forgetPassword");
 const reportManage = require("../app/reportManage");
