@@ -33,10 +33,9 @@ module.exports = (app, passport) => {
         res.render('user-profile-address', { user: user });
     });
 
-    app.get('/profile/address-edit', function(req, res) {
-        const user = req.session.passport.user;
-        res.render('user-profile-address-edit', { user: user });
-    });
+    app.get('/profile/address-edit', userProfileManage.viewUserProfileAddress);
+
+    app.post('/profile/address-edit', userProfileManage.updateUserProfileAddress);
 
     app.get("/user-profile/:id", function(req, res){
         const user = req.session.passport.user;

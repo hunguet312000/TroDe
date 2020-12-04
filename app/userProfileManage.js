@@ -2,7 +2,6 @@ const cloudinary = require('../config/cloudinary');
 var formidable = require("formidable");
 const mysql = require('mysql');
 const { QueryTypes } = require('sequelize');
-
 const dbconfig = require('../config/database');
 const bcrypt = require('bcrypt');
 const { sequelizeInit, Nguoi_dung, Phong_tro, Danh_sach_yeu_thich, sequelize } = require("../config/sequelize");
@@ -92,8 +91,8 @@ exports.isInWishList = async(id_phong_tro, id_nguoi_dung) => {
 }
 
 exports.editAvatarAndProfile = async(req, res) => {
-    console.log(req.body.submit);
-    console.log(JSON.stringify(req.body,null,4));
+    // console.log(req.body.submit);
+    // console.log(JSON.stringify(req.body,null,4));
     try {
         console.log(req.body.submit)
         switch(req.body.submit){
@@ -196,7 +195,7 @@ exports.viewHostProfile = async(req, res) => {
                     id_nguoi_dung: req.params.id
                 }
             });
-            console.log(JSON.stringify(nguoi_dung,null,4));
+            //console.log(JSON.stringify(nguoi_dung,null,4));
             res.render("hosts", {
               user: req.user,
               login: req.isAuthenticated(),
@@ -213,4 +212,47 @@ exports.viewHostProfile = async(req, res) => {
     } else {
         res.redirect('/login')
     }
+}
+
+exports.viewUserProfileAddress = async(req, res) => {
+    if (req.isAuthenticated()) {
+      const user = req.session.passport.user;
+        try{
+            const nguoi_dung = await Nguoi_dung.findAll({
+                where: {id_nguoi_dung : user.id_nguoi_dung}
+            })
+            res.render('user-profile-address-edit', { user: user, userData : nguoi_dung });
+        }
+        catch(err){
+            console.log(err)
+        }
+    } else { res.redirect('/login') }
+}
+
+exports.updateUserProfileAddress = async(req, res) => {
+    console.log(req.body);
+    if (req.isAuthenticated()) {
+      const user = req.session.passport.user;
+        try{
+            const update_nguoi_dung = await Nguoi_dung.update(
+                {
+                  thanh_pho: req.body.thanh_pho,
+                  quan_huyen: req.body.quan_huyen,
+                  phuong_xa: req.body.phuong_xa,
+                  dia_chi_cu_the: req.body.dia_chi_cu_the
+                },
+                {where: {id_nguoi_dung : user.id_nguoi_dung}}
+            );
+            const nguoi_dung = await Nguoi_dung.findAll({
+              where: {
+                id_nguoi_dung : user.id_nguoi_dung
+              }
+            })
+            //console.log(nguoi_dung);
+            res.render('user-profile-address-edit', { user: user, userData : nguoi_dung });
+        }
+        catch(err){
+            console.log(err)
+        }
+    } else { res.redirect('/login') }
 }

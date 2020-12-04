@@ -32,10 +32,6 @@ const nguoi_dung = {
         type: DataTypes.STRING,
         allowNull: false
     },
-    dia_chi: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
     ho_va_ten: {
         type: DataTypes.STRING,
         allowNull: true
@@ -54,7 +50,23 @@ const nguoi_dung = {
     avatar_path : {
         type: DataTypes.STRING,
         allowNull: true
-    }
+    },
+    thanh_pho: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    quan_huyen: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    phuong_xa: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    dia_chi_cu_the: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
 }
 
 const phong_tro = {

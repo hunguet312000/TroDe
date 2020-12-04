@@ -24,36 +24,49 @@
                 <div class="col-sm-9">
                     <span style="font-size: 17px;"><b>Sửa thông tin địa chỉ</b></span>
                     <br><br>
-                    <form>
+                    <form action="/profile/address-edit" method="post">
                         <div class="content">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="col-sm-12">
                                         <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Tỉnh/Thành phố</div>
-                                        <input type="text" id="city" class="form-control btn-edit" style="border-radius: 0;color: #424242; font-size: small;height: 35px;text-align: center;font-weight: 900;font-size: 15px;" data-meta="Field" value="Hà Nội" readonly="" tabindex="-1">
+                                        <input name="thanh_pho" type="text" id="city" class="form-control btn-edit" style="border-radius: 0;color: #424242; font-size: small;height: 35px;text-align: center;font-weight: 900;font-size: 15px;" data-meta="Field" value="Hà Nội" readonly="" tabindex="-1">
                                         <br>
                                     </div>
                                 </div>
-
+                                <% console.log(userData[0].dataValues)%>
                                 <div class="col-sm-12">
                                     <div class="col-md-4">
                                         <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Quận/Huyện</div>
-                                        <select class="custom-select btn-edit" id="huyen" name="quan" placeholder="Vui lòng chọn quận/huyện" style="border-radius: 0;color: #424242; font-size: small;height: 35px;width: 100%;" required data-bv-notempty-message="Không được để trống">
+                                        <select class="custom-select btn-edit" id="huyen" name="quan_huyen" placeholder="Vui lòng chọn quận/huyện" style="border-radius: 0;color: #424242; font-size: small;height: 35px;width: 100%;" required data-bv-notempty-message="Không được để trống">
+                                          <% if (userData[0].dataValues.quan_huyen) { %>
+                                            <option value="<%= userData[0].dataValues.quan_huyen%>" disabled selected hidden><%= userData[0].dataValues.quan_huyen%></option>
+                                          <% }else{%>
                                             <option value="" disabled selected hidden>Lựa chọn Quận/Huyện</option>
-                              </select>
+                                          <% }%>
+                                        </select>
                                         <br>
                                     </div>
                                     <div class="col-sm-4">
                                         <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Phường/Xã</div>
-                                        <select class="custom-select btn-edit" id="xa" name="xa" style="border-radius: 0;color: #424242; font-size: small;height: 35px;width: 100%;" required data-bv-notempty-message="Không được để trống">
+                                        <select class="custom-select btn-edit" id="xa" name="phuong_xa" style="border-radius: 0;color: #424242; font-size: small;height: 35px;width: 100%;" required data-bv-notempty-message="Không được để trống">
+                                          <% if (userData[0].dataValues.phuong_xa) { %>
+                                            <option value="<%= userData[0].dataValues.phuong_xa%>" disabled selected hidden><%= userData[0].dataValues.phuong_xa%></option>
+                                          <% }else{%>
                                             <option value="" disabled selected hidden>Lựa chọn Phường/Xã</option>
-                              </select>
+                                          <% } %>
+                                        </select>
                                         <br>
                                     </div>
 
                                     <div class="col-sm-4">
                                         <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Địa chỉ cụ thể</div>
-                                        <input type="text" id="address" class="form-control btn-edit" placeholder="Vui lòng nhập địa số nhà, tòa nhà, ..." style="border-radius: 0;color: #424242; font-size: small;height: 35px;" required data-bv-notempty-message="Không được để trống">
+                                        <% if (userData[0].dataValues.dia_chi_cu_the) { %>
+                                          <input name="dia_chi_cu_the" type="text" value="<%=userData[0].dataValues.dia_chi_cu_the%>" id="address" class="form-control btn-edit" placeholder="Vui lòng nhập địa số nhà, tòa nhà, ..." style="border-radius: 0;color: #424242; font-size: small;height: 35px;" required data-bv-notempty-message="Không được để trống">
+                                        <% }else{ %>
+                                          <input name="dia_chi_cu_the" type="text" id="address" class="form-control btn-edit" placeholder="Vui lòng nhập địa số nhà, tòa nhà, ..." style="border-radius: 0;color: #424242; font-size: small;height: 35px;" required data-bv-notempty-message="Không được để trống">
+                                        <% }%>
+
                                         <br>
                                     </div>
                                 </div>
