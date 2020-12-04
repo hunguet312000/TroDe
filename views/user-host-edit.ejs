@@ -32,11 +32,31 @@
                         <b><a class="navbar-brand logo1" href="/" id="logo1">TroDe</a></b>
                     </div>
                 </div>
-                <%- include("partials/content-host"); -%>
-                    <%- include("partials/load-img-edit"); -%>
+                <%- include("partials/content-edit"); -%>
             </div>
         </div>
         <br>
         <script type="text/javascript" src="../js/host.js"></script>
+        <script>
+            $('form').submit(function() {
+                $('#profile-content').hide();
+                $('#loading').show();
+                $('#footer').hide();
+                console.log('submit');
+            });
+
+            function convertPriceFormat(price) {
+                console.log(price);
+                price = price.replace(/,/g, '');
+                console.log(price = Number(price).toLocaleString("en"));
+                $("[name='gia_phong']").val(price);
+            }
+            $('#phan-loai-thue').select2();
+            $('#hinh-thuc').select2();
+            $('#khac').select2();
+            $('select').select2();
+            $('#phong-khach').select2();
+            $(".select2-container").css("width", "100%");
+        </script>
 
         <%- include("partials/footer"); -%>
