@@ -10,36 +10,30 @@
                             </a>
                         </div>
                         <div class="div-side">
-                            <a href="/bookings" class="a-side" style="text-decoration: none;">
+                            <a href="/bookings/1" class="a-side" style="text-decoration: none;">
                                 <span id="sp">Đặt lịch</span>
                             </a>
                         </div>
                         <div class="div-side">
-                            <a href="/control-bookings" class="a-side" style="text-decoration: none;">
+                            <a href="/control-bookings/1" class="a-side" style="text-decoration: none;">
                                 <span id="sp">Quản lý đặt lịch</span>
                             </a>
                         </div>
                         <div class="div-side">
-                            <a href="/wish-list" class="a-side" style="text-decoration: none;">
+                            <a href="/wish-list/1" class="a-side" style="text-decoration: none;">
                                 <span id="sp">Yêu thích</span>
                             </a>
                         </div>
                         <div class="div-side">
-                            <a href="/list-host" class="a-side" style="text-decoration: none;">
+                            <a href="/list-host/1" class="a-side" style="text-decoration: none;">
                                 <span id="sp">Bài đã đăng</span>
                             </a>
                         </div>
                         <b><a class="navbar-brand logo1" href="/" id="logo1">TroDe</a></b>
                     </div>
                 </div>
-                <%- include("partials/content-host", {
-            phong_tro: phong_tro,
-            action: action
-          }); -%>
-                    <%- include("partials/load-img-edit", {
-                        phong_tro: phong_tro,
-                        action: action
-                      }); -%>
+                <%- include("partials/content-host"); -%>
+                    <%- include("partials/load-img-edit"); -%>
             </div>
         </div>
         <br>

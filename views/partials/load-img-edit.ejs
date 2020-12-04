@@ -9,8 +9,8 @@
                     <div class="col-md-3 imgUp">
                         <img class="imagePreview" style="background-image: url(<%=phong_tro.path_anh_noi_bat%>);">
                         <label class="btn btn-primary" id="btn-upload">
-Tải ảnh lên<input name = "image" type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;" required data-bv-notempty-message="Không được để trống">
-  </label>
+                        Tải ảnh lên<input name = "image" type="file" class="uploadFile img" value="<%=phong_tro.path_anh_noi_bat%>" style="width: 0px;height: 0px;overflow: hidden;" required data-bv-notempty-message="Không được để trống">
+                        </label>
                     </div>
                 </div>
             </div>
@@ -24,8 +24,8 @@ Tải ảnh lên<input name = "image" type="file" class="uploadFile img" value="
 
                             </img>
                             <label class="btn btn-primary" id="btn-upload">
-     Tải ảnh lên<input name = "image" type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;" required data-bv-notempty-message="Không được để trống">
-          </label>
+                             Tải ảnh lên<input name = "image" type="file" class="uploadFile img" value="<%=anh.path_anh%>" style="width: 0px;height: 0px;overflow: hidden;" required data-bv-notempty-message="Không được để trống">
+                            </label>
                         </div>
                         <%}%>
                             <!-- col-2 -->
@@ -37,7 +37,7 @@ Tải ảnh lên<input name = "image" type="file" class="uploadFile img" value="
 
         <div class="row" style="padding:30px; margin-top: -20px;">
             <div class="col-sm-6">
-                <a href="/host" style="text-decoration: none;">
+                <a href="/" style="text-decoration: none;">
                     <button type="button" class="btn btn-primary" id="button-submit"><span id = "text-btn"><b>HỦY BỎ</b></span></button>
                 </a>
             </div>
