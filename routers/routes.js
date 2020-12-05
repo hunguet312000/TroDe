@@ -73,7 +73,7 @@ module.exports = (app, passport) => {
     });
 
     app.post("/host-edit/:id", function(req, res) {
-        console.log("OLA" + JSON.stringify(req.body,null,4));
+        console.log(req.body);
     });
 
     app.get("/host-delete/:id", postManage.deletePost);
