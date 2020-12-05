@@ -32,17 +32,11 @@
                     </div>
                     <b><a class="navbar-brand logo1" href="/" id="logo1">TroDe</a></b>
                 </div>
-                <%- include("partials/content-host"); -%>
-                    <%- include("partials/load-img-edit"); -%>
+                <%- include("partials/content-edit"); -%>
             </div>
         </div>
         <br>
-        <div class="container" id="loading">
-            <div class="loader">Loading...</div>
-            <h1 style="text-align: center;font-weight: 900;">Xin vui lòng chờ một lát ...</h1>
-        </div>
-
-        <script type="text/javascript" src="js/host.js"></script>
+        <script type="text/javascript" src="../js/host.js"></script>
         <script>
             $('form').submit(function() {
                 $('#profile-content').hide();
@@ -64,4 +58,5 @@
             $('#phong-khach').select2();
             $(".select2-container").css("width", "100%");
         </script>
+
         <%- include("partials/footer"); -%>

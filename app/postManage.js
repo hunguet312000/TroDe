@@ -3,6 +3,7 @@ const mysql = require('mysql');
 const dbconfig = require('../config/database');
 const async = require('async')
 require('dotenv').config();
+var visitCounter = require('express-visit-counter').Loader;
 const url = require("url");
 const sequelize = require("sequelize");
 const keywords_dict = require("../public/js/keywords_dict.js");
@@ -334,14 +335,14 @@ exports.displayUserListPost = async(req, res) => {
                     ["id_phong_tro", "DESC"]
                 ]
             });
-            //console.log("alo");
+            //console.log("alo")
             res.render('user-list-host', {
               user: req.user,
               userData: phong_tro,
               pages: calculatePagniate.pages,
               current: req.params.page,
               postNum: calculatePagniate.postNum,
-              type: "/list-host"
+              type: "/list-host",
               });
         } catch (err) {
             console.log(err);
@@ -376,6 +377,17 @@ exports.displayPostProfile = async(req, res) => {
                 id_phong_tro: req.params.id
             }
         });
+        let countView = await visitCounter.getCount(req.url);
+        const updateNumViewPage = await Phong_tro.update(
+            {
+                luot_xem : countView
+            },
+            {
+                where: {
+                    id_phong_tro : req.params.id
+                }
+            }
+        )
         console.log(binh_luan)
         let userData = {};
         userData.binh_luan = [];
@@ -413,7 +425,7 @@ exports.displayPostProfile = async(req, res) => {
           userData: userData,
           login: req.isAuthenticated(),
           bookedUserList: bookedUserList,
-          isInWishList: isInWishList
+          isInWishList: isInWishList,
         })
     } catch (err) {
         console.log(err);
@@ -429,6 +441,15 @@ exports.saveComment = async(req, res) => {
     }
     try {
         const binh_luan = await Binh_luan.create(binh_luan_moi);
+        const phong_tro = await Phong_tro.findAll(
+            {attributes : ['luot_binh_luan']},
+            {where : {id_phong_tro: req.body.id_phong_tro }}
+        )
+        let countComment = phong_tro[0].dataValues.luot_binh_luan;
+        const updateCommentNum = await Phong_tro.update(
+            {luot_binh_luan : countComment != undefined ? countComment + 1 : 1},
+            { where: {id_phong_tro : req.body.id_phong_tro}}
+        )
         res.redirect("/room/" + req.body.id_phong_tro);
     } catch (err) {
         console.log(err);
@@ -443,6 +464,15 @@ exports.saveFavPost = async(req, res) => {
             id_phong_tro: id_phong_tro,
             id_nguoi_dung: id_nguoi_dung
         })
+        const phong_tro = await Phong_tro.findAll(
+            {attributes : ['luot_thich']},
+            {where : {id_phong_tro: req.body.addFav_id_phong_tro }}
+        )
+        let countLikeNum = phong_tro[0].dataValues.luot_thich;
+        const updateCommentNum = await Phong_tro.update(
+            {luot_thich : countLikeNum != undefined ? countLikeNum + 1 : 1},
+            { where: {id_phong_tro : req.body.addFav_id_phong_tro}}
+        )
         res.redirect("/room/" + id_phong_tro);
     } catch (err) {
         //console.log("loi me r");

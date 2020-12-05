@@ -8,11 +8,13 @@ const mysql = require('mysql');
 const dgconfig = require("./config/database");
 dotenv.config({ path: './.env' });
 const port = process.env.PORT || 3000;
+var visitCounter = require('express-visit-counter');
+
 
 const app = express();
 
 require('./config/passport.js')(passport); // pass passport for configuration
-
+app.use(visitCounter.initialize());
 app.set('view engine', 'ejs');
 app.set("views", "./views");
 app.use(express.static(__dirname + '/public'));
