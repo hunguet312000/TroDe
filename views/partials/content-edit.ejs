@@ -1,7 +1,7 @@
 <%
   console.log(phong_tro.id_phong_tro + " " + action);
 %>
-    <form action="<%= action%>" method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" action=<%= action%>>
         <div class="col-sm-10"><span style="font-size: 18px;"><b>Tạo bài viết mới</b><br><br></div>
         <div class="col-sm-10">
         <div class="content" style="background-color: #fff; height: fit-content;border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);">
@@ -556,7 +556,7 @@
                                                     <div class="col-md-3 imgUp">
                                                         <img class="imagePreview" style="background-image: url(<%=phong_tro.path_anh_noi_bat%>);">
                                                         <label class="btn btn-primary" id="btn-upload">
-                                                        Tải ảnh lên<input name = "image" type="file" class="uploadFile img" value="<%=phong_tro.path_anh_noi_bat%>" style="width: 0px;height: 0px;overflow: hidden;" required data-bv-notempty-message="Không được để trống">
+                                                        Tải ảnh lên<input name = "image_avatar" type="file" class="uploadFile img" style="width: 0px;height: 0px;overflow: hidden;" >
                                                         </label>
                                                     </div>
                                                 </div>
@@ -565,15 +565,33 @@
                                             <div style="font-size: large;padding: 10px;"><b>Ảnh phòng trọ, chung cư</b></div>
                                             <div class="col-sm-12">
                                                 <div class="row">
-                                                    <% for (anh of phong_tro.hinh_anhs){%>
+                                                    
+                                                    <%for (let i = 0; i < Object.values(phong_tro.hinh_anhs).length; i++){%>
                                                         <div class="col-md-3 imgUp">
-                                                            <img class="imagePreview" style="background-image: url(<%=anh.path_anh%>);">
+                                                            <img class="imagePreview" style="background-image: url(<%=phong_tro.hinh_anhs[i].path_anh%>);">
                                                             </img>
                                                             <label class="btn btn-primary" id="btn-upload">
-                                                             Tải ảnh lên<input name = "image" type="file" class="uploadFile img" value="<%=anh.path_anh%>" style="width: 0px;height: 0px;overflow: hidden;" required data-bv-notempty-message="Không được để trống">
+                                                             Tải ảnh lên<input id="<%=phong_tro.hinh_anhs[i].id_anh%>" name = "update_image" type="file" class="uploadFile img" style="width: 0px;height: 0px;overflow: hidden;">
                                                             </label>
                                                         </div>
-                                                        <%}%>
+                                                        
+                                                    <%}%>
+
+                                                    </div>
+                                                    <%for (let i = 0; i < Object.values(phong_tro.hinh_anhs).length; i++){%>
+                                                         <input name="order" id = "order<%=i%>" type="text" id="title" class="form-control btn-ip" style = "display : none">
+                                                    <%}%>
+                                                    <%for (let i = 0; i < Object.values(phong_tro.hinh_anhs).length; i++){console.log(phong_tro.hinh_anhs[i])%>
+                                                        <script>
+                                                            $(document).ready(function(){
+                                                                $("#<%=phong_tro.hinh_anhs[i].id_anh%>").change(function(){
+                                                                    $("#order<%=i%>").val('<%=phong_tro.hinh_anhs[i].id_anh%>')
+                                                                })
+                                                            });
+
+                                                        </script>
+                                                    <%}%>
+                                                    </script>
                                                             <!-- col-2 -->
                                                             <i class="fa fa-plus-circle imgAdd" aria-hidden="true"></i>
                                                 </div>
