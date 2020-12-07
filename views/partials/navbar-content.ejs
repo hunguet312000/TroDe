@@ -15,7 +15,7 @@
                     <% if (login){%>
                         <div class="nav-item menu-info ">
                             <a class="nav-link btn btn-primary dropdown dropdown-toggle dropbtn" data-toggle="dropdown" id="user-name" aria-haspopup="true" aria-expanded="false">
-                                <span id="sp-username">
+                                <span id="sp-username" style="font-weight: 600;">
                                   <% if(user.ho_va_ten){%>
                                     <%= user.ho_va_ten %>
                                   <%}else{%>
@@ -24,7 +24,7 @@
                                 </span>
                                 <span><i class="fas fa-caret-down" style="color: black;"></i></span>
                             </a>
-                            <span id="div-host"><a href="/host" id = "a-host">Host&nbsp;&nbsp;&nbsp;</a></span>
+                            <span id="div-host"><a href="/host" id = "a-host" style="font-weight: 700;">Host&nbsp;&nbsp;&nbsp;</a></span>
                             <br><br>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="user-name" id="drop-down">
                                 <div id="div-drop"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 480 480" style="enable-background:new 0 0 480 480;height: 30px;width: 30px;vertical-align: middle;"
@@ -53,8 +53,8 @@
                         </div>
                         <%} else {%>
                             <div class="menu-info">
-                                <span><a href = "/signup" id = "a-info">Đăng ký&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
-                                <span><a href = "/login" id = "a-info">Đăng nhập</a></span>
+                                <span><a href = "/signup" id = "a-info" style="font-weight: 700;">Đăng ký&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
+                                <span><a href = "/login" id = "a-info" style="font-weight: 700;">Đăng nhập</a></span>
                             </div>
                             <%}%>
                 </div>
