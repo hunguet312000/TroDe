@@ -35,7 +35,13 @@
         <% if(login) {%>
             <div class="greeting">
                 <h3 style="font-size: 28px;">Chào mừng đến với TroDe,
-                    <%=user.ten_nguoi_dung%> !</h3>
+                    <%if (user.ho_va_ten != null){%>
+                        <%= user.ho_va_ten %>
+                            <%} else {%>
+                                <%= user.ten_nguoi_dung %>
+                                    <%}%>
+
+                </h3>
                 <div style="font-size: 16px;font-weight: 500;">Tìm kiếm phòng, đặt lịch xem phòng một cách dễ dàng với TroDe. </div>
             </div>
             <%} else{%>
