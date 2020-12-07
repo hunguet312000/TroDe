@@ -9,7 +9,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+    <link rel="stylesheet" href="/fonts/Hansief.otf">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
@@ -33,15 +34,15 @@
         </div>
         <% if(login) {%>
             <div class="greeting">
-                <h3>Chào mừng đến với TroDe,
+                <h3 style="font-size: 28px;">Chào mừng đến với TroDe,
                     <%=user.ten_nguoi_dung%> !</h3>
-                <div>Tìm kiếm phòng, đặt lịch xem phòng một cách dễ dàng với TroDe. </div>
+                <div style="font-size: 16px;font-weight: 500;">Tìm kiếm phòng, đặt lịch xem phòng một cách dễ dàng với TroDe. </div>
             </div>
             <%} else{%>
                 <div class="greeting">
-                    <h3>Chào mừng đến với TroDe!</h3>
-                    <div>Tìm kiếm phòng, đặt lịch xem phòng một cách dễ dàng với TroDe. </div>
-                    <div><a href="login" style="text-decoration: none;color: #222222; font-weight: 900;"><u>Đăng nhập</u></a> hoặc <a href="signup" style="text-decoration: none;color: #222222; font-weight: 900;"><u>Đăng ký</u></a> để trải nghiệm !</div>
+                    <h3 style="font-size: 28px;">Chào mừng đến với TroDe!</h3>
+                    <div style="font-size: 16px;font-weight: 500;">Tìm kiếm phòng, đặt lịch xem phòng một cách dễ dàng với TroDe. </div>
+                    <div style="font-size: 16px;font-weight: 500;"><a href="login" style="text-decoration: none;color: #222222; font-weight: 900;font-size: 16px;"><u>Đăng nhập</u></a> hoặc <a href="signup" style="text-decoration: none;color: #222222; font-weight: 900;font-size: 16px;"><u>Đăng ký</u></a>                        để trải nghiệm !</div>
                 </div>
                 <%}%>
                     <%- include("partials/content-home"); -%>

@@ -5,7 +5,7 @@ footer {
 
 body {
     background-color: #f7f7f7;
-    font-family: Montserrat;
+    font-family: Inter;
 }
 
 #navbar-container {
@@ -19,7 +19,7 @@ body {
 }
 
 #search-new {
-    font-family: Montserrat;
+    font-family: Inter;
     background-color: rgb(0, 0, 0, 0);
     width: 550px;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, .2);

@@ -1,6 +1,6 @@
 body {
     background: #f8f8f8;
-    font-family: Montserrat;
+    font-family: Inter;
 }
 
 #profile-content {
@@ -35,10 +35,9 @@ body {
     background-color: #fff;
     background-size: cover;
     background-repeat: no-repeat;
-    display: inline-block;
     box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .imgpre {
@@ -49,15 +48,15 @@ body {
     background-repeat: no-repeat;
     display: inline-block;
     box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 #btn-upload {
-    display: block;
-    margin-top: -7px;
-    border-bottom-left-radius: 7px;
-    border-bottom-right-radius: 7px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     width: 100%;
     color: #fff;
     background: rgb(23, 202, 157);

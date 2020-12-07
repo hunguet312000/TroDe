@@ -13,7 +13,7 @@
                     <select class="custom-select btn-ip" id="phan-loai-thue" name="phan_loai" required data-bv-notempty-message="Không được để trống">
                     <% if (phong_tro.id_phong_tro) { %>
                       <% console.log(phong_tro.phan_loai)%>
-                      <option selected="selected" value="<%= phong_tro.phan_loai %>"> <%= phong_tro.phan_loai %></option>
+                      <option selected="selected" value="<%= phong_tro.phan_loai %>" disabled selected hidden> <%= phong_tro.phan_loai %></option>
                     <% }else{ %>
                       <option value="" disabled selected hidden>Chọn loại phòng</option>
                     <% }%>

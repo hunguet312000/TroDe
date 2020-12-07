@@ -1,6 +1,6 @@
 body {
     background-color: #fff;
-    font-family: Montserrat;
+    font-family: Inter;
 }
 
 
@@ -52,6 +52,7 @@ body {
     -moz-transform: scale(1.015);
     -ms-transform: scale(1.015);
     -o-transform: scale(1.015);
+    cursor: pointer;
 }
 
 .gallery:focus {
@@ -396,7 +397,7 @@ a:focus {
     margin-top: 15px;
     height: fit-content;
     width: 100%;
-    font-family: Montserrat;
+    font-family: Inter;
     line-height: 1.35;
     overflow: hidden;
 }
@@ -424,6 +425,56 @@ a:focus {
     cursor: pointer;
     text-decoration: none;
     font-weight: 900;
+}
+
+#map {
+    height: 100%;
+}
+
+.img-click {
+    width: 100%;
+    height: 100%;
+    margin: 0px auto;
+    margin-top: -40px;
+    border: 6px;
+    float: left;
+    position: relative;
+    background: #222;
+}
+
+#gallery-img1 {
+    background-color: #222;
+    height: 792px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: none;
+    transform: scale(1);
+    transition: transform .45s cubic-bezier(.645, .045, .355, 1) 0s, opacity .45s cubic-bezier(.645, .045, .355, 1) 0s;
+}
+
+.close {
+    display: none;
+    background-color: rgba(0, 0, 0, .45);
+}
+
+.btn-close {
+    margin-top: 5px;
+    background-color: #222;
+    border: none;
+}
+
+.btn-close:focus {
+    outline: none;
+}
+
+.a-phan-loai {
+    color: #222222;
+    font-size: 16px;
+}
+
+.a-phan-loai:hover {
+    color: rgb(23, 202, 157);
 }
 
 @media (max-width:990px) {
