@@ -446,7 +446,9 @@
                                     <button class="lien-he">Liên hệ trực tiếp</button>
                                 </a>
                             </div>
-                            <%}%>
+                            <%} else if(login && userData.phong_tro[0].dataValues.nguoi_dung.dataValues.id_nguoi_dung == user.id_nguoi_dung){%>
+                                <div><i>* Chức năng <strong>ĐẶT LỊCH</strong> không khả dụng với người đăng bài.</i></div>
+                                <%}%>
                 </div>
             </div>
         </div>
