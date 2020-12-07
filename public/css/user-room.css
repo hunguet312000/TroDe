@@ -32,7 +32,7 @@ body {
     -webkit-tap-highlight-color: transparent;
 }
 
-#gallery-img {
+.gallery-img {
     width: 100%;
     border: 0px solid #fff;
     height: 420px;
@@ -45,7 +45,7 @@ body {
     opacity: .6;
 }
 
-#gallery-img:hover {
+.gallery-img:hover {
     transform: scale(1.015);
     transition: transform .45s cubic-bezier(.645, .045, .355, 1) 0s;
     -webkit-transform: scale(1.015);
@@ -152,10 +152,6 @@ a:focus {
     box-shadow: 2px 4px 4px #eee;
     width: 100%;
     border-radius: 4px;
-}
-
-.price {
-    border-bottom: 1px solid #f2f2f2;
 }
 
 .dat-lich,
