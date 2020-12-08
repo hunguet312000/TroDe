@@ -365,7 +365,7 @@
                     <h3><b>Bình luận</b></h3>
                     <br>
                     <% for(bookedUser of bookedUserList){%>
-                        <% if (login && bookedUser.id_nguoi_hen == user.id_nguoi_dung && userData.phong_tro[0].id_phong_tro == bookedUser.id_phong_tro) {%>
+                        <% if ((login && bookedUser.id_nguoi_hen == user.id_nguoi_dung && userData.phong_tro[0].id_phong_tro == bookedUser.id_phong_tro) || (login && userData.phong_tro[0].dataValues.nguoi_dung.dataValues.id_nguoi_dung == user.id_nguoi_dung)) {%>
                             <div class="binh-luan-cua-ban" style="border: 2px solid #f2f2f2;margin-bottom: 15px;border-radius: 8px;height: fit-content;">
                                 <form action="/comment" method="post" style="padding: 10px;">
                                     <div>

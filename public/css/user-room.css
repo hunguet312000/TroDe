@@ -251,6 +251,12 @@ a:focus {
     outline: 0 none;
 }
 
+#button-submit:focus {
+    border-color: #17ca9d;
+    box-shadow: 0 0 5px 0 #17ca9d;
+    outline: 0 none;
+}
+
 #zoomin,
 #zoomout {
     background: #ffffff;
