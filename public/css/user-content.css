@@ -50,7 +50,7 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-box-orient: vertical;
-    font-weight: 900;
+    font-weight: 700;
 }
 
 .info-category {
@@ -64,7 +64,7 @@ body {
 }
 
 .price {
-    font-weight: 900;
+    font-weight: 700;
     color: #222;
 }
 

@@ -28,10 +28,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 offset-md-2">
-                <h3 style="font-size: 22px;font-weight: 900;float: left;">Tạo tài khoản TroDe
+                <h3 style="font-size: 22px;font-weight: 700;float: left;">Tạo tài khoản TroDe
 
                 </h3>
-                <span style="font-size: 15px;font-weight: 700;float: right;">Bạn đã là thành viên? <a id = "a-text-dangnhap" href="login">Đăng nhập</a> tại đây</span>
+                <span style="font-size: 15px;font-weight: 600;float: right;">Bạn đã là thành viên? <a id = "a-text-dangnhap" href="login">Đăng nhập</a> tại đây</span>
                 <br>
             </div>
             <div class="col-md-8 offset-md-2">
@@ -39,25 +39,25 @@
                     <form action="/signup" method='post'>
                         <div class="row">
                             <div class="col-md-6">
-                                <label for="email" style="font-size: 14px;color: #424242;font-weight: 900;">*Email</label>
+                                <label for="email" style="font-size: 14px;color: #424242;font-weight: 700;">*Email</label>
                                 <div>
                                     <input name="email" type="text" id="email" class="form-control btn-ip" placeholder="Vui lòng nhập Email của bạn" required data-bv-notempty-message="Không được để trống">
                                     <span style="float: right;margin-top: -32px;margin-right: 10px;"><i class="far fa-envelope" style="font-size: 24px;"></i></span>
                                 </div>
                                 <br>
-                                <label for="user-name" style="font-size: 14px;color: #424242;font-weight: 900;">*Username</label>
+                                <label for="user-name" style="font-size: 14px;color: #424242;font-weight: 700;">*Username</label>
                                 <div>
                                     <input name="username" type="text" id="user-name" class="form-control btn-ip" placeholder="Vui lòng nhập username của bạn" required data-bv-notempty-message="Không được để trống">
                                     <span style="float: right;margin-top: -32px;margin-right: 10px;"><i class="far fa-user" style="font-size: 24px;"></i></span>
                                 </div>
                                 <br>
-                                <label for="password" style="font-size: 14px;color: #424242;font-weight: 900;">*Mật khẩu</label>
+                                <label for="password" style="font-size: 14px;color: #424242;font-weight: 700;">*Mật khẩu</label>
                                 <div>
                                     <input name="password" type="password" id="password" class="form-control btn-ip pr-password" placeholder="Vui lòng nhập mật khẩu của bạn" required>
                                     <span style="float: right;margin-top: -32px;margin-right: 10px;"><i class="fas fa-lock" style="font-size: 24px;"></i></span>
                                 </div>
                                 <br>
-                                <label for="phone" style="font-size: 14px;color: #424242;font-weight: 900;">*Số điện thoại</label>
+                                <label for="phone" style="font-size: 14px;color: #424242;font-weight: 700;">*Số điện thoại</label>
                                 <div>
                                     <input name="phone" type="number" id="phone" class="form-control btn-ip" placeholder="Vui lòng nhập số điện thoại của bạn" required data-bv-notempty-message="Không được để trống" maxlength="11" pattern="([0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9])">
                                     <span style="float: right;margin-top: -32px;margin-right: 10px;"><i class="fas fa-phone" style="font-size: 24px;"></i></span>
@@ -66,11 +66,11 @@
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class="col-md-8">
-                                        <span style="font-size: 14px;color: #424242;font-weight: 900;">*Ngày sinh</span>
+                                        <span style="font-size: 14px;color: #424242;font-weight: 700;">*Ngày sinh</span>
                                         <input name="DOB" id="datepicker" class="btn-date" placeholder="Chọn ngày sinh của bạn" required data-bv-notempty-message="Không được để trống">
                                     </div>
                                     <div class="col-md-4">
-                                        <span style="font-size: 14px;color: #424242;font-weight: 900;">*Giới tính</span>
+                                        <span style="font-size: 14px;color: #424242;font-weight: 700;">*Giới tính</span>
                                         <select name="sex" class="btn-ip" id="inputGroupSelect01" required data-bv-notempty-message="Không được để trống">
                                             <option value="" disabled selected hidden>Chọn</option>
                                             <option >Nam</option>
@@ -81,7 +81,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <%if(message.length > 0) {%>
-                                            <h4 style="text-align: center; font-size : 15px; border-radius: 8px; font-weight: 900; height: 40px;margin-top: 5px;" class="alert alert-danger mt4">
+                                            <h4 style="text-align: center; font-size : 15px; border-radius: 8px; font-weight: 700; height: 40px;margin-top: 5px;" class="alert alert-danger mt4">
                                                 <%=message%>
                                             </h4>
                                             <% }%>

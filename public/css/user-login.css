@@ -63,7 +63,7 @@ body {
     color: #fff;
     background: rgb(23, 202, 157);
     border-color: transparent;
-    font-weight: 900;
+    font-weight: 700;
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
     -ms-border-radius: 7px;
@@ -103,7 +103,7 @@ body {
 }
 
 #button-facebook:hover {
-    font-weight: 900;
+    font-weight: 700;
     box-shadow: 0 0 5px 0 rgb(133, 123, 123);
 }
 
@@ -120,7 +120,7 @@ body {
 }
 
 #button-gmail:hover {
-    font-weight: 900;
+    font-weight: 700;
     box-shadow: 0 0 5px 0 rgb(133, 123, 123);
 }
 
