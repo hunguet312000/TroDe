@@ -5,7 +5,7 @@ const async = require('async')
 require('dotenv').config();
 var visitCounter = require('express-visit-counter').Loader;
 const url = require("url");
-const sequelize = require("sequelize");
+const Sequelize = require("sequelize");
 const keywords_dict = require("../public/js/keywords_dict.js");
 const { sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan, Danh_sach_yeu_thich, Lich_hen } = require("../config/sequelize");
 const Op = require('Sequelize').Op
@@ -247,6 +247,7 @@ exports.displayPostByNumOfPeopleOrPrice = async(req, res) => {
         let type = (req.params.type == "phong_tro") ? "Phòng trọ" : "Chung cư";
         let tong_so_nguoi = "";
         let gia_tien = [undefined, undefined]
+        let quan_huyen = ""
         if (JSON.stringify(req.query) == "{}") {
             order = ["id_phong_tro", "DESC"]
         } else if (Object.values(req.query)[0] == "ESC") {
@@ -273,30 +274,80 @@ exports.displayPostByNumOfPeopleOrPrice = async(req, res) => {
             case "gia_trung":
                 gia_tien = (req.params.type == "phong_tro") ? [4000000, 6000000] : [4000000, 7000000];
                 break;
+            case "quan_cau_giay":
+                quan_huyen = "Quận Cầu Giấy";
+                break;
+            case "quan_ba_dinh":
+                quan_huyen = "Quận Ba Đình";
+                break;
+            case "quan_bac_tu_liem":
+                quan_huyen = "Quận Bắc Từ Liêm";
+                break;
+            case "quan_dong_da":
+                quan_huyen = "Quận Đống Đa";
+                break;
+            case "quan_hai_ba_trung":
+                quan_huyen = "Quận Hai Bà Trưng";
+                break;
+            case "quan_ha_dong":
+                quan_huyen = "Quận Hà Đông";
+                break;
+            case "quan_hoang_mai":
+                quan_huyen = "Quận Hoàng Mai";
+                break;
+            case "quan_hoan_kiem":
+                quan_huyen = "Quận Hoàn Kiếm";
+                break;
+            case "quan_long_bien":
+                quan_huyen = "Quận Long Biên";
+                break;
+            case "quan_nam_tu_liem":
+                quan_huyen = "Quận Nam Từ Liêm";
+                break;
+            case "quan_tay_ho":
+                quan_huyen = "Quận Tây Hồ";
+                break;
+            case "quan_thanh_xuan":
+                quan_huyen = "Quận Thanh Xuân";
+                break;
             default:
                 tong_so_nguoi = ""
                 gia_tien = [undefined, undefined]
+                quan_huyen = ""
         }
-        const calculatePagniate = await paginate.calculateRoomsByPeopleOrPricePages(req, res, type, tong_so_nguoi, gia_tien);
+        const calculatePagniate = await paginate.calculateRoomsByPeopleOrPricePages(req, res, type, tong_so_nguoi, gia_tien, quan_huyen);
         console.log(type + " " + tong_so_nguoi);
         const phong_tro = await Phong_tro.findAll({
             offset: calculatePagniate.offset,
             limit: calculatePagniate.limit,
             where: {
-                [Op.or]: [
-                      {
-                        [Op.and]:[
-                          {phan_loai: type},
-                          {tong_so_nguoi: tong_so_nguoi}
-                        ]
-                      },
-                    {
-                        phan_loai: type,
-                        gia_phong: {
-                            [Op.between]: [gia_tien[0], gia_tien[1]]
-                        }
-                    },
+                [Op.and] : [
+                    {phan_loai : type},
+                    {[Op.or] : [
+                        {tong_so_nguoi : tong_so_nguoi},
+                        {gia_phong : {[Op.between] : [gia_tien[0], gia_tien[1]]}},
+                        {quan_huyen : quan_huyen}
+                    ]}
                 ]
+                // [Op.or]: [
+                //       {
+                //         [Op.and]:[
+                //           {phan_loai: type},
+                //           {tong_so_nguoi: tong_so_nguoi}
+                //         ]
+                //       },
+                //     {
+                //         phan_loai: type,
+                //         gia_phong: {
+                //             [Op.between]: [gia_tien[0], gia_tien[1]]
+                //         }
+                //     },
+                //     {
+                //         phan_loai : type,
+                //         quan_huyen : district
+                //     }
+                // ]
+
             },
             include: [{
                 model: Nguoi_dung,
@@ -306,6 +357,7 @@ exports.displayPostByNumOfPeopleOrPrice = async(req, res) => {
                 order
             ]
         });
+        console.log(phong_tro)
         //console.log(req.params.type + "/" + req.params.option);
         res.render("rooms", {
           user: req.user,
@@ -377,8 +429,9 @@ exports.displayPostProfile = async(req, res) => {
                 id_phong_tro: req.params.id
             }
         });
+        
         let countView = await visitCounter.getCount(req.url);
-        const updateNumViewPage = await Phong_tro.update(
+         const updateNumViewPage = await Phong_tro.update(
             {
                 luot_xem : countView
             },
@@ -388,7 +441,6 @@ exports.displayPostProfile = async(req, res) => {
                 }
             }
         )
-        console.log(binh_luan)
         let userData = {};
         userData.binh_luan = [];
         const present_date = new Date();
@@ -450,6 +502,17 @@ exports.saveComment = async(req, res) => {
             {luot_binh_luan : countComment != undefined ? countComment + 1 : 1},
             { where: {id_phong_tro : req.body.id_phong_tro}}
         )
+        const danh_gia_phong_tro = await Binh_luan.findOne({
+            where: { id_phong_tro : req.body.id_phong_tro },
+            attributes: [
+                [Sequelize.fn('AVG', Sequelize.col('rating')), 'danh_gia'],
+            ],
+            raw: true,
+            group: ['id_phong_tro'],
+        })
+        const updateAvgRate = Phong_tro.update(
+        { danh_gia : parseFloat(danh_gia_phong_tro.danh_gia).toFixed(1)},
+        { where: {id_phong_tro : req.body.id_phong_tro }})
         res.redirect("/room/" + req.body.id_phong_tro);
     } catch (err) {
         console.log(err);
@@ -511,6 +574,7 @@ exports.deletePost = async(req, res) => {
                 id_phong_tro: req.params.id
             }
         });
+        visitCounter.clearLog("/room/" + req.url.slice(req.url.length - 1));
         res.redirect("/list-host/1");
     } catch (err) {
         console.log(err);

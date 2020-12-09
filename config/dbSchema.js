@@ -184,6 +184,10 @@ const phong_tro = {
     luot_binh_luan: {
         type: DataTypes.INTEGER,
         allowNull: true
+    },
+    danh_gia : {
+        type : DataTypes.FLOAT,
+        allowNull : true
     }
 }
 

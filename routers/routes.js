@@ -6,6 +6,7 @@ const postManage = require('../app/postManage');
 const forgetPassword = require("../app/forgetPassword");
 const formidable = require("formidable");
 require('dotenv').config();
+var visitCounter = require('express-visit-counter').Loader;
 const passport = require("../config/passport.js");
 const userProfileManage = require("../app/userProfileManage")
 const { sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan, Danh_sach_yeu_thich, Lich_hen } = require("../config/sequelize");
@@ -17,7 +18,7 @@ module.exports = (app, passport) => {
     //     } else { res.render('home') }
     // });
 
-    app.get("/", function(req, res) {
+    app.get("/", async(req, res) =>{
         res.render("home", { user: req.user, login: req.isAuthenticated() })
     });
 
