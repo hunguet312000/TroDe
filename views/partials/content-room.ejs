@@ -15,7 +15,7 @@
                     <a href="../report/<%= userData.phong_tro[0].dataValues.id_phong_tro %>" style="text-decoration: none; color: #252525;">
                         <button class="btn-like" id="btn-report" style="float: left;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;height: 18px;width: 18px;vertical-align: middle;" xml:space="preserve"><g><path d="M439.463,61.867c-4.616-2.685-10.318-2.685-14.933,0c-17.877,9.918-38.009,15.061-58.453,14.933    c-29.891,0.661-58.793-10.715-80.213-31.573c-24.728-24.205-58.162-37.431-92.757-36.693    c-27.861-0.241-55.101,8.232-77.909,24.235V25.6c0-14.138-11.461-25.6-25.6-25.6c-14.139,0-25.6,11.461-25.6,25.6v460.8    c0,14.138,11.461,25.6,25.6,25.6c14.138,0,25.6-11.461,25.6-25.6V264.533c2.828-0.265,5.522-1.33,7.765-3.072    c20.302-14.951,44.933-22.861,70.144-22.528c29.946-0.688,58.911,10.689,80.384,31.573c24.681,24.17,58.049,37.394,92.587,36.693    c26.469,0.308,52.431-7.266,74.581-21.76c4.74-3.285,7.501-8.742,7.339-14.507V76.8C448.052,70.648,444.791,64.943,439.463,61.867    z"/></g></g></svg>&nbsp;Báo cáo</span></button>
                     </a>
-                    <span class="sao" style="color: #252525;font-weight: 500;float: right;margin-left: 10px;"><svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 -10 511.98685 511" width="18" style = "vertical-align: middle;"><path d="m510.652344 185.902344c-3.351563-10.367188-12.546875-17.730469-23.425782-18.710938l-147.773437-13.417968-58.433594-136.769532c-4.308593-10.023437-14.121093-16.511718-25.023437-16.511718s-20.714844 6.488281-25.023438 16.535156l-58.433594 136.746094-147.796874 13.417968c-10.859376 1.003906-20.03125 8.34375-23.402344 18.710938-3.371094 10.367187-.257813 21.738281 7.957031 28.90625l111.699219 97.960937-32.9375 145.089844c-2.410156 10.667969 1.730468 21.695313 10.582031 28.09375 4.757813 3.4375 10.324219 5.1875 15.9375 5.1875 4.839844 0 9.640625-1.304687 13.949219-3.882813l127.46875-76.183593 127.421875 76.183593c9.324219 5.609376 21.078125 5.097657 29.910156-1.304687 8.855469-6.417969 12.992187-17.449219 10.582031-28.09375l-32.9375-145.089844 111.699219-97.941406c8.214844-7.1875 11.351563-18.539063 7.980469-28.925781zm0 0" fill="#ffc107"/></svg><span style="font-weight: 900;font-size: 15px;vertical-align: middle;">&nbsp;<%=(userData.phong_tro[0].dataValues.danh_gia != undefined) ? userData.phong_tro[0].dataValues.danh_gia : 'chua co danh gia nao'%>&nbsp;</span><span>(Số
+                    <span class="sao" style="color: #252525;font-weight: 500;float: right;margin-left: 10px;"><svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 -10 511.98685 511" width="18" style = "vertical-align: middle;"><path d="m510.652344 185.902344c-3.351563-10.367188-12.546875-17.730469-23.425782-18.710938l-147.773437-13.417968-58.433594-136.769532c-4.308593-10.023437-14.121093-16.511718-25.023437-16.511718s-20.714844 6.488281-25.023438 16.535156l-58.433594 136.746094-147.796874 13.417968c-10.859376 1.003906-20.03125 8.34375-23.402344 18.710938-3.371094 10.367187-.257813 21.738281 7.957031 28.90625l111.699219 97.960937-32.9375 145.089844c-2.410156 10.667969 1.730468 21.695313 10.582031 28.09375 4.757813 3.4375 10.324219 5.1875 15.9375 5.1875 4.839844 0 9.640625-1.304687 13.949219-3.882813l127.46875-76.183593 127.421875 76.183593c9.324219 5.609376 21.078125 5.097657 29.910156-1.304687 8.855469-6.417969 12.992187-17.449219 10.582031-28.09375l-32.9375-145.089844 111.699219-97.941406c8.214844-7.1875 11.351563-18.539063 7.980469-28.925781zm0 0" fill="#ffc107"/></svg><span style="font-weight: 900;font-size: 15px;vertical-align: middle;">&nbsp;5&nbsp;</span><span>(Số
                     lượt đánh giá)</span></span>
                     <form name="fav-post" action="/saveFavPost" method="post">
                         <input type="hidden" name="addFav_id_phong_tro" value="<%= userData.phong_tro[0].dataValues.id_phong_tro %>">
@@ -37,40 +37,36 @@
                 <span>
               <a class = "a-phan-loai" href = "/" style="text-decoration: none;">Hà Nội</a>
               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;width:12px;height:12px;margin-left: 6px;margin-right: 6px;" xml:space="preserve"><g><g><path d="M506.134,241.843c-0.006-0.006-0.011-0.013-0.018-0.019l-104.504-104c-7.829-7.791-20.492-7.762-28.285,0.068    c-7.792,7.829-7.762,20.492,0.067,28.284L443.558,236H20c-11.046,0-20,8.954-20,20c0,11.046,8.954,20,20,20h423.557    l-70.162,69.824c-7.829,7.792-7.859,20.455-0.067,28.284c7.793,7.831,20.457,7.858,28.285,0.068l104.504-104    c0.006-0.006,0.011-0.013,0.018-0.019C513.968,262.339,513.943,249.635,506.134,241.843z"/></g></g></svg>
-              <%let phan_loai%>
               <% if (userData.phong_tro[0].dataValues.phan_loai == "Chung cư"){%>
-                <%phan_loai = 'chung_cu'%>
                 <a class = "a-phan-loai" href = "../rooms/chung_cu/1" style="text-decoration: none;">Chung cư</a>
                 <%} else if (userData.phong_tro[0].dataValues.phan_loai == "Phòng trọ"){%>
-                    <%phan_loai = 'phong_tro'%>
-                    <a class = "a-phan-loai" href = "../rooms/phong_tro/1" style="text-decoration: none;">Phòng trọ</a>
+                    <a class = "a-phan-loai" href = "../rooms/phong_tro/1" style="text-decoration: none;">Chung cư</a>
                 <%}%>
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;width:12px;height:12px;margin-left: 6px;margin-right: 6px;" xml:space="preserve"><g><g><path d="M506.134,241.843c-0.006-0.006-0.011-0.013-0.018-0.019l-104.504-104c-7.829-7.791-20.492-7.762-28.285,0.068    c-7.792,7.829-7.762,20.492,0.067,28.284L443.558,236H20c-11.046,0-20,8.954-20,20c0,11.046,8.954,20,20,20h423.557    l-70.162,69.824c-7.829,7.792-7.859,20.455-0.067,28.284c7.793,7.831,20.457,7.858,28.285,0.068l104.504-104    c0.006-0.006,0.011-0.013,0.018-0.019C513.968,262.339,513.943,249.635,506.134,241.843z"/></g></g></svg>
-                
                 <% if (userData.phong_tro[0].dataValues.quan_huyen == "Quận Ba Đình"){%>
-                    <a class = "a-phan-loai" href = "../rooms/<%=phan_loai%>/quan_ba_dinh/1" style="text-decoration: none;">Quận Ba Đình</a>
+                    <a class = "a-phan-loai" href = "../rooms/quan_ba_dinh/1" style="text-decoration: none;">Quận Ba Đình</a>
                         <%} else if(userData.phong_tro[0].dataValues.quan_huyen == "Quận Bắc Từ Liêm"){%>
-                            <a class = "a-phan-loai" href = "../rooms/<%=phan_loai%>/quan_bac_tu_liem/1" style="text-decoration: none;">Quận Bắc Từ Liêm</a>
+                            <a class = "a-phan-loai" href = "../rooms/quan_bac_tu_liem/1" style="text-decoration: none;">Quận Bắc Từ Liêm</a>
                             <%}else if(userData.phong_tro[0].dataValues.quan_huyen == "Quận Cầu Giấy"){%>
-                                <a class = "a-phan-loai" href = "../rooms/<%=phan_loai%>/quan_cau_giay/1" style="text-decoration: none;">Quận Cầu Giấy</a>
+                                <a class = "a-phan-loai" href = "../rooms/quan_cau_giay/1" style="text-decoration: none;">Quận Cầu Giấy</a>
                                 <%}else if(userData.phong_tro[0].dataValues.quan_huyen == "Quận Đống Đa"){%>
-                                    <a class = "a-phan-loai" href = "../rooms/<%=phan_loai%>/quan_dong_da/1" style="text-decoration: none;">Quận Đống Đa</a>
+                                    <a class = "a-phan-loai" href = "../rooms/quan_dong_da/1" style="text-decoration: none;">Quận Đống Đa</a>
                                     <%}else if(userData.phong_tro[0].dataValues.quan_huyen == "Quận Hà Đông"){%>
-                                        <a class = "a-phan-loai" href = "../rooms/<%=phan_loai%>/quan_ha_dong/1" style="text-decoration: none;">Quận Hà Đông</a>
+                                        <a class = "a-phan-loai" href = "../rooms/quan_ha_dong/1" style="text-decoration: none;">Quận Hà Đông</a>
                                         <%}else if(userData.phong_tro[0].dataValues.quan_huyen == "Quận Hai Bà Trưng"){%>
-                                            <a class = "a-phan-loai" href = "../rooms/<%=phan_loai%>/quan_hai_ba_trung/1" style="text-decoration: none;">Quận Hai Bà Trưng</a>
+                                            <a class = "a-phan-loai" href = "../rooms/quan_hai_ba_trung/1" style="text-decoration: none;">Quận Hai Bà Trưng</a>
                                             <%}else if(userData.phong_tro[0].dataValues.quan_huyen == "Quận Hoàng Mai"){%>
-                                                <a class = "a-phan-loai" href = "../rooms/<%=phan_loai%>/quan_hoang_mai/1" style="text-decoration: none;">Quận Hoàng Mai</a>
+                                                <a class = "a-phan-loai" href = "../rooms/quan_hoang_mai/1" style="text-decoration: none;">Quận Hoàng Mai</a>
                                                 <%}else if(userData.phong_tro[0].dataValues.quan_huyen == "Quận Hoàn Kiếm"){%>
-                                                    <a class = "a-phan-loai" href = "../rooms/<%=phan_loai%>/quan_hoan_kiem/1" style="text-decoration: none;">Quận Hoàn Kiếm</a>
+                                                    <a class = "a-phan-loai" href = "../rooms/quan_hoan_kiem/1" style="text-decoration: none;">Quận Hoàn Kiếm</a>
                                                     <%}else if(userData.phong_tro[0].dataValues.quan_huyen == "Quận Long Biên"){%>
-                                                        <a class = "a-phan-loai" href = "../rooms/<%=phan_loai%>/quan_long_bien/1" style="text-decoration: none;">Quận Long Biên</a>
+                                                        <a class = "a-phan-loai" href = "../rooms/quan_long_bien/1" style="text-decoration: none;">Quận Long Biên</a>
                                                         <%}else if(userData.phong_tro[0].dataValues.quan_huyen == "Quận Nam Từ Liêm"){%>
-                                                            <a class = "a-phan-loai" href = "../rooms/<%=phan_loai%>/quan_nam_tu_liem/1" style="text-decoration: none;">Quận Nam Từ Liêm</a>
+                                                            <a class = "a-phan-loai" href = "../rooms/quan_nam_tu_liem/1" style="text-decoration: none;">Quận Nam Từ Liêm</a>
                                                             <%}else if(userData.phong_tro[0].dataValues.quan_huyen == "Quận Tây Hồ"){%>
-                                                                <a class = "a-phan-loai" href = "../rooms/<%=phan_loai%>/quan_tay_ho/1" style="text-decoration: none;">Quận Tây Hồ</a>
+                                                                <a class = "a-phan-loai" href = "../rooms/quan_tay_ho/1" style="text-decoration: none;">Quận Tây Hồ</a>
                                                                 <%}else if(userData.phong_tro[0].dataValues.quan_huyen == "Quận Thanh Xuân"){%>
-                                                                    <a class = "a-phan-loai" href = "../rooms/<%=phan_loai%>/quan_thanh_xuan/1" style="text-decoration: none;">Quận Thanh Xuân</a>
+                                                                    <a class = "a-phan-loai" href = "../rooms/quan_thanh_xuan/1" style="text-decoration: none;">Quận Thanh Xuân</a>
                                                                     <%}%>
 
                 </span>
