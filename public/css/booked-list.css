@@ -3,7 +3,7 @@ h2,
 h3,
 h4,
 h5 {
-    font-weight: 900;
+    font-weight: 700;
     line-height: 1.25;
     color: #222222;
     padding: 20px 0px 0px;
@@ -72,7 +72,7 @@ img {
 }
 
 .btn-funtion:hover {
-    font-weight: 900;
+    font-weight: 700;
 }
 
 .btn-funtion:focus {
