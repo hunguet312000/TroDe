@@ -43,11 +43,121 @@ $(document).ready(function() {
         collapsedHeight: 300,
         maxHeight: 300
     });
+    var countclick = 0;
+    var check = 0;
+    var zoomvalue = 16;
+    $("#zoomout").click(function(e) {
+        zoomvalue -= 1;
+        $("#map-badinh").geomap({
+            mode: "click",
+            zoom: zoomvalue
+        });
+
+        $("#map-bactuliem").geomap({
+            mode: "click",
+            zoom: zoomvalue
+        });
+        $("#map-caugiay").geomap({
+            mode: "click",
+            zoom: zoomvalue
+        });
+        $("#map-dongda").geomap({
+            mode: "click",
+            zoom: zoomvalue
+        });
+        $("#map-hadong").geomap({
+            mode: "click",
+            zoom: zoomvalue
+        });
+        $("#map-haibatrung").geomap({
+            mode: "click",
+            zoom: zoomvalue
+        });
+        $("#map-hoangmai").geomap({
+            mode: "click",
+            zoom: zoomvalue
+        });
+        $("#map-hoankiem").geomap({
+            mode: "click",
+            zoom: zoomvalue
+        });
+        $("#map-longbien").geomap({
+            mode: "click",
+            zoom: zoomvalue
+        });
+        $("#map-namtulien").geomap({
+            mode: "click",
+            zoom: zoomvalue
+        });
+        $("#map-tayho").geomap({
+            mode: "click",
+            zoom: zoomvalue
+        });
+        $("#map-thanhxuan").geomap({
+            mode: "click",
+            zoom: zoomvalue
+        });
+    })
+
+    $("#zoomin").click(function(e) {
+        zoomvalue += 1;
+        $("#map-badinh").geomap({
+            mode: "click",
+            zoom: zoomvalue
+        });
+
+        $("#map-bactuliem").geomap({
+            mode: "click",
+            zoom: zoomvalue
+        });
+        $("#map-caugiay").geomap({
+            mode: "click",
+            zoom: zoomvalue
+        });
+        $("#map-dongda").geomap({
+            mode: "click",
+            zoom: zoomvalue
+        });
+        $("#map-hadong").geomap({
+            mode: "click",
+            zoom: zoomvalue
+        });
+        $("#map-haibatrung").geomap({
+            mode: "click",
+            zoom: zoomvalue
+        });
+        $("#map-hoangmai").geomap({
+            mode: "click",
+            zoom: zoomvalue
+        });
+        $("#map-hoankiem").geomap({
+            mode: "click",
+            zoom: zoomvalue
+        });
+        $("#map-longbien").geomap({
+            mode: "click",
+            zoom: zoomvalue
+        });
+        $("#map-namtulien").geomap({
+            mode: "click",
+            zoom: zoomvalue
+        });
+        $("#map-tayho").geomap({
+            mode: "click",
+            zoom: zoomvalue
+        });
+        $("#map-thanhxuan").geomap({
+            mode: "click",
+            zoom: zoomvalue
+        });
+    })
+
     $("#map-badinh").geomap({
         center: [105.8147, 21.0335],
         zoom: 16,
         scroll: "off"
     });
+
     $("#map-bactuliem").geomap({
         center: [105.7577, 21.0701],
         zoom: 16,
@@ -55,8 +165,8 @@ $(document).ready(function() {
     });
     $("#map-caugiay").geomap({
         center: [105.7923, 21.0261],
-        zoom: 16,
-        scroll: "off"
+        zoom: zoomvalue,
+        scroll: "off",
     });
     $("#map-dongda").geomap({
         center: [105.8239, 21.0155],
@@ -103,6 +213,7 @@ $(document).ready(function() {
         zoom: 16,
         scroll: "off"
     });
+
     $('.img-click').slick({
         infinite: false,
         lazyLoad: 'ondemand',
@@ -137,5 +248,10 @@ $(document).ready(function() {
 
     $(".img-click .slick-prev").css("display", "none");
     $(".img-click .slick-next").css("display", "none");
+
+    $("#lien-he").click(function(e) {
+        $("#lien-he").hide();
+        $("#sdt-lien-he").show();
+    });
 
 });

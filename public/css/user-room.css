@@ -188,6 +188,24 @@ a:focus {
     outline: 0 none;
 }
 
+.dat-lich:focus {
+    font-weight: 900;
+    border-color: #17ca9d;
+    box-shadow: 0 0 5px 0 #17ca9d;
+    outline: 0 none;
+}
+
+.lien-he:focus {
+    font-weight: 900;
+    border-color: #17ca9d;
+    box-shadow: 0 0 5px 0 #17ca9d;
+    outline: 0 none;
+}
+
+#sdt-lien-he {
+    display: none;
+}
+
 .btn-function {
     width: fit-content;
     height: fit-content;
@@ -230,6 +248,65 @@ a:focus {
 #button-submit:hover {
     border-color: #17ca9d;
     box-shadow: 0 0 5px 0 #17ca9d;
+    outline: 0 none;
+}
+
+#button-submit:focus {
+    border-color: #17ca9d;
+    box-shadow: 0 0 5px 0 #17ca9d;
+    outline: 0 none;
+}
+
+#zoomin,
+#zoomout {
+    background: #ffffff;
+    border-color: transparent;
+    background-size: 200% auto;
+    height: 40px;
+    width: 40px;
+    border: none;
+    color: #fff;
+    font-weight: 500;
+    font-size: 17px;
+    background-size: 200% auto;
+    box-shadow: 0 0 4px 0 rgba(15, 22, 33, 0.6);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.plus {
+    fill: #0f162199;
+}
+
+#zoomin:hover .plus {
+    fill: #000;
+    outline: 0 none;
+}
+
+#zoomin:focus .plus {
+    fill: #0f162199;
+    outline: 0 none;
+}
+
+#zoomin:focus {
+    outline: 0 none;
+}
+
+.mins {
+    fill: #0f162199;
+}
+
+#zoomout:hover .mins {
+    fill: #000;
+    outline: 0 none;
+}
+
+#zoomout:focus .mins {
+    fill: #0f162199;
+    outline: 0 none;
+}
+
+#zoomout:focus {
     outline: 0 none;
 }
 
