@@ -20,7 +20,6 @@ exports.displayAllPostForAdmin = async(req, res) => {
             const phong_tro = await Phong_tro.findAll({
                 offset: calculatePagniate.offset,
                 limit: calculatePagniate.limit,
-                attributes: ['*', [sequelize.fn('COUNT', sequelize.col('id_binh_luan')), 'luot_danh_gia']],
                 include: [{
                     model: Binh_luan,
                     required: false //left join

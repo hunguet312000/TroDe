@@ -87,7 +87,7 @@ module.exports = (app, passport) => {
                     phong_tro_insert.path_anh_noi_bat = newPath.path_anh;
                 }
             }
-            
+
             if(req.files.image != undefined){
                 let files = req.files.image;
                 let insert_hinh_anh_values = []
@@ -100,7 +100,7 @@ module.exports = (app, passport) => {
                     value.id_phong_tro = req.params.id
                 })
                 const hinh_anh = await Hinh_anh.bulkCreate(insert_hinh_anh_values);
-                
+
             }
             if(req.files.update_image != undefined) {
                 let files = req.files.update_image;
@@ -126,7 +126,7 @@ module.exports = (app, passport) => {
         }catch(err){
             console.log(err)
         }
-        
+
     });
 
     app.get("/host-delete/:id", postManage.deletePost);

@@ -6,7 +6,7 @@ require('dotenv').config();
 const url = require("url");
 const sequelize = require("sequelize");
 const keywords_dict = require("../public/js/keywords_dict.js");
-const { sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan, Danh_sach_yeu_thich, Lich_hen } = require("../config/sequelize");
+const { sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan, Danh_sach_yeu_thich, Lich_hen, Bao_cao } = require("../config/sequelize");
 const Op = require('Sequelize').Op
 const bookingManage = require("./bookingManage");
 
@@ -296,7 +296,7 @@ exports.calculateHostProfilePages = async(req, res) => {
 exports.calculateAdminPostListPages = async(req, res) => {
   try {
     const currentPage = Number(req.params.page);
-    const postPerPage = 6;
+    const postPerPage = 3;
     const postNum = await Phong_tro.count({
     });
     return {
@@ -304,6 +304,41 @@ exports.calculateAdminPostListPages = async(req, res) => {
       offset: (postPerPage*currentPage)-postPerPage,
       limit: postPerPage,
       postNum: postNum
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+exports.calculateAdminUserListPages = async(req, res) => {
+  try {
+    const currentPage = Number(req.params.page);
+    const userPerPage = 3;
+    const userNum = await Nguoi_dung.count({
+    });
+    return {
+      pages: Math.ceil(userNum/userPerPage),
+      offset: (userPerPage*currentPage)-userPerPage,
+      limit: userPerPage,
+      userNum: userNum
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+exports.calculateAdminReportListPages = async(req, res) => {
+  try {
+    console.log(req.params.page);
+    const currentPage = Number(req.params.page);
+    const reportPerPage = 3;
+    const reportNum = await Bao_cao.count({
+    });
+    return {
+      pages: Math.ceil(reportNum/reportPerPage),
+      offset: (reportPerPage*currentPage)-reportPerPage,
+      limit: reportPerPage,
+      reportNum: reportNum
     }
   } catch (e) {
     console.log(e);

@@ -19,8 +19,8 @@ module.exports = (app, passport) => {
 
   app.get("/admin-control-post/:page", adminPostManage.displayAllPostForAdmin);
 
-  app.get("/admin-control-user",adminUserManage.displayListUser );
+  app.get("/admin-control-user/:page",adminUserManage.displayListUser );
 
-  app.get("/admin-control-report", adminReportManage.displayListReport);
+  app.get("/admin-control-report/:page", adminReportManage.displayListReport);
 
 }
