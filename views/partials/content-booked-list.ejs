@@ -28,7 +28,7 @@
             <div class="col-sm-6 info1">
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" enable-background="new 0 0 512 512" height="15" viewBox="0 0 512 512" width="15" style="vertical-align: middle;"><g><path d="m256 512c-68.38 0-132.668-26.628-181.02-74.98s-74.98-112.64-74.98-181.02 26.629-132.667 74.98-181.02 112.64-74.98 181.02-74.98 132.668 26.628 181.02 74.98 74.98 112.64 74.98 181.02-26.629 132.667-74.98 181.02-112.64 74.98-181.02 74.98zm0-480c-123.514 0-224 100.486-224 224s100.486 224 224 224 224-100.486 224-224-100.486-224-224-224z"/><path d="m256 240c-22.056 0-40-17.944-40-40s17.944-40 40-40 40 17.944 40 40c0 8.836 7.163 16 16 16s16-7.164 16-16c0-34.201-23.978-62.888-56-70.186v-17.814c0-8.836-7.163-16-16-16s-16 7.164-16 16v17.814c-32.022 7.298-56 35.985-56 70.186 0 39.701 32.299 72 72 72 22.056 0 40 17.944 40 40s-17.944 40-40 40-40-17.944-40-40c0-8.836-7.163-16-16-16s-16 7.164-16 16c0 34.201 23.978 62.888 56 70.186v17.814c0 8.836 7.163 16 16 16s16-7.164 16-16v-17.814c32.022-7.298 56-35.985 56-70.186 0-39.701-32.299-72-72-72z"/></g></svg>
-                    <span style="font-weight: 500;color: #222222;font-weight: 900;">&nbsp;<%= Number(booked.dataValues.phong_tro.dataValues.gia_phong).toLocaleString('en')%> đ/<sub>tháng</sub></span>
+                    <span style="color: #222222;font-weight: 700;">&nbsp;<%= Number(booked.dataValues.phong_tro.dataValues.gia_phong).toLocaleString('en')%> đ/<sub>tháng</sub></span>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
 </div>
 <div class="col-sm-2" id="sdt">
     <div>
-        <span style="font-weight: 900;">SĐT <%=(booked.dataValues.phong_tro.dataValues.phan_loai).toLowerCase()%></span>
+        <span style="font-weight: 700;">SĐT <%=(booked.dataValues.phong_tro.dataValues.phan_loai).toLowerCase()%></span>
         <br>
         <span style="font-weight: 500;"><%=booked.dataValues.phong_tro.dataValues.nguoi_dung.sdt%></span>
     </div>
