@@ -32,7 +32,7 @@ h2,
 h3,
 h4,
 h5 {
-    font-weight: 700;
+    font-weight: 900;
     line-height: 1.25;
     margin-bottom: 32px;
     color: #222222;
@@ -126,14 +126,6 @@ img {
 .info1 {
     margin-top: -32px;
     float: right;
-}
-
-.txt {
-    color: #222222;
-}
-
-a:hover {
-    text-decoration: none;
 }
 
 @media (min-width:991px) and (max-width:1200px) {

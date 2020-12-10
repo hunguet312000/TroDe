@@ -5,18 +5,18 @@
                 <div class="container" style="margin-top: 10px;">
                     <div class="navbar-header" style="padding: 6px 0px 0px;">
                         <b><a class="navbar-brand" href="/" id="logo">TroDe</a></b>
-                        <b><span class="" style="font-size: large;color: #333;font-weight: 700;">Bảng điều khiển dành cho ADMIN</span></b>
+                        <b><span class="" style="font-size: large;color: #333;font-weight: 900;">Bảng điều khiển dành cho ADMIN</span></b>
                     </div>
                     <div class="nav-item menu-info " style="float: right;margin-top: 15px;">
                         <div class="text-admin">
                             TÀI KHOẢN ADMIN
                         </div>
                         <div class="admin-name">
-                            <%if (user.ho_va_ten != null){%>
-                                <%= user.ho_va_ten %>
-                                    <%} else {%>
-                                        <%= user.ten_nguoi_dung %>
-                                            <%}%>
+                          <%if (user.ho_va_ten != null){%>
+                              <%= user.ho_va_ten %>
+                                  <%} else {%>
+                                      <%= user.ten_nguoi_dung %>
+                                          <%}%>
                         </div>
                     </div>
                 </div>
