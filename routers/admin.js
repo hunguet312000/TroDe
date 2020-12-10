@@ -22,5 +22,5 @@ module.exports = (app, passport) => {
   app.get("/admin-control-user/:page",adminUserManage.displayListUser );
 
   app.get("/admin-control-report/:page", adminReportManage.displayListReport);
-
+  app.post("/admin-control-user/:page", adminUserManage.searchUser);
 }

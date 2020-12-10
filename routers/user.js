@@ -43,5 +43,4 @@ module.exports = (app, passport) => {
     });
 
     app.get("/host-profile/:id/:page", userProfileManage.viewHostProfile)
-
 }
