@@ -46,23 +46,20 @@ exports.calculateRoomsPages = async(req, res, type, district, area) => {
   }
 }
 
-exports.calculateRoomsByPeopleOrPricePages = async(req, res, type, tong_so_nguoi, gia_tien) => {
+exports.calculateRoomsByPeopleOrPricePages = async(req, res, type, tong_so_nguoi, gia_tien, quan_huyen) => {
   try {
     const currentPage = Number(req.params.page);
     const roomPerPage = 12;
     const roomsNum = await Phong_tro.count({
       where: {
-          [Op.or]: [{
-                  phan_loai: type,
-                  tong_so_nguoi: tong_so_nguoi
-              },
-              {
-                  phan_loai: type,
-                  gia_phong: {
-                      [Op.between]: [gia_tien[0], gia_tien[1]]
-                  }
-              },
-          ]
+          [Op.and] : [
+            {phan_loai : type},
+            {[Op.or] : [
+                {tong_so_nguoi : tong_so_nguoi},
+                {gia_phong : {[Op.between] : [gia_tien[0], gia_tien[1]]}},
+                {quan_huyen : quan_huyen}
+            ]}
+        ]
       }
     });
     return {

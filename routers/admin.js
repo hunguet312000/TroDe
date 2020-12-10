@@ -45,4 +45,6 @@ module.exports = (app, passport) => {
   app.get("/admin/user-delete/:id", adminUserManage.adminDeleteUser);
 
   app.get("/admin/report-checked/:id", adminReportManage.adminReportChecked);
+
+  app.post("/admin-control-user/:page", adminUserManage.searchUser);
 }
