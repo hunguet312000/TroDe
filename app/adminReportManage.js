@@ -27,10 +27,12 @@ exports.displayListReport = async(req, res) => {
                 }
 
             ],
-            order: ['id_bao_cao']
+            order: [
+              ['id_bao_cao', "DESC"]
+            ]
             })
             res.render("admin-control-report", {
-              username: req.user.ten_nguoi_dung,
+              user: req.user,
               userData : bao_cao,
               type: "/admin-control-report",
               pages: calculatePagniate.pages,
@@ -43,4 +45,17 @@ exports.displayListReport = async(req, res) => {
     } else {
         res.redirect('/login');
     }
+}
+
+exports.adminReportChecked = async (req, res) =>{
+  try {
+    const checkedReport = await Bao_cao.destroy({
+      where:{
+        id_bao_cao: req.params.id
+      }
+    });
+      res.redirect(req.get('referer'));
+  } catch (e) {
+    console.log(e);
+  }
 }

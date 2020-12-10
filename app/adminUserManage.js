@@ -19,20 +19,20 @@ exports.displayListUser = async(req, res) =>{
                         ["id_nguoi_dung", "DESC"]
                     ]
                 });
-            } else { 
+            } else {
                 const searchUserValue = req.query.user;
                 nguoi_dung = await Nguoi_dung.findAll({
                     offset: calculatePagniate.offset,
                     limit: calculatePagniate.limit,
                     where: {[Op.or] : [
-                        {ten_nguoi_dung : {[Op.like] : "%" + searchUserValue + "%"}}, 
+                        {ten_nguoi_dung : {[Op.like] : "%" + searchUserValue + "%"}},
                         {ho_va_ten : {[Op.like] : "%" + searchUserValue + "%"}}
                     ]}
                 })
             }
             //console.log(nguoi_dung)
             res.render("admin-control-user", {
-              username: req.user.ten_nguoi_dung,
+              user: req.user,
               userData : nguoi_dung,
               type: "/admin-control-user",
               pages: calculatePagniate.pages,
@@ -45,6 +45,18 @@ exports.displayListUser = async(req, res) =>{
     } else {
           res.redirect('/login');
     }
+}
+exports.adminDeleteUser = async(req, res) =>{
+  try {
+      const deletedUser = await Nguoi_dung.destroy({
+        where:{
+          id_nguoi_dung: req.params.id
+        }
+      });
+      res.redirect(req.get('referer'));
+  } catch (e) {
+      console.log(e);
+  }
 }
 
 exports.searchUser = async(req, res) => {

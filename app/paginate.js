@@ -310,7 +310,7 @@ exports.calculateAdminPostListPages = async(req, res) => {
 exports.calculateAdminUserListPages = async(req, res) => {
   try {
     const currentPage = Number(req.params.page);
-    const userPerPage = 3;
+    const userPerPage = 4;
     const userNum = await Nguoi_dung.count({
     });
     return {
@@ -328,7 +328,7 @@ exports.calculateAdminReportListPages = async(req, res) => {
   try {
     console.log(req.params.page);
     const currentPage = Number(req.params.page);
-    const reportPerPage = 3;
+    const reportPerPage = 4;
     const reportNum = await Bao_cao.count({
     });
     return {

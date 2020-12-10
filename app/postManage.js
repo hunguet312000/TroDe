@@ -542,6 +542,7 @@ exports.getPostInfo = async(id) => {
 }
 
 exports.deletePost = async(req, res) => {
+    console.log(req.body);
     try {
         const phong_tro = await Phong_tro.destroy({
             where: {
