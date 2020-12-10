@@ -61,7 +61,7 @@ exports.reportInfo = async(req, res) => {
                 }
             })
             console.log(bao_cao);
-            res.render("report-info", { username: req.user.ten_nguoi_dung, bao_cao : bao_cao, hinh_anh_bao_cao : hinh_anh_bao_cao });
+            res.render("report-info", {user : req.user, username: req.user.ten_nguoi_dung, bao_cao : bao_cao, hinh_anh_bao_cao : hinh_anh_bao_cao });
         }catch(err){
             console.log(err)
         }
