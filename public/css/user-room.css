@@ -550,6 +550,15 @@ a:focus {
     color: rgb(23, 202, 157);
 }
 
+.author-name {
+    color: #222222;
+    font-weight: 700;
+}
+
+.author:hover .name-tac-gia {
+    color: rgb(23, 202, 157);
+}
+
 @media (max-width:990px) {
     .fa-user-circle {
         margin-left: 1px;
