@@ -32,7 +32,7 @@ exports.displayAllPostForAdmin = async(req, res) => {
             });
             //console.log(phong_tro)
             res.render("admin-control-post", {
-              username: req.user.ten_nguoi_dung,
+              user: req.user,
               userData: phong_tro,
               type: "/admin-control-post",
               pages: calculatePagniate.pages,
@@ -45,4 +45,18 @@ exports.displayAllPostForAdmin = async(req, res) => {
     } else {
         res.redirect('/login');
     }
+}
+
+exports.adminDeletePost = async (req, res) =>{
+  try {
+      console.log(req.params.id);
+      const deletedPost = await Phong_tro.destroy({
+        where: {
+          id_phong_tro: req.params.id
+        }
+      });
+      res.redirect(req.get('referer'));
+  } catch (e) {
+    console.log(e);
+  }
 }

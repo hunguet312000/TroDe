@@ -12,7 +12,11 @@
                             TÀI KHOẢN ADMIN
                         </div>
                         <div class="admin-name">
-                            <%=username%>
+                          <%if (user.ho_va_ten != null){%>
+                              <%= user.ho_va_ten %>
+                                  <%} else {%>
+                                      <%= user.ten_nguoi_dung %>
+                                          <%}%>
                         </div>
                     </div>
                 </div>

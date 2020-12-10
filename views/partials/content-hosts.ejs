@@ -9,10 +9,14 @@
                         <%}%>
             </div>
             <div class="ten-user">
-                <%=nguoi_dung[0].ho_va_ten%>
+              <%if (nguoi_dung[0].ho_va_ten != null){%>
+                  <%= nguoi_dung[0].ho_va_ten %>
+                      <%} else {%>
+                          <%= nguoi_dung[0].ten_nguoi_dung %>
+                              <%}%>
             </div>
             <div class="dia-chi">
-                <%=nguoi_dung[0].dia_chi%>
+                <%=nguoi_dung[0].dia_chi_cu_the + " " + nguoi_dung[0].quan_huyen + " " + nguoi_dung[0].phuong_xa%>
             </div>
         </div>
     </div>

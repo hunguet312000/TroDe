@@ -18,7 +18,7 @@ exports.displayListUser = async(req, res) =>{
             });
             //console.log(nguoi_dung)
             res.render("admin-control-user", {
-              username: req.user.ten_nguoi_dung,
+              user: req.user,
               userData : nguoi_dung,
               type: "/admin-control-user",
               pages: calculatePagniate.pages,
@@ -31,4 +31,17 @@ exports.displayListUser = async(req, res) =>{
     } else {
           res.redirect('/login');
     }
+}
+
+exports.adminDeleteUser = async(req, res) =>{
+  try {
+      const deletedUser = await Nguoi_dung.destroy({
+        where:{
+          id_nguoi_dung: req.params.id
+        }
+      });
+      res.redirect(req.get('referer'));
+  } catch (e) {
+      console.log(e);
+  }
 }

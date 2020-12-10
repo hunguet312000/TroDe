@@ -1,20 +1,28 @@
 <% if(userData.length!=0){ %>
     <% userData.forEach(function(data){ %>
+      <% //console.log(data.dataValues.id_nguoi_dung);%>
         <div class="col-sm-6 list-content" style="height: 120px;background-color: #fff;vertical-align: middle;border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);margin-bottom: 20px;margin-right: 5%;width: 45%;">
             <div class="row">
                 <div class="col-sm-3">
                     <a href="#" style="text-decoration: none;">
-                        <%if(data.avatar_path != undefined) {%>
-                            <img src=<%=data.avatar_path%> id="ava" style="width:100px;height: 100px;border-radius: 50%;margin-top:10px;">
+                        <%if(data.dataValues.avatar_path != undefined) {%>
+                            <img src=<%=data.dataValues.avatar_path%> id="ava" style="width:100px;height: 100px;border-radius: 50%;margin-top:10px;">
                             <%}else {%>
                                 <i class="fas fa-user-circle"></i>
                                 <%}%>
                     </a>
                 </div>
                 <div class="col-sm-7" style="line-height: 1.5;">
-                    <a href="#" style="text-decoration: none;">
+                    <% console.log(data.dataValues.id_nguoi_dung);%>
+                    <a href="/host-profile/<%=data.dataValues.id_nguoi_dung%>/1" style="text-decoration: none;">
                         <div class="title">
-                            <h3><b>    <%=data.ten_nguoi_dung%></b></h3>
+                            <h3><b>
+                              <%if (data.dataValues.ho_va_ten != null){%>
+                                  <%= data.dataValues.ho_va_ten %>
+                                      <%} else {%>
+                                          <%= data.dataValues.ten_nguoi_dung %>
+                                              <%}%>
+                            </b></h3>
                         </div>
                     </a>
                     <div class="little-info" style="margin-top: 4px;margin-bottom: 5px;">
@@ -28,7 +36,7 @@
                 </div>
                 <div class="col-sm-2">
                     <div style="line-height: 1.5;margin-top: 50px;">
-                        <a href="#" style="text-decoration: none;color: #252525;font-weight: 900;">
+                        <a href="/admin/user-delete/<%=data.dataValues.id_nguoi_dung%>" style="text-decoration: none;color: #252525;font-weight: 900;">
                             <i class="fas fa-trash" style="font-weight: 900;color: red;"></i>&nbsp;&nbsp;Xóa
                         </a>
                     </div>
