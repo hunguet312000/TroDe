@@ -27,7 +27,9 @@ exports.displayListReport = async(req, res) => {
                 }
 
             ],
-            order: ['id_bao_cao']
+            order: [
+              ['id_bao_cao', "DESC"]
+            ]
             })
             res.render("admin-control-report", {
               username: req.user.ten_nguoi_dung,
