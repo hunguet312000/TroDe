@@ -353,6 +353,10 @@ const bao_cao = {
         type: DataTypes.STRING,
         allowNull: false
     },
+    tinh_trang:{
+      type: DataTypes.INTEGER,
+      allowNull: true
+    }
 }
 
 const quan_tri_vien = {

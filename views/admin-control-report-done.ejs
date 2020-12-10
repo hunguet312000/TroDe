@@ -53,8 +53,9 @@
         var x=new Date(timestamp);
         return x.getDate() +"/" + (x.getMonth() + 1) + "/" + x.getFullYear() + " " + format(x.getHours()) + ":" + format(x.getUTCMinutes()) + ":" + format(x.getUTCSeconds());
     }
-    if(userData.length!=0 && JSON.stringify(userData) != "[]"){
-        userData.forEach(function(data){%>
+
+    if(bao_cao.length!=0 && JSON.stringify(bao_cao) != "[]"){
+        bao_cao.forEach(function(data){%>
                 <div class="col-sm-6 list-content" style="height: 120px;background-color: #fff;vertical-align: middle;border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);margin-bottom: 20px;margin-right: 5%;width: 45%;">
 
                     <div class="row">
@@ -66,19 +67,20 @@
                         <div class="col-sm-7" style="line-height: 1.5;">
                             <a href="/report-info/<%=data.dataValues.id_bao_cao%>" style="text-decoration: none;">
                                 <div class="title">
-                                    <h3><b><%=data.dataValues.tieu_de%></b></h3>
+                                    <h3><b>
+                                      <%=data.dataValues.tieu_de%>
+                                    </b></h3>
                                 </div>
                             </a>
                             <div class="little-info" style="margin-top: 4px;margin-bottom: 5px;">
                                 <span class="#" style="color: #252525;font-weight: 500;font-size: 15px;">
                   <span>Gửi bởi:&nbsp;</span>
-                                <%console.log(data.dataValues.nguoi_dung.dataValues.id_nguoi_dung);%>
-                                    <a href="/host-profile/<%=data.dataValues.nguoi_dung.dataValues.id_nguoi_dung%>/1" style="text-decoration: none;color: #333;">
-                                        <%if ( data.dataValues.nguoi_dung.dataValues.ho_va_ten != null){%>
-                                            <%=  data.dataValues.nguoi_dung.dataValues.ho_va_ten %>
-                                                <%} else {%>
-                                                    <%= data.dataValues.nguoi_dung.dataValues.ten_nguoi_dung %>
-                                                        <%}%>
+                                    <a href="/host-profile/1" style="text-decoration: none;color: #333;">
+                                      <%if (data.dataValues.nguoi_dung.dataValues.ho_va_ten != null){%>
+                                          <%= data.dataValues.nguoi_dung.dataValues.ho_va_ten %>
+                                              <%} else {%>
+                                                  <%= data.dataValues.nguoi_dung.dataValues.ten_nguoi_dung %>
+                                                      <%}%>
                                     </a>&nbsp;
                                     </span>
                             </div>

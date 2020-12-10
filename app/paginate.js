@@ -341,3 +341,24 @@ exports.calculateAdminReportListPages = async(req, res) => {
     console.log(e);
   }
 }
+
+exports.calculateAdminDoneReportListPages = async(req, res) => {
+  try {
+    console.log(req.params.page);
+    const currentPage = Number(req.params.page);
+    const reportPerPage = 4;
+    const reportNum = await Bao_cao.count({
+      where:{
+        tinh_trang: 1
+      }
+    });
+    return {
+      pages: Math.ceil(reportNum/reportPerPage),
+      offset: (reportPerPage*currentPage)-reportPerPage,
+      limit: reportPerPage,
+      reportNum: reportNum
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}

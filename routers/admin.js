@@ -46,5 +46,10 @@ module.exports = (app, passport) => {
 
   app.get("/admin/report-checked/:id", adminReportManage.adminReportChecked);
 
+  app.get("/report-info/:id", adminReportManage.reportInfo);
+
   app.post("/admin-control-user/:page", adminUserManage.searchUser);
+
+  app.get("/admin-done-report/:page", adminReportManage.getDoneReport);
+
 }
