@@ -3,6 +3,7 @@
 
 <head>
     <title>Quản trị viên</title>
+    <link rel="shortcut icon" href="https://res.cloudinary.com/dt6qnb0hs/image/upload/v1607615051/130082109_1350536555284774_1569636060532671486_n_haukkh.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -23,57 +24,57 @@
 </head>
 
 <%- include("partials/admin-navbar-control"); -%>
-  <%//console.log(bao_cao)%>
-    <div class="container" style="margin-top: 200px;">
-        <div class="row">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10" id="wrap-content-report">
-                <div class="title-report">
-                    <%=bao_cao[0].dataValues.tieu_de%>
-                </div>
-                <div class="content-report">
-                    <%=bao_cao[0].dataValues.noi_dung.substring(0,28)%>
-                    <br>
-                    <%=bao_cao[0].dataValues.noi_dung.substring(28,71)%>
-                    <br>
-                    <%=bao_cao[0].dataValues.noi_dung.substring(72,bao_cao[0].dataValues.noi_dung.length-1)%>
-                </div>
-                <div class="img" style="padding: 10px;">
-                    <h4 style="font-weight: 900;">Hình ảnh đính kèm</h4>
-                    <div class="gallery">
-                      <% for(anh of bao_cao[0].dataValues.hinh_anh_bao_caos){ %>
-                          <%console.log("ALO:" + JSON.stringify(anh.path_anh,null,4))%>
-                      <% }%>
+    <%//console.log(bao_cao)%>
+        <div class="container" style="margin-top: 200px;">
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10" id="wrap-content-report">
+                    <div class="title-report">
+                        <%=bao_cao[0].dataValues.tieu_de%>
+                    </div>
+                    <div class="content-report">
+                        <%=bao_cao[0].dataValues.noi_dung.substring(0,28)%>
+                            <br>
+                            <%=bao_cao[0].dataValues.noi_dung.substring(28,71)%>
+                                <br>
+                                <%=bao_cao[0].dataValues.noi_dung.substring(72,bao_cao[0].dataValues.noi_dung.length-1)%>
+                    </div>
+                    <div class="img" style="padding: 10px;">
+                        <h4 style="font-weight: 900;">Hình ảnh đính kèm</h4>
+                        <div class="gallery">
+                            <% for(anh of bao_cao[0].dataValues.hinh_anh_bao_caos){ %>
+                                <%console.log("ALO:" + JSON.stringify(anh.path_anh,null,4))%>
+                                    <% }%>
+                        </div>
                     </div>
                 </div>
+                <div class="col-sm-1"></div>
             </div>
-            <div class="col-sm-1"></div>
         </div>
-    </div>
 
-    <script>
-        $(document).ready(function() {
-            $('.gallery').slick({
-                infinite: false,
-                lazyLoad: 'ondemand',
-                slidesToShow: 2.4,
-                slidesToScroll: 1,
-                responsive: [{
-                    breakpoint: 990,
-                    settings: {
-                        slidesToShow: 2
-                    }
-                }]
+        <script>
+            $(document).ready(function() {
+                $('.gallery').slick({
+                    infinite: false,
+                    lazyLoad: 'ondemand',
+                    slidesToShow: 2.4,
+                    slidesToScroll: 1,
+                    responsive: [{
+                        breakpoint: 990,
+                        settings: {
+                            slidesToShow: 2
+                        }
+                    }]
+                });
+                $('.gallery-img').mouseenter(function() {
+                    $(this).addClass('is-hover');
+                }).mouseleave(function() {
+                    $(this).removeClass('is-hover');
+                })
+                $('.gallery').mouseenter(function() {
+                    $(this).addClass('is-hover');
+                }).mouseleave(function() {
+                    $(this).removeClass('is-hover');
+                })
             });
-            $('.gallery-img').mouseenter(function() {
-                $(this).addClass('is-hover');
-            }).mouseleave(function() {
-                $(this).removeClass('is-hover');
-            })
-            $('.gallery').mouseenter(function() {
-                $(this).addClass('is-hover');
-            }).mouseleave(function() {
-                $(this).removeClass('is-hover');
-            })
-        });
-    </script>
+        </script>
