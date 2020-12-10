@@ -16,8 +16,11 @@
                               <%}%>
             </div>
             <div class="dia-chi">
-                <% if (nguoi_dung[0].dia_chi_cu_the)%>
-                <%=nguoi_dung[0].dia_chi_cu_the + " " + nguoi_dung[0].quan_huyen + " " + nguoi_dung[0].phuong_xa%>
+                <% if(nguoi_dung[0].thanh_pho != null) {%>
+                    <%= nguoi_dung[0].thanh_pho%>,
+                        <%= nguoi_dung[0].quan_huyen%>,
+                            <%= nguoi_dung[0].phuong_xa%>
+                                <%}%>
             </div>
         </div>
     </div>
