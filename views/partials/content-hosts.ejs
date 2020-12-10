@@ -16,10 +16,11 @@
                                 <%}%>
             </div>
             <div class="dia-chi">
-                <%= nguoi_dung[0].thanh_pho%>,
-                    <%= nguoi_dung[0].quan_huyen%>,
-                        <%= nguoi_dung[0].phuong_xa%>
-                            <% console.log(nguoi_dung[0].thanh_pho)%>
+                <% if(nguoi_dung[0].thanh_pho != null) {%>
+                    <%= nguoi_dung[0].thanh_pho%>,
+                        <%= nguoi_dung[0].quan_huyen%>,
+                            <%= nguoi_dung[0].phuong_xa%>
+                                <%}%>
             </div>
         </div>
     </div>
