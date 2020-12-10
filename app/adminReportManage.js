@@ -15,6 +15,9 @@ exports.displayListReport = async(req, res) => {
       const calculatePagniate = await paginate.calculateAdminReportListPages(req, res);
         try{
             const bao_cao = await Bao_cao.findAll({
+              where:{
+                tinh_trang: null
+              },
               offset: calculatePagniate.offset,
               limit: calculatePagniate.limit,
                 include: [{
@@ -25,7 +28,6 @@ exports.displayListReport = async(req, res) => {
                     model: Phong_tro,
                     required: true
                 }
-
             ],
             order: [
               ['id_bao_cao', "DESC"]
@@ -49,13 +51,78 @@ exports.displayListReport = async(req, res) => {
 
 exports.adminReportChecked = async (req, res) =>{
   try {
-    const checkedReport = await Bao_cao.destroy({
-      where:{
-        id_bao_cao: req.params.id
-      }
+    const checkedReport = await Bao_cao.update(
+      {
+        tinh_trang: 1
+      },
+      {
+      where:{id_bao_cao: req.params.id}
     });
       res.redirect(req.get('referer'));
   } catch (e) {
     console.log(e);
   }
+}
+
+exports.reportInfo = async(req, res) => {
+    if (req.isAuthenticated()) {
+        try{
+            const bao_cao = await Bao_cao.findAll({
+                where: {
+                    id_bao_cao : req.params.id
+                },
+                include: [{
+                    model: Hinh_anh_bao_cao,
+                    required: true
+                }],
+            });
+            //console.log(bao_cao);
+            res.render("report-info", {
+              user: req.user,
+              bao_cao : bao_cao
+            });
+        }catch(err){
+            console.log(err)
+        }
+    } else {
+        res.redirect('/login');
+    }
+}
+
+exports.getDoneReport = async(req, res) => {
+    if (req.isAuthenticated()) {
+      const calculatePagniate = await paginate.calculateAdminDoneReportListPages(req, res);
+        try{
+            const bao_cao = await Bao_cao.findAll({
+              offset: calculatePagniate.offset,
+              limit: calculatePagniate.limit,
+              where: {
+                  tinh_trang: 1
+              },
+              include: [
+                {
+                  model: Hinh_anh_bao_cao,
+                  required: true
+                },
+                {
+                  model: Nguoi_dung,
+                  required: true
+                }
+            ],
+            });
+            //console.log(bao_cao);
+            res.render("admin-control-report-done", {
+              user: req.user,
+              bao_cao : bao_cao,
+              type: "/admin-done-report",
+              pages: calculatePagniate.pages,
+              current: req.params.page,
+              reportNum: calculatePagniate.reportNum
+            });
+        }catch(err){
+            console.log(err)
+        }
+    } else {
+        res.redirect('/login');
+    }
 }

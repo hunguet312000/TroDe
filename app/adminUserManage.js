@@ -28,7 +28,7 @@ exports.displayListUser = async(req, res) =>{
                         {ten_nguoi_dung : {[Op.like] : "%" + searchUserValue + "%"}},
                         {ho_va_ten : {[Op.like] : "%" + searchUserValue + "%"}}
                     ]}
-                })
+                });
             }
             //console.log(nguoi_dung)
             res.render("admin-control-user", {

@@ -60,7 +60,5 @@ module.exports = (app, passport) => {
 
     app.post("/report/:room", upload.array('image'), reportManage.createReport);
 
-    app.get("/report-info/:id", reportManage.reportInfo);
-
     //app.post("/rooms", postManage.filterListPostBySearch);
 }
