@@ -24,6 +24,10 @@
     font-weight: 600;
 }
 
+.info-title {
+    color: #333;
+}
+
 
 /*----------------------------------------*/
 
@@ -41,6 +45,36 @@ h5 {
 body {
     background-color: #f7f7f7;
     font-family: Inter;
+}
+
+#xoa {
+    border: none;
+    background-color: transparent;
+    margin-top: -165px;
+    position: absolute;
+    right: 0;
+}
+
+#xoa:focus {
+    border: none;
+    background-color: transparent;
+    outline: 0 none;
+}
+
+#xoa:hover .trash {
+    fill: rgb(209, 21, 21);
+}
+
+#a-title:hover .info-title {
+    color: #17ca9d;
+}
+
+.info-title {
+    color: #222222;
+}
+
+.product-card:hover .info-title {
+    color: #222222;
 }
 
 @media (min-width:769px) and (max-width:990px) {
