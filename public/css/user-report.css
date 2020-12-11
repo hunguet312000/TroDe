@@ -113,7 +113,8 @@ body {
 }
 
 #button-submit:focus {
-    outline: 0;
+    outline: 0 none;
+    border: none;
 }
 
 label {
