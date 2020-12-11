@@ -309,4 +309,4 @@ module.exports = {
         Hinh_anh_bao_cao,
         sequelize
     }
-  //sequelizeInit();
+    //sequelizeInit();

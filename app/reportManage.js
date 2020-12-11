@@ -47,3 +47,25 @@ exports.report = async(req, res) =>{
         res.redirect('/login');
     }
 }
+exports.reportInfo = async(req, res) => {
+    if (req.isAuthenticated()) {
+        try{
+            const bao_cao = await Bao_cao.findAll({
+                where: {
+                    id_bao_cao : req.params.id
+                }
+            });
+            const hinh_anh_bao_cao = await Hinh_anh_bao_cao.findAll({
+                where : {
+                    id_bao_cao : req.params.id
+                }
+            })
+            console.log(bao_cao);
+            res.render("report-info", { username: req.user.ten_nguoi_dung, bao_cao : bao_cao, hinh_anh_bao_cao : hinh_anh_bao_cao });
+        }catch(err){
+            console.log(err)
+        }
+    } else {
+        res.redirect('/login');
+    }
+}
