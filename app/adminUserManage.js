@@ -30,14 +30,21 @@ exports.displayListUser = async(req, res) =>{
                     ]}
                 });
             }
-            //console.log(nguoi_dung)
+            console.log(nguoi_dung)
+            const postNum = await Phong_tro.count({
+              where:{
+                //id_chu_so_huu: nguoi_dung.dataValues.id_nguoi_dung
+              }
+            });
+            //console.log(postNum);
             res.render("admin-control-user", {
               user: req.user,
               userData : nguoi_dung,
               type: "/admin-control-user",
               pages: calculatePagniate.pages,
               current: req.params.page,
-              userNum: calculatePagniate.userNum
+              userNum: calculatePagniate.userNum,
+              postNum: postNum
             });
         }catch(err) {
             console.log(err)
