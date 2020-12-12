@@ -34,7 +34,7 @@
             <div class="head-content">
                 <div class="row wrap-post" style="margin-top: 20px;">
                     <% for (room of roomList){ %>
-                        <% console.log(room[0].dataValues)%>
+                        <% //console.log(room[0].dataValues)%>
                             <div class="col-md-3 col-sm-6">
                                 <div class="product-card" style="background-color: #ffffff;">
                                     <a href="/room/<%=room[0].dataValues.id_phong_tro%>" style="text-decoration: none;">
@@ -42,11 +42,10 @@
                                             <img class="img-link" src="<%=room[0].dataValues.path_anh_noi_bat%>">
                                         </div>
                                     </a>
-                                    <button class="btn-funtion" id="xoa" style="float: right;">
-                                        <svg class = "trash" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;width:20px;height:20px;" xml:space="preserve"><g><g><path d="M413.915,96.165l-27.422,368.11c-0.482,6.254-5.858,11.154-12.245,11.154H137.143c-6.388,0-11.764-4.901-12.239-11.081    L98.085,96.195l-36.474,2.657l26.825,368.226C90.368,492.27,111.762,512,137.143,512h237.105c25.375,0,46.769-19.73,48.713-44.971    l27.429-368.152L413.915,96.165z"/></g></g><g><g><path d="M306.59,0H205.41c-23.528,0-42.667,19.139-42.667,42.667v54.857h36.571V42.667c0-3.304,2.792-6.095,6.095-6.095H306.59    c3.304,0,6.095,2.792,6.095,6.095v54.857h36.571V42.667C349.257,19.139,330.112,0,306.59,0z"/></g></g><g><g><path d="M485.181,79.238H26.819c-10.1,0-18.286,8.186-18.286,18.286s8.186,18.286,18.286,18.286h458.362    c10.1,0,18.286-8.186,18.286-18.286S495.281,79.238,485.181,79.238z"/></g></g></svg>                                        
-                                        <a href = "#" style="text-decoration: none;color: #252525;">
-                                            &nbsp;
-                                        </a></button>
+                                    <a href = "/remove-from-wish-list/<%=room[0].dataValues.id_phong_tro%>" style="text-decoration: none;color: #252525;"  class="btn-funtion" id="xoa" style="float: right;">
+                                        &nbsp;
+                                        <svg class = "trash" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;width:20px;height:20px;" xml:space="preserve"><g><g><path d="M413.915,96.165l-27.422,368.11c-0.482,6.254-5.858,11.154-12.245,11.154H137.143c-6.388,0-11.764-4.901-12.239-11.081    L98.085,96.195l-36.474,2.657l26.825,368.226C90.368,492.27,111.762,512,137.143,512h237.105c25.375,0,46.769-19.73,48.713-44.971    l27.429-368.152L413.915,96.165z"/></g></g><g><g><path d="M306.59,0H205.41c-23.528,0-42.667,19.139-42.667,42.667v54.857h36.571V42.667c0-3.304,2.792-6.095,6.095-6.095H306.59    c3.304,0,6.095,2.792,6.095,6.095v54.857h36.571V42.667C349.257,19.139,330.112,0,306.59,0z"/></g></g><g><g><path d="M485.181,79.238H26.819c-10.1,0-18.286,8.186-18.286,18.286s8.186,18.286,18.286,18.286h458.362    c10.1,0,18.286-8.186,18.286-18.286S495.281,79.238,485.181,79.238z"/></g></g></svg>
+                                    </a>
                                     <div class="product-info">
                                         <div class="phongtro-chungcu">
                                             <%= room[0].dataValues.phan_loai %>

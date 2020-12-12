@@ -90,6 +90,29 @@ exports.isInWishList = async(id_phong_tro, id_nguoi_dung) => {
     }
 }
 
+exports.removeFromWishList = async(req, res) => {
+    //console.log(req.params.id);
+    try {
+        const decreaseLike = await Phong_tro.decrement(
+          {luot_thich: 1},
+          {where:{
+             id_phong_tro: req.params.id
+          }}
+        );
+        const removePost = await Danh_sach_yeu_thich.destroy({
+            where: {
+                [Op.and]: [
+                    { id_nguoi_dung: req.user.id_nguoi_dung },
+                    { id_phong_tro: req.params.id }
+                ]
+            }
+        });
+        res.redirect(req.get('referer'));
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 exports.editAvatarAndProfile = async(req, res) => {
     // console.log(req.body.submit);
     // console.log(JSON.stringify(req.body,null,4));

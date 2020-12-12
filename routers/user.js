@@ -12,6 +12,8 @@ module.exports = (app, passport) => {
 
     app.get('/wish-list/:page',  userProfileManage.showWishList);
 
+    app.get('/remove-from-wish-list/:id',userProfileManage.removeFromWishList);
+
     app.get('/booked-list/:page', bookingManage.bookedList);
 
     app.get('/booked-list/:status/:page', bookingManage.bookedListStatus);
