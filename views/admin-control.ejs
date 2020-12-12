@@ -31,10 +31,17 @@
                         </div>
                         <div class="col-sm-1"></div>
                         <div class="col-sm-5" id="wrap-info">
-                            <span id="title-item-profile">Tổng số thành viên bị xóa</span>
+                            <span id="title-item-profile">Tổng số thành viên đã xóa</span>
                             <br>
-                            <div class="proflie-item-info" style="font-size: 30px;"><b>10</b></div>
+                            <div class="proflie-item-info" style="font-size: 30px;"><b> <%=user.dataValues.nguoi_dung_da_xoa%> </b></div>
                             <span id="title-item-profile">thành viên</span>
+                            <br>
+                        </div>
+                        <div class="col-sm-5" id="wrap-info">
+                            <span id="title-item-profile">Tổng số bài đăng đã xóa</span>
+                            <br>
+                            <div class="proflie-item-info" style="font-size: 30px;"><b> <%=user.dataValues.bai_dang_da_xoa%> </b></div>
+                            <span id="title-item-profile">bài</span>
                             <br>
                         </div>
                     </div>

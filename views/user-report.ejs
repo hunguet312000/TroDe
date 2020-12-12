@@ -19,7 +19,11 @@
     <nav class="navbar navbar-light navbar-fixed-top navbar-custom" role="navigation" style="background-color: #ffffff;">
         <div class="container">
             <div class="navbar-header">
-                <b><a class="navbar-brand " href="/" id="logo">TroDe</a></b>
+                <% if(user.role === 1){ %>
+                  <b><a class="navbar-brand" href="/admin-control" id="logo">TroDe</a></b>
+                <% }else { %>
+                  <b><a class="navbar-brand" href="/" id="logo">TroDe</a></b>
+                <% }%>
                 <b><span class="blink" style="font-size: x-large;">Báo Cáo</span></b>
     </nav>
     <br><br>

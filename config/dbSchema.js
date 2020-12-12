@@ -391,6 +391,14 @@ const quan_tri_vien = {
     ngay_sinh: {
         type: DataTypes.DATE,
         allowNull: true
+    },
+    nguoi_dung_da_xoa: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+    },
+    bai_dang_da_xoa: {
+      type: DataTypes.INTEGER,
+      allowNull: true
     }
 }
 

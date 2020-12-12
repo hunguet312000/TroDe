@@ -6,7 +6,7 @@ require('dotenv').config();
 const url = require("url");
 const sequelize = require("sequelize");
 const keywords_dict = require("../public/js/keywords_dict.js");
-const { sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan, Danh_sach_yeu_thich, Lich_hen } = require("../config/sequelize");
+const { sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan, Danh_sach_yeu_thich, Lich_hen, Quan_tri_vien } = require("../config/sequelize");
 const Op = require('Sequelize').Op
 const bookingManage = require("./bookingManage");
 const paginate = require("./paginate");
@@ -43,13 +43,20 @@ exports.displayAllPostForAdmin = async(req, res) => {
             console.log(err)
         }
     } else {
-        res.redirect('/login');
+        res.redirect('/admin-login');
     }
 }
 
 exports.adminDeletePost = async (req, res) =>{
   try {
-      console.log(req.params.id);
+      //console.log(req.params.id);
+      const deletedPostNum = await Quan_tri_vien.increment(
+        { bai_dang_da_xoa: 1 },
+        {where:{
+            id_quan_tri_vien: req.user.id_quan_tri_vien
+          }
+        }
+      );
       const deletedPost = await Phong_tro.destroy({
         where: {
           id_phong_tro: req.params.id

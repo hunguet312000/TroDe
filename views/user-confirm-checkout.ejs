@@ -32,7 +32,11 @@
             <nav class="navbar navbar-light navbar-fixed-top navbar-custom" role="navigation" id="nav-bar" style="border-bottom: 1px solid #f2f2f2;">
                 <div class="container" style="margin-top: 10px;">
                     <div class="navbar-header" style="padding: 6px 0px 0px;">
+                      <% if(user.role === 1){ %>
+                        <b><a class="navbar-brand" href="/admin-control" id="logo">TroDe</a></b>
+                      <% }else { %>
                         <b><a class="navbar-brand" href="/" id="logo">TroDe</a></b>
+                      <% }%>
                         <b><span class="" style="font-size: large;color: #333;font-weight: 900;">ĐẶT LỊCH</span></b>
                     </div>
                     <div class="nav-item menu-info " style="float: right;margin-top: 15px;">

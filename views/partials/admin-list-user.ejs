@@ -27,10 +27,25 @@
                             </a>
                             <div class="little-info" style="margin-top: 4px;margin-bottom: 5px;">
                                 <span class="host" style="color: #252525;font-weight: 500;font-size: 15px;"><span>Số bài đăng:&nbsp;</span>
-                                <%=postNum%>&nbsp;</span>
+                                    <% for (num of postNum){ %>
+                                        <% if(data.dataValues.id_nguoi_dung === num.id_nguoi_dung){%>
+                                          <%= num.postNum %>
+                                        <%}%>
+                                    <%}%>
+                                </span>
                             </div>
                             <div class="info" style="margin-bottom: 5px;">
-                                <span class="thich" style="color: #252525;font-weight: 500;font-size: 15px;"><i class="far fa-heart" style="color: red;margin-right: 5px;">&nbsp;</i><span>Số lượt thích</span></span>
+                                <span class="thich" style="color: #252525;font-weight: 500;font-size: 15px;">
+                                  Tham gia:
+                                  <span>
+                                    <% let current = new Date()%>
+                                    <% if(current.getFullYear() === data.dataValues.createdAt.getFullYear()){ %>
+                                      <%= data.dataValues.createdAt.getDate() + "/" + (data.dataValues.createdAt.getMonth()+1) %>
+                                    <% }else{ %>
+                                      <%= data.dataValues.createdAt.toLocaleDateString() %>
+                                    <% } %>
+                                  </span>
+                                </span>
                             </div>
                             <div class="dia-chi" style="margin-bottom: 5px;">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;height: 15px;width: 15px;" xml:space="preserve">

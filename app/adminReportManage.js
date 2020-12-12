@@ -45,7 +45,7 @@ exports.displayListReport = async(req, res) => {
             console.log(err)
         }
     } else {
-        res.redirect('/login');
+        res.redirect('/admin-login');
     }
 }
 
@@ -85,7 +85,7 @@ exports.reportInfo = async(req, res) => {
             console.log(err)
         }
     } else {
-        res.redirect('/login');
+        res.redirect('/admin-login');
     }
 }
 
@@ -123,6 +123,6 @@ exports.getDoneReport = async(req, res) => {
             console.log(err)
         }
     } else {
-        res.redirect('/login');
+        res.redirect('/admin-login');
     }
 }

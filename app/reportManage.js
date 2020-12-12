@@ -42,7 +42,10 @@ exports.createReport = async(req, res) =>{
 
 exports.report = async(req, res) =>{
     if (req.isAuthenticated()) {
-        res.render("user-report", {room : req.params.room});
+        res.render("user-report", {
+          user: req.user,
+          room : req.params.room
+        });
     } else {
         res.redirect('/login');
     }

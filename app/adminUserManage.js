@@ -2,7 +2,7 @@ const async = require('async')
 require('dotenv').config();
 const { QueryTypes } = require('sequelize');
 const url = require("url")
-const {sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan, Danh_sach_yeu_thich, sequelize} = require("../config/sequelize");
+const {sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan, Danh_sach_yeu_thich, Quan_tri_vien, sequelize} = require("../config/sequelize");
 const Op = require('Sequelize').Op
 const paginate = require("./paginate");
 
@@ -30,12 +30,26 @@ exports.displayListUser = async(req, res) =>{
                     ]}
                 });
             }
-            console.log(nguoi_dung)
-            const postNum = await Phong_tro.count({
-              where:{
-                //id_chu_so_huu: nguoi_dung.dataValues.id_nguoi_dung
-              }
-            });
+            let tmp = [];
+            for(nguoi of nguoi_dung){
+              const postNum = await Phong_tro.count({
+                  offset: calculatePagniate.offset,
+                  limit: calculatePagniate.limit,
+                  where: {
+                    id_chu_so_huu: nguoi.dataValues.id_nguoi_dung
+                  },
+                  order: [
+                      ["id_chu_so_huu", "DESC"]
+                  ]
+              });
+              tmp.push(
+                {
+                id_nguoi_dung: nguoi.dataValues.id_nguoi_dung,
+                postNum: postNum
+                }
+              );
+            }
+            // console.log(tmp);
             //console.log(postNum);
             res.render("admin-control-user", {
               user: req.user,
@@ -44,17 +58,24 @@ exports.displayListUser = async(req, res) =>{
               pages: calculatePagniate.pages,
               current: req.params.page,
               userNum: calculatePagniate.userNum,
-              postNum: postNum
+              postNum: tmp
             });
         }catch(err) {
             console.log(err)
         }
     } else {
-          res.redirect('/login');
+          res.redirect('/admin-login');
     }
 }
 exports.adminDeleteUser = async(req, res) =>{
   try {
+      const deletedUserNum = await Quan_tri_vien.increment(
+        { nguoi_dung_da_xoa: 1 },
+        {where:{
+            id_quan_tri_vien: req.user.id_quan_tri_vien
+          }
+        }
+      );
       const deletedUser = await Nguoi_dung.destroy({
         where:{
           id_nguoi_dung: req.params.id
