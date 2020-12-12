@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Admin</title>
+    <title>Quên mật khẩu</title>
     <link rel="shortcut icon" href="https://res.cloudinary.com/dt6qnb0hs/image/upload/v1607615051/130082109_1350536555284774_1569636060532671486_n_haukkh.png">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <link href="/css/user-verification-email.css" rel="stylesheet">
+    <link href="/css/user-verification.css" rel="stylesheet">
 </head>
 
 <body>
@@ -20,50 +20,42 @@
         <div class="container">
             <div class="navbar-header">
                 <b><a class="navbar-brand " href="/" id="logo">TroDe</a></b>
-                <b><span class="blink" style="font-size: x-large;"></span></b>
+                <b><span class="blink" style="font-size: x-large;">Quản trị viên</span></b>
     </nav>
     <br><br>
     <div class="container">
         <div class="row">
-            <!-- <div class="col-md-10 offset-md-1">
-                <h3 style="font-size: 22px;">Bàn cần quyền quản trị để truy cập !
+            <div class="col-md-10 offset-md-1">
+                <h3 style="font-size: 22px;font-weight: 700;">Truy cập bị từ chối !
                 </h3>
                 <br>
-            </div> -->
+            </div>
             <div class="col-md-10 offset-md-1">
-                <div class="content-verfication" style="padding: 25px 50px 25px 50px;">
-                    <form>
-                        <div class="row">
-                            <div class="col-md-7">
-                                <span>Bàn cần quyền quản trị để truy cập !</span>
+                <div class="content-verfication" style="padding: 40px 50px 25px 50px;">
+                    <div class="row">
+                        <div class="col-md-2 offset-md-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Capa_1" enable-background="new 0 0 512 512" height="150" viewBox="0 0 512 512" width="150"><linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="256" x2="256" y1="512" y2="0"><stop offset="0" stop-color="#fd3a84"/><stop offset="1" stop-color="#ffa68d"/></linearGradient><g><g><path d="m256 61c-40.559 0-79.576 12.528-112.837 36.23-7.561 5.389-8.448 16.277-1.901 22.822l250.686 250.686c6.578 6.579 17.458 5.627 22.822-1.901 23.702-33.259 36.23-72.278 36.23-112.837 0-107.523-87.477-195-195-195zm143.945 275.311-224.255-224.256c24.555-13.822 51.995-21.055 80.31-21.055 90.981 0 165 74.019 165 165 0 28.316-7.233 55.756-21.055 80.311zm-279.892-195.049c-6.564-6.566-17.45-5.637-22.822 1.901-23.703 33.261-36.231 72.279-36.231 112.837 0 107.523 87.477 195 195 195 40.558 0 79.576-12.528 112.837-36.23 7.56-5.388 8.448-16.276 1.901-22.822zm135.947 279.738c-90.981 0-165-74.019-165-165 0-28.315 7.233-55.755 21.055-80.31l224.255 224.255c-24.555 13.822-51.995 21.055-80.31 21.055zm181.026-346.092c-48.328-48.305-112.617-74.908-181.026-74.908-68.454 0-132.767 26.626-181.092 74.974-48.305 48.328-74.908 112.617-74.908 181.026 0 68.454 26.626 132.768 74.974 181.092 48.328 48.305 112.617 74.908 181.026 74.908 68.454 0 132.767-26.626 181.092-74.974 48.305-48.328 74.908-112.617 74.908-181.026 0-68.454-26.626-132.768-74.974-181.092zm-181.026 407.092c-124.617 0-226-101.383-226-226s101.383-226 226-226 226 101.383 226 226-101.383 226-226 226z" fill="url(#SVGID_1_)"/></g></g></svg>
+                        </div>
+                        <br>
+                        <div class="col-md-10 mx-auto" style="float:center;margin-top: 20px;font-weight: 700;font-size: 17px;">
+                            <div class="text-center">
+                                Bạn không có quyền truy cập vào trang WEB dành cho Quản Trị Viên.
                             </div>
-                            <br><br><br><br>
-                            <!-- <div class="col-md-7">
-                                <input type="text" id="btn-forget" class="form-control" placeholder="Vui lòng nhập số điện thoại hoặc email của bạn" style="border-radius: 0;color: #424242; font-size: small;height: 40px;" data-meta="Field" value="username@gmail.com" readonly="" tabindex="-1">
-                            </div>
-                            <br><br><br>
-                            <div class="col-md-7">
-                                <input type="text" id="btn-email" class="form-control" placeholder="Vui lòng nhập 6 số mã xác thực email" style="border-radius: 0;color: #424242; font-size: small;height: 40px;" maxlength="6" pattern="([0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9])">
-                            </div>
-                            <div class="col-md-2">
-                                <button id="btn-guima">Gửi mã</button>
-                            </div>
-                            <br><br><br>
-                            <div class="col-md-7">
-                                <a href="#">
-                                    <button type="submit" id="continue" class="btn btn-primary"><span id = "text-sub">TIẾP THEO</span></button>
+                        </div>
+                        <div class="col-md-10 offset-md-1" style="float:center;margin-top: 10px; margin-right: 15px;font-weight: 700;font-size: 15px;text-align: center;">
+                            Vui lòng quay trở lại <a href="/" style="text-decoration: none;color: #11c296;">HOME</a>.
+                        </div>
+                        <div class="col-md-6 mx-auto" style="float:center;margin-top: 10px;font-weight: 700;font-size: 15px;">
+                            <!-- <div class="text-center">
+                                <a href="verification-email" style="text-decoration: none;">
+                                    <button type="button" class="btn btn-primary" id="button-verification"><i class="fas fa-envelope" style="font-size: xx-large;">&nbsp;</i><span id = "text-btn">Xác minh qua email</span></button>
                                 </a>
                             </div> -->
+
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <br><br>
-    <script>
-        $("#btn-email").keyup(function() {
-            $("#btn-email").val(this.value.match(/[0-9]*/));
-        });
-    </script>
-    <%- include("partials/footer"); -%>
