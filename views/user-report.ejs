@@ -23,7 +23,7 @@
                 <b><span class="blink" style="font-size: x-large;">Báo Cáo</span></b>
     </nav>
     <br><br>
-    <div class="container">
+    <div class="container" id="wrap-content">
         <div class="row">
             <div class="col-sm-10 offset-sm-1" style="margin-bottom: 20px;">
                 <h3 style="font-size: 22px;font-weight: 900;float: left;">Nhắc nhở !
@@ -107,6 +107,10 @@
             <br><br>
         </div>
     </div>
+    <div class="container" id="loading">
+        <div class="loader">Loading...</div>
+        <h1 style="text-align: center;font-weight: 700;">Xin vui lòng chờ một lát ...</h1>
+    </div>
     <script>
         $(".imgAdd").click(function() {
             $(this).closest(".row").find('.imgAdd').before('<div class="col-sm-3 imgUp"><div class="imagePreview"></div><label class="btn btn-primary" id="btn-upload">Tải ảnh lên<input type="file" name = "image" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fas fa-trash-alt del"></i></div>');
@@ -129,6 +133,14 @@
                     }
                 }
             });
+        });
+        $('form').submit(function() {
+            $('#wrap-content').hide();
+            $('#loading').show();
+            $('#footer').hide();
+        });
+        $("#editor").editor({
+            height: 200
         });
     </script>
     <%- include("partials/footer"); -%>
