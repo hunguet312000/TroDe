@@ -4,7 +4,7 @@
             <nav class="navbar navbar-light navbar-fixed-top navbar-custom" role="navigation" id="nav-bar" style="border-bottom: 1px solid #f2f2f2;">
                 <div class="container">
                     <div class="navbar-header" style="padding: 6px 0px 0px;">
-                      
+
                         <b><a class="navbar-brand" href="/" id="logo">TroDe</a></b>
                         <div class="nav navbar-nav " id="navsearch" style="margin-left: 20px;">
                             <form action="/" method="post" class="form-inline flex-nowrap bg-light">
@@ -26,7 +26,9 @@
                                 <span><i class="fas fa-caret-down" style="color: black;"></i></span>
                             </a>
                             <span id="div-host"><a href="/host" id = "a-host" style="font-weight: 700;">Host&nbsp;&nbsp;&nbsp;</a></span>
-                            <span id="div-host"><a href="/admin-control" id = "a-host" style="font-weight: 700;color:red;">Admin&nbsp;&nbsp;&nbsp;</a></span>
+                            <% if(user.role === 1){ %>
+                              <span id="div-host"><a href="/admin" id = "a-host" style="font-weight: 700;color:red;">Admin&nbsp;&nbsp;&nbsp;</a></span>
+                            <% } %>
                             <br><br>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="user-name" id="drop-down">
                                 <div id="div-drop"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 480 480" style="enable-background:new 0 0 480 480;height: 30px;width: 30px;vertical-align: middle;"

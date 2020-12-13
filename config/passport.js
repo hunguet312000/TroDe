@@ -70,7 +70,7 @@ module.exports = async function(passport) {
                 sdt: phone
               } // if it doesn't exist, we create it with this additional data
               });
-              console.log(nguoi_dung[1]);
+              //console.log(nguoi_dung[1]);
               if(!nguoi_dung[1]){
                 return done(null, false, req.flash('signupMessage', 'Tài khoản đã tồn tại.'));
               }
@@ -119,7 +119,7 @@ module.exports = async function(passport) {
                     }
                   });
                   //console.log(isAdmin);
-                  if(isAdmin){
+                  if(isAdmin[0]){
                     nguoi_dung[0].dataValues.role = 1;
                   }else{
                     nguoi_dung[0].dataValues.role = null;
@@ -168,7 +168,7 @@ module.exports = async function(passport) {
                     }
                   });
                   //console.log(isAdmin);
-                  if(isAdmin){
+                  if(isAdmin[0]){
                     quan_tri[0].dataValues.role = 1;
                   }else{
                     quan_tri[0].dataValues.role = null;
@@ -215,7 +215,7 @@ module.exports = async function(passport) {
             }
           });
           //console.log(isAdmin);
-          if(isAdmin){
+          if(isAdmin[0]){
             nguoi_dung[0].dataValues.role = 1;
           }else{
             nguoi_dung[0].dataValues.role = null;
@@ -258,7 +258,7 @@ module.exports = async function(passport) {
             }
           });
           //console.log(isAdmin);
-          if(isAdmin){
+          if(isAdmin[0]){
             nUser[0].dataValues.role = 1;
           }else{
             nUser[0].dataValues.role = null;
