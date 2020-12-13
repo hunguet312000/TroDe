@@ -1,0 +1,16 @@
+.welcome {
+    background: rgb(23, 202, 164);
+    background: linear-gradient(86deg, rgba(23, 202, 164, 1) 38%, rgba(23, 202, 176, 1) 74%);
+    padding: 15px 0px;
+}
+
+::placeholder {
+      padding: 10px 5px;
+}
+
+.alert {
+    color: #f65e39!important;
+    font-size: 14px!important;
+    margin-top:-5px;
+    margin-bottom:0px;
+}
