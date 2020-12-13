@@ -437,6 +437,14 @@ const lich_hen = {
     tinh_trang:{
       type: DataTypes.INTEGER,
       allowNull: true
+    },
+    email_nguoi_hen:{
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    sdt_nguoi_hen:{
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
 }
 
