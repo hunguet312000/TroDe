@@ -323,12 +323,13 @@ const hinh_anh_bao_cao = {
         type: DataTypes.STRING(1000),
         allowNull: false
     },
-    id_bao_cao : {
+    id_bao_cao: {
         type: DataTypes.INTEGER,
-        allowNull : false,
-        foreignKey : true
+        allowNull: false,
+        foreignKey: true
     }
 }
+
 const bao_cao = {
     // Model attributes are defined here
     id_bao_cao: {
@@ -361,37 +362,37 @@ const bao_cao = {
 
 const quan_tri_vien = {
     // Model attributes are defined here
-    id_quan_tri_vien: {
+    id_nguoi_dung: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
-        autoIncrement: true
+        //autoIncrement: true
     },
-    ten_quan_tri: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    mat_khau: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    sdt: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
-    email: {
-        type: DataTypes.STRING,
-        unique: true,
-        validate: {
-            isEmail: {
-                msg: "Please enter a true email"
-            }
-        }
-    },
-    ngay_sinh: {
-        type: DataTypes.DATE,
-        allowNull: true
-    },
+    // ten_quan_tri: {
+    //     type: DataTypes.STRING,
+    //     allowNull: false,
+    // },
+    // mat_khau: {
+    //     type: DataTypes.STRING,
+    //     allowNull: false,
+    // },
+    // sdt: {
+    //     type: DataTypes.INTEGER,
+    //     allowNull: false
+    // },
+    // email: {
+    //     type: DataTypes.STRING,
+    //     unique: true,
+    //     validate: {
+    //         isEmail: {
+    //             msg: "Please enter a true email"
+    //         }
+    //     }
+    // },
+    // ngay_sinh: {
+    //     type: DataTypes.DATE,
+    //     allowNull: true
+    // },
     nguoi_dung_da_xoa: {
         type: DataTypes.INTEGER,
         allowNull: true

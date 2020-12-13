@@ -72,7 +72,7 @@ exports.adminDeleteUser = async(req, res) =>{
       const deletedUserNum = await Quan_tri_vien.increment(
         { nguoi_dung_da_xoa: 1 },
         {where:{
-            id_quan_tri_vien: req.user.id_quan_tri_vien
+            id_nguoi_dung: req.user.id_nguoi_dung
           }
         }
       );

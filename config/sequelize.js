@@ -214,11 +214,12 @@ Phong_tro.hasMany(Lich_hen, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
 });
+
+//Bao cao
 Nguoi_dung.hasMany(Bao_cao, {
     foreignKey: {
         name: 'id_nguoi_dung',
-        allowNull: false,
-        primaryKey: true
+        allowNull: false
     },
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
@@ -226,12 +227,12 @@ Nguoi_dung.hasMany(Bao_cao, {
 Phong_tro.hasMany(Bao_cao, {
     foreignKey: {
         name: "id_phong_tro",
-        allowNull: false,
-        primaryKey: true
+        allowNull: false
     },
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
 });
+
 Bao_cao.belongsTo(Nguoi_dung, {
     foreignKey: {
         name: 'id_nguoi_dung',
@@ -248,6 +249,7 @@ Bao_cao.belongsTo(Phong_tro, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
 })
+
 Bao_cao.hasMany(Hinh_anh_bao_cao, {
     foreignKey: {
         name: 'id_bao_cao',
@@ -257,13 +259,35 @@ Bao_cao.hasMany(Hinh_anh_bao_cao, {
     onUpdate: 'CASCADE'
 })
 Hinh_anh_bao_cao.belongsTo(Bao_cao, {
-        foreignKey: {
-            name: 'id_bao_cao',
-            allowNull: false,
-        },
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE'
-    })
+    foreignKey: {
+        name: 'id_bao_cao',
+        allowNull: false,
+    },
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+})
+
+// Nguoi dung vs quan tri vien
+Nguoi_dung.hasOne(Quan_tri_vien,{
+  foreignKey: {
+      name: 'id_nguoi_dung',
+      allowNull: false,
+      primaryKey: true,
+  },
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE'
+})
+
+Quan_tri_vien.belongsTo(Nguoi_dung,{
+  foreignKey: {
+      name: 'id_nguoi_dung',
+      allowNull: false,
+      primaryKey: true,
+  },
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE'
+})
+
     //
     // Danh_sach_yeu_thich.belongsTo(Nguoi_dung,{
     //   foreignKey: {

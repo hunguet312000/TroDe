@@ -68,7 +68,7 @@ module.exports = (app, passport) => {
             const reportNum = await Bao_cao.count({});
             const admin = await Quan_tri_vien.findAll({
                 where:{
-                  id_quan_tri_vien: req.user.id_quan_tri_vien
+                  id_nguoi_dung: req.user.id_nguoi_dung
                 }
             });
             // console.log(admin[0]);
