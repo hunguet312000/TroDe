@@ -51,8 +51,19 @@ exports.displayListUser = async(req, res) =>{
             }
             // console.log(tmp);
             //console.log(postNum);
+            const admin = await Quan_tri_vien.findAll({
+                where:{
+                  id_nguoi_dung: req.user.id_nguoi_dung
+                },
+                include:[
+                  {
+                    model: Nguoi_dung,
+                    require: true
+                  }
+                ]
+            });
             res.render("admin-control-user", {
-              user: req.user,
+              user: admin[0],
               userData : nguoi_dung,
               type: "/admin-control-user",
               pages: calculatePagniate.pages,
@@ -69,7 +80,7 @@ exports.displayListUser = async(req, res) =>{
 }
 exports.adminDeleteUser = async(req, res) =>{
   try {
-    
+
       const deletedUserNum = await Quan_tri_vien.increment(
         { nguoi_dung_da_xoa: 1 },
         {where:{

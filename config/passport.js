@@ -157,7 +157,7 @@ module.exports = async function(passport) {
                 });
                   //console.log(quan_tri[0]);
               }
-
+              //console.log(quan_tri[0]);
               if(quan_tri[0]){
                 if (!bcrypt.compareSync(password, quan_tri[0].dataValues.mat_khau)){
                     return done(null, false, req.flash('loginMessage', 'Sai mật khẩu.'));
@@ -173,6 +173,7 @@ module.exports = async function(passport) {
                   }else{
                     quan_tri[0].dataValues.role = null;
                   }
+                  //console.log(quan_tri[0].dataValues);
                   return done(null, quan_tri[0].dataValues);
                 }
               }else{

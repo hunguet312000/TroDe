@@ -30,9 +30,15 @@ module.exports = (app, passport) => {
           const admin = await Quan_tri_vien.findAll({
               where:{
                 id_nguoi_dung: req.user.id_nguoi_dung
-              }
+              },
+              include:[
+                {
+                  model: Nguoi_dung,
+                  require: true
+                }
+              ]
           });
-          //console.log(admin);
+          console.log(admin);
           if(admin[0]){
             res.render("admin-control", {
               user: admin[0],
@@ -80,7 +86,13 @@ module.exports = (app, passport) => {
             const admin = await Quan_tri_vien.findAll({
                 where:{
                   id_nguoi_dung: req.user.id_nguoi_dung
-                }
+                },
+                include:[
+                  {
+                    model: Nguoi_dung,
+                    require: true
+                  }
+                ]
             });
             // console.log(admin[0]);
             res.render("admin-control", {

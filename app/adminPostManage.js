@@ -30,9 +30,20 @@ exports.displayAllPostForAdmin = async(req, res) => {
                     ["id_phong_tro", "DESC"]
                 ]
             });
+            const admin = await Quan_tri_vien.findAll({
+                where:{
+                  id_nguoi_dung: req.user.id_nguoi_dung
+                },
+                include:[
+                  {
+                    model: Nguoi_dung,
+                    require: true
+                  }
+                ]
+            });
             //console.log(phong_tro)
             res.render("admin-control-post", {
-              user: req.user,
+              user: admin[0],
               userData: phong_tro,
               type: "/admin-control-post",
               pages: calculatePagniate.pages,
