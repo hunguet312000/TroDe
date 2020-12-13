@@ -147,15 +147,49 @@ body {
     display: none;
 }
 
+.welcome {
+    background: rgb(23, 202, 164);
+    background: linear-gradient(227deg, rgba(23, 202, 164, 1) 38%, rgba(23, 202, 176, 1) 74%);
+    padding: 30px 0px;
+}
+
+::placeholder {
+    padding: 10px 5px;
+}
+
+.alert {
+    color: #f65e39!important;
+    font-size: 14px!important;
+    margin-top: -5px;
+    margin-bottom: 0px;
+}
+
+.a-qmk {
+    color: #17ca9d;
+}
+
+.a-qmk:hover {
+    color: #222;
+}
+
+.btn-primary.focus,
+.btn-primary:focus {
+    box-shadow: 0 0 5px 0 #17ca9d;
+}
+
+.content-login {
+        margin-top:-95px;
+}
+
 @media (min-width:991px) and (max-width:1200px) {
     #button-submit {
-        width: 120%;
+        width: 100%;
     }
     #button-gmail {
-        width: 120%;
+        width: 100%;
     }
     #button-facebook {
-        width: 120%;
+        width: 100%;
     }
 }
 
@@ -176,8 +210,7 @@ body {
 
 @media (max-width:769px) {
     .content-login {
-        background-color: white;
-        height: 452px;
+        margin-top:20px;
     }
     #txt-google1 {
         display: none;
