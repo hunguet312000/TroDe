@@ -69,6 +69,7 @@ exports.displayListUser = async(req, res) =>{
 }
 exports.adminDeleteUser = async(req, res) =>{
   try {
+    
       const deletedUserNum = await Quan_tri_vien.increment(
         { nguoi_dung_da_xoa: 1 },
         {where:{

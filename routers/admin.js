@@ -26,8 +26,13 @@ module.exports = (app, passport) => {
           const postNum = await Phong_tro.count({});
           const userNum = await Nguoi_dung.count({});
           const reportNum = await Bao_cao.count({});
+          const admin = await Quan_tri_vien.findAll({
+              where:{
+                id_nguoi_dung: req.user.id_nguoi_dung
+              }
+          });
           res.render("admin-control", {
-            user: req.user,
+            user: admin[0],
             postNum: postNum,
             userNum: userNum,
             reportNum: reportNum

@@ -93,7 +93,7 @@
                                         <div style = "margin-top:10px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;width:25px;height:25x;vertical-align: middle;" xml:space="preserve" class = "flag-vietnam"><polygon style="fill:#D80027;" points="196.641,85.337 0,85.337 0,426.663 196.641,426.663 512,426.663 512,85.337 "/><polygon style="fill:#FFDA44;" points="256,157.279 278.663,227.026 352,227.026 292.668,270.132 315.332,339.881 256,296.774   196.668,339.881 219.332,270.132 160,227.026 233.337,227.026 "/></svg>&nbsp;+84</div>
                                         </div>
                                         <div class="col-sm-8">
-                                            <input name="phone" type="text" id="phone" class="form-control btn-ip" required data-bv-notempty-message="Không được để trống" style="width:100%;border-radius:48px;height: 46px;">
+                                            <input name="phone" type="number" id="phone" class="form-control btn-ip" required data-bv-notempty-message="Không được để trống" style="width:100%;border-radius:48px;height: 46px;">
                                         </div>
                                     </div>
                                 </div>
@@ -112,20 +112,24 @@
                             <div class="col-sm-12" style="margin-bottom:20px;margin-top:5px">
                                 <div>
                                     <label for="password" style="font-size: 16px;color: #424242;font-weight: 700;">*Xác nhận mật khẩu</label>
-                                    <input name="password" type="password" id="password" class="form-control password" placeholder="Mật khẩu" required data-bv-notempty-message="Không được để trống" style="width:100%;border-radius:48px;height: 46px;">
+                                    <input name="rePassword" type="password" id="password" class="form-control password" placeholder="Mật khẩu" required data-bv-notempty-message="Không được để trống" style="width:100%;border-radius:48px;height: 46px;">
                                     <div style="float:right;margin-top:-32px;margin-right:15px;">
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 471.7 471.7" style="enable-background:new 0 0 471.7 471.7;width:20px;width:20px;" xml:space="preserve"><g><g><path d="M360.8,200.6v-74.7c0.2-33.8-13.3-66.3-37.4-90C300.1,12.7,269.6,0,237.3,0c-0.5,0-1.1,0-1.6,0    c-68.9,0.1-124.9,56.5-124.9,125.9v74.7c-26,3.1-45,24.9-45,51.3v167.8c0,28.5,22.8,52,51.3,52h237.5c28.5,0,51.3-23.5,51.3-52    V251.9C405.8,225.6,386.8,203.7,360.8,200.6z M130.7,125.9h0.1c0-58.4,47.1-106.2,105-106.2h0.1c27.5-0.1,53.9,10.8,73.4,30.2    c20.3,20.1,31.6,47.5,31.4,76v74.8h-22v-74.8c0.2-22.7-8.8-44.5-24.9-60.5c-15.2-15.2-35.8-23.8-57.3-23.8h-0.6    c-46,0-83.2,37.8-83.2,84.2v74.9h-22V125.9z M298.8,125.9v74.8h-126v-74.8c0-35.4,28.2-64.2,63.2-64.2h0.6    c16.2,0,31.8,6.5,43.3,18C292.1,91.9,299,108.6,298.8,125.9z M386.8,420L386.8,420c0,17.5-14.2,31.7-31.7,31.7H117.5    c-17.5,0-31.7-14.2-31.7-31.7V252.4c0-17.5,14.2-31.7,31.7-31.7h237.6c17.5,0,31.7,14.2,31.7,31.7V420z"/></g></g><g><g><path d="M270.4,330c-4.4-15.5-18.5-26.1-34.6-26.1c-19.9,0-36.1,16.1-36.1,36.1c0,16.1,10.6,30.2,26.1,34.6v28c0,5.5,4.5,10,10,10    s10-4.5,10-10v-28C264.9,369.1,276,349.1,270.4,330z M235.8,356c-8.9,0-16.1-7.2-16.1-16.1c0-8.9,7.2-16.1,16.1-16.1    c8.9,0,16.1,7.2,16.1,16.1C251.9,348.8,244.7,356,235.8,356z"/></g></g></svg>
                                     </div>
                                 </div>
                             </div>
-
+                            <%if(message.length > 0) {%>
+                                <span><div class="alert"><%=message%></div></span>
+                            <% }%>
                             <div class="col-sm-12" style="margin-top:32px;">
                                 <button type="submit" class="btn btn-primary" id="button-submit" style="height:50px;border-radius:48px;">ĐĂNG KÝ</button>
                             </div>
+                    </form>
                         </div>
                         <div class="col-sm-12" style="margin-top: 25px;font-weight: 500;text-align: center;">Bạn đã có tài khoản? <a href="login" style="text-decoration: none; font-weight: 700;" class="a-qmk">Nhấn vào đây</a> </div>
                         <div class="col-sm-12" style="margin-top: 15px;font-weight: 500;text-align: center;font-size:14px;color: #555;">Tôi đồng ý với <strong>Bảo mật</strong> và <strong>Điều khoản</strong> hoạt động của TroDe.</div>
                         <div class="col-sm-12" style="margin-top: 25px;font-weight: 500;text-align: center;">Hoặc</div>
+
                         <div class="col-sm-12" style="margin-top:12px;">
                             <div>
                                 <a href="/auth/google" id="link-gmail"><button type="button" class="btn btn-primary" id="button-gmail" style="width:100%;border-radius:48px;height: 50px;"><span id = "txt-google" style="font-size: 15px;vertical-align: middle;">Đăng ký với Google</span><span id = "txt-google1" style="font-size: 15px;vertical-align: middle;">Google</span>&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;width:16px;height:16px;vertical-align: middle;" xml:space="preserve"><path style="fill:#FBBB00;" d="M113.47,309.408L95.648,375.94l-65.139,1.378C11.042,341.211,0,299.9,0,256  c0-42.451,10.324-82.483,28.624-117.732h0.014l57.992,10.632l25.404,57.644c-5.317,15.501-8.215,32.141-8.215,49.456  C103.821,274.792,107.225,292.797,113.47,309.408z"/><path style="fill:#518EF8;" d="M507.527,208.176C510.467,223.662,512,239.655,512,256c0,18.328-1.927,36.206-5.598,53.451  c-12.462,58.683-45.025,109.925-90.134,146.187l-0.014-0.014l-73.044-3.727l-10.338-64.535  c29.932-17.554,53.324-45.025,65.646-77.911h-136.89V208.176h138.887L507.527,208.176L507.527,208.176z"/><path style="fill:#28B446;" d="M416.253,455.624l0.014,0.014C372.396,490.901,316.666,512,256,512  c-97.491,0-182.252-54.491-225.491-134.681l82.961-67.91c21.619,57.698,77.278,98.771,142.53,98.771  c28.047,0,54.323-7.582,76.87-20.818L416.253,455.624z"/><path style="fill:#F14336;" d="M419.404,58.936l-82.933,67.896c-23.335-14.586-50.919-23.012-80.471-23.012  c-66.729,0-123.429,42.957-143.965,102.724l-83.397-68.276h-0.014C71.23,56.123,157.06,0,256,0  C318.115,0,375.068,22.126,419.404,58.936z"/></svg></button></a>
@@ -136,7 +140,7 @@
                                 <a href="/auth/facebook" id="link-fb"><button type="button" class="btn btn-primary" id="button-facebook" style="width:100%;border-radius:48px;height: 50px;"><span id = "txt-facebook" style="font-size: 15px;vertical-align: middle;">Đăng ký với Facebook</span><span id = "txt-facebook1" style="font-size: 15px;vertical-align: middle;">Facebook</span>&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;width:16px;height:16px;vertical-align: middle;" xml:space="preserve"><path style="fill:#2196F3;" d="M53.333,0h405.333C488.122,0,512,23.878,512,53.333v405.333C512,488.122,488.122,512,458.667,512  H53.333C23.878,512,0,488.122,0,458.667V53.333C0,23.878,23.878,0,53.333,0z"/><path style="fill:#FAFAFA;" d="M394.667,149.333h42.667c5.891,0,10.667-4.776,10.667-10.667v-64C448,68.776,443.224,64,437.333,64  h-42.667c-64.801,0-117.333,52.532-117.333,117.333v53.333H224c-5.891,0-10.667,4.776-10.667,10.667v64  c0,5.891,4.776,10.667,10.667,10.667h53.333v192h85.333V320H416c4.589-0.003,8.662-2.942,10.112-7.296l21.333-64  c1.862-5.589-1.16-11.629-6.749-13.491c-1.084-0.361-2.22-0.546-3.363-0.547h-74.667v-53.333  C362.667,163.66,376.994,149.333,394.667,149.333z"/></svg></button></a>
                             </div>
                         </div>
-                    </form>
+
                 </div>
             </div>
             <br><br>
