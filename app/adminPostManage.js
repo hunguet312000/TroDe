@@ -49,14 +49,15 @@ exports.displayAllPostForAdmin = async(req, res) => {
 
 exports.adminDeletePost = async (req, res) =>{
   try {
-      //console.log(req.params.id);
+      console.log(req.user.id_nguoi_dung);
       const deletedPostNum = await Quan_tri_vien.increment(
         { bai_dang_da_xoa: 1 },
         {where:{
-            id_quan_tri_vien: req.user.id_quan_tri_vien
+            id_nguoi_dung: req.user.id_nguoi_dung
           }
         }
       );
+      console.log(JSON.stringify(deletedPostNum,null,4));
       const deletedPost = await Phong_tro.destroy({
         where: {
           id_phong_tro: req.params.id

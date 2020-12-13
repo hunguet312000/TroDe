@@ -26,12 +26,23 @@ module.exports = (app, passport) => {
           const postNum = await Phong_tro.count({});
           const userNum = await Nguoi_dung.count({});
           const reportNum = await Bao_cao.count({});
-          res.render("admin-control", {
-            user: req.user,
-            postNum: postNum,
-            userNum: userNum,
-            reportNum: reportNum
+          //console.log(req.user);
+          const admin = await Quan_tri_vien.findAll({
+              where:{
+                id_nguoi_dung: req.user.id_nguoi_dung
+              }
           });
+          //console.log(admin);
+          if(admin[0]){
+            res.render("admin-control", {
+              user: admin[0],
+              postNum: postNum,
+              userNum: userNum,
+              reportNum: reportNum
+            });
+          }else{
+            res.render("admin-require-noti");
+          }
         }catch(e){
           console.log(e);
         }
@@ -68,7 +79,7 @@ module.exports = (app, passport) => {
             const reportNum = await Bao_cao.count({});
             const admin = await Quan_tri_vien.findAll({
                 where:{
-                  id_quan_tri_vien: req.user.id_quan_tri_vien
+                  id_nguoi_dung: req.user.id_nguoi_dung
                 }
             });
             // console.log(admin[0]);

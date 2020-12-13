@@ -51,9 +51,10 @@ module.exports = async function(passport) {
             passReqToCallback : true // allows us to pass back the entire request to the callback
         },
         async function(req, username, password, done) {
+            console.log(req.body);
             const email = req.body.email;
-            const sex = req.body.sex;
-            const dob = req.body.DOB;
+            //const sex = req.body.sex;
+            //const dob = req.body.DOB;
             const phone = req.body.phone;
             // find a user whose email is the same as the forms email
             // we are checking to see if the user trying to login already exists
@@ -64,8 +65,8 @@ module.exports = async function(passport) {
                 ten_nguoi_dung: username,
                 email: email,
                 mat_khau: bcrypt.hashSync(password, 10),
-                gioi_tinh: sex,
-                ngay_sinh: dob,
+                //gioi_tinh: sex,
+                //ngay_sinh: dob,
                 sdt: phone
               } // if it doesn't exist, we create it with this additional data
               });
@@ -101,19 +102,28 @@ module.exports = async function(passport) {
                 nguoi_dung = await Nguoi_dung.findAll({
                 where: { email: username}, // we search for this user
                 });
-                  console.log(nguoi_dung[0]);
+                  //console.log(nguoi_dung[0]);
               }else{
                 nguoi_dung = await Nguoi_dung.findAll({
                 where: { ten_nguoi_dung: username}, // we search for this user
                 });
-                  console.log(nguoi_dung[0]);
+                  //console.log(nguoi_dung[0]);
               }
-
               if(nguoi_dung[0]){
                 if (!bcrypt.compareSync(password, nguoi_dung[0].dataValues.mat_khau)){
                     return done(null, false, req.flash('loginMessage', 'Sai mật khẩu.'));
                 }else{
-                  nguoi_dung[0].dataValues.role = null;
+                  const isAdmin = await Quan_tri_vien.findAll({
+                    where:{
+                      id_nguoi_dung: nguoi_dung[0].dataValues.id_nguoi_dung
+                    }
+                  });
+                  //console.log(isAdmin);
+                  if(isAdmin[0]){
+                    nguoi_dung[0].dataValues.role = 1;
+                  }else{
+                    nguoi_dung[0].dataValues.role = null;
+                  }
                   return done(null, nguoi_dung[0].dataValues);
                 }
               }else{
@@ -137,22 +147,32 @@ module.exports = async function(passport) {
             try{
               var quan_tri ;
               if(username.includes("@")){
-                quan_tri = await Quan_tri_vien.findAll({
+                quan_tri = await Nguoi_dung.findAll({
                 where: { email: username}, // we search for this user
                 });
-                  console.log(quan_tri[0]);
+                  //console.log(quan_tri[0]);
               }else{
-                quan_tri = await Quan_tri_vien.findAll({
-                where: { ten_quan_tri: username}, // we search for this user
+                quan_tri = await Nguoi_dung.findAll({
+                where: { ten_nguoi_dung: username}, // we search for this user
                 });
-                  console.log(quan_tri[0]);
+                  //console.log(quan_tri[0]);
               }
 
               if(quan_tri[0]){
                 if (!bcrypt.compareSync(password, quan_tri[0].dataValues.mat_khau)){
                     return done(null, false, req.flash('loginMessage', 'Sai mật khẩu.'));
                 }else{
-                  quan_tri[0].dataValues.role = 1;
+                  const isAdmin = await Quan_tri_vien.findAll({
+                    where:{
+                      id_nguoi_dung: quan_tri[0].dataValues.id_nguoi_dung
+                    }
+                  });
+                  //console.log(isAdmin);
+                  if(isAdmin[0]){
+                    quan_tri[0].dataValues.role = 1;
+                  }else{
+                    quan_tri[0].dataValues.role = null;
+                  }
                   return done(null, quan_tri[0].dataValues);
                 }
               }else{
@@ -189,9 +209,18 @@ module.exports = async function(passport) {
             ho_va_ten: ho_va_ten
           } // if it doesn't exist, we create it with this additional data
           });
-            //console.log(nguoi_dung);
+          const isAdmin = await Quan_tri_vien.findAll({
+            where:{
+              id_nguoi_dung: nguoi_dung[0].dataValues.id_nguoi_dung
+            }
+          });
+          //console.log(isAdmin);
+          if(isAdmin[0]){
+            nguoi_dung[0].dataValues.role = 1;
+          }else{
             nguoi_dung[0].dataValues.role = null;
-            return cb(null, nguoi_dung[0].dataValues);
+          }
+          return cb(null, nguoi_dung[0].dataValues);
         }catch(err){
           console.log(err);
           return cb(null, null);
@@ -223,8 +252,18 @@ module.exports = async function(passport) {
               ho_va_ten: profile.displayName
             }
           });
-            nguoi_dung[0].dataValues.role = null;
-            return cb(null, nUser[0].dataValues);
+          const isAdmin = await Quan_tri_vien.findAll({
+            where:{
+              id_nguoi_dung: nUser[0].dataValues.id_nguoi_dung
+            }
+          });
+          //console.log(isAdmin);
+          if(isAdmin[0]){
+            nUser[0].dataValues.role = 1;
+          }else{
+            nUser[0].dataValues.role = null;
+          }
+          return cb(null, nUser[0].dataValues);
         } catch (err) {
             return cb(null,null)
         }

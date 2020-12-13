@@ -23,7 +23,9 @@ exports.booking = async(req, res) => {
         const lichHen = await Lich_hen.create({
             id_nguoi_hen: bookerId,
             id_phong_tro: phongTroId,
-            thoi_gian: bookDate
+            thoi_gian: bookDate,
+            email_nguoi_hen: bookerEmail,
+            sdt_nguoi_hen: bookerPhone
         });
 
         const transporter = nodemailer.createTransport({
@@ -256,11 +258,60 @@ exports.bookingResponse = async(req, res) => {
         temp = 0;
     }
     try {
-        const buoi_hen = await Lich_hen.update({ tinh_trang: temp }, {
+        const response = await Lich_hen.update({ tinh_trang: temp }, {
             where: {
                 id_buoi_hen: id_buoi_hen
             }
-        })
+        });
+
+        const buoi_hen = await Lich_hen.findAll({
+            where: {
+                id_buoi_hen: id_buoi_hen
+            },
+            include:[
+              {
+                model: Phong_tro,
+                require: true
+              }
+            ]
+        });
+
+        //console.log(buoi_hen[0].dataValues.phong_tro);
+        let html;
+        if(temp === 1){
+          html = "<p>Cuộc hẹn bạn đặt lịch lúc " + buoi_hen[0].dataValues.createdAt.toLocaleString() + " tại " +
+              buoi_hen[0].dataValues.phong_tro.dataValues.phan_loai + " " + buoi_hen[0].dataValues.phong_tro.dataValues.ten_phong +
+              ", đại chỉ: " + buoi_hen[0].dataValues.phong_tro.dataValues.quan_huyen + ", " + buoi_hen[0].dataValues.phong_tro.dataValues.phuong_xa +
+              ", " + buoi_hen[0].dataValues.phong_tro.dataValues.dia_chi_cu_the +
+              ", đã được xác nhận bởi chủ nhà. Bạn vui lòng đến điểm hẹn đúng thời gian. Xin cảm ơn bạn đã sử dụng dịch vụ.</p>"
+        }else{
+          html ="<p>Cuộc hẹn bạn đặt lịch lúc " + buoi_hen[0].dataValues.createdAt.toLocaleString() + " tại " +
+              buoi_hen[0].dataValues.phong_tro.dataValues.phan_loai + " " + buoi_hen[0].dataValues.phong_tro.dataValues.ten_phong +
+              ", đại chỉ: " + buoi_hen[0].dataValues.phong_tro.dataValues.quan_huyen + ", " + buoi_hen[0].dataValues.phong_tro.dataValues.phuong_xa +
+              ", " + buoi_hen[0].dataValues.phong_tro.dataValues.dia_chi_cu_the +
+              ", đã bị huỷ bởi chủ nhà. Nhưng không sao, bạn hãy thử đặt một cuộc hẹn vào thời điểm khác. Xin cảm ơn bạn đã sử dụng dịch vụ.</p>"
+        }
+
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'trodehn@gmail.com',
+                pass: 'trode10000'
+            }
+        });
+        const mailOptions = {
+            from: 'trodehn@gmail.com',
+            to: buoi_hen[0].dataValues.email_nguoi_hen,
+            subject: 'Thư thống báo kết quả đặt lịch của TroDe',
+            html: html
+        };
+        transporter.sendMail(mailOptions, function(error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
         res.redirect('/await-bookings/1')
     } catch (err) {
         console.log(err);
