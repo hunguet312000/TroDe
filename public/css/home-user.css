@@ -235,6 +235,68 @@ a:focus {
     margin-left: 0.5%;
 }
 
+.darkmode--activated #wrap-content2-item-info-content {
+    color: #fff;
+}
+
+.darkmode--activated #wrap-content2-item-info-title {
+    color: #fff;
+}
+
+.darkmode--activated .servie-info {
+    background-color: #222222;
+    color: #fff;
+}
+
+.darkmode--activated #nav-bar {
+    background-color: #222222;
+    color: #fff;
+}
+
+.darkmode--activated #logo {
+    color: #fff;
+}
+
+.darkmode--activated #a-host {
+    color: #fff;
+}
+
+.darkmode--activated .servie {
+    box-shadow: none;
+}
+
+.darkmode-toggle--white:focus {
+    outline: 0 none;
+    border: none;
+}
+
+.darkmode-toggle:focus {
+    outline: 0 none;
+    border: none;
+}
+
+.darkmode-layer--button {
+    width: 40px;
+    height: 40px;
+}
+
+.darkmode-toggle {
+    width: 40px;
+    height: 40px;
+}
+
+.darkmode--activated #drop-down {
+    background-color: #222222;
+}
+
+.darkmode--activated .icon-darkmode {
+    fill: #fff;
+}
+
+.darkmode--activated #a-drop {
+    color: #fff;
+}
+
 @media (min-width:991px) and (max-width:1200px) {
     .slick-slide #wrap-content1-img {
         height: 233.75px;

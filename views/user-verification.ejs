@@ -13,10 +13,17 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <link href="/css/user-verification.css" rel="stylesheet">
+    <script src="../js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+            new Darkmode().showWidget();
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-fixed-top navbar-custom" role="navigation" style="background-color: #ffffff;">
+    <nav class="navbar navbar-light navbar-fixed-top navbar-custom" role="navigation">
         <div class="container">
             <div class="navbar-header">
                 <b><a class="navbar-brand " href="/" id="logo">TroDe</a></b>
@@ -26,7 +33,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 offset-md-1">
-                <h3 style="font-size: 22px;font-weight: 700;">Xác minh bảo mật
+                <h3 style="font-size: 22px;font-weight: 700;" class="txt-dark1">Xác minh bảo mật
                 </h3>
                 <br>
             </div>
@@ -42,8 +49,8 @@
                                 Chúng tôi đã gửi mail xác nhận tới tài khoản email của bạn.
                             </div>
                         </div>
-                        <div class="col-md-10 offset-md-1" style="float:center;margin-top: 10px; margin-right: 15px;font-weight: 700;font-size: 15px;text-align: center;">
-                            Vui lòng kiểm tra mail !
+                        <div class="col-md-10 offset-md-1 text-center" style="float:center;margin-top: 10px; margin-right: 15px;font-weight: 700;font-size: 15px;text-align: center;">
+                            Vui lòng kiểm tra email.
                         </div>
                         <div class="col-md-6 mx-auto" style="float:center;margin-top: 10px;font-weight: 700;font-size: 15px;">
                             <!-- <div class="text-center">

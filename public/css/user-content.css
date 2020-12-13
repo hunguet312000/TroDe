@@ -90,3 +90,20 @@ body {
 #sort:focus {
     outline: none;
 }
+
+.darkmode--activated .product-card{
+    box-shadow:none;
+}
+
+.darkmode--activated .product-info {
+    background-color: #222;
+    color: #fff;
+}
+
+.darkmode--activated .price {
+    color: #fff;
+}
+
+.darkmode--activated .svg-price{
+    fill:#fff;
+}

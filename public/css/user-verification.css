@@ -45,3 +45,33 @@ body {
 #button-verification:focus {
     outline: 0;
 }
+
+.navbar {
+    background-color: #ffffff;
+}
+
+.darkmode--activated .navbar {
+    background-color: black;
+}
+
+.darkmode--activated .content-verfication {
+    background-color: black;
+    border: 3px solid #ffffff;
+}
+
+.darkmode--activated #logo,
+.darkmode--activated .blink,
+.darkmode--activated .txt-dark1,
+.darkmode--activated .text-center {
+    color: #fff;
+}
+
+.darkmode-toggle--white:focus {
+    outline: 0 none;
+    border: none;
+}
+
+.darkmode-toggle:focus {
+    outline: 0 none;
+    border: none;
+}

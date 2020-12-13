@@ -74,3 +74,17 @@
 .pagination {
     padding: 30px;
 }
+
+.darkmode--activated .svg-dark {
+    fill:#fff;
+}
+
+.darkmode--activated .select2-container--default .select2-selection--single .select2-selection__rendered{
+    background-color:black;
+    color:#fff;
+}
+
+.darkmode--activated .select2-container--open .select2-dropdown--below{
+    background-color:black;
+    color:#fff;
+}

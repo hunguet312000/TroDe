@@ -297,8 +297,75 @@ input::-webkit-inner-spin-button {
     display: none;
 }
 
-.content-signup{
-   margin-top:-95px;
+.content-signup {
+    margin-top: -95px;
+    background-color: #ffffff;
+}
+
+.navbar {
+    background-color: #ffffff;
+    height: 78px;
+    border-bottom: 1px solid #ffffff;
+}
+
+.darkmode--activated .navbar {
+    background-color: #222;
+}
+
+.darkmode--activated #logo,
+.darkmode--activated .blink {
+    color: #fff;
+}
+
+.txt-dark {
+    color: #fff;
+}
+
+.txt-dark1 {
+    color: #333333
+}
+
+.darkmode--activated .txt-dark,
+.darkmode--activated .txt-dark1 {
+    color: #fff;
+}
+
+.darkmode-toggle--white:focus {
+    outline: 0 none;
+    border: none;
+}
+
+.darkmode-toggle:focus {
+    outline: 0 none;
+    border: none;
+}
+
+.darkmode--activated .content-signup {
+    background-color: #333333;
+}
+
+.txt-dark2 {
+    color: #333333;
+}
+
+.txt-dark3 {
+    color: #424242;
+}
+
+.txt-dark4 {
+    color: #555;
+}
+
+.darkmode--activated .txt-dark2,
+.darkmode--activated .txt-dark3,
+.darkmode--activated .txt-dark4,
+.darkmode--activated .a-qmk {
+    color: #fff;
+}
+
+.darkmode--activated #button-submit {
+    background-color: #fff;
+    color: #333333;
 }
 
 @media (min-width:991px) and (max-width:1200px) {
@@ -311,8 +378,8 @@ input::-webkit-inner-spin-button {
     #button-facebook {
         width: 100%;
     }
-    .flag-vietnam{
-        display:none;
+    .flag-vietnam {
+        display: none;
     }
 }
 
@@ -329,17 +396,17 @@ input::-webkit-inner-spin-button {
     #txt-facebook1 {
         display: inline-block;
     }
-    .flag-vietnam{
-        display:none;
+    .flag-vietnam {
+        display: none;
     }
 }
 
 @media (max-width:769px) {
-    .flag-vietnam{
-        display:inline-block;
+    .flag-vietnam {
+        display: inline-block;
     }
     .content-signup {
-        margin-top:20px;
+        margin-top: 20px;
     }
     #txt-google1 {
         display: none;
