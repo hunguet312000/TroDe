@@ -12,8 +12,11 @@
                             TÀI KHOẢN ADMIN
                         </div>
                         <div class="admin-name">
-                          <% console.log(user);%>
-                            helo
+                          <% if(user.dataValues.nguoi_dung.dataValues.ho_va_ten){%>
+                            <%= user.dataValues.nguoi_dung.dataValues.ho_va_ten %>
+                          <%}else{%>
+                            <%= user.dataValues.nguoi_dung.dataValues.ten_nguoi_dung %>
+                          <%}%>
                         </div>
                     </div>
                 </div>

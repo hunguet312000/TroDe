@@ -6,7 +6,7 @@ require('dotenv').config();
 const url = require("url");
 const sequelize = require("sequelize");
 const keywords_dict = require("../public/js/keywords_dict.js");
-const { sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan, Danh_sach_yeu_thich, Lich_hen, Bao_cao, Hinh_anh_bao_cao } = require("../config/sequelize");
+const { sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan, Danh_sach_yeu_thich, Lich_hen, Bao_cao, Hinh_anh_bao_cao, Quan_tri_vien } = require("../config/sequelize");
 const Op = require('Sequelize').Op
 const paginate = require("./paginate");
 
@@ -32,15 +32,26 @@ exports.displayListReport = async(req, res) => {
             order: [
               ['id_bao_cao', "DESC"]
             ]
-            })
-            res.render("admin-control-report", {
-              user: req.user,
-              userData : bao_cao,
-              type: "/admin-control-report",
-              pages: calculatePagniate.pages,
-              current: req.params.page,
-              reportNum: calculatePagniate.reportNum
-            });
+          });
+          const admin = await Quan_tri_vien.findAll({
+              where:{
+                id_nguoi_dung: req.user.id_nguoi_dung
+              },
+              include:[
+                {
+                  model: Nguoi_dung,
+                  require: true
+                }
+              ]
+          });
+          res.render("admin-control-report", {
+            user: admin[0],
+            userData : bao_cao,
+            type: "/admin-control-report",
+            pages: calculatePagniate.pages,
+            current: req.params.page,
+            reportNum: calculatePagniate.reportNum
+          });
         }catch(err){
             console.log(err)
         }
@@ -77,8 +88,19 @@ exports.reportInfo = async(req, res) => {
                 }],
             });
             //console.log(bao_cao);
+            const admin = await Quan_tri_vien.findAll({
+                where:{
+                  id_nguoi_dung: req.user.id_nguoi_dung
+                },
+                include:[
+                  {
+                    model: Nguoi_dung,
+                    require: true
+                  }
+                ]
+            });
             res.render("report-info", {
-              user: req.user,
+              user: admin[0],
               bao_cao : bao_cao
             });
         }catch(err){
@@ -110,9 +132,20 @@ exports.getDoneReport = async(req, res) => {
                 }
             ],
             });
+            const admin = await Quan_tri_vien.findAll({
+                where:{
+                  id_nguoi_dung: req.user.id_nguoi_dung
+                },
+                include:[
+                  {
+                    model: Nguoi_dung,
+                    require: true
+                  }
+                ]
+            });
             //console.log(bao_cao);
             res.render("admin-control-report-done", {
-              user: req.user,
+              user: admin[0],
               bao_cao : bao_cao,
               type: "/admin-done-report",
               pages: calculatePagniate.pages,
