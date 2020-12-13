@@ -259,14 +259,98 @@ input::-webkit-inner-spin-button {
     border: 16px solid #17ca9d;
 }
 
-@media (max-width:990px) and (min-width:768px) {
+.welcome {
+    background: rgb(23, 202, 164);
+    background: linear-gradient(227deg, rgba(23, 202, 164, 1) 38%, rgba(23, 202, 176, 1) 74%);
+    padding: 30px 0px;
+}
+
+::placeholder {
+    padding: 10px 5px;
+}
+
+.alert {
+    color: #f65e39!important;
+    font-size: 14px!important;
+    margin-top: -5px;
+    margin-bottom: 0px;
+}
+
+.a-qmk {
+    color: #17ca9d;
+}
+
+.a-qmk:hover {
+    color: #222;
+}
+
+.btn-primary.focus,
+.btn-primary:focus {
+    box-shadow: 0 0 5px 0 #17ca9d;
+}
+
+#txt-google1 {
+    display: none;
+}
+
+#txt-facebook1 {
+    display: none;
+}
+
+.content-signup{
+   margin-top:-95px;
+}
+
+@media (min-width:991px) and (max-width:1200px) {
     #button-submit {
-        width: 125%;
+        width: 100%;
     }
     #button-gmail {
-        width: 125%;
+        width: 100%;
     }
     #button-facebook {
-        width: 125%;
+        width: 100%;
+    }
+    .flag-vietnam{
+        display:none;
+    }
+}
+
+@media (max-width:990px) {
+    #txt-google {
+        display: none;
+    }
+    #txt-google1 {
+        display: inline-block;
+    }
+    #txt-facebook {
+        display: none;
+    }
+    #txt-facebook1 {
+        display: inline-block;
+    }
+    .flag-vietnam{
+        display:none;
+    }
+}
+
+@media (max-width:769px) {
+    .flag-vietnam{
+        display:inline-block;
+    }
+    .content-signup {
+        margin-top:20px;
+    }
+    #txt-google1 {
+        display: none;
+    }
+    #txt-google {
+        display: inline-block;
+    }
+    #txt-facebook1 {
+        display: none;
+    }
+    #txt-facebook {
+        display: inline-block;
     }
 }
