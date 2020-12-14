@@ -48,3 +48,42 @@ body {
     font-size: 16px;
     font-weight: 500;
 }
+
+.darkmode-toggle--white:focus {
+    outline: 0 none;
+    border: none;
+}
+
+.darkmode-toggle:focus {
+    outline: 0 none;
+    border: none;
+}
+
+.darkmode--activated #nav-bar {
+    background-color: #222222;
+}
+
+.darkmode--activated #logo,
+.darkmode--activated .admin-name,
+.darkmode--activated .a-sub-nav {
+    color: #fff;
+}
+
+.darkmode--activated #title-item-profile,
+.darkmode--activated .txt-darkmode,
+.darkmode--activated #txt-darkmode,
+.darkmode--activated .btn-edit,
+.darkmode--activated #sp-color,
+.darkmode--activated .a-side,
+.darkmode--activated .proflie-item-info {
+    color: #fff;
+}
+
+.txt-darkmode {
+    color: #333;
+}
+
+.darkmode--activated #wrap-info {
+    background-color: #333;
+    box-shadow: none;
+}
