@@ -72,13 +72,13 @@ module.exports = async function(passport) {
               });
               //console.log(nguoi_dung[1]);
               if(!nguoi_dung[1]){
-                return done(null, false, req.flash('signupMessage', 'Tài khoản đã tồn tại.'));
+                return done(null, false, req.flash('signupMessage', 'Email đã tồn tại.'));
               }
                 nguoi_dung[0].dataValues.role = null;
                 return done(null, nguoi_dung[0].dataValues);
             }catch(err){
               console.log(err);
-                return done(null, false, req.flash('signupMessage', 'Vui lòng nhập email hợp lệ.'));
+                return done(null, false, req.flash('signupMessage', 'Tài khoản đã tồn tại'));
             }
         })
     );

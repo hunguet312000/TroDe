@@ -22,6 +22,7 @@
         "ejs": "^3.1.5",
         "express": "^4.17.1",
         "express-session": "^1.17.1",
+        "express-validator": "^6.8.0",
         "express-visit-counter": "^1.0.1",
         "formidable": "^1.2.2",
         "i": "^0.3.6",
