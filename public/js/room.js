@@ -220,6 +220,7 @@ $(document).ready(function() {
         slidesToShow: 1,
         slidesToScroll: 1,
     });
+
     $(".gallery-img").on("click", function() {
         $("body").css("background-color", "#222");
         $(".close").css("display", "block");
@@ -227,10 +228,9 @@ $(document).ready(function() {
         $(".img-click .slick-prev").css("display", "block");
         $(".img-click .slick-next").css("display", "block");
         $(".gallery-img").hide();
-        $(".wrap-content").hide();
+        $(".wrap-content1").hide();
         $(".header-wrap").hide();
         $("footer").hide();
-
     })
 
     $(".btn-close").on("click", function() {
@@ -241,7 +241,7 @@ $(document).ready(function() {
         $(".img-click .slick-next").css("display", "none");
         $(".img-no-click").show();
         $(".gallery-img").show();
-        $(".wrap-content").show();
+        $(".wrap-content1").show();
         $(".header-wrap").show();
         $("footer").show();
     })
