@@ -14,7 +14,7 @@ const paginate = require("./paginate");
 const userProfileManage = require("./userProfileManage");
 
 exports.savePosts = async(req, res) => {
-    console.log(req.body);
+    //console.log(req.body);
     if (req.isAuthenticated()) {
         const uploader = async(path) => await cloudinary.uploads(path, 'Image');
         let insert_hinh_anh_values = []
@@ -718,9 +718,8 @@ exports.displayListPostBySearch = async(req, res) => { // search by phan_loai, q
                 roomsNum: calculatePagniate.roomsNum,
             });
         } else {res.redirect("/")}
-        
+
     } catch (err) {
         console.log(err);
     }
 }
-
