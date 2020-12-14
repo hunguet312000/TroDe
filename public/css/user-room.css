@@ -559,6 +559,76 @@ a:focus {
     color: rgb(23, 202, 157);
 }
 
+.darkmode--activated #nav-bar {
+    background-color: #222222;
+    color: #fff;
+}
+
+.darkmode--activated #logo {
+    color: #fff;
+}
+
+.darkmode--activated #a-host {
+    color: #fff;
+}
+
+.darkmode--activated .servie {
+    box-shadow: none;
+}
+
+.darkmode-toggle--white:focus {
+    outline: 0 none;
+    border: none;
+}
+
+.darkmode-toggle:focus {
+    outline: 0 none;
+    border: none;
+}
+
+.darkmode-layer--button {
+    width: 40px;
+    height: 40px;
+}
+
+.darkmode-toggle {
+    width: 40px;
+    height: 40px;
+}
+
+.darkmode--activated #drop-down {
+    background-color: #222222;
+}
+
+.icon-like {
+    fill: red;
+}
+
+.icon-like1 {
+    fill: black;
+}
+
+.darkmode--activated .icon-darkmode,
+.darkmode--activated .icon-like,
+.darkmode--activated .icon-like1 {
+    fill: #fff;
+}
+
+.darkmode--activated #a-drop,
+.darkmode--activated .icon-darkmode,
+.darkmode--activated .txt-darkmode,
+.darkmode--activated .a-phan-loai,
+.darkmode--activated h2,
+.darkmode--activated h3 {
+    color: #fff;
+}
+
+.darkmode--activated #btn-report,
+.darkmode--activated .btn-like {
+    background-color: black;
+    color: #fff;
+}
+
 @media (max-width:990px) {
     .fa-user-circle {
         margin-left: 1px;
