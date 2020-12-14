@@ -6,7 +6,7 @@
                     <div class="side-profile">
                         <div class="div-side">
                             <a href="/profile/edit" class="a-side" style="text-decoration: none;">
-                                <span id="sp-color" style="color: #333333;font-weight: 900;">Thông tin cá nhân</span>
+                                <span id="sp-color" style="font-weight: 900;">Thông tin cá nhân</span>
                             </a>
                         </div>
                         <div class="div-side">
@@ -59,69 +59,69 @@
                     </form>
                     <form action="/profile/edit" method="post" id="form-text">
                         <br>
-                        <span style="font-size: 17px;"><b>Sửa thông tin cá nhân</b></span>
+                        <span style="font-size: 17px;" class="txt-darkmode"><b>Sửa thông tin cá nhân</b></span>
                         <br><br>
                         <div class="content">
                             <div class="row" id="wrap-text">
                                 <div class="col-md-12">
-                                    <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Tên đăng nhập</div>
+                                    <div id="title-item-profile" style="margin-bottom: 6px;font-weight: 700;font-size: 15px;">Tên đăng nhập</div>
                                     <input name="ten_nguoi_dung" type="text" id="user-name1" class="form-control btn-edit" placeholder="Vui lòng nhập tên đăng nhập của bạn" value="<%=userData[0].dataValues.ten_nguoi_dung %>" required>
                                     <br>
                                 </div>
                                 <div class="col-md-12">
-                                    <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Họ và Tên</div>
+                                    <div id="title-item-profile" style="margin-bottom: 6px;font-weight: 700;font-size: 15px;">Họ và Tên</div>
                                     <input name="ho_va_ten" type="text" id="ho-va-ten" class="form-control btn-edit" placeholder="Vui lòng nhập họ và tên của bạn" value="<%= userData[0].dataValues.ho_va_ten %>" required>
                                     <br>
                                 </div>
                                 <div class="col-md-12">
-                                    <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Địa chỉ email</div>
+                                    <div id="title-item-profile" style="margin-bottom: 6px;font-weight: 700;font-size: 15px;">Địa chỉ email</div>
                                     <input name="email" type="text" id="btn-forget" class="form-control btn-edit" data-meta="Field" value="<%=userData[0].dataValues.email %>" tabindex="-1" readonly>
                                     <br>
                                 </div>
                                 <div class="col-md-12">
-                                    <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Số điện thoại</div>
+                                    <div id="title-item-profile" style="margin-bottom: 6px;font-weight: 700;font-size: 15px;">Số điện thoại</div>
                                     <input name="sdt" type="number" id="btn-phone" class="form-control btn-edit" placeholder="Vui lòng nhập số điện thoại của bạn" value="0<%=userData[0].dataValues.sdt %>" maxlength="11" pattern="([0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9]|[0-9])"
                                         required>
                                     <br>
                                 </div>
                                 <div class="col-md-12">
-                                    <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Ngày sinh</div>
+                                    <div id="title-item-profile" style="margin-bottom: 6px;font-weight: 700;font-size: 15px;">Ngày sinh</div>
                                     <input name="ngay_sinh" id="datepicker" placeholder="Chọn ngày sinh của bạn" value="<%=userData[0].dataValues.ngay_sinh %>" readonly="">
                                     <br>
                                 </div>
                                 <div class="col-md-12">
-                                    <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Giới tính:</div>
+                                    <div id="title-item-profile" style="margin-bottom: 6px;font-weight: 700;font-size: 15px;">Giới tính:</div>
                                     <% if(userData[0].dataValues.gioi_tinh === "Nam") { %>
                                         <div class="row">
                                             <div class="col-sm-3 form-check form-check-inline">
                                                 <input checked="checked" name="gioi_tinh" class="form-check-input" type="radio" id="Nam" value="Nam">
-                                                <label class="form-check-label" for="Nam" style="vertical-align: middle;font-weight: 700;font-size: 16px;">Nam</label>
+                                                <label class="form-check-label" for="Nam" style="vertical-align: middle;font-weight: 700;font-size: 16px;" id="txt-darkmode">Nam</label>
                                             </div>
                                             <div class="col-sm-3 form-check form-check-inline">
                                                 <input name="gioi_tinh" class="form-check-input" type="radio" id="Nữ" value="Nữ">
-                                                <label class="form-check-label" for="Nữ" style="vertical-align: middle;font-weight: 700;font-size: 16px;">Nữ</label>
+                                                <label class="form-check-label" for="Nữ" style="vertical-align: middle;font-weight: 700;font-size: 16px;" id="txt-darkmode">Nữ</label>
                                             </div>
                                         </div>
                                         <%}else if (userData[0].dataValues.gioi_tinh === "Nữ"){ %>
                                             <div class="row">
                                                 <div class="col-sm-3 form-check form-check-inline">
                                                     <input name="gioi_tinh" class="form-check-input" type="radio" id="Nam" value="Nam">
-                                                    <label class="form-check-label" for="Nam" style="vertical-align: middle;font-weight: 700;font-size: 16px;">Nam</label>
+                                                    <label class="form-check-label" for="Nam" style="vertical-align: middle;font-weight: 700;font-size: 16px;" id="txt-darkmode">Nam</label>
                                                 </div>
                                                 <div class="col-sm-3 form-check form-check-inline">
                                                     <input checked="checked" name="gioi_tinh" class="form-check-input" type="radio" id="Nữ" value="Nữ">
-                                                    <label class="form-check-label" for="Nữ" style="vertical-align: middle;font-weight: 700;font-size: 16px;">Nữ</label>
+                                                    <label class="form-check-label" for="Nữ" style="vertical-align: middle;font-weight: 700;font-size: 16px;" id="txt-darkmode">Nữ</label>
                                                 </div>
                                             </div>
                                             <%}else{%>
                                                 <div class="row">
                                                     <div class="col-sm-3 form-check form-check-inline">
                                                         <input name="gioi_tinh" class="form-check-input" type="radio" id="Nam" value="Nam">
-                                                        <label class="form-check-label" for="Nam" style="vertical-align: middle;font-weight: 700;font-size: 16px;">Nam</label>
+                                                        <label class="form-check-label" for="Nam" style="vertical-align: middle;font-weight: 700;font-size: 16px;" id="txt-darkmode">Nam</label>
                                                     </div>
                                                     <div class="col-sm-3 form-check form-check-inline">
                                                         <input name="gioi_tinh" class="form-check-input" type="radio" id="Nữ" value="Nữ">
-                                                        <label class="form-check-label" for="Nữ" style="vertical-align: middle;font-weight: 700;font-size: 16px;">Nữ</label>
+                                                        <label class="form-check-label" for="Nữ" style="vertical-align: middle;font-weight: 700;font-size: 16px;" id="txt-darkmode">Nữ</label>
                                                     </div>
                                                 </div>
                                                 <%}%>

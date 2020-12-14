@@ -50,8 +50,6 @@ h5 {
     padding: 12px;
     background: #fff;
     border: none;
-    border-right: 2px solid #f2f2f2;
-    border-left: 2px solid #f2f2f2;
 }
 
 #div-name-host {
@@ -81,12 +79,14 @@ img {
     background-color: #fff;
     height: 122px;
     padding: 12px 12px;
+    border-right: 2px solid #f2f2f2;
 }
 
 .box-info2 {
     background-color: #fff;
     height: 122px;
     padding: 30px 20px;
+    border-left: 2px solid #f2f2f2;
 }
 
 .status-xacnhan {
@@ -123,6 +123,74 @@ img {
 .info1 {
     margin-top: -32px;
     float: right;
+}
+
+
+.darkmode-toggle--white:focus {
+    outline: 0 none;
+    border: none;
+}
+
+.darkmode-toggle:focus {
+    outline: 0 none;
+    border: none;
+}
+
+.darkmode--activated #a-sub-5 {
+    border-bottom: 3px solid #fff;
+    color: #fff;
+}
+
+.darkmode--activated #nav-bar {
+    background-color: #222222;
+}
+
+.txt-diachi{
+    color: #222222;
+}
+
+.darkmode--activated #logo,
+.darkmode--activated .admin-name,
+.darkmode--activated .a-sub-nav,
+.darkmode--activated .txt-time,
+.darkmode--activated h3,
+.darkmode--activated .txt-diachi,
+.darkmode--activated .txt-darkmode,
+.darkmode--activated .txt,
+.darkmode--activated h4{
+    color: #fff;
+}
+
+.row-darkmode{
+    border-radius: 8px;
+    box-shadow: 2px 4px 4px #eee;
+    transform: translate3d(0px, 0px, 0px);
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+.list-content{
+    border-radius: 8px;
+    box-shadow: 2px 4px 4px #eee;
+    transform: translate3d(0px, 0px, 0px);
+    background-color: #fff;
+}
+
+.darkmode--activated .view,
+.darkmode--activated #Layer_1{
+    fill:#fff;
+}
+
+.darkmode--activated .row-darkmode,
+.darkmode--activated .list-content,
+.darkmode--activated .box-info1,
+.darkmode--activated .right-side,
+.darkmode--activated .box-info2,
+.darkmode--activated #chinh-sua,
+.darkmode--activated #xoa{
+    box-shadow:none;
+    background-color:#222;
+    color:#fff;
 }
 
 @media (min-width:991px) and (max-width:1200px) {

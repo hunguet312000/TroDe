@@ -16,20 +16,20 @@
                         </div>
                         <div class="div-side">
                             <a href="/profile/address-edit" class="a-side" style="text-decoration: none;">
-                                <span id="sp-color" style="color: #333333;font-weight: 900;">Địa chỉ</span>
+                                <span id="sp-color" style="font-weight: 900;">Địa chỉ</span>
                             </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-9">
-                    <span style="font-size: 17px;"><b>Sửa thông tin địa chỉ</b></span>
+                    <span style="font-size: 17px;" class="txt-darkmode"><b>Sửa thông tin địa chỉ</b></span>
                     <br><br>
                     <form action="/profile/address-edit" method="post">
                         <div class="content">
                             <div class="row" id="wrap-text">
                                 <div class="col-sm-12">
                                     <div class="col-sm-12">
-                                        <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Tỉnh/Thành phố</div>
+                                        <div id="title-item-profile" style="margin-bottom: 6px;font-weight: 700;font-size: 15px;">Tỉnh/Thành phố</div>
                                         <input name="thanh_pho" type="text" id="city" class="form-control btn-edit" style="border-radius: 0;color: #424242; font-size: small;height: 35px;text-align: center;font-weight: 900;font-size: 15px;" data-meta="Field" value="Hà Nội" readonly="" tabindex="-1">
                                         <br>
                                     </div>
@@ -37,7 +37,7 @@
                                 <% console.log(userData[0].dataValues)%>
                                     <div class="col-sm-12">
                                         <div class="col-sm-4">
-                                            <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Quận/Huyện</div>
+                                            <div id="title-item-profile" style="margin-bottom: 6px;font-weight: 700;font-size: 15px;">Quận/Huyện</div>
                                             <select class="custom-select btn-edit" id="huyen" name="quan_huyen" placeholder="Vui lòng chọn quận/huyện" style="border-radius: 0;color: #424242; font-size: small;height: 35px;width: 100%;" required data-bv-notempty-message="Không được để trống">
                                           <% if (userData[0].dataValues.quan_huyen) { %>
                                             <option value="<%= userData[0].dataValues.quan_huyen%>" disabled selected hidden><%= userData[0].dataValues.quan_huyen%></option>
@@ -48,7 +48,7 @@
                                             <br>
                                         </div>
                                         <div class="col-sm-4">
-                                            <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Phường/Xã</div>
+                                            <div id="title-item-profile" style="margin-bottom: 6px;font-weight: 700;font-size: 15px;">Phường/Xã</div>
                                             <select class="custom-select btn-edit" id="xa" name="phuong_xa" style="border-radius: 0;color: #424242; font-size: small;height: 35px;width: 100%;" required data-bv-notempty-message="Không được để trống">
                                           <% if (userData[0].dataValues.phuong_xa) { %>
                                             <option value="<%= userData[0].dataValues.phuong_xa%>" disabled selected hidden><%= userData[0].dataValues.phuong_xa%></option>
@@ -60,7 +60,7 @@
                                         </div>
 
                                         <div class="col-sm-4">
-                                            <div id="title-item-profile" style="margin-bottom: 6px;color: #666!important;font-weight: 700;font-size: 15px;">Địa chỉ cụ thể</div>
+                                            <div id="title-item-profile" style="margin-bottom: 6px;font-weight: 700;font-size: 15px;">Địa chỉ cụ thể</div>
                                             <% if (userData[0].dataValues.dia_chi_cu_the) { %>
                                                 <input name="dia_chi_cu_the" type="text" value="<%=userData[0].dataValues.dia_chi_cu_the%>" id="address" class="form-control btn-edit" placeholder="Vui lòng nhập địa số nhà, tòa nhà, ..." style="border-radius: 0;color: #424242; font-size: small;height: 35px;"
                                                     required data-bv-notempty-message="Không được để trống">

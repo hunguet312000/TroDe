@@ -610,7 +610,8 @@ a:focus {
 
 .darkmode--activated .icon-darkmode,
 .darkmode--activated .icon-like,
-.darkmode--activated .icon-like1 {
+.darkmode--activated .icon-like1,
+.darkmode--activated .icon-darkmode-quat {
     fill: #fff;
 }
 
@@ -619,7 +620,14 @@ a:focus {
 .darkmode--activated .txt-darkmode,
 .darkmode--activated .a-phan-loai,
 .darkmode--activated h2,
-.darkmode--activated h3 {
+.darkmode--activated h3,
+.darkmode--activated .gj-textbox-md,
+.darkmode--activated #a-info,
+.darkmode--activated .gj-button-md,
+.darkmode--activated .gj-editor [role=body],
+.darkmode--activated .user-name,
+.darkmode--activated .time,
+.darkmode--activated .comment {
     color: #fff;
 }
 
@@ -627,6 +635,25 @@ a:focus {
 .darkmode--activated .btn-like {
     background-color: black;
     color: #fff;
+}
+
+.darkmode--activated .div-darkmode {
+    background-color: #fff;
+}
+
+.darkmode--activated .dat-lich,
+.darkmode--activated .lien-he {
+    background-color: #fff;
+    box-shadow: none;
+    color: black;
+    fill: black;
+}
+
+.darkmode--activated .gj-datepicker-md [role=right-icon],
+.darkmode--activated #button-submit {
+    fill: white;
+    background-color: white;
+    color: #222222;
 }
 
 @media (max-width:990px) {

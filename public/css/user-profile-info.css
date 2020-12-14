@@ -574,6 +574,67 @@ input[type=radio] {
     display: none;
 }
 
+.darkmode--activated #nav-bar {
+    background-color: #222222;
+}
+
+.darkmode--activated #logo,
+.darkmode--activated .admin-name,
+.darkmode--activated .a-sub-nav {
+    color: #fff;
+}
+
+.darkmode--activated #a-sub-1 {
+    border-bottom: 3px solid #fff;
+    color: #fff;
+}
+
+.darkmode--activated #submit {
+    background-color: #fff;
+    color: black;
+}
+
+.title-item-profile {
+    color: #666!important;
+}
+
+.sp-color{
+    color: #333333;
+}
+
+.darkmode--activated #title-item-profile,
+.darkmode--activated .txt-darkmode,
+.darkmode--activated #txt-darkmode,
+.darkmode--activated .btn-edit,
+.darkmode--activated #sp-color,
+.darkmode--activated .a-side {
+    color: #fff;
+}
+
+.darkmode--activated  .btn-edit:focus{
+    color:black;
+}
+
+.darkmode-toggle--white:focus {
+    outline: 0 none;
+    border: none;
+}
+
+.darkmode-toggle:focus {
+    outline: 0 none;
+    border: none;
+}
+
+.darkmode--activated #button-submit{
+    background-color:#fff;
+    color:black;
+}
+
+.darkmode--activated .side-profile{
+    background-color:black;
+    color:#fff;
+}
+
 @media (min-width:769px) and (max-width:990px) {
     #a-sub-2 {
         display: none;

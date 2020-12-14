@@ -18,6 +18,13 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <script src="../../js/darkmode1-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+            new Darkmode().showWidget();
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
     <link href="/css/user-bookings-accept.css" rel="stylesheet">
     <link href="/css/user-navbar-profile.css" rel="stylesheet">
     <link href="/css/booked-list.css" rel="stylesheet">
@@ -55,7 +62,7 @@
                         <br>
                         <br>
                         <br>
-                        <div class="row" style="border-radius: 8px;box-shadow: 2px 4px 4px #eee;transform: translate3d(0px, 0px, 0px);background-color: #fff;">
+                        <div class="row row-darkmode" style="border-radius: 8px;">
                             <% for(booked of bookedList){ %>
                                 <div class="col-sm-12" style="border-bottom: 2px solid #f2f2f2;">
                                     <div class="wrap-content-info">
@@ -66,7 +73,7 @@
                                                     <div style="width:43%;height: 4px;background-color: #28ca6e;margin-bottom: 8px;"></div>
                                                     <div style="color: #999!important;font-weight:500;font-size:16px;margin-bottom: 8px;">Đã xác nhận</div>
                                                 </div>
-                                                <div style="color: #222222!important;font-weight:600;font-size:24px">
+                                                <div style="font-weight:600;font-size:24px" class = "txt-time">
                                                     <%= booked.dataValues.thoi_gian %>
                                                 </div>
                                             </div>

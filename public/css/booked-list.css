@@ -88,6 +88,59 @@ img {
     float: right;
 }
 
+.darkmode--activated #nav-bar {
+    background-color: #222222;
+}
+
+.txt-time{
+    color: #222222;
+}
+
+.txt-diachi{
+    color: #222222;
+}
+
+.darkmode--activated #logo,
+.darkmode--activated .admin-name,
+.darkmode--activated .a-sub-nav,
+.darkmode--activated .txt-time,
+.darkmode--activated h4,
+.darkmode--activated .txt-diachi,
+.darkmode--activated .txt-darkmode {
+    color: #fff;
+}
+
+.darkmode--activated #a-sub-2 {
+    border-bottom: 3px solid #fff;
+    color: #fff;
+}
+
+.darkmode-toggle--white:focus {
+    outline: 0 none;
+    border: none;
+}
+
+.darkmode-toggle:focus {
+    outline: 0 none;
+    border: none;
+}
+
+.row-darkmode{
+    background-color: #fff;
+    border-radius: 8px;box-shadow: 2px 4px 4px #eee;transform: translate3d(0px, 0px, 0px);
+}
+
+.darkmode--activated .row-darkmode,
+.darkmode--activated .box-info,
+.darkmode--activated .right-side{
+    background-color: #222;
+    box-shadow:none;
+}
+
+.darkmode--activated #Layer_1{
+    fill:white;
+}
+
 @media (min-width:991px) and (max-width:1200px) {
     .info1 {
         margin-top: -40px;

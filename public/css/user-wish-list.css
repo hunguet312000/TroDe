@@ -50,9 +50,9 @@ body {
 #xoa {
     border: none;
     background-color: transparent;
-    margin-top: -165px;
+    margin-top: 10px;
     position: absolute;
-    right: 0;
+    right: 10px;
 }
 
 #xoa:focus {
@@ -75,6 +75,58 @@ body {
 
 .product-card:hover .info-title {
     color: #222222;
+}
+
+.product-card{
+    background-color: #ffffff;
+}
+
+.darkmode--activated .trash{
+    fill:#fff;
+}
+.darkmode--activated .product-card:hover .info-title{
+    color:#fff;
+}
+
+.darkmode--activated .info-title{
+    color:#fff;
+}
+
+.darkmode--activated .product-card{
+    background-color:#222;
+}
+
+.darkmode--activated .svg-price{
+    fill:#fff;
+}
+
+.darkmode-toggle--white:focus {
+    outline: 0 none;
+    border: none;
+}
+
+.darkmode-toggle:focus {
+    outline: 0 none;
+    border: none;
+}
+
+.darkmode--activated #a-sub-4 {
+    border-bottom: 3px solid #fff;
+    color: #fff;
+}
+
+.darkmode--activated #nav-bar {
+    background-color: #222222;
+}
+
+.darkmode--activated #logo,
+.darkmode--activated .admin-name,
+.darkmode--activated .a-sub-nav,
+.darkmode--activated .txt-time,
+.darkmode--activated h4,
+.darkmode--activated .txt-diachi,
+.darkmode--activated .txt-darkmode {
+    color: #fff;
 }
 
 @media (min-width:769px) and (max-width:990px) {

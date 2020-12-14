@@ -23,15 +23,22 @@
     <!-- <script src="../js/gijgo.min.js" type="text/javascript"></script> -->
     <!-- <link href="../css/gijgo.min.css" rel="stylesheet" type="text/css" /> -->
     <script src="/node_modules/readmore-js/readmore.min.js"></script>
+     <script src="../../js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+            new Darkmode().showWidget();
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
     <% if(login) {%>
         <link href="/css/general-user.css" rel="stylesheet">
-        <link href="/css/hosts.css" rel="stylesheet">
         <link href="/css/user-content.css" rel="stylesheet">
+        <link href="/css/hosts.css" rel="stylesheet">
         <link href="/css/paginate.css" rel="stylesheet">
         <%}else{%>
             <link href="/css/general.css" rel="stylesheet">
-            <link href="/css/hosts.css" rel="stylesheet">
             <link href="/css/user-content.css" rel="stylesheet">
+            <link href="/css/hosts.css" rel="stylesheet">
             <link href="/css/paginate.css" rel="stylesheet">
             <%}%>
 

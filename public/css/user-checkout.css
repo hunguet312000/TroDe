@@ -116,7 +116,7 @@ input::-webkit-inner-spin-button {
     padding: 24px;
     background: #fff;
     box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, .05);
-    border: none;
+    border: 1px solid #f6f6f6;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -170,4 +170,16 @@ img {
 
 #button-submit1:focus {
     outline: 0;
+}
+
+.txt-lich {
+    font-size: large;
+    color: #333;
+    font-weight: 900;
+}
+
+.darkmode--activated .btn-edit,
+.darkmode--activated h2,
+.darkmode--activated h3 {
+    color: white;
 }

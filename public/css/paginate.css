@@ -88,3 +88,7 @@
     background-color:black;
     color:#fff;
 }
+
+.darkmode--activated .pagination>li>a, .pagination>li>span{
+    color:#fff;
+}

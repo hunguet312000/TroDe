@@ -21,6 +21,13 @@
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     <script src="/node_modules/readmore-js/readmore.min.js"></script>
+    <script src="../../js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+            new Darkmode().showWidget();
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
     <link href="/css/general-user.css" rel="stylesheet">
     <link href="/css/user-room.css" rel="stylesheet">
     <link href="/css/user-content.css" rel="stylesheet">
@@ -37,18 +44,18 @@
                         <nav class="navbar navbar-light navbar-fixed-top navbar-custom" role="navigation" id="nav-bar" style="border-bottom: 1px solid #f2f2f2;">
                             <div class="container" style="margin-top: 10px;">
                                 <div class="navbar-header" style="padding: 6px 0px 0px;">
-                                  <% if(user.role === 1){ %>
-                                    <b><a class="navbar-brand" href="/admin-control" id="logo">TroDe</a></b>
-                                  <% }else { %>
-                                    <b><a class="navbar-brand" href="/" id="logo">TroDe</a></b>
-                                  <% }%>
-                                    <b><span class="" style="font-size: large;color: #333;font-weight: 900;">ĐẶT LỊCH</span></b>
+                                    <% if(user.role === 1){ %>
+                                        <b><a class="navbar-brand" href="/admin-control" id="logo">TroDe</a></b>
+                                        <% }else { %>
+                                            <b><a class="navbar-brand" href="/" id="logo">TroDe</a></b>
+                                            <% }%>
+                                                <b><span class="txt-lich" >ĐẶT LỊCH</span></b>
                                 </div>
                                 <div class="nav-item menu-info " style="float: right;margin-top: 15px;">
-                                    <div class="text-admin">
+                                    <div class="text-admin txt-darkmode">
                                         TÀI KHOẢN CỦA BẠN
                                     </div>
-                                    <div class="admin-name">
+                                    <div class="admin-name txt-darkmode">
                                         <%= user.ten_nguoi_dung %>
                                     </div>
                                 </div>
@@ -61,8 +68,8 @@
                     <div class="row">
                         <div class="col-sm-8">
                             <h3>Thông tin lịch hẹn</h3>
-                            <p style="font-weight: 700;">Xin chào!</p>
-                            <div style="font-weight: 700;">
+                            <p style="font-weight: 700;" class="txt-darkmode">Xin chào!</p>
+                            <div style="font-weight: 700;" class="txt-darkmode">
                                 Bạn đã đặt lịch hẹn tại
                                 <%= phong_tro[0].dataValues.phan_loai %>
                                     <%=phong_tro[0].dataValues.ten_phong %>
@@ -78,12 +85,12 @@
                             <br>
                             <div class="text" style="margin-bottom: 32px;">
                                 <div style="line-height: 1.65;">
-                                    <div style="font-weight: 600;font-size: 16px;margin-bottom: 10px;">Lưu ý</div>
-                                    <span style="font-weight: 500;font-size: 14px;">- Bạn phải có mặt đúng giờ đã hẹn dự kiến. Lịch hẹn chỉ được thay đổi nếu như có sự đồng ý của hai bên.</span>
+                                    <div style="font-weight: 600;font-size: 16px;margin-bottom: 10px;" class="txt-darkmode">Lưu ý</div>
+                                    <span style="font-weight: 500;font-size: 14px;" class="txt-darkmode">- Bạn phải có mặt đúng giờ đã hẹn dự kiến. Lịch hẹn chỉ được thay đổi nếu như có sự đồng ý của hai bên.</span>
                                     <br>
-                                    <span style="font-weight: 500;font-size: 14px;">- Nếu sau 24h không có sự xác nhận đến từ người cho thuê có nghĩa là lịch hẹn đã bị hủy.</span>
+                                    <span style="font-weight: 500;font-size: 14px;" class="txt-darkmode">- Nếu sau 24h không có sự xác nhận đến từ người cho thuê có nghĩa là lịch hẹn đã bị hủy.</span>
                                     <br>
-                                    <span style="font-weight: 500;font-size: 14px;">- Nếu như có bất kỳ dấu hiệu lừa đảo nào hãy báo cáo cho chúng tôi biết.</span>
+                                    <span style="font-weight: 500;font-size: 14px;" class="txt-darkmode">- Nếu như có bất kỳ dấu hiệu lừa đảo nào hãy báo cáo cho chúng tôi biết.</span>
                                     <br>
                                 </div>
                             </div>
@@ -92,9 +99,9 @@
                                 <form action="../<%= phong_tro[0].dataValues.id_phong_tro%>/book" method="post">
                                     <div class="col-sm-12" style="margin-bottom: 20px;">
                                         <span style="color: #f65e39;font-weight: 700;">*&nbsp;</span>
-                                        <span style="font-weight: 700;">Tên Khách Hàng</span>
+                                        <span style="font-weight: 700;" class="txt-darkmode">Tên Khách Hàng</span>
                                         <br>
-                                        <span>Họ tên trên CMND/ Thẻ căn cước</span>
+                                        <span class="txt-darkmode">Họ tên trên CMND/ Thẻ căn cước</span>
                                         <br>
                                         <div style="margin-top:10px;">
                                             <% if(user){ %>
@@ -109,10 +116,10 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-6" style="margin-bottom: 20px;">
-                                        <span style="color: #f65e39;font-weight: 700;">*&nbsp;</span>
-                                        <span style="font-weight: 700;">Số điện thoại</span>
+                                        <span style="color: #f65e39;font-weight: 700;" class="txt-darkmode">*&nbsp;</span>
+                                        <span style="font-weight: 700;" class="txt-darkmode">Số điện thoại</span>
                                         <br>
-                                        <span>Đây là số điện thoại chủ phòng sẽ dùng để liên hệ với bạn</span>
+                                        <span class="txt-darkmode">Đây là số điện thoại chủ phòng sẽ dùng để liên hệ với bạn</span>
                                         <br>
                                         <div style="margin-top:10px;">
                                             <% if(user.sdt){ %>
@@ -124,10 +131,10 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-6" style="margin-bottom: 20px;">
-                                        <span style="color: #f65e39;font-weight: 700;">*&nbsp;</span>
-                                        <span style="font-weight: 700;">Email</span>
+                                        <span style="color: #f65e39;font-weight: 700;" class="txt-darkmode">*&nbsp;</span>
+                                        <span style="font-weight: 700;" class="txt-darkmode">Email</span>
                                         <br>
-                                        <span>Đây là địa chỉ email chúng tôi sẽ gửi thư xác nhận tới bạn</span>
+                                        <span class="txt-darkmode">Đây là địa chỉ email chúng tôi sẽ gửi thư xác nhận tới bạn</span>
                                         <br>
                                         <div style="margin-top:10px;">
                                             <% if(user.email){ %>
@@ -184,8 +191,8 @@
                                     </div>
                                 </div>
                                 <div style="text-align:center;">
-                                    <h2 style="font-weight: 900;margin-bottom: 10px;">
-                                        <%= Number(phong_tro[0].dataValues.gia_phong).toLocaleString("en") %>₫<span style="font-size: 15px;">/tháng</span></h2>
+                                    <h2 style="font-weight: 900;margin-bottom: 10px;color: #222222;">
+                                        <%= Number(phong_tro[0].dataValues.gia_phong).toLocaleString("en") %>₫<span style="font-size: 15px;color: #222222;">/tháng</span></h2>
                                 </div>
                             </div>
                         </div>

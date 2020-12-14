@@ -585,3 +585,70 @@ select {
 .select2-container--default .select2-selection--single .select2-selection__arrow {
     margin-top: 3px;
 }
+
+.darkmode--activated #nav-bar{
+    background-color:#222;
+    color:#fff;
+}
+
+.darkmode--activated #a-side1, .darkmode--activated #a-side2, .darkmode--activated #a-side3, .darkmode--activated #a-side4{
+    color:#fff;
+}
+
+.content{
+    background-color: #fff; height: fit-content;border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);
+}
+
+.darkmode--activated .content{
+    background-color:#222;
+}
+
+.darkmode--activated b,
+.darkmode--activated label{
+    color:#fff;
+}
+
+.darkmode-toggle--white:focus {
+    outline: 0 none;
+    border: none;
+}
+
+.darkmode-toggle:focus {
+    outline: 0 none;
+    border: none;
+}
+
+.darkmode--activated #a-drop,
+.darkmode--activated .icon-darkmode,
+.darkmode--activated .txt-darkmode,
+.darkmode--activated .a-phan-loai,
+.darkmode--activated h2,
+.darkmode--activated h3,
+.darkmode--activated .gj-textbox-md,
+.darkmode--activated #a-info,
+.darkmode--activated .gj-button-md,
+.darkmode--activated .gj-editor [role=body],
+.darkmode--activated .user-name,
+.darkmode--activated .time,
+.darkmode--activated .comment,
+.darkmode--activated #logo1,
+.darkmode--activated #sp-color,
+.darkmode--activated #sp {
+    color: #fff;
+}
+
+.darkmode--activated #btn-upload{
+    border-top: 1px solid black;
+    background-color:#fff;
+    color:black;
+}
+
+
+.darkmode--activated #button-submit{
+    background-color:#fff;
+    color:black;
+}
+
+.darkmode--activated .side-profile{
+    background-color:#222;
+}
