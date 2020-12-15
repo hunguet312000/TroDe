@@ -157,24 +157,22 @@ exports.awaitBooking = async(req, res) => {
             const awaitList = await Lich_hen.findAll({
                 offset: calculatePaginate.offset,
                 limit: calculatePaginate.limit,
+                where: {
+                    tinh_trang: null
+                },
                 include: [
                   {
                     model: Phong_tro,
                     required: true,
                     where: {
-                        id_chu_so_huu: {
-                            [Op.like]: user.id_nguoi_dung
-                        }
+                        id_chu_so_huu: user.id_nguoi_dung
                     }
                   },
                   {
                     model: Nguoi_dung,
                     required: true,
                   }
-              ],
-                where: {
-                    tinh_trang: null
-                }
+                ]
             });
             //console.log(awaitList[0].dataValues.nguoi_dung.sdt);
             res.render("user-await-bookings", {

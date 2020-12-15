@@ -129,9 +129,7 @@ exports.calculateBookingPages = async(req, res) => {
           model: Phong_tro,
           required: true,
           where: {
-              id_chu_so_huu: {
-                  [Op.like]: req.session.passport.user.id_nguoi_dung
-              }
+              id_chu_so_huu: req.session.passport.user.id_nguoi_dung
           }
         }
     ],
@@ -160,9 +158,7 @@ exports.calculateBookingStatusPages = async(req, res, tinh_trang) => {
           model: Phong_tro,
           required: true,
           where: {
-              id_chu_so_huu: {
-                  [Op.like]: req.session.passport.user.id_nguoi_dung
-              }
+              id_chu_so_huu: req.session.passport.user.id_nguoi_dung
           }
         }
       ],
