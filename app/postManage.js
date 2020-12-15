@@ -3,7 +3,6 @@ const mysql = require('mysql');
 const dbconfig = require('../config/database');
 const async = require('async')
 require('dotenv').config();
-var visitCounter = require('express-visit-counter').Loader;
 const url = require("url");
 const Sequelize = require("sequelize");
 const keywords_dict = require("../public/js/keywords_dict.js");
@@ -54,7 +53,10 @@ exports.savePosts = async(req, res) => {
             tong_so_nguoi: parseInt(req.body.tong_so_nguoi),
             gia_phong: parseInt(req.body.gia_phong.replace(/,/g, '')),
             thoi_gian_dang: new Date(),
-            path_anh_noi_bat: insert_hinh_anh_values[0].path_anh
+            path_anh_noi_bat: insert_hinh_anh_values[0].path_anh,
+            luot_thich : 0,
+            luot_binh_luan : 0,
+            luot_xem : 0
         }
 
         var tiennghi = {
@@ -424,10 +426,7 @@ exports.displayPostProfile = async(req, res) => {
                 id_phong_tro: req.params.id
             }
         });
-        let countView = await visitCounter.getCount(req.url);
-        const updateNumViewPage = await Phong_tro.update(
-            {luot_xem : countView},
-            {where: {id_phong_tro : req.params.id}})
+        const updateNumviewPage = await Phong_tro.increment("luot_xem", {where : {id_phong_tro : req.params.id}})
         console.log(binh_luan)
         let userData = {};
         userData.binh_luan = [];
@@ -481,15 +480,7 @@ exports.saveComment = async(req, res) => {
     }
     try {
         const binh_luan = await Binh_luan.create(binh_luan_moi);
-        const phong_tro = await Phong_tro.findAll(
-            {attributes : ['luot_binh_luan']},
-            {where : {id_phong_tro: req.body.id_phong_tro }}
-        )
-        let countComment = phong_tro[0].dataValues.luot_binh_luan;
-        const updateCommentNum = await Phong_tro.update(
-            {luot_binh_luan : countComment != undefined ? countComment + 1 : 1},
-            { where: {id_phong_tro : req.body.id_phong_tro}}
-        )
+        const updateCommentNum = await Phong_tro.increment("luot_binh_luan", {where : {id_phong_tro : req.body.id_phong_tro}})
         const danh_gia_phong_tro = await Binh_luan.findOne({
             where: { id_phong_tro : req.body.id_phong_tro },
             attributes: [
@@ -515,15 +506,7 @@ exports.saveFavPost = async(req, res) => {
             id_phong_tro: id_phong_tro,
             id_nguoi_dung: id_nguoi_dung
         })
-        const phong_tro = await Phong_tro.findAll(
-            {attributes : ['luot_thich']},
-            {where : {id_phong_tro: req.body.addFav_id_phong_tro }}
-        )
-        let countLikeNum = phong_tro[0].dataValues.luot_thich;
-        const updateCommentNum = await Phong_tro.update(
-            {luot_thich : countLikeNum != undefined ? countLikeNum + 1 : 1},
-            { where: {id_phong_tro : req.body.addFav_id_phong_tro}}
-        )
+        const updateLikeNum = await Phong_tro.increment("luot_thich", { where : {id_phong_tro :req.body.addFav_id_nguoi_dung}})
         res.redirect("/room/" + id_phong_tro);
     } catch (err) {
         //console.log("loi me r");

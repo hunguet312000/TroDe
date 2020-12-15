@@ -1,7 +1,7 @@
 <% if(userData.length!=0){ %>
     <% userData.forEach(function(data){ %>
         <% //console.log(data.dataValues.id_nguoi_dung);%>
-            <div class="col-sm-6 list-content" style="height: 170px;background-color: #fff;vertical-align: middle;border-radius: 8px;box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);margin-bottom: 20px;margin-right: 5%;width: 45%;">
+            <div class="col-sm-6 list-content">
                 <div class="row">
                     <div class="col-sm-3">
                         <a href="/host-profile/<%=data.dataValues.id_nguoi_dung%>/1" style="text-decoration: none;">
@@ -26,16 +26,16 @@
                                 </div>
                             </a>
                             <div class="little-info" style="margin-top: 4px;margin-bottom: 5px;">
-                                <span class="host" style="color: #252525;font-weight: 500;font-size: 15px;"><span>Số bài đăng:&nbsp;</span>
-                                    <% for (num of postNum){ %>
-                                        <% if(data.dataValues.id_nguoi_dung === num.id_nguoi_dung){%>
-                                          <%= num.postNum %>
-                                        <%}%>
-                                    <%}%>
-                                </span>
+                                <span class="host" style="font-weight: 500;font-size: 15px;"><span>Số bài đăng:&nbsp;</span>
+                                <% for (num of postNum){ %>
+                                    <% if(data.dataValues.id_nguoi_dung === num.id_nguoi_dung){%>
+                                        <%= num.postNum %>
+                                            <%}%>
+                                                <%}%>
+                                                    </span>
                             </div>
                             <div class="info" style="margin-bottom: 5px;">
-                                <span class="thich" style="color: #252525;font-weight: 500;font-size: 15px;">
+                                <span class="host" style="font-weight: 500;font-size: 15px;">
                                   Tham gia:
                                   <span>
                                     <% let current = new Date()%>
@@ -53,17 +53,17 @@
                                     <path style="fill:#FF4C04;" d="M472.55,216.555c0,117.01-110.642,214.336-170.077,266.622c-8.258,7.258-15.396,13.537-21.075,18.845  c-7.128,6.648-16.266,9.977-25.404,9.977V303.803c52.627,0,95.436-42.809,95.436-95.436c0-52.617-42.809-95.426-95.436-95.426V0  c57.845,0,112.232,22.524,153.131,63.424S472.55,158.71,472.55,216.555z"/>
                                     </svg>
                                 <%if(data.dataValues.thanh_pho != null){%>
-                                    <span style="font-weight: 500;color: #222222;">&nbsp;<%=data.dataValues.thanh_pho%>, <%=data.dataValues.quan_huyen%>, <%=data.dataValues.phuong_xa%>, <%=data.dataValues.dia_chi_cu_the%>
+                                    <span style="font-weight: 500;" class="txt-darkmode">&nbsp;<%=data.dataValues.thanh_pho%>, <%=data.dataValues.quan_huyen%>, <%=data.dataValues.phuong_xa%>, <%=data.dataValues.dia_chi_cu_the%>
                                          </span>
                                     <%} else{%>
-                                        <span style="font-weight: 500;color: #222222;">&nbsp;Chưa cập nhật địa chỉ
+                                        <span style="font-weight: 500;" class="txt-darkmode">&nbsp;Chưa cập nhật địa chỉ
                                         </span>
                                         <%}%>
                             </div>
                     </div>
                     <div class="col-sm-2">
                         <div style="line-height: 1.5;margin-top: 50px;">
-                            <a href="/admin/user-delete/<%=data.dataValues.id_nguoi_dung%>" style="text-decoration: none;color: #252525;font-weight: 900;">
+                            <a href="/admin/user-delete/<%=data.dataValues.id_nguoi_dung%>" style="text-decoration: none;font-weight: 900;" class="a-xoa">
                                 <i class="fas fa-trash" style="font-weight: 700;color: red;"></i>&nbsp;&nbsp;Xóa
                             </a>
                         </div>

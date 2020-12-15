@@ -29,6 +29,7 @@
     font-weight: 600;
 }
 
+
 /*----------------------------------------*/
 
 #wrap-content {
@@ -58,4 +59,9 @@
     background-color: #fff;
     border-bottom: 2px solid #f2f2f2;
     border-right: 2px solid #f2f2f2;
+}
+
+.darkmode--activated #a-sub-1 {
+    color: #fff;
+    border-bottom: 3px solid #fff;
 }

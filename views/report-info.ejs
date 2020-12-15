@@ -33,7 +33,7 @@
                         <%=bao_cao[0].dataValues.tieu_de%>
                     </div>
                     <div class="content-report">
-                        <%=bao_cao[0].dataValues.noi_dung.substring(0,28)%>
+                        <%=bao_cao[0].noi_dung.substring(0,28)%>
                             <br>
                             <%=bao_cao[0].dataValues.noi_dung.substring(28,71)%>
                                 <br>
@@ -63,7 +63,7 @@
                 <% 
         bao_cao[0].dataValues.hinh_anh_bao_caos.forEach(function(path_anh, i){
         %>
-                    <img id="gallery-img1" class="gallery-img1" src=<%=path_anh.dataValues.path_anh%> >
+                    <img id="gallery-img1" class="gallery-img1" src="<%=path_anh.dataValues.path_anh%>">
                     <%}) %>
             </div>
         </div>
@@ -99,27 +99,27 @@
                     slidesToShow: 1,
                     slidesToScroll: 1,
                 });
-                $(".gallery-img").on("click", function() {
-                    $("body").css("background-color", "#222");
-                    $(".close").css("display", "block");
-                    $(".gallery-img1").css("display", "inline-block");
-                    $(".img-click .slick-prev").css("display", "block");
-                    $(".img-click .slick-next").css("display", "block");
-                    $("#content-report").hide();
-                    $(".header-wrap").hide();
+                $(".gallery-img ").on("click ", function() {
+                    $("body ").css("background-color ", "#222 ");
+                    $(".close ").css("display ", "block ");
+                    $(".gallery-img1 ").css("display ", "inline-block ");
+                    $(".img-click .slick-prev ").css("display ", "block ");
+                    $(".img-click .slick-next ").css("display ", "block ");
+                    $("#content-report ").hide();
+                    $(".header-wrap ").hide();
                 })
 
-                $(".btn-close").on("click", function() {
-                    $("body").css("background-color", "#f7f7f7");
-                    $(".close").css("display", "none");
-                    $(".gallery-img1").css("display", "none");
-                    $(".img-click .slick-prev").css("display", "none");
-                    $(".img-click .slick-next").css("display", "none");
-                    $("#content-report").show();
-                    $(".header-wrap").show();
+                $(".btn-close ").on("click ", function() {
+                    $("body ").css("background-color ", "#f7f7f7 ");
+                    $(".close ").css("display ", "none ");
+                    $(".gallery-img1 ").css("display ", "none ");
+                    $(".img-click .slick-prev ").css("display ", "none ");
+                    $(".img-click .slick-next ").css("display ", "none ");
+                    $("#content-report ").show();
+                    $(".header-wrap ").show();
                 })
 
-                $(".img-click .slick-prev").css("display", "none");
-                $(".img-click .slick-next").css("display", "none");
+                $(".img-click .slick-prev ").css("display ", "none ");
+                $(".img-click .slick-next ").css("display ", "none ");
             });
         </script>

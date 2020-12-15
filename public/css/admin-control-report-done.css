@@ -197,3 +197,48 @@
     transition: all .3s;
     color: #fff;
 }
+
+.darkmode--activated #a-sub-5 {
+    border-bottom: 3px solid #fff;
+    color: #fff;
+}
+
+.list-content {
+    height: 120px;
+    background-color: #fff;
+    vertical-align: middle;
+    border-radius: 8px;
+    box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);
+    margin-bottom: 20px;
+    margin-right: 5%;
+    width: 45%;
+}
+
+.darkmode--activated #a-sub-5 {
+    border-bottom: 3px solid #fff;
+    color: #fff;
+}
+
+.darkmode--activated .list-content {
+    background-color: #222222;
+    box-shadow: none;
+}
+
+a {
+    color: #333;
+}
+
+a:hover {
+    color: #17ca9d;
+}
+
+.fa-clock {
+    color: #333;
+}
+
+.darkmode--activated h3,
+.darkmode--activated span,
+.darkmode--activated a,
+.darkmode--activated .fa-clock {
+    color: #fff;
+}

@@ -5,6 +5,7 @@ const { updateInfo, changePassword } = require("../app/userProfileManage");
 const bcrypt = require('bcrypt');
 const postManage = require('../app/postManage');
 const forgetPassword = require("../app/forgetPassword");
+const { check, validationResult } = require('express-validator');
 require('dotenv').config();
 
 module.exports = (app, passport) => {
@@ -61,15 +62,45 @@ module.exports = (app, passport) => {
 
   app.get("/signup", function(req, res) {
       res.render("user-signup", {
-          message: req.flash("signupMessage")
+          message: req.flash("signupMessage"),
+          errors : undefined
       })
   });
 
-  app.post("/signup", passport.authenticate("local-signup", {
-          successRedirect: '/', // redirect to the secure profile section
-          failureRedirect: '/signup', // redirect back to the signup page if there is an error
-          failureFlash: true // allow flash messages
-      }),function(req, res) {});
+  app.post("/signup", 
+  [
+        check('username', 'username must has more than 6 characters').isLength({ min: 6 }),
+        check('email', 'Invalid email').isEmail(),
+        check('password', 'password must has more than 8 characters').isLength({ min: 8 }),
+        check("password", "Password must include one lowercase character, one uppercase character, a number, and a special character.").matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i"),
+        check('confirmPassword') 
+            .trim() 
+            .custom(async (confirmPassword, {req}) => { 
+            const password = req.body.password 
+            if(password !== confirmPassword){ 
+                throw new Error('Passwords must be same') 
+            } 
+            }), 
+  ],
+  (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            console.log(errors)
+            res.render("user-signup", {
+                errors: errors.array(),
+                message : ""
+            })
+        }
+        else {
+            passport.authenticate("local-signup", 
+            {
+                successRedirect: '/', // redirect to the secure profile section
+                failureRedirect: '/signup', // redirect back to the signup page if there is an error
+                failureFlash: true // allow flash messages
+            })(req,res);
+        }
+  }
+  )
 
   app.get("/logout", function(req, res) {
       req.logout();

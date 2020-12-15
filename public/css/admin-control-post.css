@@ -218,3 +218,56 @@ a:hover {
         border: 2px solid #f2f2f2;
     }
 }
+
+.darkmode--activated #a-sub-2 {
+    color: #fff;
+    border-bottom: 3px solid #fff;
+}
+
+.row-darkmode {
+    border-radius: 8px;
+    box-shadow: 2px 4px 4px #eee;
+    transform: translate3d(0px, 0px, 0px);
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+.list-content {
+    border-radius: 8px;
+    box-shadow: 2px 4px 4px #eee;
+    transform: translate3d(0px, 0px, 0px);
+    background-color: #fff;
+}
+
+.darkmode--activated .row-darkmode,
+.darkmode--activated .list-content,
+.darkmode--activated .box-info1,
+.darkmode--activated .right-side,
+.darkmode--activated .box-info2,
+.darkmode--activated #chinh-sua,
+.darkmode--activated #xoa {
+    box-shadow: none;
+    background-color: #222;
+    color: #fff;
+}
+
+.darkmode--activated #logo,
+.darkmode--activated .admin-name,
+.darkmode--activated .a-sub-nav,
+.darkmode--activated .txt-time,
+.darkmode--activated h3,
+.darkmode--activated .txt-diachi,
+.darkmode--activated .txt-darkmode,
+.darkmode--activated .txt,
+.darkmode--activated h4 {
+    color: #fff;
+}
+
+.darkmode--activated .view,
+.darkmode--activated #Layer_1 {
+    fill: #fff;
+}
+
+.txt-diachi {
+    color: #222222;
+}

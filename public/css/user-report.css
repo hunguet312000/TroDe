@@ -261,3 +261,86 @@ input::-webkit-inner-spin-button {
     display: none;
     margin-top: 130px;
 }
+
+.navbar {
+    background-color: #ffffff;
+}
+
+.darkmode--activated .navbar,
+.darkmode--activated .content-report {
+    background-color: #222222;
+}
+
+.darkmode--activated #logo,
+.darkmode--activated .admin-name,
+.darkmode--activated .a-sub-nav {
+    color: #fff;
+}
+
+.darkmode--activated #a-sub-1 {
+    border-bottom: 3px solid #fff;
+    color: #fff;
+}
+
+.darkmode--activated #submit {
+    background-color: #fff;
+    color: black;
+}
+
+.title-item-profile {
+    color: #666!important;
+}
+
+.sp-color {
+    color: #333333;
+}
+
+.content-report {
+    padding: 25px 50px 50px 25px;
+    box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .02), 0 24px 38px 3px rgba(0, 0, 0, .04), 0 11px 15px -7px rgba(0, 0, 0, .05);
+    border-radius: .625rem;
+}
+
+.darkmode--activated #title-item-profile,
+.darkmode--activated .txt-darkmode,
+.darkmode--activated #txt-darkmode,
+.darkmode--activated .btn-edit,
+.darkmode--activated label,
+.darkmode--activated h3,
+.darkmode--activated h5,
+.darkmode--activated .gj-editor [role=body],
+.darkmode--activated .gj-button-md {
+    color: #fff;
+}
+
+.darkmode--activated .btn-edit:focus {
+    color: black;
+}
+
+.darkmode-toggle--white:focus {
+    outline: 0 none;
+    border: none;
+}
+
+.darkmode-toggle:focus {
+    outline: 0 none;
+    border: none;
+}
+
+.darkmode--activated #button-submit,
+.darkmode--activated #btn-upload {
+    background-color: #fff;
+    color: black;
+}
+
+.darkmode--activated .side-profile {
+    background-color: black;
+    color: #fff;
+}
+
+.darkmode--activated .gj-datepicker-md [role=right-icon],
+.darkmode--activated #button-submit {
+    fill: white;
+    background-color: white;
+    color: #222222;
+}
