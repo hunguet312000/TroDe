@@ -86,7 +86,7 @@ module.exports = (app, passport) => {
   (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            console.log(errors)
+            //console.log(errors)
             res.render("user-signup", {
                 errors: errors.array(),
                 message : ""
@@ -100,8 +100,7 @@ module.exports = (app, passport) => {
                 failureFlash: true // allow flash messages
             })(req,res);
         }
-  }
-  )
+  });
 
   app.get("/logout", function(req, res) {
       req.logout();
@@ -111,32 +110,86 @@ module.exports = (app, passport) => {
   app.get('/profile/change-password', function(req, res) {
       if (req.isAuthenticated()) {
           const user = req.session.passport.user;
-          console.log(user)
-          res.render('user-profile-change-password', { user: user });
+          //console.log(user)
+          res.render('user-profile-change-password', {
+            user: user,
+            message: '',
+            errors: undefined
+           });
       } else { res.redirect('/login') }
   });
 
-  app.post("/profile-change-password", function(req, res) {
-      const newInfo = req.body;
-      const oldInfo = req.session.passport.user;
+  app.post("/profile-change-password",
+  [
+        check('newPass', 'Mật khẩu cần có tối thiểu 8 ký tự.').isLength({ min: 8 }),
+        check("newPass", "Mật khẩu mới cần bao gồm cả chữ và số trong đó có ít nhất một chữ cái viết hoa.").matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/, "i"),
+        check('renewPass')
+            .trim()
+            .custom(async (renewPass, {req}) => {
+            if(req.body.newPass !== req.body.reNewPass){
+                throw new Error('Mật khẩu nhập lại không giống.')
+            }
+            }),
+        check('oldPass')
+            .trim()
+            .custom(async (oldPass, {req}) => {
+            if (!bcrypt.compareSync(req.body.oldPass, req.session.passport.user.mat_khau)){
+                throw new Error('Mật khẩu cũ không đúng.')
+            }
+            }),
+  ],
+  function(req, res) {
+    const newInfo = req.body;
+    const oldInfo = req.session.passport.user;
+    const id_nguoi_dung = oldInfo.id_nguoi_dung;
+    const oldPass = oldInfo.mat_khau;
+    const typedOldPass = newInfo.oldPass;
+    const newPass = newInfo.newPass;
+    const renewPass = newInfo.reNewPass;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        //console.log(errors)\
+        res.render('user-profile-change-password', {
+          user: req.session.passport.user,
+          errors: errors.array(),
+          message: ''
+        });
+    }else {
+        changePassword(newInfo, oldInfo);
+        req.logout();
+        res.redirect("/login")
+    }
 
-      const id_nguoi_dung = oldInfo.id_nguoi_dung;
-      const oldPass = oldInfo.mat_khau;
-      const typedOldPass = newInfo.oldPass;
-      const newPass = newInfo.newPass;
-      const renewPass = newInfo.reNewPass;
-      if (newPass != renewPass || !bcrypt.compareSync(typedOldPass, oldPass)) {
-          console.log("Sai mat khau");
-      } else {
-          changePassword(newInfo, oldInfo);
-          req.logout();
-          res.redirect("/login")
-      }
+      // if (!bcrypt.compareSync(typedOldPass, oldPass)) {
+      //     res.render('user-profile-change-password', {
+      //       user: req.session.passport.user,
+      //       message: "Sai mật khẩu.",
+      //       errors: ''
+      // });
+      // }else if (newPass != renewPass){
+      //     res.render('user-profile-change-password', {
+      //       user: req.session.passport.user,
+      //       message: "Mật khẩu nhập lại không giống.",
+      //       errors: ''
+      //     });
+      //   }
   });
 
   app.get("/reset-password/:token", forgetPassword.checkToken);
 
-  app.post("/reset-password/:token", forgetPassword.resetPassword);
+  app.post("/reset-password/:token",
+  [
+        check('password', 'Mật khẩu cần có tối thiểu 8 ký tự.').isLength({ min: 8 }),
+        check("password", "Mật khẩu mới cần bao gồm cả chữ và số trong đó có ít nhất một chữ cái viết hoa.").matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/, "i"),
+        check('rePassword')
+            .trim()
+            .custom(async (rePassword, {req}) => {
+            if(req.body.password !== req.body.rePassword){
+                throw new Error('Mật khẩu nhập lại không giống.')
+            }
+            }),
+  ],
+  forgetPassword.resetPassword);
 
   app.get("/forget-password", function(req, res){
     res.render("user-forget-password", { message: '' })
