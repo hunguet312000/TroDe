@@ -67,20 +67,21 @@ module.exports = (app, passport) => {
       })
   });
 
-  app.post("/signup", 
+  app.post("/signup",
   [
-        check('username', 'username must has more than 6 characters').isLength({ min: 6 }),
-        check('email', 'Invalid email').isEmail(),
-        check('password', 'password must has more than 8 characters').isLength({ min: 8 }),
-        check("password", "Password must include one lowercase character, one uppercase character, a number, and a special character.").matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i"),
-        check('confirmPassword') 
-            .trim() 
-            .custom(async (confirmPassword, {req}) => { 
-            const password = req.body.password 
-            if(password !== confirmPassword){ 
-                throw new Error('Passwords must be same') 
-            } 
-            }), 
+        check('username', 'Tên đăng nhập cần có tối thiểu 4 chữ.').isLength({ min: 4 }),
+        check('email', 'Email không hợp lệ.').isEmail(),
+        check('password', 'Mật khẩu cần có tối thiểu 8 ký tự.').isLength({ min: 8 }),
+        check("password", "Mật khẩu cần bao gồm cả chữ và số trong đó có ít nhất một chữ cái viết hoa.").matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/, "i"),
+        check("phone", "Số điện thoại có 10 chữ số.").isLength({min: 10, max: 10}),
+        check('confirmPassword')
+            .trim()
+            .custom(async (confirmPassword, {req}) => {
+            const password = req.body.password
+            if(password !== confirmPassword){
+                throw new Error('Mật khẩu nhập lại không giống.')
+            }
+            }),
   ],
   (req, res) => {
         const errors = validationResult(req);
@@ -92,7 +93,7 @@ module.exports = (app, passport) => {
             })
         }
         else {
-            passport.authenticate("local-signup", 
+            passport.authenticate("local-signup",
             {
                 successRedirect: '/', // redirect to the secure profile section
                 failureRedirect: '/signup', // redirect back to the signup page if there is an error
