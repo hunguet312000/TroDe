@@ -3,7 +3,7 @@ require('dotenv').config();
 const { QueryTypes } = require('sequelize');
 const url = require("url")
 const {sequelizeInit, Nguoi_dung, Phong_tro, Hinh_anh, Tien_ich, Binh_luan, Danh_sach_yeu_thich, Quan_tri_vien, sequelize} = require("../config/sequelize");
-const Op = require('Sequelize').Op
+const Op = require('sequelize').Op
 const paginate = require("./paginate");
 
 exports.displayListUser = async(req, res) =>{

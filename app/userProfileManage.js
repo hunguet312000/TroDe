@@ -6,7 +6,7 @@ const dbconfig = require('../config/database');
 const bcrypt = require('bcrypt');
 const { sequelizeInit, Nguoi_dung, Phong_tro, Danh_sach_yeu_thich, sequelize } = require("../config/sequelize");
 const paginate = require("./paginate");
-const Op = require('Sequelize').Op
+const Op = require('sequelize').Op
 
 exports.changePassword = async(newInfo, oldInfo) => {
     const id_nguoi_dung = oldInfo.id_nguoi_dung;
