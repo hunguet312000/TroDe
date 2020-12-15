@@ -15,6 +15,7 @@ const userProfileManage = require("./userProfileManage");
 exports.displayAllPostForAdmin = async(req, res) => {
   console.log(req.params.page);
     if (req.isAuthenticated()) {
+      if(req.user.role === 1){
         try {
             const calculatePagniate = await paginate.calculateAdminPostListPages(req, res);
             const phong_tro = await Phong_tro.findAll({
@@ -53,6 +54,9 @@ exports.displayAllPostForAdmin = async(req, res) => {
         } catch (err) {
             console.log(err)
         }
+      }else{
+        res.render("admin-require-noti");
+      }
     } else {
         res.redirect('/admin-login');
     }

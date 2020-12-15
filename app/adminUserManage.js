@@ -8,6 +8,7 @@ const paginate = require("./paginate");
 
 exports.displayListUser = async(req, res) =>{
     if (req.isAuthenticated()) {
+      if(req.user.role === 1){
         const calculatePagniate = await paginate.calculateAdminUserListPages(req, res);
         try{
             let nguoi_dung;
@@ -74,6 +75,9 @@ exports.displayListUser = async(req, res) =>{
         }catch(err) {
             console.log(err)
         }
+      }else{
+        res.render("admin-require-noti");
+      }
     } else {
           res.redirect('/admin-login');
     }

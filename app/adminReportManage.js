@@ -12,6 +12,7 @@ const paginate = require("./paginate");
 
 exports.displayListReport = async(req, res) => {
     if (req.isAuthenticated()) {
+      if(req.user.role === 1){
       const calculatePagniate = await paginate.calculateAdminReportListPages(req, res);
         try{
             const bao_cao = await Bao_cao.findAll({
@@ -55,6 +56,9 @@ exports.displayListReport = async(req, res) => {
         }catch(err){
             console.log(err)
         }
+      }else{
+        res.render("admin-require-noti");
+      }
     } else {
         res.redirect('/admin-login');
     }
@@ -77,6 +81,7 @@ exports.adminReportChecked = async (req, res) =>{
 
 exports.reportInfo = async(req, res) => {
     if (req.isAuthenticated()) {
+      if(req.user.role === 1){
         try{
             const bao_cao = await Bao_cao.findAll({
                 where: {
@@ -106,6 +111,9 @@ exports.reportInfo = async(req, res) => {
         }catch(err){
             console.log(err)
         }
+      }else{
+        res.render("admin-require-noti");
+      }
     } else {
         res.redirect('/admin-login');
     }
@@ -113,7 +121,8 @@ exports.reportInfo = async(req, res) => {
 
 exports.getDoneReport = async(req, res) => {
     if (req.isAuthenticated()) {
-      const calculatePagniate = await paginate.calculateAdminDoneReportListPages(req, res);
+      if(req.user.role === 1){
+        const calculatePagniate = await paginate.calculateAdminDoneReportListPages(req, res);
         try{
             const bao_cao = await Bao_cao.findAll({
               offset: calculatePagniate.offset,
@@ -155,6 +164,9 @@ exports.getDoneReport = async(req, res) => {
         }catch(err){
             console.log(err)
         }
+      }else{
+        res.render("admin-require-noti");
+      }
     } else {
         res.redirect('/admin-login');
     }
