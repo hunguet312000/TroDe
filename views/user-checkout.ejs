@@ -44,12 +44,8 @@
                         <nav class="navbar navbar-light navbar-fixed-top navbar-custom" role="navigation" id="nav-bar" style="border-bottom: 1px solid #f2f2f2;">
                             <div class="container" style="margin-top: 10px;">
                                 <div class="navbar-header" style="padding: 6px 0px 0px;">
-                                    <% if(user.role === 1){ %>
-                                        <b><a class="navbar-brand" href="/admin-control" id="logo">TroDe</a></b>
-                                        <% }else { %>
-                                            <b><a class="navbar-brand" href="/" id="logo">TroDe</a></b>
-                                            <% }%>
-                                                <b><span class="txt-lich" >ĐẶT LỊCH</span></b>
+                                    <b><a class="navbar-brand" href="/" id="logo">TroDe</a></b>
+                                    <b><span class="txt-lich" >ĐẶT LỊCH</span></b>
                                 </div>
                                 <div class="nav-item menu-info " style="float: right;margin-top: 15px;">
                                     <div class="text-admin txt-darkmode">
@@ -167,7 +163,7 @@
                                         <p>
                                             <%=phong_tro[0].dataValues.phan_loai%>
                                         </p>
-                                        <a href="#" style="text-decoration: none;" id="a-name-host">
+                                        <a href="/room/<%= phong_tro[0].dataValues.id_phong_tro%>" style="text-decoration: none;" id="a-name-host">
                                             <h4 id="name-host">
                                                 <%=phong_tro[0].dataValues.ten_phong%>
                                             </h4>
