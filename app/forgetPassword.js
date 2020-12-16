@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const {sequelizeInit, Nguoi_dung} = require("../config/sequelize");
 var nodemailer = require('nodemailer');
+const { check, validationResult } = require('express-validator');
 
 exports.forgetPassword = async (req, res) => {
     console.log(req.body.email)
@@ -75,7 +76,10 @@ exports.checkToken = async (req,res) => {
            })
            try{
                 console.log(token[0].dataValues.token)
-                res.render('user-reset-password', {message:'', action:"/reset-password/" + reset_link})
+                res.render('user-reset-password', {
+                  message:'',
+                  action:"/reset-password/" + reset_link,
+                  errors: undefined})
            }catch(err){
                res.send("Sai cú pháp")
            }
@@ -84,26 +88,36 @@ exports.checkToken = async (req,res) => {
 }
 
 exports.resetPassword = async(req, res) => {
-    console.log(req.body);
+    //console.log(req.body);
+    const errors = validationResult(req);
     var reset_link = req.params.token;
-    if ( req.body.password == req.body.rePassword ){
-        console.log(req.body);
-        const hashPass = bcrypt.hashSync(req.body.password, 10);
-        try{
-            const newPass = await Nguoi_dung.update({
-                mat_khau: hashPass
-            },{
-                where:{
-                    token: reset_link
-                }
-            })
-        }catch(err){
-            res.render('user-reset-password', {message:'Thay đổi mật khẩu không thành công. Xin vui lòng thử lại.', action:"/reset-password/" + reset_link})
-        }
-        res.redirect('/login');
+    if (!errors.isEmpty()) {
+        //console.log(errors)\
+        res.render('user-reset-password', {
+          action:"/reset-password/" + reset_link,
+          errors: errors.array(),
+          message: ''
+        });
+    }else {
+      if ( req.body.password == req.body.rePassword ){
+          console.log(req.body);
+          const hashPass = bcrypt.hashSync(req.body.password, 10);
+          try{
+              const newPass = await Nguoi_dung.update({
+                  mat_khau: hashPass
+              },{
+                  where:{
+                      token: reset_link
+                  }
+              })
+              console.log(newPass);
+          }catch(err){
+              res.render('user-reset-password', { message:'Thay đổi mật khẩu không thành công. Xin vui lòng thử lại.', action:"/reset-password/" + reset_link})
+          }
+          res.redirect('/login');
+      }
     }
-    else{
-        res.render('user-reset-password', {message:'Mật khẩu xác thực không trùng khớp.', action:"/reset-password/" + reset_link})
-    }
-
+    // else{
+    //     res.render('user-reset-password', {message:'Mật khẩu xác thực không trùng khớp.', action:"/reset-password/" + reset_link, errors: })
+    // }
 }
