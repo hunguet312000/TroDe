@@ -659,10 +659,6 @@ select {
     background-color: #222;
 }
 
-#footer {
-    margin-bottom: 0px;
-}
-
 @media (max-width:769px) {
     .side-profile {
         margin-bottom: 20px;

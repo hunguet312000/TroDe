@@ -236,6 +236,11 @@ body {
 
 #footer {
     background-color: #ffffff;
+    border-top: 1px solid #f2f2f2;
+}
+
+.darkmode--activated #footer {
+    border-top: 1px solid black;
 }
 
 @media (max-width:769px) {

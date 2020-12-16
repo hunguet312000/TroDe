@@ -65,3 +65,15 @@
     color: #fff;
     border-bottom: 3px solid #fff;
 }
+
+@media (max-width:769px) {
+    #a-sub-2 {
+        display: none;
+    }
+    #a-sub-3 {
+        display: none;
+    }
+    #a-sub-5 {
+        display: none;
+    }
+}
