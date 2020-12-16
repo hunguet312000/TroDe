@@ -28,9 +28,11 @@
     </script>
     <% if (login) {%>
         <link href="/css/general-user.css" rel="stylesheet">
+        <link href="/css/footer.css" rel="stylesheet">
         <link href="/css/home-user.css" rel="stylesheet">
         <%} else {%>
             <link href="/css/general.css" rel="stylesheet">
+            <link href="/css/footer.css" rel="stylesheet">
             <link href="/css/home.css" rel="stylesheet">
             <%}%>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -61,6 +63,5 @@
                 <%}%>
                     <%- include("partials/content-home"); -%>
     </div>
-
     <script type="text/javascript" src="js/home.js"></script>
     <%- include("partials/footer"); -%>

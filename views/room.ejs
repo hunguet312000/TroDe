@@ -35,10 +35,12 @@
     </script>
     <% if(login) {%>
         <link href="/css/general-user.css" rel="stylesheet">
+        <link href="/css/footer.css" rel="stylesheet">
         <link href="/css/user-room.css" rel="stylesheet">
         <link href="/css/user-content.css" rel="stylesheet">
         <%}else{%>
             <link href="/css/general.css" rel="stylesheet">
+            <link href="/css/footer.css" rel="stylesheet">
             <link href="/css/user-room.css" rel="stylesheet">
             <link href="/css/user-content.css" rel="stylesheet">
             <%}%>
@@ -49,23 +51,24 @@
 <body>
     <%- include("partials/navbar-content"); -%>
         <%- include("partials/content-room"); -%>
-            <%- include("partials/footer"); -%>
 
-                <div class="img-visiable">
-                    <div class="close" style="right: 0;">
-                        <button class="btn-close">
+            <div class="img-visiable">
+                <div class="close" style="right: 0;z-index: 1;">
+                    <button class="btn-close" style="z-index: 1;">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="24" height="24" x="0" y="0" viewBox="0 0 329.26933 329" style="enable-background:new 0 0 512 512;width:24px;height:24px;" xml:space="preserve" class=""><g><path xmlns="http://www.w3.org/2000/svg" d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0" fill="#fdfdfd" data-original="#000000" style="" class=""/></g></svg>
         </button>
-                    </div>
+                </div>
 
-                    <div class="container" id="img-on">
-                        <div class="img-click">
-                            <% 
+                <div class="container" id="img-on">
+                    <div class="img-click">
+                        <% 
                 userData.hinh_anh.forEach(function(path_anh, i){
                 %>
-                                <img id="gallery-img1" class="gallery-img1" src="<%=path_anh.dataValues.path_anh%>">
-                                <%}) %>
-                        </div>
+                            <img id="gallery-img1" class="gallery-img1" src="<%=path_anh.dataValues.path_anh%>">
+                            <%}) %>
                     </div>
                 </div>
+            </div>
 </body>
+
+<%- include("partials/footer"); -%>

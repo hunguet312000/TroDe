@@ -74,7 +74,7 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" height="60px" viewBox="0 -2 512 512" width="60px" style="margin-top: 30px;"><path d="m448 508.800781-148.59375-92.800781h-267.40625c-17.671875 0-32-14.328125-32-32v-352c0-17.671875 14.328125-32 32-32h448c17.671875 0 32 14.328125 32 32v352c0 17.671875-14.328125 32-32 32h-32zm0 0" fill="#ff7761"/><g fill="#fff"><path d="m272 256h-32v-144c0-8.835938 7.164062-16 16-16s16 7.164062 16 16zm0 0"/><path d="m240 288h32v32h-32zm0 0"/></g></svg>
                                 </a>
                             </div>
-                            <div class="col-sm-7" style="line-height: 1.5;">
+                            <div class="col-sm-7 wrap-text" style="line-height: 1.5;">
                                 <a href="/report-info/<%=data.dataValues.id_bao_cao%>" style="text-decoration: none;">
                                     <div class="title">
                                         <h3><b>
@@ -85,7 +85,7 @@
                                 <div class="little-info" style="margin-top: 4px;margin-bottom: 5px;">
                                     <span class="#" style="color: #252525;font-weight: 500;font-size: 15px;">
                   <span>Gửi bởi:&nbsp;</span>
-                                    <a href="/host-profile/1" style="text-decoration: none;color: #333;">
+                                    <a href="/host-profile/1" style="text-decoration: none;" class="ten-user">
                                         <%if (data.dataValues.nguoi_dung.dataValues.ho_va_ten != null){%>
                                             <%= data.dataValues.nguoi_dung.dataValues.ho_va_ten %>
                                                 <%} else {%>

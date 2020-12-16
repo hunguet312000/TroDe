@@ -75,24 +75,24 @@ module.exports = (app, passport) => {
         }
     });
 
-    app.post("/host-edit/:id", upload.fields([{name : "update_image"}, {name : "image_avatar"}, {name : "image"}]),async(req, res) =>   {
-        try{
+    app.post("/host-edit/:id", upload.fields([{ name: "update_image" }, { name: "image_avatar" }, { name: "image" }]), async(req, res) => {
+        try {
             let phong_tro_insert = req.body;
             const uploader = async(path) => await cloudinary.uploads(path, 'Image');
-            if(req.files.image_avatar != undefined){
+            if (req.files.image_avatar != undefined) {
                 let files = req.files.image_avatar;
                 for (const file of files) {
-                    const {path} = file
+                    const { path } = file
                     const newPath = await uploader(path)
                     phong_tro_insert.path_anh_noi_bat = newPath.path_anh;
                 }
             }
 
-            if(req.files.image != undefined){
+            if (req.files.image != undefined) {
                 let files = req.files.image;
                 let insert_hinh_anh_values = []
                 for (const file of files) {
-                    const {path} = file
+                    const { path } = file
                     const newPath = await uploader(path)
                     insert_hinh_anh_values.push(newPath);
                 }
@@ -102,33 +102,52 @@ module.exports = (app, passport) => {
                 const hinh_anh = await Hinh_anh.bulkCreate(insert_hinh_anh_values);
 
             }
-            if(req.files.update_image != undefined) {
+            if (req.files.update_image != undefined) {
                 let files = req.files.update_image;
                 let value = ''
                 let id_anh_list = req.body.order;
-                id_anh_list= id_anh_list.filter(item => item !== value);
-                for(let i = 0; i < id_anh_list.length; i++) {
-                    const {path} = files[i]
+                id_anh_list = id_anh_list.filter(item => item !== value);
+                for (let i = 0; i < id_anh_list.length; i++) {
+                    const { path } = files[i]
                     const newPath = await uploader(path)
                     const hinh_anh_update = Hinh_anh.update({
-                        path_anh : newPath.path_anh
+                        path_anh: newPath.path_anh
                     }, {
-                        where : {
-                            id_anh : id_anh_list[i]
+                        where: {
+                            id_anh: id_anh_list[i]
                         }
                     })
                 }
             }
             const updateHost = await Phong_tro.update(phong_tro_insert, {
-                where: {id_phong_tro : req.params.id}
+                where: { id_phong_tro: req.params.id }
             })
             res.redirect(req.url);
-        }catch(err){
+        } catch (err) {
             console.log(err)
         }
 
     });
 
     app.get("/host-delete/:id", postManage.deletePost);
+
+    app.get("/tutorial/host", function(req, res) {
+        res.render("tutorial-host");
+    });
+    app.get("/tutorial/report", function(req, res) {
+        res.render("tutorial-report");
+    });
+    app.get("/tutorial/booking", function(req, res) {
+        res.render("tutorial-booking");
+    });
+    app.get("/policy/host", function(req, res) {
+        res.render("policy-host");
+    });
+    app.get("/policy/user", function(req, res) {
+        res.render("policy-user");
+    });
+    app.get("/mission", function(req, res) {
+        res.render("mission");
+    });
 
 }

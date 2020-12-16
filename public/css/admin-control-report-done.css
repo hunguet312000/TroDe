@@ -236,9 +236,66 @@ a:hover {
     color: #333;
 }
 
-.darkmode--activated h3,
+.darkmode--activated .title,
 .darkmode--activated span,
-.darkmode--activated a,
+.darkmode--activated .ten-user,
 .darkmode--activated .fa-clock {
     color: #fff;
+}
+
+@media (max-width:991px) {
+    .list-content {
+        height: 150px;
+    }
+    .wrap-text {
+        margin-top: -5px;
+        margin-left: 20px;
+    }
+    .check-report {
+        margin-top: -130px;
+        margin-left: 75%;
+    }
+}
+
+@media (max-width:769px) {
+    .list-content {
+        width: 70%;
+    }
+    .wrap-text {
+        margin-top: -80px;
+        margin-left: 20%;
+    }
+    .check-report {
+        margin-top: -100px;
+        margin-left: 80%;
+    }
+    .txt {
+        display: none;
+    }
+    #a-sub-1 {
+        display: none;
+    }
+    #a-sub-2 {
+        display: none;
+    }
+    #a-sub-3 {
+        display: none;
+    }
+}
+
+@media (max-width:480px) {
+    .list-content {
+        width: 100%;
+    }
+    .wrap-text {
+        margin-top: -80px;
+        margin-left: 20%;
+    }
+    .check-report {
+        margin-top: -100px;
+        margin-left: 80%;
+    }
+    .txt {
+        display: none;
+    }
 }

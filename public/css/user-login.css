@@ -243,6 +243,12 @@ body {
     color: #333333;
 }
 
+#footer {
+    background-color: #f8f8f8;
+    margin-top: 48px;
+    margin-bottom: 48px;
+}
+
 @media (min-width:991px) and (max-width:1200px) {
     #button-submit {
         width: 100%;

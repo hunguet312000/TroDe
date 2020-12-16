@@ -10,144 +10,141 @@ require('dotenv').config();
 
 module.exports = (app, passport) => {
 
-  app.get("/login", function(req, res) {
-      res.render("user-login", {
-          message: req.flash("loginMessage")
-      });
-  });
+    app.get("/login", function(req, res) {
+        res.render("user-login", {
+            message: req.flash("loginMessage")
+        });
+    });
 
-  app.post("/login", passport.authenticate("local-login", {
-      successRedirect: '/', // redirect to the secure profile section
-      failureRedirect: '/login', // redirect back to the signup page if there is an error
-      failureFlash: true // allow flash messages
-  }), function(req, res) {
+    app.post("/login", passport.authenticate("local-login", {
+        successRedirect: '/', // redirect to the secure profile section
+        failureRedirect: '/login', // redirect back to the signup page if there is an error
+        failureFlash: true // allow flash messages
+    }), function(req, res) {
 
-      // res.redirect("/")
-      // if (req.body.remember) {
-      //   req.session.cookie.maxAge = 24 * 60 * 60 * 1000; // Cookie expires after 1 days
-      // } else {
-      //   req.session.cookie.expires = false; // Cookie expires at end of session
-      // }
-  });
+        // res.redirect("/")
+        // if (req.body.remember) {
+        //   req.session.cookie.maxAge = 24 * 60 * 60 * 1000; // Cookie expires after 1 days
+        // } else {
+        //   req.session.cookie.expires = false; // Cookie expires at end of session
+        // }
+    });
 
-  app.get("/login/error", function(req, res) {
-      res.render("user-login", {
-          message: "Email đã được sử dụng."
-      });
-  });
+    app.get("/login/error", function(req, res) {
+        res.render("user-login", {
+            message: "Email đã được sử dụng."
+        });
+    });
 
-  app.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
+    app.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
 
-  app.get("/auth/google/user-home", passport.authenticate("google", {
-          failureRedirect: '/login/error' ,
-          failureFlash: true
-      }),
-      function(req, res) {
-          // Successful authentication, redirect home.
-          res.redirect('/');
-      });
+    app.get("/auth/google/user-home", passport.authenticate("google", {
+            failureRedirect: '/login/error',
+            failureFlash: true
+        }),
+        function(req, res) {
+            // Successful authentication, redirect home.
+            res.redirect('/');
+        });
 
-  app.get('/auth/facebook',
-      passport.authenticate('facebook', { scope: ["email"] })
-  );
+    app.get('/auth/facebook',
+        passport.authenticate('facebook', { scope: ["email"] })
+    );
 
-  app.get('/auth/facebook/user-home',passport.authenticate('facebook', {
-        failureRedirect: '/login/error' ,
-        failureFlash: true
-      }),
-      function(req, res) {
-          // Successful authentication, redirect home.
-          res.redirect('/');
-      });
+    app.get('/auth/facebook/user-home', passport.authenticate('facebook', {
+            failureRedirect: '/login/error',
+            failureFlash: true
+        }),
+        function(req, res) {
+            // Successful authentication, redirect home.
+            res.redirect('/');
+        });
 
-  app.get("/signup", function(req, res) {
-      res.render("user-signup", {
-          message: req.flash("signupMessage"),
-          errors : undefined
-      })
-  });
+    app.get("/signup", function(req, res) {
+        res.render("user-signup", {
+            message: req.flash("signupMessage"),
+            errors: undefined
+        })
+    });
 
-  app.post("/signup", 
-  [
-        check('username', 'username must has more than 6 characters').isLength({ min: 6 }),
-        check('email', 'Invalid email').isEmail(),
-        check('password', 'password must has more than 8 characters').isLength({ min: 8 }),
-        check("password", "Password must include one lowercase character, one uppercase character, a number, and a special character.").matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i"),
-        check('confirmPassword') 
-            .trim() 
-            .custom(async (confirmPassword, {req}) => { 
-            const password = req.body.password 
-            if(password !== confirmPassword){ 
-                throw new Error('Passwords must be same') 
-            } 
-            }), 
-  ],
-  (req, res) => {
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            console.log(errors)
-            res.render("user-signup", {
-                errors: errors.array(),
-                message : ""
-            })
+    app.post("/signup", [
+            check('username', 'Username phải có nhiều hơn 6 ký tự').isLength({ min: 6 }),
+            check('email', 'Email không hợp lệ').isEmail(),
+            check('password', 'Mật khẩu phải có tối thiểu 8 ký tự').isLength({ min: 8 }),
+            check("password", "Mật khẩu phải có tối thiểu 1 chữ cái thường, 1 chữ cái viết hoa, 1 ký tự số và 1 ký tự đặc biệt ").matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i"),
+            check('confirmPassword')
+            .trim()
+            .custom(async(confirmPassword, { req }) => {
+                const password = req.body.password
+                if (password !== confirmPassword) {
+                    throw new Error('Mật khẩu với trùng với xác nhận mật khẩu.')
+                }
+            }),
+        ],
+        (req, res) => {
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                console.log(errors)
+                res.render("user-signup", {
+                    errors: errors.array(),
+                    message: ""
+                })
+            } else {
+                passport.authenticate("local-signup", {
+                    successRedirect: '/', // redirect to the secure profile section
+                    failureRedirect: '/signup', // redirect back to the signup page if there is an error
+                    failureFlash: true // allow flash messages
+                })(req, res);
+            }
         }
-        else {
-            passport.authenticate("local-signup", 
-            {
-                successRedirect: '/', // redirect to the secure profile section
-                failureRedirect: '/signup', // redirect back to the signup page if there is an error
-                failureFlash: true // allow flash messages
-            })(req,res);
+    )
+
+    app.get("/logout", function(req, res) {
+        req.logout();
+        res.redirect("/");
+    });
+
+    app.get('/profile/change-password', function(req, res) {
+        if (req.isAuthenticated()) {
+            const user = req.session.passport.user;
+            console.log(user)
+            res.render('user-profile-change-password', { user: user });
+        } else { res.redirect('/login') }
+    });
+
+    app.post("/profile-change-password", function(req, res) {
+        const newInfo = req.body;
+        const oldInfo = req.session.passport.user;
+
+        const id_nguoi_dung = oldInfo.id_nguoi_dung;
+        const oldPass = oldInfo.mat_khau;
+        const typedOldPass = newInfo.oldPass;
+        const newPass = newInfo.newPass;
+        const renewPass = newInfo.reNewPass;
+        if (newPass != renewPass || !bcrypt.compareSync(typedOldPass, oldPass)) {
+            console.log("Sai mat khau");
+        } else {
+            changePassword(newInfo, oldInfo);
+            req.logout();
+            res.redirect("/login")
         }
-  }
-  )
+    });
 
-  app.get("/logout", function(req, res) {
-      req.logout();
-      res.redirect("/");
-  });
+    app.get("/reset-password/:token", forgetPassword.checkToken);
 
-  app.get('/profile/change-password', function(req, res) {
-      if (req.isAuthenticated()) {
-          const user = req.session.passport.user;
-          console.log(user)
-          res.render('user-profile-change-password', { user: user });
-      } else { res.redirect('/login') }
-  });
+    app.post("/reset-password/:token", forgetPassword.resetPassword);
 
-  app.post("/profile-change-password", function(req, res) {
-      const newInfo = req.body;
-      const oldInfo = req.session.passport.user;
+    app.get("/forget-password", function(req, res) {
+        res.render("user-forget-password", { message: '' })
+    });
 
-      const id_nguoi_dung = oldInfo.id_nguoi_dung;
-      const oldPass = oldInfo.mat_khau;
-      const typedOldPass = newInfo.oldPass;
-      const newPass = newInfo.newPass;
-      const renewPass = newInfo.reNewPass;
-      if (newPass != renewPass || !bcrypt.compareSync(typedOldPass, oldPass)) {
-          console.log("Sai mat khau");
-      } else {
-          changePassword(newInfo, oldInfo);
-          req.logout();
-          res.redirect("/login")
-      }
-  });
+    app.post("/forget-password", forgetPassword.forgetPassword)
 
-  app.get("/reset-password/:token", forgetPassword.checkToken);
+    app.get("/verification", function(req, res) {
+        res.render("user-verification", { message: '' })
+    });
 
-  app.post("/reset-password/:token", forgetPassword.resetPassword);
-
-  app.get("/forget-password", function(req, res){
-    res.render("user-forget-password", { message: '' })
-  });
-
-  app.post("/forget-password", forgetPassword.forgetPassword)
-
-  app.get("/verification", function(req, res) {
-      res.render("user-verification", { message: '' })
-  });
-
-  app.get("/verification-email", function(req, res) {
-      res.render("user-verification-email", { message: '' })
-  });
+    app.get("/verification-email", function(req, res) {
+        res.render("user-verification-email", { message: '' })
+    });
 }

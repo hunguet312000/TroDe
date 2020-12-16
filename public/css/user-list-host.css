@@ -125,7 +125,6 @@ img {
     float: right;
 }
 
-
 .darkmode-toggle--white:focus {
     outline: 0 none;
     border: none;
@@ -145,7 +144,7 @@ img {
     background-color: #222222;
 }
 
-.txt-diachi{
+.txt-diachi {
     color: #222222;
 }
 
@@ -157,11 +156,11 @@ img {
 .darkmode--activated .txt-diachi,
 .darkmode--activated .txt-darkmode,
 .darkmode--activated .txt,
-.darkmode--activated h4{
+.darkmode--activated h4 {
     color: #fff;
 }
 
-.row-darkmode{
+.row-darkmode {
     border-radius: 8px;
     box-shadow: 2px 4px 4px #eee;
     transform: translate3d(0px, 0px, 0px);
@@ -169,7 +168,7 @@ img {
     margin-bottom: 20px;
 }
 
-.list-content{
+.list-content {
     border-radius: 8px;
     box-shadow: 2px 4px 4px #eee;
     transform: translate3d(0px, 0px, 0px);
@@ -177,8 +176,8 @@ img {
 }
 
 .darkmode--activated .view,
-.darkmode--activated #Layer_1{
-    fill:#fff;
+.darkmode--activated #Layer_1 {
+    fill: #fff;
 }
 
 .darkmode--activated .row-darkmode,
@@ -187,10 +186,10 @@ img {
 .darkmode--activated .right-side,
 .darkmode--activated .box-info2,
 .darkmode--activated #chinh-sua,
-.darkmode--activated #xoa{
-    box-shadow:none;
-    background-color:#222;
-    color:#fff;
+.darkmode--activated #xoa {
+    box-shadow: none;
+    background-color: #222;
+    color: #fff;
 }
 
 @media (min-width:991px) and (max-width:1200px) {
@@ -202,6 +201,21 @@ img {
         margin-left: -10px;
         padding: 0;
         margin-right: 8px;
+    }
+    .txt {
+        display: none;
+    }
+    .txt1 {
+        display: inline-block;
+    }
+    .box-info2,
+    .box-info1 {
+        border-left: none;
+        border-right: none;
+    }
+    .right-side {
+        border-right: 2px solid #f2f2f2;
+        border-left: 2px solid #f2f2f2;
     }
 }
 
@@ -230,6 +244,11 @@ img {
     .right-side {
         border-right: 2px solid #f2f2f2;
         border-left: 2px solid #f2f2f2;
+    }
+    .box-info2,
+    .box-info1 {
+        border-left: none;
+        border-right: none;
     }
 }
 
@@ -270,11 +289,17 @@ img {
         display: none;
     }
     .info1 {
-        margin-top: -20px;
+        margin-top: 10px;
     }
     .box-info2 {
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
         border: 2px solid #f2f2f2;
+    }
+}
+
+@media (max-width:480px) {
+    #a-sub-2 {
+        display: none;
     }
 }

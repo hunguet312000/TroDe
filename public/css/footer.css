@@ -1,0 +1,19 @@
+.a-fter {
+    color: #222222;
+}
+
+.a-fter:hover {
+    color: #17ca9d;
+}
+
+#footer {
+    background-color: #ffffff;
+    margin-top: 48px;
+    margin-bottom: 48px;
+}
+
+.darkmode--activated strong,
+.darkmode--activated .a-fter,
+.darkmode--activated h4 {
+    color: #fff;
+}

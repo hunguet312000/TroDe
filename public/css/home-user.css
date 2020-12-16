@@ -3,6 +3,7 @@ body {
     font-family: Inter;
     font-weight: 500;
     color: #222222;
+    overflow-x: hidden;
 }
 
 .wrap-content {
@@ -293,7 +294,11 @@ a:focus {
     fill: #fff;
 }
 
-.darkmode--activated #a-drop {
+.darkmode--activated #a-drop,
+.darkmode--activated h2,
+.darkmode--activated .logo1,
+.darkmode--activated .gioi-thieu,
+.darkmode--activated .gioi-thieu1 {
     color: #fff;
 }
 
@@ -328,8 +333,12 @@ a:focus {
     #chung-cu {
         margin-bottom: 3%;
         margin-right: 0%;
+        z-index: 1;
     }
     #phong-tro {
         margin-left: 0%;
+    }
+    #text-item {
+        margin-top: -50px;
     }
 }

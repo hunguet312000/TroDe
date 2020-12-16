@@ -10,13 +10,13 @@
         userData.forEach(function(data){%>
     <div class="col-sm-6 list-content">
 
-        <div class="row">
+        <div class="row wrap-report">
             <div class="col-sm-2">
                 <a href="/report-info/<%=data.dataValues.id_bao_cao%>" style="text-decoration: none;">
                     <svg xmlns="http://www.w3.org/2000/svg" height="60px" viewBox="0 -2 512 512" width="60px" style="margin-top: 30px;"><path d="m448 508.800781-148.59375-92.800781h-267.40625c-17.671875 0-32-14.328125-32-32v-352c0-17.671875 14.328125-32 32-32h448c17.671875 0 32 14.328125 32 32v352c0 17.671875-14.328125 32-32 32h-32zm0 0" fill="#ff7761"/><g fill="#fff"><path d="m272 256h-32v-144c0-8.835938 7.164062-16 16-16s16 7.164062 16 16zm0 0"/><path d="m240 288h32v32h-32zm0 0"/></g></svg>
                 </a>
             </div>
-            <div class="col-sm-7" style="line-height: 1.5;">
+            <div class="col-sm-7 wrap-text" style="line-height: 1.5;">
                 <a href="/report-info/<%=data.dataValues.id_bao_cao%>" style="text-decoration: none;">
                     <div class="title">
                         <h3><b><%=data.dataValues.tieu_de%></b></h3>
@@ -40,11 +40,11 @@
 
                 </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-3 check-report">
                 <div style="line-height: 1.5;margin-top: 50px;">
                     <a href="/admin/report-checked/<%= data.dataValues.id_bao_cao%>" style="text-decoration: none;font-weight: 900;">
                         <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" enable-background="new 0 0 512.063 512.063" height="18" viewBox="0 0 512.063 512.063" width="18" style="vertical-align: middle;"><g><g><ellipse cx="256.032" cy="256.032" fill="#00df76" rx="255.949" ry="256.032"/></g><path d="m256.032 0c-.116 0-.231.004-.347.004v512.055c.116 0 .231.004.347.004 141.357 0 255.949-114.629 255.949-256.032s-114.592-256.031-255.949-256.031z" fill="#00ab5e"/><path d="m111.326 261.118 103.524 103.524c4.515 4.515 11.836 4.515 16.351 0l169.957-169.957c4.515-4.515 4.515-11.836 0-16.351l-30.935-30.935c-4.515-4.515-11.836-4.515-16.351 0l-123.617 123.615c-4.515 4.515-11.836 4.515-16.351 0l-55.397-55.397c-4.426-4.426-11.571-4.526-16.119-.226l-30.83 29.149c-4.732 4.475-4.837 11.973-.232 16.578z" fill="#fff5f5"/><path d="m370.223 147.398c-4.515-4.515-11.836-4.515-16.351 0l-98.187 98.187v94.573l145.473-145.473c4.515-4.515 4.515-11.836 0-16.352z" fill="#dfebf1"/></g></svg>&nbsp;&nbsp;
-                        Đã xử lý
+                        <span class="txt">Đã xử lý</span>
                     </a>
                 </div>
             </div>

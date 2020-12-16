@@ -708,12 +708,3 @@ a:focus {
         margin-left: 1px;
     }
 }
-
-@media (max-width:769px) {
-    .gallery {
-        margin-top: -390px;
-    }
-    .wrap-content1 {
-        margin-top: 450px;
-    }
-}

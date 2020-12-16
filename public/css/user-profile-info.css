@@ -598,7 +598,7 @@ input[type=radio] {
     color: #666!important;
 }
 
-.sp-color{
+.sp-color {
     color: #333333;
 }
 
@@ -611,8 +611,8 @@ input[type=radio] {
     color: #fff;
 }
 
-.darkmode--activated  .btn-edit:focus{
-    color:black;
+.darkmode--activated .btn-edit:focus {
+    color: black;
 }
 
 .darkmode-toggle--white:focus {
@@ -625,14 +625,20 @@ input[type=radio] {
     border: none;
 }
 
-.darkmode--activated #button-submit{
-    background-color:#fff;
-    color:black;
+.darkmode--activated #button-submit {
+    background-color: #fff;
+    color: black;
 }
 
-.darkmode--activated .side-profile{
-    background-color:black;
-    color:#fff;
+.darkmode--activated .side-profile {
+    background-color: black;
+    color: #fff;
+}
+
+@media (max-width:990px) {
+    .side-profile {
+        margin-bottom: 20px;
+    }
 }
 
 @media (min-width:769px) and (max-width:990px) {
@@ -656,5 +662,17 @@ input[type=radio] {
     }
     #a-sub-5 {
         display: none;
+    }
+    .side-profile {
+        margin-bottom: 20px;
+    }
+    #submit {
+        margin-left: 15px;
+    }
+}
+
+@media (max-width:480px) {
+    #submit {
+        margin-left: 0px;
     }
 }

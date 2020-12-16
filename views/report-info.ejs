@@ -21,6 +21,13 @@
     <link href="/css/admin-control-report.css" rel="stylesheet">
     <link href="/css/admin-navbar.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script src="../js/darkmode1-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+            new Darkmode().showWidget();
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
 </head>
 
 <%- include("partials/admin-navbar-control"); -%>
@@ -33,11 +40,12 @@
                         <%=bao_cao[0].dataValues.tieu_de%>
                     </div>
                     <div class="content-report">
-                        <%=bao_cao[0].noi_dung.substring(0,28)%>
-                            <br>
-                            <%=bao_cao[0].dataValues.noi_dung.substring(28,71)%>
+                        <% //console.log("ALO:" + bao_cao)%>
+                            <%=bao_cao[0].noi_dung.substring(0,28)%>
                                 <br>
-                                <%=bao_cao[0].dataValues.noi_dung.substring(72,bao_cao[0].dataValues.noi_dung.length-1)%>
+                                <%=bao_cao[0].dataValues.noi_dung.substring(28,71)%>
+                                    <br>
+                                    <%=bao_cao[0].dataValues.noi_dung.substring(72,bao_cao[0].dataValues.noi_dung.length-1)%>
                     </div>
                     <div class="img" style="padding: 10px;">
                         <h4 style="font-weight: 900;">Hình ảnh đính kèm</h4>
@@ -101,8 +109,8 @@
                 });
                 $(".gallery-img ").on("click ", function() {
                     $("body ").css("background-color ", "#222 ");
-                    $(".close ").css("display ", "block ");
-                    $(".gallery-img1 ").css("display ", "inline-block ");
+                    $(".close ").show();
+                    $(".gallery-img1 ").show();
                     $(".img-click .slick-prev ").css("display ", "block ");
                     $(".img-click .slick-next ").css("display ", "block ");
                     $("#content-report ").hide();
@@ -111,10 +119,10 @@
 
                 $(".btn-close ").on("click ", function() {
                     $("body ").css("background-color ", "#f7f7f7 ");
-                    $(".close ").css("display ", "none ");
-                    $(".gallery-img1 ").css("display ", "none ");
-                    $(".img-click .slick-prev ").css("display ", "none ");
-                    $(".img-click .slick-next ").css("display ", "none ");
+                    $(".close ").hide();
+                    $(".gallery-img1 ").hide();
+                    $(".img-click .slick-prev ").hide();
+                    $(".img-click .slick-next ").hide();
                     $("#content-report ").show();
                     $(".header-wrap ").show();
                 })
