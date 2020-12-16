@@ -125,7 +125,7 @@ exports.getDoneReport = async(req, res) => {
                     },
                     include: [{
                             model: Hinh_anh_bao_cao,
-                            required: true
+                            required: false
                         },
                         {
                             model: Nguoi_dung,
@@ -142,7 +142,7 @@ exports.getDoneReport = async(req, res) => {
                         require: true
                     }]
                 });
-                //console.log(bao_cao);
+                console.log(bao_cao);
                 res.render("admin-control-report-done", {
                     user: admin[0],
                     bao_cao: bao_cao,

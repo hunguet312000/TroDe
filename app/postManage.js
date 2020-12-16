@@ -15,6 +15,7 @@ const userProfileManage = require("./userProfileManage");
 exports.savePosts = async(req, res) => {
     //console.log(req.body);
     if (req.isAuthenticated()) {
+      try {
         const uploader = async(path) => await cloudinary.uploads(path, 'Image');
         let insert_hinh_anh_values = []
         let files = req.files;
@@ -80,7 +81,7 @@ exports.savePosts = async(req, res) => {
             cho_de_xe: req.body.cho_de_xe,
         };
         //console.log(req.user)
-        try {
+
             const phong_tro = await Phong_tro.create(phongtro);
             tiennghi.id_phong_tro = phong_tro.id_phong_tro;
             const tien_ich = await Tien_ich.create(tiennghi);
@@ -331,7 +332,7 @@ exports.displayPostByNumOfPeopleOrPrice = async(req, res) => {
                 quan_huyen = ""
         }
         const calculatePagniate = await paginate.calculateRoomsByPeopleOrPricePages(req, res, type, tong_so_nguoi, gia_tien, quan_huyen);
-        console.log(type + " " + tong_so_nguoi);
+        //console.log(type + " " + tong_so_nguoi);
         const phong_tro = await Phong_tro.findAll({
             offset: calculatePagniate.offset,
             limit: calculatePagniate.limit,
@@ -556,21 +557,22 @@ exports.deletePost = async(req, res) => {
 exports.search = async(req, res) => {
     //console.log(req.body)
     req.body.order = "";
-    //console.log(req.body);
-    res.redirect(url.format({
-        pathname: "/search/1",
-        query: req.body
-    }));
+    //console.log(req.body.search);
+    let search = req.body.search.toLowerCase(); //search value
+    search = search.replace(/\s\s+/g, ' '); //delete multiple spaces
+    search = keywords_dict.convertStr(search);
+    res.redirect("/search/" + search + "/1");
 }
 
 exports.displayListPostBySearch = async(req, res) => { // search by phan_loai, quan_huyen, tong_songuoi, phuong_xa, cao cap, re, gia re
     try {
-        console.log(req.query.search == "");
-        if(req.query.search != "") {
+        //console.log(req.query);
+        //console.log(req.params.keyword);
+        if(req.params.keyword != "") {
             const url = req.url;
-            let search = req.query.search.toLowerCase(); //search value
-            search = search.replace(/\s\s+/g, ' '); //delete multiple spaces
-            search = keywords_dict.convertStr(search);
+            // let search = req.query.search.toLowerCase(); //search value
+            // search = search.replace(/\s\s+/g, ' '); //delete multiple spaces
+            search = keywords_dict.convertStr(req.params.keyword);
             //console.log(search);
             const result = {
                 'phan_loai': "",
@@ -685,19 +687,31 @@ exports.displayListPostBySearch = async(req, res) => { // search by phan_loai, q
                                 }
                             }
                         ],
-
                     },
                     order: [order]
                 })
-                //console.log(phong_tro);
+                //console.log();
+                let newUrl;
+                let criteria='';
+                let tmp = url.indexOf("?");
+                if(tmp != -1){
+                  newUrl = url.substr(0,tmp-2);
+                  criteria = url.substr(tmp, url.length);
+                }else{
+                  newUrl = url.substr(0,url.length-2)
+                }
+                console.log(criteria);
+                console.log("New url: " + newUrl);
+                //console.log(url.substr(0,url.length-2));
             res.render("rooms", {
                 user: req.user,
                 login: req.isAuthenticated(),
                 userData: phong_tro,
-                type: req.url,
+                type: newUrl,
                 pages: calculatePagniate.pages,
                 current: req.params.page,
-                page : "",
+                page : req.params.page,
+                criteria: criteria,
                 roomsNum: calculatePagniate.roomsNum,
             });
         } else {res.redirect("/")}
