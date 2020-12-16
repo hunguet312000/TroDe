@@ -25,9 +25,8 @@ module.exports = (app, passport) => {
     app.post("/rooms/:type/:option", postManage.filterListPostByNumOfPeopleOrPrice);
 
     app.post("/", postManage.search);
-
-    app.get("/search/:page", postManage.displayListPostBySearch);
-    app.post("/search/:page", postManage.filterListPostBySearch)
+    app.get("/search/:keyword/:page", postManage.displayListPostBySearch);
+    app.post("/search/:keyword/:page", postManage.filterListPostBySearch)
 
     app.post("/room/:id/confirm-booking-info", async function(req, res) {
         //console.log(req.body.bookDate);

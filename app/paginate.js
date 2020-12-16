@@ -286,6 +286,7 @@ exports.calculateHostProfilePages = async(req, res) => {
   }
 }
 
+//ADMIN
 exports.calculateAdminPostListPages = async(req, res) => {
   try {
     const currentPage = Number(req.params.page);
@@ -326,6 +327,9 @@ exports.calculateAdminReportListPages = async(req, res) => {
     const currentPage = Number(req.params.page);
     const reportPerPage = 4;
     const reportNum = await Bao_cao.count({
+      where:{
+        tinh_trang: null
+      }
     });
     return {
       pages: Math.ceil(reportNum/reportPerPage),
@@ -340,7 +344,7 @@ exports.calculateAdminReportListPages = async(req, res) => {
 
 exports.calculateAdminDoneReportListPages = async(req, res) => {
   try {
-    console.log(req.params.page);
+    //console.log(req.params.page);
     const currentPage = Number(req.params.page);
     const reportPerPage = 4;
     const reportNum = await Bao_cao.count({
@@ -348,6 +352,7 @@ exports.calculateAdminDoneReportListPages = async(req, res) => {
         tinh_trang: 1
       }
     });
+    console.log(reportNum);
     return {
       pages: Math.ceil(reportNum/reportPerPage),
       offset: (reportPerPage*currentPage)-reportPerPage,

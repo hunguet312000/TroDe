@@ -52,7 +52,9 @@
                       <a href="/room/<%=bao_cao[0].dataValues.id_phong_tro%>" style="text-decoration: none; ">
                           <h4>Link tới phòng trọ bị báo cáo</h4>
                       </a>
-                        <h4 >Hình ảnh đính kèm: </h4>
+                        <% if(bao_cao[0].dataValues.hinh_anh_bao_caos.length !=0 ){ %>
+                          <h4 >Hình ảnh đính kèm: </h4>
+                        <%}%>
                         <div class="gallery">
                             <% for(anh of bao_cao[0].dataValues.hinh_anh_bao_caos){ %>
                                 <%//console.log("ALO:" + JSON.stringify(anh.path_anh,null,4))%>
