@@ -33,9 +33,9 @@ body {
 }
 
 .gallery-img {
-    width: 100%;
+    max-width: 100%;
     border: 0px solid #fff;
-    height: 420px;
+    height: auto;
     display: inline-block;
     transform: scale(1);
     transition: transform .45s cubic-bezier(.645, .045, .355, 1) 0s, opacity .45s cubic-bezier(.645, .045, .355, 1) 0s;
@@ -706,5 +706,14 @@ a:focus {
 @media (max-width:990px) {
     .fa-user-circle {
         margin-left: 1px;
+    }
+    .gallery-img {
+        height: 420px;
+    }
+}
+
+@media (min-width: 575px) {
+    .gallery-img {
+        height: 400px;
     }
 }
