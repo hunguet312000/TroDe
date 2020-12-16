@@ -14,6 +14,7 @@
 
 .darkmode--activated strong,
 .darkmode--activated .a-fter,
-.darkmode--activated h4 {
+.darkmode--activated h4,
+.darkmode--activated .gt {
     color: #fff;
 }
