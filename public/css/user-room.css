@@ -546,7 +546,16 @@ a:focus {
     background: #222;
 }
 
+.img-click.slick-initialized.slick-slider {
+    background-color: #fff;
+}
+
+.darkmode--activated .img-click.slick-initialized.slick-slider {
+    background-color: rgb(34, 34, 34);
+}
+
 #gallery-img1 {
+    max-width: 100%;
     background-color: #fff;
     height: 792px;
     background-position: center;
