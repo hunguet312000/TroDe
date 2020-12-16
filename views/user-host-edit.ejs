@@ -47,6 +47,8 @@
                 $('#profile-content').hide();
                 $('#loading').show();
                 $('#footer').hide();
+                $('#gia_phong').val($('#gia_phong').val().replace(/,/g, ''));
+                console.log(  $('#gia_phong').val());
                 console.log('submit');
             });
 

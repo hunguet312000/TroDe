@@ -529,9 +529,9 @@
                                         <div class="col-sm-12">
                                             <label for="title" style="margin-bottom: 10px;">*Số tiền (VNĐ)</label>
                                             <% if (phong_tro.gia_phong) { %>
-                                                <input name="gia_phong" type="text" id="title" class="form-control btn-ip" value="<%=phong_tro.gia_phong %>" min="0" oninput="convertPriceFormat(this.value)" required data-bv-notempty-message="Không được để trống">
+                                                <input name="gia_phong" type="text" id="gia_phong" class="form-control btn-ip" value="<%=phong_tro.gia_phong %>" min="0" oninput="convertPriceFormat(this.value)" required data-bv-notempty-message="Không được để trống">
                                             <% }else{ %>
-                                                <input name="gia_phong" type="text" id="title" class="form-control btn-ip" placeholder="Nhập thông tin" min="0" oninput="convertPriceFormat(this.value)" required data-bv-notempty-message="Không được để trống">
+                                                <input name="gia_phong" type="text" id="gia_phong" class="form-control btn-ip" placeholder="Nhập thông tin" min="0" oninput="convertPriceFormat(this.value)" required data-bv-notempty-message="Không được để trống">
                                             <%}%>
                                            <br>
                                         </div>
@@ -562,7 +562,7 @@
                                             <div style="font-size: large;padding: 10px;"><b>Ảnh phòng trọ, chung cư</b></div>
                                             <div class="col-sm-12">
                                                 <div class="row">
-                                                    
+
                                                     <%for (let i = 0; i < Object.values(phong_tro.hinh_anhs).length; i++){%>
                                                         <div class="col-md-3 imgUp">
                                                             <img class="imagePreview" style="background-image: url(<%=phong_tro.hinh_anhs[i].path_anh%>);">
@@ -571,7 +571,7 @@
                                                              Tải ảnh lên<input id="<%=phong_tro.hinh_anhs[i].id_anh%>" name = "update_image" type="file" class="uploadFile img" style="width: 0px;height: 0px;overflow: hidden;">
                                                             </label>
                                                         </div>
-                                                        
+
                                                     <%}%>
 
                                                     <%for (let i = 0; i < Object.values(phong_tro.hinh_anhs).length; i++){%>
@@ -594,7 +594,7 @@
                                                 <!-- row -->
                                             </div>
                                         </div>
-                                
+
                                         <div class="row" style="padding:30px; margin-top: -20px;">
                                             <div class="col-sm-6">
                                                 <a href="/" style="text-decoration: none;">
