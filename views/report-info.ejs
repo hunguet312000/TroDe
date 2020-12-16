@@ -40,6 +40,7 @@
                         <%=bao_cao[0].dataValues.tieu_de%>
                     </div>
                     <div class="content-report">
+                      <h4>Nội dung báo cáo: </h4>
                         <% //console.log("ALO:" + bao_cao)%>
                             <%=bao_cao[0].noi_dung.substring(0,28)%>
                                 <br>
@@ -47,11 +48,14 @@
                                     <br>
                                     <%=bao_cao[0].dataValues.noi_dung.substring(72,bao_cao[0].dataValues.noi_dung.length-1)%>
                     </div>
-                    <div class="img" style="padding: 10px;">
-                        <h4 style="font-weight: 900;">Hình ảnh đính kèm</h4>
+                    <div class="img" style="padding-left: 10px;" >
+                      <a href="/room/<%=bao_cao[0].dataValues.id_phong_tro%>" style="text-decoration: none; ">
+                          <h5>Link tới phòng trọ bị báo cáo</h5>
+                      </a>
+                        <h4 >Hình ảnh đính kèm: </h4>
                         <div class="gallery">
                             <% for(anh of bao_cao[0].dataValues.hinh_anh_bao_caos){ %>
-                                <%console.log("ALO:" + JSON.stringify(anh.path_anh,null,4))%>
+                                <%//console.log("ALO:" + JSON.stringify(anh.path_anh,null,4))%>
                                     <img id="gallery-img" class="gallery-img" src=<%=anh.path_anh%>>
                                     <% }%>
                         </div>
@@ -68,7 +72,7 @@
 
         <div class="container">
             <div class="img-click">
-                <% 
+                <%
         bao_cao[0].dataValues.hinh_anh_bao_caos.forEach(function(path_anh, i){
         %>
                     <img id="gallery-img1" class="gallery-img1" src="<%=path_anh.dataValues.path_anh%>">
