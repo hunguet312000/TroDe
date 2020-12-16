@@ -5,7 +5,7 @@
                 <div class="col-md-2">
                     <div class="side-profile">
                         <div class="div-side">
-                            <a href="/profile" class="a-side" style="text-decoration: none;">
+                            <a href="/profile/edit" class="a-side" style="text-decoration: none;">
                                 <span id="sp-color">Quản lý tài khoản</span>
                             </a>
                         </div>
@@ -48,7 +48,7 @@
                 $('#loading').show();
                 $('#footer').hide();
                 $('#gia_phong').val($('#gia_phong').val().replace(/,/g, ''));
-                console.log(  $('#gia_phong').val());
+                console.log($('#gia_phong').val());
                 console.log('submit');
             });
 
@@ -66,4 +66,7 @@
             $(".select2-container").css("width", "100%");
         </script>
 
-        <%- include("partials/footer"); -%>
+        <footer class="container-fluid" id="footer1" style="padding: 24px 15px;background: #f8f8f8;;letter-spacing: .23px;border-top: 2px solid #f2f2f2;font-weight: 500;font-size: 16px;text-align: center;margin-top: 80px;color: #999;">
+            Copyright © 2020 TroDe
+        </footer>
+        </body>

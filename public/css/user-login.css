@@ -244,9 +244,9 @@ body {
 }
 
 #footer {
-    background-color: #f8f8f8;
-    margin-top: 48px;
-    margin-bottom: 48px;
+    margin-bottom: 0px;
+    border-top: none;
+    margin-top: 30px;
 }
 
 @media (min-width:991px) and (max-width:1200px) {
