@@ -241,6 +241,9 @@ img {
     .txt {
         display: none;
     }
+    .txt1 {
+        display: inline-block;
+    }
     .right-side {
         border-right: 2px solid #f2f2f2;
         border-left: 2px solid #f2f2f2;
@@ -249,6 +252,9 @@ img {
     .box-info1 {
         border-left: none;
         border-right: none;
+    }
+    #chinh-sua {
+        margin-top: -10px;
     }
 }
 

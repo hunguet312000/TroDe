@@ -410,4 +410,7 @@ a:focus {
     #phong-tro {
         margin-left: 0%;
     }
+    #text-item {
+        margin-top: -50px;
+    }
 }

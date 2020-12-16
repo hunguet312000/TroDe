@@ -4,10 +4,19 @@ $(document).ready(function() {
         lazyLoad: 'ondemand',
         slidesToShow: 2.4,
         slidesToScroll: 1,
+        variableWidth: true,
         responsive: [{
-            breakpoint: 990,
+            breakpoint: 1024,
             settings: {
                 slidesToShow: 2
+            },
+            breakpoint: 800,
+            settings: {
+                slidesToShow: 1.3,
+            },
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 1,
             }
         }]
     });
