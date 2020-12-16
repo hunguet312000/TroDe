@@ -228,6 +228,7 @@ $(document).ready(function() {
         lazyLoad: 'ondemand',
         slidesToShow: 1,
         slidesToScroll: 1,
+        variableWidth: true
     });
 
     $(".gallery-img").on("click", function() {
