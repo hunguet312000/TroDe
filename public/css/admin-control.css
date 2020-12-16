@@ -67,12 +67,10 @@
 }
 
 @media (max-width:769px) {
-    #a-sub-2 {
-        display: none;
-    }
-    #a-sub-3 {
-        display: none;
-    }
+    #a-sub-1,
+    #a-sub-2,
+    #a-sub-3,
+    #a-sub-4,
     #a-sub-5 {
         display: none;
     }

@@ -52,3 +52,13 @@
     font-weight: 500;
     text-decoration: none;
 }
+
+@media (min-width:769px) and (max-width:990px) {
+    #a-sub-1,
+    #a-sub-2,
+    #a-sub-3,
+    #a-sub-4,
+    #a-sub-5 {
+        display: none;
+    }
+}

@@ -1,33 +1,30 @@
 <%- include("partials/admin-head-control"); -%>
     <%- include("partials/admin-navbar-control"); -%>
         <div class="container" id="wrap-content">
-            <div class="row">
-                <div class="col-sm-1">
-                </div>
-                <div class="col-sm-10" style="border-radius:8px;">
-                    <div class="row">
-                        <div class="col-sm-4" id="wrap-info">
-                            <span id="title-item-profile">Tổng số thành viên</span>
-                            <br>
-                            <div class="proflie-item-info" style="font-size: 30px;"><b><%= userNum%></b></div>
-                            <span id="title-item-profile">thành viên</span>
-                        </div>
-                        <div class="col-sm-4" id="wrap-info">
-                            <span id="title-item-profile">Tổng số bài đăng</span>
-                            <br>
-                            <div class="proflie-item-info" style="font-size: 30px;"><b><%= postNum%></b></div>
-                            <span id="title-item-profile">bài</span>
-                        </div>
-                        <div class="col-sm-4" id="wrap-info">
-                            <span id="title-item-profile">Tổng số báo cáo</span>
-                            <br>
-                            <div class="proflie-item-info" style="font-size: 30px;"><b><%= reportNum%></b></div>
-                            <span id="title-item-profile">báo cáo</span>
-                        </div>
-                        <div class="col-sm-4" id="wrap-info">
-                            <span id="title-item-profile">Tổng số thành viên đã xóa</span>
-                            <br>
-                            <div class="proflie-item-info" style="font-size: 30px;"><b>
+            <div class="col-sm-10 col-sm-offset-1" style="border-radius:8px;">
+                <div class="row">
+                    <div class="col-sm-4" id="wrap-info">
+                        <span id="title-item-profile">Tổng số thành viên</span>
+                        <br>
+                        <div class="proflie-item-info" style="font-size: 30px;"><b><%= userNum%></b></div>
+                        <span id="title-item-profile">thành viên</span>
+                    </div>
+                    <div class="col-sm-4" id="wrap-info">
+                        <span id="title-item-profile">Tổng số bài đăng</span>
+                        <br>
+                        <div class="proflie-item-info" style="font-size: 30px;"><b><%= postNum%></b></div>
+                        <span id="title-item-profile">bài</span>
+                    </div>
+                    <div class="col-sm-4" id="wrap-info">
+                        <span id="title-item-profile">Tổng số báo cáo</span>
+                        <br>
+                        <div class="proflie-item-info" style="font-size: 30px;"><b><%= reportNum%></b></div>
+                        <span id="title-item-profile">báo cáo</span>
+                    </div>
+                    <div class="col-sm-4" id="wrap-info">
+                        <span id="title-item-profile">Tổng số thành viên đã xóa</span>
+                        <br>
+                        <div class="proflie-item-info" style="font-size: 30px;"><b>
                               <% console.log(user);%>
                               <% if(user.dataValues.nguoi_dung_da_xoa){ %>
                                 <%=user.dataValues.nguoi_dung_da_xoa%>
@@ -35,29 +32,28 @@
                                 0
                               <% } %>
                             </b></div>
-                            <span id="title-item-profile">thành viên</span>
-                        </div>
-                        <div class="col-sm-4" id="wrap-info">
-                            <span id="title-item-profile">Tổng số bài đăng đã xóa</span>
-                            <br>
-                            <div class="proflie-item-info" style="font-size: 30px;"><b>
+                        <span id="title-item-profile">thành viên</span>
+                    </div>
+                    <div class="col-sm-4" id="wrap-info">
+                        <span id="title-item-profile">Tổng số bài đăng đã xóa</span>
+                        <br>
+                        <div class="proflie-item-info" style="font-size: 30px;"><b>
                               <% if(user.dataValues.bai_dang_da_xoa){ %>
                                 <%=user.dataValues.bai_dang_da_xoa%>
                               <% }else{ %>
                                 0
                               <% } %>
                             </b></div>
-                            <span id="title-item-profile">bài</span>
-                        </div>
-                        <div class="col-sm-4" id="wrap-info">
-                            <span id="title-item-profile">Tổng số báo cáo cần xử lý</span>
-                            <br>
-                            <div class="proflie-item-info" style="font-size: 30px;"><b> <%=user.dataValues.bai_dang_da_xoa%> </b></div>
-                            <span id="title-item-profile">báo cáo</span>
-                        </div>
+                        <span id="title-item-profile">bài</span>
+                    </div>
+                    <div class="col-sm-4" id="wrap-info">
+                        <span id="title-item-profile">Tổng số báo cáo cần xử lý</span>
+                        <br>
+                        <div class="proflie-item-info" style="font-size: 30px;"><b> <%=user.dataValues.bai_dang_da_xoa%> </b></div>
+                        <span id="title-item-profile">báo cáo</span>
                     </div>
                 </div>
-                <div class="col-sm-1">
-                </div>
             </div>
+
+        </div>
         </div>

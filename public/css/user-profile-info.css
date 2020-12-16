@@ -642,24 +642,20 @@ input[type=radio] {
 }
 
 @media (min-width:769px) and (max-width:990px) {
-    #a-sub-2 {
-        display: none;
-    }
-    #a-sub-3 {
+    #a-sub-1,
+    #a-sub-2,
+    #a-sub-3,
+    #a-sub-4,
+    #a-sub-5 {
         display: none;
     }
 }
 
 @media (max-width:769px) {
-    #a-sub-2 {
-        display: none;
-    }
-    #a-sub-3 {
-        display: none;
-    }
-    #a-sub-4 {
-        display: none;
-    }
+    #a-sub-1,
+    #a-sub-2,
+    #a-sub-3,
+    #a-sub-4,
     #a-sub-5 {
         display: none;
     }

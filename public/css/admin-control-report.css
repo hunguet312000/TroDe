@@ -276,10 +276,6 @@ a {
     color: #333;
 }
 
-a:hover {
-    color: #17ca9d;
-}
-
 .fa-clock {
     color: #333;
 }
@@ -344,6 +340,14 @@ a:hover {
     }
 }
 
+.img {
+    padding-left: 10px;
+}
+
+.a-tieude:hover {
+    color: #17ca9d;
+}
+
 @media (max-width:769px) {
     .list-content {
         width: 70%;
@@ -359,14 +363,35 @@ a:hover {
     .txt {
         display: none;
     }
-    #a-sub-1 {
+    #a-sub-1,
+    #a-sub-2,
+    #a-sub-3,
+    #a-sub-4,
+    #a-sub-5 {
         display: none;
     }
-    #a-sub-2 {
-        display: none;
+    .img {
+        padding: 0px;
     }
-    #a-sub-3 {
-        display: none;
+    #wrap-content-report {
+        padding: 0px;
+        border-radius: 0px;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        -ms-border-radius: 0px;
+        -o-border-radius: 0px;
+        border-top-left-radius: .625rem;
+        border-top-right-radius: .625rem;
+        padding-bottom: 20px;
+    }
+    .h4-class {
+        padding-left: 10px;
+    }
+    .gallery.slick-initialized.slick-slider {
+        padding-bottom: 50px;
+    }
+    .title-report {
+        padding-top: 20px;
     }
 }
 
